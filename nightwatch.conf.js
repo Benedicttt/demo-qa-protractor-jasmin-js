@@ -3,7 +3,7 @@ const chromedriver = require('chromedriver');
 const geckodriver = require('geckodriver');
 
 require('nightwatch-cucumber')({
-  cucumberArgs: ['--require', 'features/step_definitions','--format', './node_modules/cucumber-pretty', '--format', 'json:reports/cucumber.json', 'features']
+  cucumberArgs: ['--require', 'features/step_definitions','--format', './node_modules/cucumber-pretty', '--format', 'json:reports/cucumber_report.json', 'features']
 });
 
 module.exports = {
@@ -14,7 +14,7 @@ module.exports = {
   selenium: {
     start_process: true,
     server_path: seleniumServer.path,
-    log_path: '',
+    log_path: 'logs/',
     host: '127.0.0.1',
     port: 4444
   },
