@@ -20,45 +20,65 @@ module.exports = {
   },
   test_settings: {
     default: {
-      launch_url: 'http://localhost:8087',
+      launch_url: 'http://localhost:3000',
       selenium_port: 4444,
       selenium_host: '127.0.0.1',
       desiredCapabilities: {
-        browserName: 'chrome',
-        javascriptEnabled: true,
-        acceptSslCerts: true,
-        chromeOptions: {
-          args: ['incognito', 'headless', 'no-sandbox', 'disable-gpu']
-        }
+        browserName: 'firefox',
+			  marionette: true
       },
-      selenium: {
-        cli_args: {
-          'webdriver.chrome.driver': chromedriver.path
-        }
-      }
+      screenshots : {
+        enabled: true,
+        on_error: true,
+        on_failure: true,
+        path: './screenshots/default_firefox'
+      },
     },
     chrome: {
-      desiredCapabilities: {
-        browserName: 'chrome',
-        javascriptEnabled: true,
-        acceptSslCerts: true
+			desiredCapabilities: {
+        browserName: "chrome",
+				javascriptEnabled: true
       },
-      selenium: {
-        cli_args: {
-          'webdriver.chrome.driver': chromedriver.path
-        }
+      screenshots : {
+        enabled: true,
+        on_error: true,
+        on_failure: true,
+        path: './screenshots/chrome'
+      }			
+		},
+
+		chrome_headless: {
+      desiredCapabilities: {
+        browserName: "chrome",
+        javascriptEnabled: true,
+        chromeOptions: {
+          args: [
+              "headless",
+              "disable-web-security",
+              "ignore-certificate-errors",
+              "no-sandbox", 
+              "disable-gpu"
+            ]
+          },
+      },
+      screenshots : {
+        enabled: true,
+        on_error: true,
+        on_failure: true,
+        path: './screenshots/chrome_headless'
       }
-    },
-    firefox: {
-      desiredCapabilities: {
-        browserName: 'firefox',
-        javascriptEnabled: true,
-        marionette: true
+		},
+
+		firefox: {
+			desiredCapabilities: {
+			  browserName: "firefox",
+			  marionette: true
       },
-      selenium: {
-        cli_args: {
-          'webdriver.gecko.driver': geckodriver.path
-        }
+      screenshots : {
+        enabled: true,
+        on_error: true,
+        on_failure: true,
+        path: './screenshots/firefox'
       }
     }
   }
