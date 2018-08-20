@@ -1,0 +1,42 @@
+{
+  "name": "SMOKE-SPOK",
+  "version": "1.0.0",
+  "description": "",
+  "main": "nightwatch.conf.js",
+  "scripts": {
+    "spok:chrome": "node_modules/nightwatch/bin/nightwatch -e chrome",
+    "spok-all-browser": "node_modules/nightwatch/bin/nightwatch -e chrome_headless,firefox,default,chrome",
+    "spok-default": "nightwatch",
+    "spok:chrome-headless": "node_modules/nightwatch/bin/nightwatch -e chrome_headless",
+    "spok:firefox": "node_modules/nightwatch/bin/nightwatch -e firefox",
+    "debug": "node --inspect-brk node_modules/bin/nightwatch --env chrome"
+  },
+  "author": "Sergey Kievskiy",
+  "license": "SPOK",
+  "dependsencies": {
+    "chromedriver": "^2.36.0",
+    "cucumber": "^4.0.0",
+    "cucumber-pretty": "^1.4.0",
+    "geckodriver": "^1.10.0",
+    "nightwatch": "^0.9.20",
+    "nightwatch-cucumber": "^9.1.2",
+    "selenium-server": "^3.10.0"
+  },
+  "devDependencies": {
+    "cucumber": "^4.2.1",
+    "cucumber-html-reporter": "^4.0.3",
+    "nightwatch": "^0.9.21",
+    "nightwatch-cucumber": "^9.1.2"
+  },
+  "dependencies": {
+    "cucumber": "^4.2.1",
+    "cucumber-html-reporter": "^4.0.3",
+    "nightwatch": "^0.9.21",
+    "nightwatch-cucumber": "^9.1.2",
+    "chromedriver": "^2.41.0",
+    "geckodriver": "^1.12.2",
+    "selenium-server": "^3.14.0",
+    "selenium-standalone": "^6.15.1",
+    "webdriver": "^5.0.0-alpha.7"
+  }
+}

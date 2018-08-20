@@ -1,0 +1,5 @@
+.vscode
+node_modules
+reports
+logs/selenium-debug.log
+screenshots
