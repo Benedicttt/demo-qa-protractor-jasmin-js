@@ -1,5 +1,7 @@
+var base = {
+    host: 'http://localhost:3000'
+};
 
-function base_url() {
-    return "http://localhost:3000"
+module.exports = {
+    base: base
 }
-

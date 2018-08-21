@@ -1,9 +1,10 @@
 const { client } = require('nightwatch-cucumber');
 const { Given, Then } = require('cucumber');
+let host = client.globals.base.host;
 
 Given(/^Go to page Sign in$/, () => {
     return client
-        .url("http://localhost:3000/users/sign_in")
+        .url(host + "/users/sign_in")
 });
 
 Then(/^\(Sign in\) the title is "SPOK"$/, () => {

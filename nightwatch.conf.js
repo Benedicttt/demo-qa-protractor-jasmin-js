@@ -7,7 +7,7 @@ require('nightwatch-cucumber')({
 module.exports = {
   output_folder: 'reports',
   custom_assertions_path: '',
-  globals_path: "features/globals.js",
+  globals_path: "features/support/globals.js",
   live_output: false,
   disable_colors: false,
   selenium: {
