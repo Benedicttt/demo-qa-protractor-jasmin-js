@@ -1,6 +1,4 @@
 const seleniumServer = require('selenium-server');
-const chromedriver = require('chromedriver');
-const geckodriver = require('geckodriver');
 
 require('nightwatch-cucumber')({
   cucumberArgs: ['--require', 'features/step_definitions','--format', './node_modules/cucumber-pretty', '--format', 'json:reports/cucumber_report.json', 'features']
@@ -9,6 +7,7 @@ require('nightwatch-cucumber')({
 module.exports = {
   output_folder: 'reports',
   custom_assertions_path: '',
+  globals_path: "features/globals.js",
   live_output: false,
   disable_colors: false,
   selenium: {

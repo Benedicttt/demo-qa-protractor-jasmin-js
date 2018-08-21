@@ -4,10 +4,10 @@
   "description": "",
   "main": "nightwatch.conf.js",
   "scripts": {
+    "spok:chrome-headless": "node_modules/nightwatch/bin/nightwatch -e chrome_headless",
     "spok:chrome": "node_modules/nightwatch/bin/nightwatch -e chrome",
     "spok-all-browser": "node_modules/nightwatch/bin/nightwatch  -e chrome_headless,firefox,default,chrome",
     "spok-default": "nightwatch",
-    "spok:chrome-headless": "node_modules/nightwatch/bin/nightwatch -e chrome_headless",
     "spok:firefox": "node_modules/nightwatch/bin/nightwatch -e firefox",
     "debug": "node --inspect-brk node_modules/bin/nightwatch --env chrome"
   },
