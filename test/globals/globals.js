@@ -1,5 +1,4 @@
 var HtmlReporter = require('nightwatch-html-reporter');
-const chromedriver = require('chromedriver');
 const uuidv1 = require('uuid/v1');
 
 var reporter = new HtmlReporter({
@@ -28,16 +27,4 @@ module.exports = {
             done();
         });
     },
-
-    before: function(done) {
-        chromedriver.start();
-
-        done();
-    },
-
-    after: function(done) {
-        chromedriver.stop();
-
-        done();
-    }
 };
