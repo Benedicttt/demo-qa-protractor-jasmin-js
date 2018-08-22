@@ -22,14 +22,14 @@ module.exports = {
     },
 
     "Registration": function(client) {
-        { client
+        var reg = client.page.user.sign_up();
 
-        .url(client.globals.base.host + "/users/sign_up")
-            .setValue("#user_email", "user157@gmail.com")
-            .setValue("#user_password", "123456")
-            .setValue("#user_password_confirmation", "123456")
-            .click("button[type=submit]")
-            .findText(".alert.alert-error > h4", "Ошибка: сохранение не удалось из-за 1 ошибки")
+        reg.navigate(client.globals.base.host + "/users/sign_up")
+            .setValue("@id_email", "user157@gmail.com")
+            .setValue("@id_password", "123456")
+            .setValue("@id_password_confirmation", "123456")
+            .click("@submit")
+            .findText("@error", "Ошибка: сохранение не удалось из-за 1 ошибки")
 
             .click(".color-333")
             .assert.urlEquals(client.globals.base.host + "/users/password/new")
@@ -43,6 +43,6 @@ module.exports = {
 
             .end();
         }
-    }
+
 };
 

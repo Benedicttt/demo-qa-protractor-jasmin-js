@@ -9,6 +9,7 @@ module.exports = {
   output_folder: 'reports',
   custom_commands_path : "test/helpers",
   custom_assertions_path: 'test/assertions',
+  page_objects_path: 'test/page_object',
   globals_path: "test/globals/globals.js",
   live_output: false,
   disable_colors: false,
