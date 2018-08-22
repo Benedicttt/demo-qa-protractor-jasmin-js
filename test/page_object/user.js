@@ -10,6 +10,9 @@ module.exports = {
         id_password_confirmation: {
             selector: '#user_password_confirmation'
         },
+        id_remember_me: {
+            selector: "#user_remember_me"
+        },
         submit: {
             selector: 'button[type=submit]'
         },

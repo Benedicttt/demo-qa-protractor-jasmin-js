@@ -51,6 +51,8 @@
     "ntl": "^3.0.0",
     "phantom": "^6.0.3",
     "protractor": "^5.4.0",
-    "secure-random": "^1.1.1"
+    "random-number-csprng": "^1.0.2",
+    "secure-random": "^1.1.1",
+    "uuid": "^3.3.2"
   }
 }

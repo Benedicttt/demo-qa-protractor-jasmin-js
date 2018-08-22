@@ -42,17 +42,17 @@ module.exports = {
       },
     },
     chrome: {
-			desiredCapabilities: {
-        browserName: "chrome",
-				javascriptEnabled: true
+        desiredCapabilities: {
+          browserName: "chrome",
+            javascriptEnabled: true
+        },
+        screenshots : {
+          enabled: true,
+          on_error: true,
+          on_failure: true,
+          path: './screenshots/chrome'
       },
-      screenshots : {
-        enabled: true,
-        on_error: true,
-        on_failure: true,
-        path: './screenshots/chrome'
-      }			
-		},
+      },
 
 		chrome_headless: {
       desiredCapabilities: {
