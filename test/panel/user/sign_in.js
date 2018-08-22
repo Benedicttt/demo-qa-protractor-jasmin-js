@@ -27,16 +27,19 @@ module.exports = {
         client
             .url(client.globals.base.host + "/users/sign_in")
             .setValue("#user_email", "user157@gmail.com")
-            .setValue("#user_password", "12345q")
+            .setValue("#user_password", "123456")
             .click("#user_remember_me")
             .click("button[type=submit]")
-            client.expect.element('#user_email').text.to.not.equal("user157@gmail.com");
-            client.expect.element('#user_password').text.to.not.equal("123456");
-            client.end();
-        // request(client.globals.base.host, function (error, response, body) {
-        //     client.assert.equal(response.statusCode, 200);
-        // })
+            .assert.urlEquals(client.globals.base.host + "/");
 
+            client.url(function (response) {
+                    console.log(response.value); // outputs the current url
+                    request(response.value, function (error, response, body) {
+                        client.assert.equal(response.statusCode, 200);
+                    })
+                })
+            .end();
     }
 };
+
 

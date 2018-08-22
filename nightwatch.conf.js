@@ -7,9 +7,9 @@ const seleniumServer = require('selenium-server');
 module.exports = {
   src_folders: "test",
   output_folder: 'reports',
-  custom_assertions_path: '',
+  custom_commands_path : "test/helpers",
+  custom_assertions_path: 'test/assertions',
   globals_path: "test/globals/globals.js",
-  // custom_assertions_path: ['custom-assertions'],
   live_output: false,
   disable_colors: false,
   selenium: {
