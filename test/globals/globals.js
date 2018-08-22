@@ -18,7 +18,6 @@ module.exports = {
             return window.navigator.userAgent;
         }, [], function(result) {
             browser.globals.environment = result.value;
-            console.log("\033[34mRun against:\033[0m " + browser.globals.environment);
             done();
         });
     }

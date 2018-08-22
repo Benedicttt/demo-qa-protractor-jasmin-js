@@ -32,15 +32,15 @@ module.exports = {
             .findText("@error", "Ошибка: сохранение не удалось из-за 1 ошибки")
 
             .click(".color-333")
-            .assert.urlEquals(client.globals.base.host + "/users/password/new")
+            .assert.urlEquals(client.globals.base.host + "/users/password/new");
 
             client.url(function (response) {
                 request(response.value, function (error, response, body) {
                     client.assert.equal(response.statusCode, 200);
                 })
             })
-            .back()
 
+            .back()
             .end();
         }
 
