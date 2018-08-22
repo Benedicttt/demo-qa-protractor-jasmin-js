@@ -1,5 +1,5 @@
 module.exports = {
-    "Sign up": function (client) {
+    "Sign up page": function (client) {
         var url_sign_up = client.globals.base.host;
         var registration = client.page.sign_up();
 
@@ -8,7 +8,7 @@ module.exports = {
             .fillInForm(client.globals.user_email, client.globals.user_pass, client)
             .submit()
             .responsePage(client, 200);
-            client.end();
+        client.end();
     },
 
     "Sign in page": function (client) {

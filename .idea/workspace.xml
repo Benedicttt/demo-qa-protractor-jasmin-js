@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4eead86c-9d1c-406e-8ee1-c877d5bb0170" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/test/page_object/sign_up.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/globals/globals.js" beforeDir="false" afterPath="$PROJECT_DIR$/test/globals/globals.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/page_object/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/test/page_object/sign_in.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/panel/authentication.js" beforeDir="false" afterPath="$PROJECT_DIR$/test/panel/authentication.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -54,7 +51,7 @@
         <counts>
           <entry key="Dockerfile" value="2" />
           <entry key="feature" value="243" />
-          <entry key="js" value="8049" />
+          <entry key="js" value="8095" />
           <entry key="json" value="2" />
         </counts>
       </usages-collector>
@@ -63,7 +60,7 @@
           <entry key="Cucumber" value="243" />
           <entry key="Dockerfile" value="2" />
           <entry key="JSON" value="2" />
-          <entry key="JavaScript" value="8049" />
+          <entry key="JavaScript" value="8095" />
         </counts>
       </usages-collector>
     </session>
@@ -73,8 +70,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test/panel/authentication.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="322">
-              <caret line="14" column="50" selection-start-line="14" selection-start-column="50" selection-end-line="14" selection-end-column="50" />
+            <state relative-caret-position="46">
+              <caret line="2" selection-start-line="2" selection-end-line="2" />
             </state>
           </provider>
         </entry>
@@ -293,7 +290,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="44947000" />
+    <option name="totallyTimeSpent" value="45126000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
@@ -495,8 +492,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test/panel/authentication.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="14" column="50" selection-start-line="14" selection-start-column="50" selection-end-line="14" selection-end-column="50" />
+        <state relative-caret-position="46">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
         </state>
       </provider>
     </entry>
