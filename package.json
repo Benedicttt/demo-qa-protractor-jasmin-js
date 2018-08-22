@@ -28,12 +28,21 @@
     "cucumber-html-reporter": "^4.0.3",
     "cucumber-pretty": "^1.4.4",
     "geckodriver": "^1.12.2",
+    "multiple-cucumber-html-reporter": "^1.11.2",
     "nightwatch": "^0.9.21",
     "nightwatch-cucumber": "^9.1.2",
     "selenium-server": "^3.14.0"
   },
   "dependencies": {
     "cli": "^1.0.1",
-    "ntl": "^3.0.0"
+    "compression": "^1.7.3",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.16.3",
+    "nightwatch-html-reporter": "^2.0.5",
+    "nightwatch-xhr": "^0.4.3",
+    "ntl": "^3.0.0",
+    "phantom": "^6.0.3",
+    "protractor": "^5.4.0",
+    "secure-random": "^1.1.1"
   }
 }

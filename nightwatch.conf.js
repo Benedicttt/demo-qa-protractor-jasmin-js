@@ -1,13 +1,15 @@
 const seleniumServer = require('selenium-server');
 
-require('nightwatch-cucumber')({
-  cucumberArgs: ['--require', 'features/step_definitions','--format', './node_modules/cucumber-pretty', '--format', 'json:reports/cucumber_report.json', 'features']
-});
+// require('nightwatch-cucumber')({
+//   cucumberArgs: ['--require', 'features/step_definitions','--format', './node_modules/cucumber-pretty', '--format', 'json:reports/cucumber_report.json', 'features']
+// });
 
 module.exports = {
+  src_folders: "test",
   output_folder: 'reports',
   custom_assertions_path: '',
-  globals_path: "features/support/globals.js",
+  globals_path: "test/globals/globals.js",
+  // custom_assertions_path: ['custom-assertions'],
   live_output: false,
   disable_colors: false,
   selenium: {
@@ -15,10 +17,15 @@ module.exports = {
     server_path: seleniumServer.path,
     log_path: 'logs/',
     host: '127.0.0.1',
-    port: 4444
+    port: 4444,
+    cli_args : {
+        "webdriver.chrome.driver" : "node_modules/chromedriver/bin/chromedriver",
+        "webdriver.gecko.driver" : "node_modules/geckodriver/bin/geckodriver"
+    }
   },
   test_settings: {
     default: {
+      persist_globals: true,
       launch_url: 'http://localhost:3000',
       selenium_port: 4444,
       selenium_host: '127.0.0.1',

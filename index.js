@@ -1,8 +1,8 @@
 // node index.js -s ./step-definitions  # create html report
 var reporter = require('cucumber-html-reporter');
- 
+
 var options = {
-        theme: 'bootstrap',
+        theme: 'hierarchy',
         jsonFile: 'reports/cucumber_report.json',
         output: 'reports/cucumber_report.html',
         reportSuiteAsScenarios: true,
@@ -17,5 +17,5 @@ var options = {
             "Executed": "Remote"
         }
     };
- 
+
     reporter.generate(options);
