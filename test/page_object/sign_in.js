@@ -73,11 +73,14 @@ module.exports = {
         submit: {
             selector: 'button[type=submit]'
         },
-        error: {
+        alert_error: {
             selector: '.alert.alert-error > h4'
         },
-        error_message: {
+        alert_error_message: {
             selector: "Ошибка: сохранение не удалось из-за 1 ошибки"
+        },
+        alert_success: {
+            selector: ".alert-success"
         }
     }
 };

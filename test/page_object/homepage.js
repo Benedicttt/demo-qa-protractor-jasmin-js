@@ -11,11 +11,13 @@ var home = {
             .assert.title("СПОК")
     },
     responsePage: function(client, code) {
+        this
         client.url(function (response) {
             request(response.value, function (error, response, body) {
                 client.assert.equal(response.statusCode, code);
             })
-        })
+        });
+        return this
     }
 };
 
