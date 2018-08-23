@@ -17,7 +17,9 @@ var sign_in = {
     },
     fillInForm: function(username, password) {
         return this.waitForElementVisible('body', 1000)
+            .clearValue("@id_email")
             .setValue("@id_email", username)
+            .clearValue("@id_password")
             .setValue("@id_password", password)
             .click("@id_remember_me")
     },
@@ -26,7 +28,6 @@ var sign_in = {
             .click('@submit')
     },
     responsePage: function(client, code) {
-        this
         client.url(function (response) {
             request(response.value, function (error, response, body) {
                 client.assert.equal(response.statusCode, code);
@@ -34,9 +35,24 @@ var sign_in = {
         });
         return this;
     },
+    search_text_in_classes: function(client, name_attribute, selector, text) {
+        this
+        client.elements(name_attribute, selector, function (resultValues) {
+            resultValues.value.forEach(function (element) {
+                client.elementIdText(element.ELEMENT, function (result) {
+                    if (result.value === text && result.value.length > 0) {
+                        client.assert.ok(result.value === text)
+                    } else {
+                        console.log("\tActual text \n\t<<" + text +">>\n\tNow not found \n\t<<" + result.value + ">>, retry again");
+                    }
+                });
+            });
+        });
+        return this;
+    },
     validateError: function(errorMessage) {
-        return this.verify.visible('@error')
-            .verify.containsText('@error', errorMessage)
+        return this.verify.visible('@alert_error')
+            .verify.containsText('@alert_error', errorMessage)
             .verify.valueContains('@username', '')
             .verify.valueContains('@password', '')
     },
@@ -55,6 +71,11 @@ var sign_in = {
     closePage: function(client) {
         client
             .end()
+    },
+    sleep: function(client, ms) {
+            client
+            .pause(ms * 1000);
+        return this
     }
 };
 
@@ -80,7 +101,11 @@ module.exports = {
             selector: "Ошибка: сохранение не удалось из-за 1 ошибки"
         },
         alert_success: {
-            selector: ".alert-success"
+            selector: ".alert.alert-success"
+        },
+        error: {
+            selector: ".error"
         }
     }
 };
+

@@ -1,6 +1,5 @@
 var HtmlReporter = require('nightwatch-html-reporter');
 const uuidv1 = require('uuid/v1');
-
 var reporter = new HtmlReporter({
     openBrowser: false,
     reportsDirectory: 'reports',

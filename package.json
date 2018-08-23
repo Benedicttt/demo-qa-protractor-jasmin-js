@@ -33,6 +33,7 @@
     "multiple-cucumber-html-reporter": "^1.11.2",
     "nightwatch": "^0.9.21",
     "nightwatch-cucumber": "^9.1.2",
+    "nightwatch-custom-commands-assertions": "^1.1.1",
     "nightwatch-helpers": "^1.2.0",
     "selenium-server": "^3.14.0"
   },
@@ -46,6 +47,8 @@
     "compression": "^1.7.3",
     "cookie-parser": "^1.4.3",
     "express": "^4.16.3",
+    "jQuery": "^1.7.4",
+    "jsdom": "^12.0.0",
     "nightwatch-html-reporter": "^2.0.5",
     "nightwatch-xhr": "^0.4.3",
     "ntl": "^3.0.0",
