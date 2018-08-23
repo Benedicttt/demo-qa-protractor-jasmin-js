@@ -19,11 +19,11 @@ module.exports = {
 
     reporter: reporter.fn,
     environment: undefined,
-    beforeEach: function (browser, done) {
-        browser.execute(function(data) {
+    beforeEach: function (client, done) {
+        client.execute(function(data) {
             return window.navigator.userAgent;
         }, [], function(result) {
-            browser.globals.environment = result.value;
+            client.globals.environment = result.value;
             done();
         });
     },

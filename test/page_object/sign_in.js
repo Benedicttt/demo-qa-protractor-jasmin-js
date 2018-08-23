@@ -26,17 +26,35 @@ var sign_in = {
             .click('@submit')
     },
     responsePage: function(client, code) {
+        this
         client.url(function (response) {
             request(response.value, function (error, response, body) {
                 client.assert.equal(response.statusCode, code);
             })
-        })
+        });
+        return this;
     },
     validateError: function(errorMessage) {
         return this.verify.visible('@error')
             .verify.containsText('@error', errorMessage)
             .verify.valueContains('@username', '')
             .verify.valueContains('@password', '')
+    },
+
+    setCookies: function (client, url, path = null, params) {
+        var url = 'http://' + url +'/' + path;
+
+        client
+            .setCookie({
+                params //hash
+            })
+            .url(url)
+            .waitForElementVisible('body', 1000)
+            .end();
+    },
+    closePage: function(client) {
+        client
+            .end()
     }
 };
 

@@ -5,7 +5,7 @@ const seleniumServer = require('selenium-server');
 // });
 
 module.exports = {
-  src_folders: "test",
+  src_folders: "test/panel",
   output_folder: 'reports',
   custom_commands_path : ["test/commands"],
   custom_assertions_path: ['test/assertions'],
@@ -26,6 +26,8 @@ module.exports = {
   },
   test_settings: {
     default: {
+      test_worker: true,
+      skip_testcases_on_fail: false,
       persist_globals: true,
       launch_url: 'http://localhost:3000',
       selenium_port: 4444,

@@ -1,26 +1,41 @@
 module.exports = {
-    "Sign up page": function (client) {
-        var url_sign_up = client.globals.base.host;
+    "Sign up page(1)": function (client) {
+        var url = client.globals.base.host;
         var registration = client.page.sign_up();
 
-        registration.navigate(url_sign_up + "/users/sign_up")
-            .validateForm(client, url_sign_up)
+        registration.navigate(url + "/users/sign_up")
+            .responsePage(client, 200)
+            .validateForm(client, url)
             .fillInForm(client.globals.user_email, client.globals.user_pass, client)
             .submit()
-            .responsePage(client, 200);
-        client.end();
+            .closePage(client)
+    },
+
+    "Sign up page(2)": function (client) {
+        var url = client.globals.base.host;
+        var registration = client.page.sign_up();
+
+        registration.navigate(url + "/users/sign_up")
+            .responsePage(client, 200)
+            .validateForm(client, url)
+            .fillInForm(client.globals.user_email, client.globals.user_pass, client)
+            .submit()
+            // need validate
+
+            .closePage(client)
+
     },
 
     "Sign in page": function (client) {
-        let url_sign_in = client.globals.base.host;
+        let url = client.globals.base.host;
         let authorization = client.page.sign_in();
 
-        authorization.navigate(url_sign_in + "/users/sign_in")
-            .validateForm(client, url_sign_in)
+        authorization.navigate(url + "/users/sign_in")
+            .responsePage(client, 200)
+            .validateForm(client, url)
             .fillInForm(client.globals.user_email, client.globals.user_pass, client)
             .submit()
-            .responsePage(client, 200);
-            client.end();
+            .closePage(client)
     }
 };
 
