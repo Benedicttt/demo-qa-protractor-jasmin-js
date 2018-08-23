@@ -27,17 +27,22 @@ module.exports = {
 
         authorization.navigate(url + "/users/sign_in")
             .responsePage(client, 200)
-            .fillInForm("user157@gmail.com1", "1", client).submit()
-            .search_text_in_classes(client, name_attribute, selector, error_text)
 
-            .fillInForm("1", "", client).submit()
-            .search_text_in_classes(client, name_attribute, selector, empty_blank)
+                .fillInForm("user157@gmail.com1", "1", client).submit()
+                .search_text_in_classes(client, name_attribute, selector, error_text)
 
-            .fillInForm("", "[\!@#$%^&*()_*&\]]", client).submit()
-            .search_text_in_classes(client, name_attribute, selector, empty_blank)
+                .fillInForm("1", "", client).submit()
+                .search_text_in_classes(client, name_attribute, selector, empty_blank)
 
-            .fillInForm("user@", "1234567ddddddd", client).submit()
-            .search_text_in_classes(client, name_attribute, selector, empty_blank)
+                .fillInForm("", "[\!@#$%^&*()_*&\]]", client).submit()
+                .search_text_in_classes(client, name_attribute, selector, empty_blank)
+
+                .fillInForm("", "[\!@#$%^&*()_*&\]]", client).submit()
+                .search_text_in_classes(client, name_attribute, selector,  error_text)
+
+                .fillInForm("user@", "1234567ddddddd", client).submit()
+                .search_text_in_classes(client, name_attribute, selector, empty_blank)
+
             .closePage(client)
     }
 };

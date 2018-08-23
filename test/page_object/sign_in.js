@@ -42,21 +42,12 @@ var sign_in = {
                 client.elementIdText(element.ELEMENT, function (result) {
                     if (result.value === text && result.value.length > 0) {
                         client.assert.ok(result.value === text)
-                    } else {
-                        console.log("\tActual text \n\t<<" + text +">>\n\tNow not found \n\t<<" + result.value + ">>, retry again");
                     }
                 });
             });
         });
         return this;
     },
-    validateError: function(errorMessage) {
-        return this.verify.visible('@alert_error')
-            .verify.containsText('@alert_error', errorMessage)
-            .verify.valueContains('@username', '')
-            .verify.valueContains('@password', '')
-    },
-
     setCookies: function (client, url, path = null, params) {
         var url = 'http://' + url +'/' + path;
 

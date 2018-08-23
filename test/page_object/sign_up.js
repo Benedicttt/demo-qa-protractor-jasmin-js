@@ -1,6 +1,6 @@
-var request = require('request');
+let request = require('request');
 
-var sign_up = {
+let sign_up = {
     closePage: function(client) {
         client
             .end()
@@ -21,6 +21,10 @@ var sign_up = {
     },
     fillInForm: function(username, password) {
         return this.waitForElementVisible('body', 1000)
+            .clearValue("@id_email")
+            .clearValue("@id_password")
+            .clearValue("@id_password_confirmation")
+
             .setValue("@id_email", username)
             .setValue("@id_password", password)
             .setValue("@id_password_confirmation", password)
@@ -37,11 +41,23 @@ var sign_up = {
         });
         return this;
     },
-    validateError: function(errorMessage) {
-        return this.verify.visible('@error')
-            .verify.containsText('@error', errorMessage)
-            .verify.valueContains('@username', '')
-            .verify.valueContains('@password', '')
+    search_text_in_classes: function(client, name_attribute, selector, text) {
+        client.elements(name_attribute, selector, function (resultValues) {
+            resultValues.value.forEach(function (element, index) {
+                client.elementIdText(element.ELEMENT, function (result) {
+                    if (result.value === text && result.value.length > 0) {
+                        client.assert.ok(result.value === text);
+                    }
+                });
+            });
+        });
+        return this;
+    },
+    exitPage: function() {
+        return this.waitForElementVisible('.dropdown', 1000)
+            .click(".dropdown")
+            .click("#exit");
+        return this
     }
 };
 
