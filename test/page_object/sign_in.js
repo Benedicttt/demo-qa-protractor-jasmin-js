@@ -73,8 +73,14 @@ var sign_in = {
             .end()
     },
     sleep: function(client, ms) {
-            client
+        client
             .pause(ms * 1000);
+        return this
+    },
+    exitPage: function() {
+        return this.waitForElementVisible('.dropdown', 1000)
+            .click(".dropdown")
+            .click("#exit");
         return this
     }
 };
@@ -96,9 +102,6 @@ module.exports = {
         },
         alert_error: {
             selector: '.alert.alert-error > h4'
-        },
-        alert_error_message: {
-            selector: "Ошибка: сохранение не удалось из-за 1 ошибки"
         },
         alert_success: {
             selector: ".alert.alert-success"

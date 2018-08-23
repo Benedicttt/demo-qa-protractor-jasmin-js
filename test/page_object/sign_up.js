@@ -30,7 +30,6 @@ var sign_up = {
             .click('@submit')
     },
     responsePage: function(client, code) {
-        this
         client.url(function (response) {
             request(response.value, function (error, response, body) {
                 client.assert.equal(response.statusCode, code);

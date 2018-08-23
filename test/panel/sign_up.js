@@ -11,7 +11,7 @@ module.exports = {
             .closePage(client)
     },
 
-    "Sign up page Faild": function (client) {
+    "Sign up page Fail": function (client) {
         var url = client.globals.base.host;
         var registration = client.page.sign_up();
 
