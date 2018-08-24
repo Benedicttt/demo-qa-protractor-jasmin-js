@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4eead86c-9d1c-406e-8ee1-c877d5bb0170" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/test/page_object/sign_in.js" beforeDir="false" afterPath="$PROJECT_DIR$/test/page_object/sign_in.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/page_object/sign_up.js" beforeDir="false" afterPath="$PROJECT_DIR$/test/page_object/sign_up.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/panel/sign_in.js" beforeDir="false" afterPath="$PROJECT_DIR$/test/panel/sign_in.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/panel/sign_up.js" beforeDir="false" afterPath="$PROJECT_DIR$/test/panel/sign_up.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/panel/demands/create_demand.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -33,7 +30,7 @@
           <entry key="Dockerfile" value="1" />
           <entry key="feature" value="4" />
           <entry key="html" value="2" />
-          <entry key="js" value="89" />
+          <entry key="js" value="90" />
           <entry key="json" value="9" />
           <entry key="md" value="1" />
           <entry key="png" value="2" />
@@ -46,7 +43,7 @@
           <entry key="HTML" value="2" />
           <entry key="Image" value="2" />
           <entry key="JSON" value="9" />
-          <entry key="JavaScript" value="89" />
+          <entry key="JavaScript" value="90" />
           <entry key="Markdown" value="1" />
         </counts>
       </usages-collector>
@@ -54,7 +51,7 @@
         <counts>
           <entry key="Dockerfile" value="2" />
           <entry key="feature" value="243" />
-          <entry key="js" value="12501" />
+          <entry key="js" value="12602" />
           <entry key="json" value="2" />
         </counts>
       </usages-collector>
@@ -63,7 +60,7 @@
           <entry key="Cucumber" value="243" />
           <entry key="Dockerfile" value="2" />
           <entry key="JSON" value="2" />
-          <entry key="JavaScript" value="12501" />
+          <entry key="JavaScript" value="12602" />
         </counts>
       </usages-collector>
     </session>
@@ -73,8 +70,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/panel/sign_in.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="690">
-              <caret line="30" selection-start-line="30" selection-end-line="41" />
+            <state relative-caret-position="391">
+              <caret line="17" column="8" selection-start-line="9" selection-start-column="8" selection-end-line="17" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -82,8 +79,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/panel/sign_up.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="641">
-              <caret line="43" lean-forward="true" selection-start-line="43" selection-end-line="43" />
+            <state relative-caret-position="230">
+              <caret line="10" column="8" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -91,8 +88,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/panel/home.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="161">
-              <caret line="7" column="37" selection-start-line="7" selection-start-column="37" selection-end-line="7" selection-end-column="37" />
+            <state relative-caret-position="46">
+              <caret line="2" column="37" selection-end-line="2" selection-end-column="37" />
             </state>
           </provider>
         </entry>
@@ -116,19 +113,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/nightwatch.conf.js">
+        <entry file="file://$PROJECT_DIR$/test/page_object/sign_in.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="163">
-              <caret line="10" column="41" selection-start-line="10" selection-start-column="41" selection-end-line="10" selection-end-column="41" />
+            <state relative-caret-position="295">
+              <caret line="44" selection-start-line="44" selection-end-line="44" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/test/page_object/sign_in.js">
+        <entry file="file://$PROJECT_DIR$/test/panel/demands/create_demand.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="295">
-              <caret line="44" selection-start-line="44" selection-end-line="44" />
+            <state relative-caret-position="322">
+              <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
             </state>
           </provider>
         </entry>
@@ -172,12 +169,16 @@
       <find>client.page.user.sign_up</find>
       <find>works</find>
       <find>findText</find>
+      <find>p</find>
     </findStrings>
     <replaceStrings>
       <replace>client.settings.base.host</replace>
       <replace>client.globals.base.host</replace>
       <replace>client.page.user</replace>
     </replaceStrings>
+    <dirStrings>
+      <dir>$PROJECT_DIR$/test/panel</dir>
+    </dirStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -185,7 +186,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/features/step_definitions/user/base.js" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/features/step_definitions/user/validations.js" />
         <option value="$PROJECT_DIR$/features/step_definitions/user.js" />
@@ -236,6 +236,7 @@
         <option value="$PROJECT_DIR$/test/page_object/sign_up.js" />
         <option value="$PROJECT_DIR$/test/panel/sign_up.js" />
         <option value="$PROJECT_DIR$/test/page_object/sign_in.js" />
+        <option value="$PROJECT_DIR$/test/panel/demands/create_demand.js" />
       </list>
     </option>
   </component>
@@ -309,6 +310,13 @@
               <item name="test" type="462c0819:PsiDirectoryNode" />
               <item name="panel" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="smoke-spok" type="b2602c69:ProjectViewProjectNode" />
+              <item name="smoke-spok" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="panel" type="462c0819:PsiDirectoryNode" />
+              <item name="demands" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -331,11 +339,11 @@
       <recent name="$PROJECT_DIR$/features" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/test/panel/demands" />
       <recent name="$PROJECT_DIR$/test/assertions" />
       <recent name="$PROJECT_DIR$/test/panel" />
       <recent name="$PROJECT_DIR$/test/page_object" />
       <recent name="$PROJECT_DIR$/test" />
-      <recent name="$PROJECT_DIR$/test/panel/page_object/user" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -386,13 +394,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="66635000" />
+    <option name="totallyTimeSpent" value="69483000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
+    <frame x="0" y="0" width="1920" height="1080" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24954791" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21800947" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -439,13 +447,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Dockerfile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/screenshots/chrome/user/Create-User_ERROR_Aug-20-2018-172038-GMT+0300.png" />
     <entry file="file://$PROJECT_DIR$/screenshots/chrome/user/Create-User_ERROR_Aug-21-2018-025724-GMT+0300.png" />
     <entry file="file://$PROJECT_DIR$/features/page_objects/form_authorizations.js" />
@@ -548,13 +549,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/panel/home.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="7" column="37" selection-start-line="7" selection-start-column="37" selection-end-line="7" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/assertions/findText.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="92">
@@ -569,13 +563,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/panel/sign_in.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="690">
-          <caret line="30" selection-start-line="30" selection-end-line="41" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/page_object/sign_up.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="436">
@@ -583,17 +570,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/panel/sign_up.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="641">
-          <caret line="43" lean-forward="true" selection-start-line="43" selection-end-line="43" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/page_object/sign_in.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="295">
           <caret line="44" selection-start-line="44" selection-end-line="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/panel/home.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="2" column="37" selection-end-line="2" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/panel/sign_up.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="10" column="8" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/panel/sign_in.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="17" column="8" selection-start-line="9" selection-start-column="8" selection-end-line="17" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/panel/demands/create_demand.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
         </state>
       </provider>
     </entry>
