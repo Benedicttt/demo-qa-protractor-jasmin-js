@@ -37,7 +37,7 @@ exports.config = {
         global.password = '123456';
         global.user_email = "spok_" + getRandomString(10) + '@gmail.com';
         global.registration_success = "×\nДобро пожаловать! Вы успешно зарегистрировались.";
-        global.helper = require("/Users/benedict/work/binomo/smoke-spok/spec/helpers/helpers.js");
+        global.helper = require("./spec/helpers/helpers.js");
 
     }
 };
