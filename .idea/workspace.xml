@@ -4,13 +4,6 @@
     <list default="true" id="4eead86c-9d1c-406e-8ee1-c877d5bb0170" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.gitignor" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignor" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/conf.js" beforeDir="false" afterPath="$PROJECT_DIR$/conf.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/helpers/helpers.js" beforeDir="false" afterPath="$PROJECT_DIR$/spec/helpers/helpers.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/panel/home_page.js" beforeDir="false" afterPath="$PROJECT_DIR$/spec/panel/home_page.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/panel/user/sign_in.js" beforeDir="false" afterPath="$PROJECT_DIR$/spec/panel/user/sign_in.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/panel/user/sign_up.js" beforeDir="false" afterPath="$PROJECT_DIR$/spec/panel/user/sign_up.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -61,7 +54,7 @@
         <counts>
           <entry key="Dockerfile" value="2" />
           <entry key="feature" value="243" />
-          <entry key="gitignor" value="24" />
+          <entry key="gitignor" value="27" />
           <entry key="js" value="17867" />
           <entry key="json" value="126" />
         </counts>
@@ -72,7 +65,7 @@
           <entry key="Dockerfile" value="2" />
           <entry key="JSON" value="126" />
           <entry key="JavaScript" value="17867" />
-          <entry key="PLAIN_TEXT" value="24" />
+          <entry key="PLAIN_TEXT" value="27" />
         </counts>
       </usages-collector>
     </session>
@@ -109,8 +102,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.gitignor">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="15" column="12" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="12" />
+            <state>
+              <caret column="8" selection-start-column="8" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -363,7 +356,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="95619000" />
+    <option name="totallyTimeSpent" value="95797000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
@@ -604,8 +597,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignor">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="15" column="12" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="12" />
+        <state>
+          <caret column="8" selection-start-column="8" selection-end-column="8" />
         </state>
       </provider>
     </entry>
