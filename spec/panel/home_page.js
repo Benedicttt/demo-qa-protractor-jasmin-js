@@ -26,8 +26,7 @@ describe('Home page', function() {
         expect(sign_up_link).toBe(host + 'users/sign_up');
     });
 
-    it('should have a link sign_up', function () {
+    it('should text center', function () {
         expect(text_center_selector).toEqual(text_center)
     });
-
 });

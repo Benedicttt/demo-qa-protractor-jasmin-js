@@ -7,6 +7,7 @@
     "angular": "^1.7.3",
     "angular-mock": "^1.0.0",
     "jasmine-spec-reporter": "^4.2.1",
+    "mocha": "^5.2.0",
     "protractor": "^5.4.0",
     "protractor-http-client": "^1.0.4",
     "restling": "^0.9.1",
@@ -14,14 +15,20 @@
     "webdriver": "^5.0.0-alpha.7",
     "window": "^4.2.5"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "grunt-protractor-runner": "^5.0.0"
+  },
   "scripts": {
-    "chrome": "protractor conf.js --specs ./spec/panel/user/spec.js  --browser chrome"
+    "chrome": "protractor conf.js  --browser chrome",
+    "chrome_headless": "protractor conf.js  --browser chrome_headless",
+    "firefox": "MOZ_HEADLESS=1 protractor conf.js  --browser firefox",
+    "webdriver-update": "node_modules/protractor/bin/webdriver-manager update",
+    "trouble": "protractor --troubleshoot true conf.js --browser 'chrome'"
   },
   "repository": {
     "type": "git",
     "url": "https://gitlab.binomo.com/finances/smoke.git"
   },
   "author": "Sergey Kievskiy",
-  "license": "ISC"
+  "license": "404"
 }

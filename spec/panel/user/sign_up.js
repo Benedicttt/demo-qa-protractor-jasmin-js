@@ -1,5 +1,3 @@
-let h = require("../../helpers/helpers.js");
-
 describe('Sign up', function() {
     browser.waitForAngularEnabled(false);
 
@@ -33,7 +31,11 @@ describe('Sign up', function() {
         });
 
         it(`Assert sign_up`, function() {
-            expect(element.all(by.css('.alert-success')).get(0).getText()).toEqual(registration_success)
+            expect(element.all(by.css('.alert-success')).get(0).getText()).toEqual(registration_success);
+
+            browser.manage().getCookie('_session_id').then(function(cookie) {
+                expect(cookie.value.length).toEqual(32);
+            }).then();
         });
     });
 });

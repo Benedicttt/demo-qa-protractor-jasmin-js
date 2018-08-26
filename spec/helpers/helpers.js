@@ -1,5 +1,6 @@
 module.exports = {
     set_input_value: function(id, string) {
+        element(by.id(id)).clear();
         return element(by.id(id)).sendKeys(string);
     },
 

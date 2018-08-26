@@ -1,10 +1,21 @@
 const { SpecReporter } = require('jasmine-spec-reporter');
 
 exports.config = {
-    directConnect: true,
     capabilities: [
-    { browserName: 'chrome' },
-    { browserName: 'firefox' }],
+        { browserName: 'chrome',
+            chromeOptions: {
+                args: [ "--headless",  "--disable-gpu" ]
+            }
+        },
+
+        {
+            browserName: 'firefox',
+            'moz:firefoxOptions': {
+                args: ['--headless']
+            }
+        }
+    ],
+    directConnect: true,
     baseUrl: 'http://localhost:3000/',
     framework: 'jasmine',
     specs: ['spec/panel/**/*.js'],
@@ -24,7 +35,7 @@ exports.config = {
         global.id_pass = 'user_password';
         global.id_pass_conf = 'user_password_confirmation';
         global.password = '123456';
-        global.user_email = getRandomString(10) + '@gmail.com';
+        global.user_email = "spok_" + getRandomString(10) + '@gmail.com';
         global.registration_success = "×\nДобро пожаловать! Вы успешно зарегистрировались.";
         global.helper = require("/Users/benedict/work/binomo/smoke-spok/spec/helpers/helpers.js");
 
