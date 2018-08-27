@@ -32,10 +32,25 @@ describe('Sign up', function() {
 
         it(`Assert sign_up`, function() {
             expect(element.all(by.css('.alert-success')).get(0).getText()).toEqual(registration_success);
-
             browser.manage().getCookie('_session_id').then(function(cookie) {
                 expect(cookie.value.length).toEqual(32);
             }).then();
+        });
+
+        it(`Assert exit platform`, function() {
+            element.all(by.css('.dropdown > a')).each(function(element, index) {
+                element.getText().then(function (text) {
+                    if (text === user_email.toLowerCase()){
+                        element.click();
+                    } else {
+                        console.log(`Not found name link ${ user_email }`)
+                    }
+                });
+            });
+            element(by.cssContainingText("#exit", 'Выход')).click();
+            exit_success ='×\nВыход из системы выполнен.';
+
+            expect(element(by.css('.alert-success')).getText()).toEqual(exit_success);
         });
     });
 });
