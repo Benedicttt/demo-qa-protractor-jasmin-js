@@ -28,10 +28,10 @@ describe('Sign up', function() {
 
         it(`click button`, function() {
             element(by.css('button[type=submit]')).click();
+            expect(element.all(by.css('.alert-success')).get(0).getText()).toEqual(registration_success);
         });
 
         it(`Assert sign_up`, function() {
-            expect(element.all(by.css('.alert-success')).get(0).getText()).toEqual(registration_success);
             browser.manage().getCookie('_session_id').then(function(cookie) {
                 expect(cookie.value.length).toEqual(32);
             }).then();
@@ -48,8 +48,6 @@ describe('Sign up', function() {
                 });
             });
             element(by.cssContainingText("#exit", 'Выход')).click();
-            exit_success ='×\nВыход из системы выполнен.';
-
             expect(element(by.css('.alert-success')).getText()).toEqual(exit_success);
         });
     });

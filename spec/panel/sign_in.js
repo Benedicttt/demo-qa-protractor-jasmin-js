@@ -1,7 +1,7 @@
 describe('Sign_in: User Failed,', function(){
     browser.waitForAngularEnabled(false);
 
-    let invalid_email_input = [ 'user', '@gmail', 'user@gmail.co-', 'user@!@#!^*^@gmail.com', 'u-s-e-r@gmail-com' ];
+    let invalid_email_input = [ 'user', '@gmail', 'user_access@gmail.co-', 'user_access@!@#!^*^@gmail.com', 'u-s-e-r@gmail-com' ];
     let invalid_pass_input = [ '1', '12345', '!@#$%*()_', '@@@@@@', 'QWESDDFC!@~@#$' ];
 
     let error_email_invalid = 'Пожалуйста, введите корректный адрес электронной почты.';
