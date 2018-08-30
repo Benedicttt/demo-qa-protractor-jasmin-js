@@ -6,7 +6,10 @@
   "dependencies": {
     "angular": "^1.7.3",
     "angular-mock": "^1.0.0",
+    "await": "^0.2.6",
+    "chrome": "^0.1.0",
     "jasmine-spec-reporter": "^4.2.1",
+    "jquery": "^3.3.1",
     "mocha": "^5.2.0",
     "protractor": "^5.4.0",
     "protractor-http-client": "^1.0.4",
@@ -16,14 +19,16 @@
     "window": "^4.2.5"
   },
   "devDependencies": {
+    "@types/jquery": "^3.3.6",
     "grunt-protractor-runner": "^5.0.0"
   },
   "scripts": {
     "chrome": "protractor conf.js  --browser chrome",
-    "chrome_headless": "protractor conf.js  --browser chrome_headless",
-    "firefox": "MOZ_HEADLESS=1 protractor conf.js  --browser firefox",
+    "firefox": "protractor conf.js  --browser firefox",
+    "firefox_headless": "MOZ_HEADLESS=1 protractor conf.js  --browser firefox",
     "webdriver-update": "node_modules/protractor/bin/webdriver-manager update",
-    "trouble": "protractor --troubleshoot true conf.js --browser 'chrome'"
+    "trouble": "protractor --troubleshoot true conf.js --browser 'chrome'",
+    "exit": "exit 0"
   },
   "repository": {
     "type": "git",

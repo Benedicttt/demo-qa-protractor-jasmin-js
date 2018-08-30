@@ -27,6 +27,7 @@ describe('Home page', function() {
     });
 
     it('should text center', function () {
-        expect(text_center_selector).toEqual(text_center)
+        expect(text_center_selector).toEqual(text_center);
+        browser.get('users/sign_in');
     });
 });
