@@ -1,3 +1,6 @@
+yaml = require('js-yaml');
+fs   = require('fs');
+
 const { SpecReporter } = require('jasmine-spec-reporter');
 
 exports.config = {
@@ -5,7 +8,7 @@ exports.config = {
         browserName: 'chrome',
             chromeOptions: {
                 args: [
-                    // "--headless",
+                    "--headless",
                     "--no-sandbox",
                     "--disable-gpu",
                     "--window-size=1600,800"]
@@ -19,7 +22,6 @@ exports.config = {
     },
     directConnect: true,
     baseUrl: 'http://localhost:3000/',
-    framework: 'jasmine',
     specs: [
         "spec/panel/home_page.js",
         "spec/panel/sign_up.js",
@@ -39,6 +41,7 @@ exports.config = {
         'node_modules/jquery/dist/jquery.js',
         'node_modules/jquery/dist/jquery.min.js'
     ],
+    framework: 'jasmine',
     onPrepare() {
         jasmine.getEnv().addReporter(new SpecReporter({ spec: { displayStacktrace: true } }));
         global.getRandomString = getRandomString;
@@ -56,6 +59,10 @@ exports.config = {
         global.title_demands = "Добавление заявки | СПОК";
         global.EC=protractor.ExpectedConditions;
 
+        var AllureReporter = require('jasmine-allure-reporter');
+        jasmine.getEnv().addReporter(new AllureReporter({
+            resultsDir: 'allure-results'
+        }));
 
         // global.protractor = protractor;
         // global.$ = browser.$;
@@ -74,4 +81,6 @@ getRandomString = function(length) {
     }
     return string;
 };
+
+
 

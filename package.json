@@ -10,6 +10,7 @@
     "chrome": "^0.1.0",
     "jasmine-spec-reporter": "^4.2.1",
     "jquery": "^3.3.1",
+    "js-yaml": "^3.12.0",
     "mocha": "^5.2.0",
     "protractor": "^5.4.0",
     "protractor-http-client": "^1.0.4",
@@ -20,6 +21,7 @@
   },
   "devDependencies": {
     "@types/jquery": "^3.3.6",
+    "allure-commandline": "^2.7.0",
     "grunt-protractor-runner": "^5.0.0"
   },
   "scripts": {
@@ -28,6 +30,10 @@
     "firefox_headless": "MOZ_HEADLESS=1 protractor conf.js  --browser firefox",
     "webdriver-update": "node_modules/protractor/bin/webdriver-manager update",
     "trouble": "protractor --troubleshoot true conf.js --browser 'chrome'",
+    "": "",
+    "pretest": "rm -rf allure-report",
+    "test": "protractor conf.js",
+    "posttest": "allure generate allure-results --clean -o allure-report || true",
     "exit": "exit 0"
   },
   "repository": {
