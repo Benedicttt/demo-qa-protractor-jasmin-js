@@ -1,3 +1,4 @@
+var user = require('../../user.json');
 var fs = require('fs');
 var outputFilename = 'user.json';
 
@@ -28,5 +29,26 @@ module.exports = {
             }
         );
         browser.get("/");
+    },
+    authorization: function () {
+        browser.get("/");
+        browser.manage().deleteAllCookies();
+        browser.get("/");
+
+        helper.set_input_value(id_email, user.user.email);
+        expect(helper.get_input_attr(id_email, 'values')).toEqual(user.user.email);
+
+        helper.set_input_value(id_pass, user.user.password);
+        expect(helper.get_input_attr(id_pass, 'value')).toEqual(user.user.email);
+
+        let remember_box = element(by.id("user_remember_me"));
+        remember_box.click();
+        expect(remember_box.getAttribute('checked') ).toBeTruthy();
+
+        element(by.css("button[type=submit]")).click();
+
+        browser.manage().getCookie('_session_id').then(function(cookie) {
+            expect(cookie.value.length).toEqual(32);
+        }).then();
     }
 };
