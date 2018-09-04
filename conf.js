@@ -1,6 +1,6 @@
-yaml = require('js-yaml');
-fs   = require('fs');
-
+var yaml = require('js-yaml');
+var fs   = require('fs');
+var AllureReporter = require('jasmine-allure-reporter');
 const { SpecReporter } = require('jasmine-spec-reporter');
 
 exports.config = {
@@ -8,11 +8,13 @@ exports.config = {
         browserName: 'chrome',
             chromeOptions: {
                 args: [
-                    "--headless",
+                    // "--headless",
                     "--no-sandbox",
                     "--disable-gpu",
                     "--window-size=1600,800"]
             },
+        // shardTestFiles: true,
+        // maxInstances: 2,
 
         browserName: 'firefox',
             // 'moz:firefoxOptions': {
@@ -59,10 +61,19 @@ exports.config = {
         global.title_demands = "Добавление заявки | СПОК";
         global.EC=protractor.ExpectedConditions;
 
-        var AllureReporter = require('jasmine-allure-reporter');
-        jasmine.getEnv().addReporter(new AllureReporter({
-            resultsDir: 'allure-results'
-        }));
+        // jasmine.getEnv().addReporter(new AllureReporter({
+        //     resultsDir: 'allure-results'
+        // }));
+
+        jasmine.getEnv().addReporter(new AllureReporter());
+        jasmine.getEnv().afterEach(function(done){
+            browser.takeScreenshot().then(function (png) {
+                allure.createAttachment('Screenshot', function () {
+                    return new Buffer(png, 'base64')
+                }, 'image/png')();
+                done();
+            })
+        });
 
         // global.protractor = protractor;
         // global.$ = browser.$;
@@ -73,7 +84,7 @@ exports.config = {
 
 };
 
-getRandomString = function(length) {
+var getRandomString = function(length) {
     var string = '';
     var letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
     for (i = 0; i < length; i++) {

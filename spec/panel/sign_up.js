@@ -1,6 +1,23 @@
 describe('Sign up', function() {
     browser.waitForAngularEnabled(false);
 
+    afterAll(function () {
+        browser.manage().getCookies().then(function (cookie) {
+            let data =
+                `{
+                    "user": { 
+                        "email": "${user_email}", 
+                        "password": "${password}"
+                    },
+                    "cookie": { 
+                        "name": "${cookie[0].name}", 
+                        "value": "${cookie[0].value}"
+                    } 
+                }`;
+            helper.write_in_file(data)
+        });
+    });
+
     it('should a page title', function() {
         browser.get('/users/sign_up');
         expect(browser.getTitle()).toEqual('Регистрация | СПОК');

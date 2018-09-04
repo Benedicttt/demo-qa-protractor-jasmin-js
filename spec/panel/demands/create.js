@@ -1,8 +1,19 @@
+var user = require('../../../user.json');
+
 describe('Demands', function () {
+    browser.waitForAngularEnabled(false);
+
+    beforeAll(function () {
+        helper.addCookie;
+        browser.get("/demands/new");
+
+    });
+
     describe('create', function () {
         it('Go to page', function () {
-            browser.get("/demands/new");
-            browser.getTitle(title_demands)
-        })
+            browser.getTitle(title_demands);
+        });
+
     });
 });
+
