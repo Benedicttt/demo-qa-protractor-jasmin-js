@@ -1,8 +1,11 @@
-var user = require('../../user.json');
-var fs = require('fs');
-var outputFilename = 'user.json';
+let outputFilename = './spec/support/user.json';
 
 module.exports = {
+    runner: function(string_command) {
+        var test = new Function(string_command);
+        test();
+    },
+
     set_input_value: function(id, string) {
         element(by.id(id)).clear();
         return element(by.id(id)).sendKeys(string);

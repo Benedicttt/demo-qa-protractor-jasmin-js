@@ -1,0 +1,35 @@
+authorization:
+  fill:
+    user_email: ${user_email}
+    user_password: ${password}
+    checkbox: element(by.id("user_remember_me"))
+  click_submit: element(by.css("button[type=submit]")).click()
+  error:
+    blank: 'Это поле необходимо заполнить.'
+    email_invalid: 'Пожалуйста, введите корректный адрес электронной почты.'
+    input_invalid_email: !!seq
+      - 'user'
+      - '@gmail'
+      - 'user_access@gmail.co-'
+      - 'user_access@!@#!^*^@gmail.com'
+      - 'u-s-e-r@gmail-com'
+      - 'u-s-r@1gmail-com'
+      - 'u-s-r@g34mail-com'
+      - 'u-s-r@gma434656il+_)(*&^%$#@!±2154559848-com'
+      - 'u-sdwqoidhfouehwfhenwo0uchfeiow0cjnpw-r@gmail-com'
+      - 'u-s-e-r@gmail-com21938890127389yhcbas8y$@Q#%^&*()_I!@#H $KJ'
+    input_invalid_pass: !!seq
+      - '1'
+      - '12345'
+      - '!@#$%*()_'
+      - '@@@@@@'
+      - 'QWESDDFC!@~@#$'
+      - 'QWES1289034871276fguhvgcsay'
+      - '±!@#$%^&*()_++_{'
+
+registration:
+  fill:
+    user_email: ${user_email}
+    user_password: ${password}
+    user_confirmations: ${password}
+    click_submit: element(by.css("button[type=submit]")).click()

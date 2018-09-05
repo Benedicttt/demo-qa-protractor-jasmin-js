@@ -1,0 +1,12 @@
+set:
+  angular_wait_false: browser.waitForAngularEnabled(false)
+  delete_all_cookies: browser.manage().deleteAllCookies()
+
+page:
+  base: browser.get('/')
+  sign_in: browser.get('/users/sign_in')
+  sign_up: browser.get('/users/sign_up')
+  demands: browser.get('/users/demands')
+  demands_new: browser.get('/users/demands/new')
+  users: browser.get('/system/users')
+

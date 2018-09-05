@@ -1,5 +1,12 @@
-var yaml = require('js-yaml');
-var fs   = require('fs');
+const yaml = require('js-yaml');
+const fs = require('fs');
+const command = yaml.safeLoad(fs.readFileSync('spec/support/setting.yml', 'utf8'));
+const form = yaml.safeLoad(fs.readFileSync('spec/support/forms.yml', 'utf8'));
+
+const user = require('./spec/support/user.json');
+const user_object = require('./spec/panel/page_object/user.js');
+
+
 var AllureReporter = require('jasmine-allure-reporter');
 const { SpecReporter } = require('jasmine-spec-reporter');
 
@@ -54,16 +61,16 @@ exports.config = {
         global.id_pass_conf = 'user_password_confirmation';
         global.password = '123456';
         global.user_email = 'spok_' + getRandomString(10) + '@gmail.com';
-        global.registration_success = '×\nДобро пожаловать! Вы успешно зарегистрировались.';
-        global.exit_success ='×\nВыход из системы выполнен.';
-        global.authorization_success ='×\nВход в систему выполнен.';
         global.helper = require('./spec/helpers/helpers.js');
         global.title_demands = "Добавление заявки | СПОК";
         global.EC=protractor.ExpectedConditions;
 
-        // jasmine.getEnv().addReporter(new AllureReporter({
-        //     resultsDir: 'allure-results'
-        // }));
+        global.fs = fs;
+        global.command = command;
+        global.form= form;
+        global.user = user;
+        global.user_object = user_object;
+        global.runner = helper.runner;
 
         jasmine.getEnv().addReporter(new AllureReporter());
         jasmine.getEnv().afterEach(function(done){
@@ -74,14 +81,7 @@ exports.config = {
                 done();
             })
         });
-
-        // global.protractor = protractor;
-        // global.$ = browser.$;
-        // global.$$ = browser.$$;
-        // global.element = browser.element;
-        // global.by = global.By = protractor.By;
     }
-
 };
 
 var getRandomString = function(length) {

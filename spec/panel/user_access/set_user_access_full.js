@@ -1,11 +1,10 @@
-var user = require('../page_object/user.js');
-
 describe('User add full access on admin', function() {
     beforeAll(function () {
-        user.authorization(admin)
+        user_object.authorization(admin)
     });
+
     it("Find user '/system/users' and go to madoal projects", function() {
-        browser.get('/system/users');
+        runner(command.page.users);
         element.all(by.css('.icon-list-alt')).get(0).click();
     });
 
@@ -23,7 +22,7 @@ describe('User add full access on admin', function() {
     });
 
     it("Add access signature for demands", function () {
-        browser.get('/system/users');
+        runner(command.page.users);
         element.all(by.css('.btn-mini')).get(0).click();
         element.all(by.css('a.text-success')).get(0).click();
         element(by.id('demands_sign')).click();

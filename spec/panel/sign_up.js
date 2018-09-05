@@ -1,31 +1,32 @@
 describe('Sign up', function() {
-    browser.waitForAngularEnabled(false);
+    runner(command.set.angular_wait_false);
+    let alert_success = element.all(by.css('.alert-success'));
+    let registration_success = '×\nДобро пожаловать! Вы успешно зарегистрировались.';
+    let exit_success ='×\nВыход из системы выполнен.';
 
     afterAll(function () {
         browser.manage().getCookies().then(function (cookie) {
             let data =
                 `{
-                    "user": { 
-                        "email": "${user_email}", 
+                    "user": {
+                        "email": "${user_email}",
                         "password": "${password}"
                     },
-                    "cookie": { 
-                        "name": "${cookie[0].name}", 
+                    "cookie": {
+                        "name": "${cookie[0].name}",
                         "value": "${cookie[0].value}"
-                    } 
+                    }
                 }`;
             helper.write_in_file(data)
         });
     });
 
     it('should a page title', function() {
-        browser.get('/users/sign_up');
+        runner(command.page.sign_up);
         expect(browser.getTitle()).toEqual('Регистрация | СПОК');
     });
 
     describe("Fill form", function() {
-        browser.get('/users/sign_up');
-
         it(`with ${ id_email }`, function() {
             helper.set_input_value(id_email, user_email);
             expect(helper.get_input_attr(id_email, 'value')).toEqual(user_email)
@@ -45,7 +46,7 @@ describe('Sign up', function() {
 
         it(`click button`, function() {
             element(by.css('button[type=submit]')).click();
-            expect(element.all(by.css('.alert-success')).get(0).getText()).toEqual(registration_success);
+            expect(alert_success.get(0).getText()).toEqual(registration_success);
         });
 
         it(`Assert sign_up`, function() {
@@ -55,7 +56,7 @@ describe('Sign up', function() {
         });
 
         it(`Assert exit platform`, function() {
-            element.all(by.css('.dropdown > a')).each(function(element, index) {
+            element.all(by.css('.dropdown > a')).each(function(element) {
                 element.getText().then(function (text) {
                     if (text === user_email.toLowerCase()){
                         element.click();
@@ -65,7 +66,7 @@ describe('Sign up', function() {
                 });
             });
             element(by.cssContainingText("#exit", 'Выход')).click();
-            expect(element(by.css('.alert-success')).getText()).toEqual(exit_success);
+            expect(alert_success.get(0).getText()).toEqual(exit_success);
         });
     });
 });

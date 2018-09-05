@@ -1,6 +1,6 @@
 describe('Home page', function() {
-    browser.waitForAngularEnabled(false);
-    browser.get('/');
+    runner(command.set.angular_wait_false);
+    runner(command.page.base);
 
     let logo = element(by.css('.brand > b')).getText();
     let sign_in_link = element(by.linkText("Вход в систему")).getAttribute('href');
@@ -10,7 +10,7 @@ describe('Home page', function() {
     let text_center = 'Система построения отчетов компании';
 
     it('should have a title', function () {
-        browser.get('/');
+        runner(command.page.base);
         expect(browser.getTitle()).toEqual('СПОК');
     });
 
@@ -28,6 +28,5 @@ describe('Home page', function() {
 
     it('should text center', function () {
         expect(text_center_selector).toEqual(text_center);
-        browser.get('users/sign_in');
     });
 });
