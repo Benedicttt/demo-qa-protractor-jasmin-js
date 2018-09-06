@@ -1,0 +1,19 @@
+base:
+  get: browser.get('/')
+  title: 'СПОК'
+sign_in:
+  get: browser.get('/users/sign_in')
+  title: 'Вход в систему | СПОК'
+sign_up:
+  get: browser.get('/users/sign_up')
+  title: 'Регистрация | СПОК'
+demands:
+  get: browser.get('/demands')
+  title: 'Заявки | СПОК'
+demands_new:
+  get: browser.get('/demands/new')
+  title: 'Добавление заявки | СПОК'
+users:
+  get: browser.get('/system/users')
+  title: 'Пользователи | СПОК'
+

@@ -1,10 +1,12 @@
 describe('User add full access on admin', function() {
     beforeAll(function () {
-        user_object.authorization(admin)
+        user_object.authorization(admin);
+        go(page.users.get);
+
+        expect(browser.getTitle()).toEqual(page.users.title);
     });
 
-    it("Find user '/system/users' and go to madoal projects", function() {
-        runner(command.page.users);
+    it("Find user '/system/users' and (go to modal/add) projects", function() {
         element.all(by.css('.icon-list-alt')).get(0).click();
     });
 
@@ -18,11 +20,11 @@ describe('User add full access on admin', function() {
             expect(box.getAttribute('checked')).toBeTruthy();
 
         });
-        browser.actions().mouseMove(element.all(by.css("button.btn")).get(0), {x: 10, y: 10,}).click().perform();
+        browser.actions().mouseMove(element.all(by.css("button.btn")).get(1), {x: 10, y: 10,}).click().perform();
     });
 
     it("Add access signature for demands", function () {
-        runner(command.page.users);
+        go(page.users.get);
         element.all(by.css('.btn-mini')).get(0).click();
         element.all(by.css('a.text-success')).get(0).click();
         element(by.id('demands_sign')).click();

@@ -1,17 +1,24 @@
-'use strict';
-var helpers = require('/Users/benedict/work/binomo/smoke/spec/helpers/helpers.js');
-
-describe('Demands', function () {
-    runner(command.set.angular_wait_false);
-    beforeAll(function () {
-
+describe('Demands', () => {
+    beforeAll( () => {
+        user_object.authorization(user.user.email);
+        go(page.demands.get)
     });
 
-    it('Go to page', function () {
-        helpers.authorization_last_user
-
-        runner(command.page.demands_new);
-        browser.sleep(1000);
-        expect(browser.getTitle()).toEqual(title_demands);
+    it(`Go to page and check title ${page.demands.title}`,  () => {
+        expect(browser.getTitle()).toEqual(page.demands.title);
     });
+
+    it(`Go to page and check title ${page.demands_new.title}`,  () => {
+        go(page.demands_new.get);
+        expect(browser.getTitle()).toEqual(page.demands_new.title);
+    });
+
+    describe('Create', () => {
+        describe('Fill form', () => {
+            it(``,  () => {
+
+            });
+
+        })
+    })
 });

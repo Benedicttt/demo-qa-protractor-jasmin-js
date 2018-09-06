@@ -1,6 +1,6 @@
-describe('Sign_in: User Failed,', function(){
-    runner(command.set.angular_wait_false);
-    runner(command.set.delete_all_cookies);
+describe('Sign_in:', function(){
+    set(setting.angular_wait_false);
+    set(setting.delete_all_cookies);
 
     let remember_box = element(by.id("user_remember_me"));
     let error = element.all(by.css('.error', 'text'));
@@ -9,72 +9,75 @@ describe('Sign_in: User Failed,', function(){
     let authorization_success ='×\nВход в систему выполнен.';
     let alert_success = element(by.css('.alert-success'));
 
-    describe('fill invalid value inputs', function() {
-
-        it(`with ${ id_email }`, function() {
-            runner(command.page.sign_in);
+    describe('Failed', function() {
+        it(`fill with ${ id_email }`, function() {
+            go(page.sign_in.get);
 
             helper.set_input_value(id_email, "");
-            runner(form.authorization.click_submit);
+            action(form.authorization.click_submit);
 
             expect(error.get(1).getText()).toEqual(error_blank);
             expect(error.get(3).getText()).toEqual(error_blank);
         });
 
-        it(`with ${ id_pass }`, function() {
+        it(`fill with ${ id_pass }`, function() {
             helper.set_input_value(id_pass, "");
-            runner(form.authorization.click_submit);
+            action(form.authorization.click_submit);
 
+            expect(error.get(1).getText()).toEqual(error_blank);
             expect(error.get(3).getText()).toEqual(error_blank)
         });
 
         form.authorization.error.input_invalid_email.forEach(function (value_id) {
-            it(`with email: ${ value_id }`, function() {
+            it(`fill with email: ${ value_id }`, function() {
                 helper.set_input_value(id_email, value_id);
                 helper.set_input_value(id_pass, "");
-                runner(form.authorization.click_submit);
+                action(form.authorization.click_submit);
 
                 expect(error.get(1).getText()).toEqual(error_email)
             })
         });
 
         form.authorization.error.input_invalid_pass.forEach(function (pass_value_id) {
-            it(`with pass: ${ pass_value_id }`, function() {
+            it(`fill with pass: ${ pass_value_id }`, function() {
                 helper.set_input_value(id_email, "_)(*&^%$");
                 helper.set_input_value(id_pass, pass_value_id);
-                runner(form.authorization.click_submit);
+                action(form.authorization.click_submit);
 
                 expect(error.get(1).getText()).toEqual(error_email);
                 expect(error.get(3).getText().isPresent()).toBeFalsy();
             })
         });
+    });
 
-        describe('User Success', function() {
-            it(`with email: ${ id_email }`, function() {
-                helper.set_input_value(id_email, user_email);
-                expect(helper.get_input_attr(id_email, 'value')).toEqual(user_email)
-            });
+    describe('Success', function() {
+        it(`fill with email: ${ id_email }`, function() {
+            go(page.sign_in.get);
+            helper.set_input_value(id_email, user.user.email);
 
-            it(`with pass: ${ id_pass }`, function() {
-                helper.set_input_value(id_pass, password);
-                expect(helper.get_input_attr(id_pass, 'value')).toEqual(password);
-            });
+            expect(browser.getTitle()).toEqual(page.sign_in.title);
+            expect(helper.get_input_attr(id_email, 'value')).toEqual(user.user.email)
+        });
 
-            it("with check box", function() {
-                remember_box.click();
-                expect(remember_box.getAttribute('checked') ).toBeTruthy();
+        it(`fill with pass: ${ id_pass }`, function() {
+            helper.set_input_value(id_pass, user.user.password);
+            expect(helper.get_input_attr(id_pass, 'value')).toEqual(user.user.password);
+        });
 
-            });
-
-            it("click button", function() {
-                runner(form.authorization.click_submit);
-
-                browser.manage().getCookie('_session_id').then(function(cookie) {
-                    expect(cookie.value.length).toEqual(32);
-                });
-                expect(alert_success.getText()).toEqual(authorization_success);
-            });
+        it("fill with check box", function() {
+            remember_box.click();
+            expect(remember_box.getAttribute('checked') ).toBeTruthy();
 
         });
+
+        it("click button", function() {
+            action(form.authorization.click_submit);
+
+            browser.manage().getCookie('_session_id').then(function(cookie) {
+                expect(cookie.value.length).toEqual(32);
+            });
+            expect(alert_success.getText()).toEqual(authorization_success);
+        });
+
     });
 });

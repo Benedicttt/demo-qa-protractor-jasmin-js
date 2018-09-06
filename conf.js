@@ -1,9 +1,12 @@
 const yaml = require('js-yaml');
 const fs = require('fs');
-const command = yaml.safeLoad(fs.readFileSync('spec/support/setting.yml', 'utf8'));
-const form = yaml.safeLoad(fs.readFileSync('spec/support/forms.yml', 'utf8'));
 const user = require('./spec/support/user.json');
 const user_object = require('./spec/panel/page_object/user.js');
+const helper = require('./spec/helpers/helpers.js');
+
+const setting = yaml.safeLoad(fs.readFileSync('spec/support/settings.yml', 'utf8'));
+const page = yaml.safeLoad(fs.readFileSync('spec/support/pages.yml', 'utf8'));
+const form = yaml.safeLoad(fs.readFileSync('spec/support/forms.yml', 'utf8'));
 
 const AllureReporter = require('jasmine-allure-reporter');
 const { SpecReporter } = require('jasmine-spec-reporter');
@@ -48,22 +51,24 @@ exports.config = {
         global.getRandomString = getRandomString;
 
         global.admin = 'user86@gmail.com';
+        global.helper = helper;
         global.id_email = 'user_email';
         global.id_pass = 'user_password';
         global.id_pass_conf = 'user_password_confirmation';
         global.password = '123456';
         global.user_email = 'spok_' + getRandomString(10) + '@gmail.com';
-        global.helper = require('./spec/helpers/helpers.js');
         global.EC = protractor.ExpectedConditions;
 
         global.fs = fs;
-        global.command = command;
-        global.form = form;
         global.user = user;
         global.user_object = user_object;
-        global.runner = helper.runner;
+        global.setting = setting;
+        global.form = form;
+        global.page = page;
 
-        global.title_demands = "Добавление заявки | СПОК";
+        global.go = helper.runner;
+        global.set = helper.runner;
+        global.action = helper.runner;
 
         // jasmine.getEnv().afterEach(function (done) {
         //     browser.takeScreenshot().then(function (png) {

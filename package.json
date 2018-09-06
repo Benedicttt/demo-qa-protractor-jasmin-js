@@ -19,7 +19,6 @@
     "protractor": "^5.4.0",
     "protractor-html-reporter-2": "^1.0.4",
     "protractor-http-client": "^1.0.4",
-    "protractor-jasmine2-screenshot-reporter": "^0.5.0",
     "webdriver": "^5.0.0-alpha.7",
     "yamljs": "^0.3.0"
   },
@@ -39,7 +38,7 @@
     "trouble": "protractor --troubleshoot true conf.js --browser 'chrome'",
     "allure server ./allure-result": "allure generate allure-results --clean -o allure-report && allure serve ./allure-results",
     "exit": "exit 0",
-    "delete folder ./allure-report": "rm -rf allure-report allure-results"
+    "delete folder ./allure-report": "rm -rf allure-report allure-results && ntl"
   },
   "repository": {
     "type": "git",

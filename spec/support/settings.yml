@@ -1,0 +1,2 @@
+angular_wait_false: browser.waitForAngularEnabled(false)
+delete_all_cookies: browser.manage().deleteAllCookies()
