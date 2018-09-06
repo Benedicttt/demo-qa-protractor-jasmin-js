@@ -6,7 +6,7 @@ page:
   base: browser.get('/')
   sign_in: browser.get('/users/sign_in')
   sign_up: browser.get('/users/sign_up')
-  demands: browser.get('/users/demands')
-  demands_new: browser.get('/users/demands/new')
+  demands: browser.get('/demands')
+  demands_new: browser.get('/demands/new')
   users: browser.get('/system/users')
 

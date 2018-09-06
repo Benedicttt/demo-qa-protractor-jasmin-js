@@ -33,7 +33,7 @@ module.exports = {
         );
         browser.get("/");
     },
-    authorization: function () {
+    authorization_last_user: function () {
         browser.get("/");
         browser.manage().deleteAllCookies();
         browser.get("/");

@@ -18,7 +18,7 @@ describe('User add full access on admin', function() {
             expect(box.getAttribute('checked')).toBeTruthy();
 
         });
-        browser.actions().mouseMove(element(by.css("button.btn")), {x: 10, y: 10,}).click().perform();
+        browser.actions().mouseMove(element.all(by.css("button.btn")).get(0), {x: 10, y: 10,}).click().perform();
     });
 
     it("Add access signature for demands", function () {
