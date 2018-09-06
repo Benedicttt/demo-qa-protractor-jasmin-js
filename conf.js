@@ -1,8 +1,11 @@
 const yaml = require('js-yaml');
 const fs = require('fs');
 const user = require('./spec/support/user.json');
+
 const user_object = require('./spec/panel/page_object/user.js');
-const helper = require('./spec/helpers/helpers.js');
+const helper = require('./spec/helpers/base.js');
+const selectors = require('./spec/helpers/selectors.js');
+const for_css = require('./spec/helpers/css_selectors.js');
 
 const setting = yaml.safeLoad(fs.readFileSync('spec/support/settings.yml', 'utf8'));
 const page = yaml.safeLoad(fs.readFileSync('spec/support/pages.yml', 'utf8'));
@@ -16,7 +19,7 @@ exports.config = {
         browserName: 'chrome',
             chromeOptions: {
                 args: [
-                    "--headless",
+                    // "--headless",
                     "--no-sandbox",
                     "--disable-gpu"]
             },
@@ -30,7 +33,7 @@ exports.config = {
 
     },
     directConnect: true,
-    baseUrl: 'http://localhost:3000/',
+    baseUrl: 'http://localhost:3000',
     specs: [
         "spec/panel/home_page.js",
         "spec/panel/sign_up.js",
@@ -51,7 +54,6 @@ exports.config = {
         global.getRandomString = getRandomString;
 
         global.admin = 'user86@gmail.com';
-        global.helper = helper;
         global.id_email = 'user_email';
         global.id_pass = 'user_password';
         global.id_pass_conf = 'user_password_confirmation';
@@ -69,6 +71,10 @@ exports.config = {
         global.go = helper.runner;
         global.set = helper.runner;
         global.action = helper.runner;
+
+        global.helper = helper;
+        global.tag_selector = selectors;
+        global.for_css = for_css;
 
         // jasmine.getEnv().afterEach(function (done) {
         //     browser.takeScreenshot().then(function (png) {
