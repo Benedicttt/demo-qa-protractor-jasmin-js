@@ -29,78 +29,44 @@ describe('Demands', () => {
         expect(browser.getTitle()).toEqual(page.demands_new.title);
     });
 
-    describe('Create', () => {
+    describe('Create service', () => {
         describe('Fill form inputs:', () => {
             it('demand_is_payment_on_site',  () => {
                 expect(element(by.id('demand_is_payment_on_site')).isDisplayed()).toBeTruthy();
             });
 
-            it('demand_project_id',  () => {
-                tag_selector.click_id_on_option('demand_project_id', 2, 500);
+            page.demands.ids.service.selectors.forEach(function (id) {
+                it(`ID: ${id}`,  () => {
+                    tag_selector.click_id_on_option(id.toString(), 3, 2000);
+                });
             });
 
-            it('demand_account_id',  () => {
-                tag_selector.click_id_on_option('demand_account_id', 2, 1500);
-            });
-            it('demand_contractor_type_id',  () => {
-                tag_selector.click_id_on_option('demand_contractor_type_id', 3, 1500);
-            });
-
-            it('demand_contractor_id',  () => {
-                tag_selector.click_id_on_option('demand_contractor_id', 2, 1500);
+            page.demands.ids.service.checkbox.forEach(function (id) {
+                it(`ID: ${id}`,  () => {
+                    elem = element(by.id(id.toString()));
+                    elem.click();
+                    expect(elem.getAttribute('checked')).toBeTruthy();
+                });
             });
 
-            it('demand_expenditure_type_id',  () => {
-                tag_selector.click_id_on_option('demand_expenditure_type_id', 2, 500);
+            page.demands.ids.service.inputs.forEach(function (id) {
+                it(`ID: ${id}`,  () => {
+                    elem = element(by.id(id.toString()));
+
+                    if (id.toString() === "demand_amount"){
+                        elem.clear();
+                        elem.sendKeys(page.demands.amount);
+                        expect(elem.getAttribute('value')).toEqual(page.demands.amount);
+                    } else {
+                        elem.clear();
+                        elem.sendKeys(id.toString());
+                        expect(elem.getAttribute('value')).toEqual(id.toString());
+                    }
+                });
             });
 
-            it('demand_expenditure_id',  () => {
-                tag_selector.click_id_on_option('demand_expenditure_id', 2, 1500);
-            });
-
-            it('demand_purse_number',  () => {
-                elem = element(by.id('demand_purse_number'));
-                elem.sendKeys(page.demands.purse_number);
-
-                expect(elem.getAttribute('value')).toEqual(page.demands.purse_number)
-            });
-            it('demand_purpose',  () => {
-                elem = element(by.id('demand_purpose'));
-                elem.sendKeys(page.demands.purpose);
-
-                expect(elem.getAttribute('value')).toEqual(page.demands.purpose)
-            });
-
-            it('demand_amount',  () => {
-                elem = element(by.id('demand_amount'));
-                elem.clear();
-                elem.sendKeys(page.demands.amount);
-
-                expect(elem.getAttribute('value')).toEqual(page.demands.amount.toString())
-            });
-
-            it('demand_comment',  () => {
-                elem = element(by.id('demand_comment'));
-                elem.sendKeys(page.demands.comment);
-
-                expect(elem.getAttribute('value')).toEqual(page.demands.comment)
-            });
-
-            it("click Save button",  () => {
-                btn = element(by.css("button.btn-primary"));
-                btn.isEnabled() === true ? action(page.demands.click_submit) : browser.sleep(1000); action(page.demands.click_submit)
-            });
-
-            it("click accept",  () => {
-                btn = element(by.css("button.btn-primary"));
-                btn.isEnabled() === true ? action(page.demands.click_submit) : browser.sleep(1000); action(page.demands.click_submit)
-            });
-
-            it("assert create current demand",  () => {
-                browser.manage().timeouts().implicitlyWait(5000);
-                urlExpected = browser.baseUrl + '/demands';
-                btn = element.all(by.css('.btn-small')).get(0);
-                browser.getCurrentUrl() !== urlExpected ? expect(btn.isPresent()).toBe(true) : expect(browser.getCurrentUrl()).toEqual(urlExpected);
+            it('', () => {
+                browser.sleep(3000);
             });
 
         });

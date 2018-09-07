@@ -10,6 +10,71 @@ sign_up:
   title: 'Регистрация | СПОК'
   click_submit: 'browser.actions().mouseMove(element.all(by.css("button.btn-primary")).get(0), {x: 10, y: 10,}).click().perform();'
 demands:
+  ids:
+    service:
+      selectors: !!seq
+        - demand_project_id
+        - demand_account_id
+        - demand_contractor_type_id
+        - demand_contractor_id
+        - demand_expenditure_type_id
+        - demand_expenditure_id
+      checkbox: !!seq
+        - demand_is_rendered_during_period
+        - demand_is_payment_on_site
+        - demand_is_plan_paid_date
+        - demand_is_plan_paid_date_period
+        - demand_is_regular_payment
+        - demand_is_monthly_payment
+        - demand_is_salary
+        - demand_is_profits_distribution
+  #       - regular_payment_at #Авансовый платеж
+  #       - demand_is_distributed # Распределение
+  #       - create_distribution # кнопка Распределение
+      attach: !!seq
+        - account_upload
+        - demand_file_path
+        - uploaded_file_list
+      inputs: !!seq
+        - demand_payment_site_info
+        - demand_purse_number
+        - demand_purpose
+        - demand_amount
+        - demand_comment
+        - demand_task
+    return:
+      selectors: !!seq
+        - demand_project_id
+        - demand_account_id
+        - demand_contractor_type_id
+        - demand_contractor_id
+      checkbox: !!seq
+        - demand_is_refund
+        - demand_is_payment_on_site
+        - demand_is_service_rendered
+        - demand_is_rendered_during_period
+        - demand_is_plan_paid_date
+        - demand_is_plan_paid_date_period
+        - demand_is_regular_payment
+        - demand_is_monthly_payment
+        - demand_is_salary
+        - demand_is_profits_distribution
+      #       - regular_payment_at #Авансовый платеж
+      #       - demand_is_distributed # Распределение
+      #       - create_distribution # кнопка Распределение
+      attach: !!seq
+        - account_upload
+        - demand_file_path
+        - uploaded_file_list
+      inputs: !!seq
+        - demand_payment_site_info
+        - demand_purse_number
+        - demand_purpose
+        - demand_amount
+        - demand_comment
+        - demand_task
+        - demand_refundable_service_id
+
   get: browser.get('/demands')
   title: 'Заявки | СПОК'
   purse_number: '4548 6584 4848 9987'
