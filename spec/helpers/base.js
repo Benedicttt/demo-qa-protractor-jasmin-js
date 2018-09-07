@@ -1,6 +1,12 @@
-const outputFilename = './spec/support/user.json';
-
 module.exports = {
+    user_email_last: function () {
+        return JSON.parse(fs.readFileSync('./spec/support/user.json'))['user']['email'];
+    },
+
+    user_password_last: function () {
+        return JSON.parse(fs.readFileSync('./spec/support/user.json'))['user']['password'];
+    },
+
     runner: function(string_command) {
         const test = new Function(string_command);
         test();

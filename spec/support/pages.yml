@@ -4,9 +4,11 @@ base:
 sign_in:
   get: browser.get('/users/sign_in')
   title: 'Вход в систему | СПОК'
+  click_submit: 'browser.actions().mouseMove(element.all(by.css("button.btn-primary")).get(0), {x: 10, y: 10,}).click().perform();'
 sign_up:
   get: browser.get('/users/sign_up')
   title: 'Регистрация | СПОК'
+  click_submit: 'browser.actions().mouseMove(element.all(by.css("button.btn-primary")).get(0), {x: 10, y: 10,}).click().perform();'
 demands:
   get: browser.get('/demands')
   title: 'Заявки | СПОК'

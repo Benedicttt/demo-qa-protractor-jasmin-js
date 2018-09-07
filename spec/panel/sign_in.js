@@ -53,15 +53,15 @@ describe('Sign_in:', function(){
     describe('Success', function() {
         it(`fill with email: ${ id_email }`, function() {
             go(page.sign_in.get);
-            helper.set_input_value(id_email, user.user.email);
+            helper.set_input_value(id_email, helper.user_email_last());
 
             expect(browser.getTitle()).toEqual(page.sign_in.title);
-            expect(helper.get_input_attr(id_email, 'value')).toEqual(user.user.email)
+            expect(helper.get_input_attr(id_email, 'value')).toEqual(helper.user_email_last())
         });
 
         it(`fill with pass: ${ id_pass }`, function() {
-            helper.set_input_value(id_pass, user.user.password);
-            expect(helper.get_input_attr(id_pass, 'value')).toEqual(user.user.password);
+            helper.set_input_value(id_pass, helper.user_password_last());
+            expect(helper.get_input_attr(id_pass, 'value')).toEqual(helper.user_password_last());
         });
 
         it("fill with check box", function() {

@@ -46,7 +46,11 @@ describe('User add full access on admin', function() {
                 });
             }
         });
-        element(by.css("button[type=submit]")).click();
+
+        it("click accept",  () => {
+            btn = element(by.css("button.btn-primary"));
+            btn.isEnabled() === true ? action(page.sign_in.click_submit) : browser.sleep(1000); action(page.sign_in.click_submit)
+        });
         element(by.css(".btn-primary")).click();
     });
 });

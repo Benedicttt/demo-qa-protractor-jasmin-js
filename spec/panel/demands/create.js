@@ -2,21 +2,21 @@ const arr = [];
 
 describe('Demands', () => {
     beforeAll( () => {
-        user_object.authorization(user.user.email);
+        user_object.authorization(helper.user_email_last());
         go(page.demands.get);
-
-        element(by.xpath("//*[@id=\"demands\"]/tbody/tr[1]")).getAttribute("data-id").then((e) => {
-            arr.push(e);
-        });
+        // browser.sleep(5000);
+        // element(by.xpath("//*[@id=\"demands\"]/tbody/tr[1]")).getAttribute("data-id").then((e) => {
+        //     arr.push(e);
+        // });
     });
 
     afterAll( () => {
-        browser.sleep(10000);
-        element(by.xpath("//*[@id=\"demands\"]/tbody/tr[1]")).getAttribute("data-id").then((e) => {
-            arr.push(e);
-            arr.map(parseFloat);
-            expect(arr[1] - arr[0]).toEqual(1);
-        });
+        // browser.sleep(10000);
+        // element(by.xpath("//*[@id=\"demands\"]/tbody/tr[1]")).getAttribute("data-id").then((e) => {
+        //     arr.push(e);
+        //     arr.map(parseFloat);
+        //     expect(arr[1] - arr[0]).toEqual(1);
+        // });
 
     });
 
@@ -101,7 +101,6 @@ describe('Demands', () => {
                 urlExpected = browser.baseUrl + '/demands';
                 btn = element.all(by.css('.btn-small')).get(0);
                 browser.getCurrentUrl() !== urlExpected ? expect(btn.isPresent()).toBe(true) : expect(browser.getCurrentUrl()).toEqual(urlExpected);
-
             });
 
         });

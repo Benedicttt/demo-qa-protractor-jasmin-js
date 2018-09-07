@@ -1,6 +1,6 @@
 const yaml = require('js-yaml');
 const fs = require('fs');
-const user = require('./spec/support/user.json');
+let user = JSON.parse(fs.readFileSync('./spec/support/user.json'));
 
 const user_object = require('./spec/panel/page_object/user.js');
 const helper = require('./spec/helpers/base.js');
@@ -14,12 +14,14 @@ const form = yaml.safeLoad(fs.readFileSync('spec/support/forms.yml', 'utf8'));
 const AllureReporter = require('jasmine-allure-reporter');
 const { SpecReporter } = require('jasmine-spec-reporter');
 
+const outputFilename = './spec/support/user.json';
+
 exports.config = {
     capabilities: {
         browserName: 'chrome',
             chromeOptions: {
                 args: [
-                    // "--headless",
+                    "--headless",
                     "--no-sandbox",
                     "--disable-gpu"]
             },
@@ -75,6 +77,8 @@ exports.config = {
         global.helper = helper;
         global.tag_selector = selectors;
         global.for_css = for_css;
+
+        global.outputFilename = outputFilename;
 
         // jasmine.getEnv().afterEach(function (done) {
         //     browser.takeScreenshot().then(function (png) {
