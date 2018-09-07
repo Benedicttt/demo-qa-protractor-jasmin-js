@@ -51,14 +51,13 @@ demands:
       checkbox: !!seq
         - demand_is_refund
         - demand_is_payment_on_site
-        - demand_is_service_rendered
-        - demand_is_rendered_during_period
         - demand_is_plan_paid_date
-        - demand_is_plan_paid_date_period
         - demand_is_regular_payment
         - demand_is_monthly_payment
         - demand_is_salary
         - demand_is_profits_distribution
+        - demand_is_advanced_payment
+        - demand_is_plan_paid_date_period
       #       - regular_payment_at #Авансовый платеж
       #       - demand_is_distributed # Распределение
       #       - create_distribution # кнопка Распределение

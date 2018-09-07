@@ -6,6 +6,7 @@ const user_object = require('./spec/panel/page_object/user.js');
 const helper = require('./spec/helpers/base.js');
 const selectors = require('./spec/helpers/selectors.js');
 const for_css = require('./spec/helpers/css_selectors.js');
+const shared = require('./spec/shared/demands.js');
 
 const setting = yaml.safeLoad(fs.readFileSync('spec/support/settings.yml', 'utf8'));
 const page = yaml.safeLoad(fs.readFileSync('spec/support/pages.yml', 'utf8'));
@@ -69,6 +70,7 @@ exports.config = {
         global.setting = setting;
         global.form = form;
         global.page = page;
+        global.shared = shared;
 
         global.go = helper.runner;
         global.set = helper.runner;
