@@ -1,12 +1,13 @@
 module.exports = {
     buttons: function() {
         it("click Save button",  () => {
-            var btn = element.all(by.css("button.btn-primary")).get(0);
+            var btn = element.all(by.css("#new_demand > div.form-actions > button")).get(0);
             var EC = protractor.ExpectedConditions;
 
             browser.wait(protractor.ExpectedConditions.visibilityOf(btn), 6000);
             browser.wait(EC.elementToBeClickable(btn.isEnabled()), 5000);
-            action(page.demands.click_submit)
+            btn.click();
+            // action(page.demands.click_submit);
         });
 
         it("click accept",  () => {
@@ -76,6 +77,17 @@ module.exports = {
             });
         });
 
+        // it('is_advanced_payment', () => {
+        //     for_css.wait_id('demand_is_advanced_payment', 5000);
+        //     element(by.id('demand_is_advanced_payment')).click();
+        //     expect(element(by.id('demand_is_advanced_payment')).getAttribute('checked')).toBeTruthy();
+        //     for_css.wait_id('create_payment', 5000);
+        //     element(by.id('create_payment')).click();
+        //     for_css.wait_id('payment_amount', 5000);
+        //     element(by.id('payment_amount')).sendKeys(page.demands.amount);
+        //     action(page.demands.click_submit);
+        // });
+
         it('fist click button save', () => {
             var btn = element.all(by.css("button.btn-primary")).get(0);
 
@@ -109,5 +121,27 @@ module.exports = {
                 demands_shared.inputs_set(id);
             });
         });
+
+        it('demand_is_distributed', () => {
+            for_css.wait_id('demand_is_distributed', 5000);
+            element(by.id('demand_is_distributed')).click();
+            expect(element(by.id('demand_is_distributed')).getAttribute('checked')).toBeTruthy();
+            for_css.wait_id('create_distribution', 5000);
+            element(by.id('create_distribution')).click();
+            for_css.wait_id('distribution_share', 5000);
+            element(by.id('distribution_share')).sendKeys(1);
+            action(page.demands.click_submit);
+        });
+
+        // it('is_advanced_payment', () => {
+        //     for_css.wait_id('demand_is_advanced_payment', 5000);
+        //     element(by.id('demand_is_advanced_payment')).click();
+        //     expect(element(by.id('demand_is_advanced_payment')).getAttribute('checked')).toBeTruthy();
+        //     for_css.wait_id('create_payment', 5000);
+        //     element(by.id('create_payment')).click();
+        //     for_css.wait_id('payment_amount', 5000);
+        //     element(by.id('payment_amount')).sendKeys(page.demands.amount);
+        //     action(page.demands.click_submit);
+        // });
     }
 };
