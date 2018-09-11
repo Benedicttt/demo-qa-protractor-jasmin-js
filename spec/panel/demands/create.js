@@ -10,85 +10,110 @@ describe('Demands', () => {
 
     describe('Create service', () => {
         beforeAll( () => {
-            go(page.demands_new.get);
-            expect(browser.getTitle()).toEqual(page.demands_new.title);
-        });
-
-        afterAll( () => {
+            go(page.demands.new.get);
+            expect(browser.getTitle()).toEqual(page.demands.new.title);
         });
 
         describe('Fill form inputs, select, checkbox:', () => {
-            it('demand_is_payment_on_site',  () => {
-                expect(element(by.id('demand_is_payment_on_site')).isDisplayed()).toBeTruthy();
-            });
+            // afterAll( () => {
+            //     go(page.demands.get);
+            //     for_css.wait_css("input[value=is_paid]", 5000);
+            //     element(by.css('input[value=is_paid]')).click();
+            //     browser.sleep(500);
+            //     element(by.css('.btn.btn-primary')).click();
+            //
+            //     for_css.wait_xpath("//*[@id=\"demands\"]/tbody/tr[1]/td[11]/a[2]", 5000);
+            //
+            //     helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 0, "Подписана");
+            //     helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 3, "Подписана");
+            //     helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 4, "Оплачена");
+            // });
+            //
+            // demands_shared.services();
+            // demands_shared.buttons();
+            //
+            // it('last sign', () => {
+            //     helper.sign_order_xpath("//*[@id=\"demands\"]/tbody/tr[1]/td[11]/a[2]", 1, 0);
+            //     helper.sign_order_xpath("//*[@id=\"demands\"]/tbody/tr[1]/td[12]/a[2]", 2, 0);
+            //     helper.sign_order_xpath("//*[@id=\"demands\"]/tbody/tr[1]/td[13]/a", 3, 1);
+            // });
 
-            page.demands.ids.service.selectors.forEach(function (id) {
-                it(`ID: ${id}`,  () => {
-                    tag_selector.click_id_on_option(id.toString(), 3, 2000);
-                });
-            });
-
-            page.demands.ids.service.checkbox.forEach(function (id) {
-                it(`ID: ${id}`,  () => {
-                    let elem = element(by.id(id.toString()));
-
-                    elem.click();
-                    expect(elem.getAttribute('checked')).toBeTruthy();
-                });
-            });
-
-            page.demands.ids.service.inputs.forEach(function (id) {
-                it(`ID: ${id}`,  () => {
-                    shared.inputs_set(id);
-                });
-            });
-
-            shared.demands_buttons();
+            // it('first sign', () => {
+            //     for_css.wait_xpath("//*[@id=\"demands\"]/tbody/tr[1]/td[11]/a[2]", 5000);
+            //     element.all(by.css('.btn.btn-mini')).get(1).click().then(function () {
+            //         for_css.wait_css("#modal form", 5000);
+            //         element(by.css('#modal form')).submit();
+            //         browser.sleep(1000);
+            //     });
+            // });
+            //
+            // it('last sign', () => {
+            //     for_css.wait_xpath("//*[@id=\"demands\"]/tbody/tr[1]/td[12]/a[2]", 5000);
+            //     element.all(by.css('.btn.btn-mini')).get(2).click().then(function () {
+            //         browser.sleep(1000);
+            //         for_css.wait_css(".modal-footer > button.btn.btn-primary", 4000);
+            //         element(by.css(".modal-footer > button.btn.btn-primary")).click();
+            //         browser.sleep(1000);
+            //     });
+            // });
+            //
+            // it('pay accept', () => {
+            //     for_css.wait_xpath("//*[@id=\"demands\"]/tbody/tr[1]/td[13]/a", 5000);
+            //     element.all(by.css('.btn.btn-mini')).get(3).click().then(function () {
+            //         browser.sleep(1000);
+            //         for_css.wait_css("#modal form", 8000);
+            //         element(by.css('#modal form')).submit();
+            //         browser.sleep(1000);
+            //         element(by.css('#modal form')).submit();
+            //     });
+            // });
         });
     });
 
+    //
     describe('Create returned', () => {
         beforeAll( () => {
-            go(page.demands_new.get);
-            expect(browser.getTitle()).toEqual(page.demands_new.title);
+            go(page.demands.new.get);
+            expect(browser.getTitle()).toEqual(page.demands.new.title);
         });
 
         afterAll( () => {
+            go(page.demands.get);
+            for_css.wait_css("input[value=is_paid]", 5000);
+            element(by.css('input[value=is_paid]')).click();
+            browser.sleep(500);
+            element(by.css('.btn.btn-primary')).click();
+
+            for_css.wait_xpath("//*[@id=\"demands\"]/tbody/tr[1]/td[11]/a[2]", 5000);
+
+            // helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", '', "", true);
+            // helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 3, "Подписана");
+            // helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 4, "Оплачена");
         });
+
 
         describe('Fill form inputs, select, checkbox:', () => {
-            it('demand_is_payment_on_site',  () => {
-                expect(element(by.id('demand_is_payment_on_site')).isDisplayed()).toBeTruthy();
+            demands_shared.returns();
+            demands_shared.buttons();
+
+            it('last sign', () => {
+                helper.sign_order_xpath("//*[@id=\"demands\"]/tbody/tr[1]/td[12]/a[2]", 1, 0);
+                helper.sign_order_xpath("//*[@id=\"demands\"]/tbody/tr[1]/td[13]/a", 2, 1);
             });
-
-            page.demands.ids.return.selectors.forEach(function (id) {
-                it(`ID: ${id}`,  () => {
-                    tag_selector.click_id_on_option(id.toString(), 3, 2000);
-                });
-            });
-
-            page.demands.ids.return.checkbox.forEach(function (id) {
-                it(`ID: ${id}`,  () => {
-                    let elem = element(by.id(id.toString()));
-
-                    elem.click();
-                    expect(elem.getAttribute('checked')).toBeTruthy();
-                });
-            });
-
-            page.demands.ids.return.inputs.forEach(function (id) {
-                it(`ID: ${id}`,  () => {
-                    shared.inputs_set(id);
-                });
-            });
-
-            it('fist click button save', () => {
-                var btn = element.all(by.css("button.btn-primary")).get(0);
-                browser.wait(protractor.ExpectedConditions.visibilityOf(btn), 6000);
-                action(page.demands.click_submit)
-            });
-
-            shared.demands_buttons();
         });
-    })
+    });
 });
+
+
+SELECT status_id FROM
+demands_pay_demand( 86,
+    54122,
+    1765,
+    101.0,
+    1,
+    0.0,
+    0,
+    0,
+    0,
+    '2018-09-11'::date,
+    0 ) AS status_id)

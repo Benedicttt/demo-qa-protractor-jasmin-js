@@ -1,14 +1,17 @@
 base:
   get: browser.get('/')
   title: 'СПОК'
+
 sign_in:
   get: browser.get('/users/sign_in')
   title: 'Вход в систему | СПОК'
   click_submit: 'browser.actions().mouseMove(element.all(by.css("button.btn-primary")).get(0), {x: 10, y: 10,}).click().perform();'
+
 sign_up:
   get: browser.get('/users/sign_up')
   title: 'Регистрация | СПОК'
   click_submit: 'browser.actions().mouseMove(element.all(by.css("button.btn-primary")).get(0), {x: 10, y: 10,}).click().perform();'
+
 demands:
   ids:
     service:
@@ -80,10 +83,59 @@ demands:
   purpose: 'for testing'
   amount: 101
   comment: 'For Testing'
+  number_service: 134580
   click_submit: 'browser.actions().mouseMove(element.all(by.css("button.btn-primary")).get(0), {x: 10, y: 10,}).click().perform();'
-demands_new:
-  get: browser.get('/demands/new')
-  title: 'Добавление заявки | СПОК'
+  new:
+    get: browser.get('/demands/new')
+    title: 'Добавление заявки | СПОК'
+
+services:
+  ids:
+    selectors: !!seq
+      - service_service_source_id
+      - service_project_id
+      - service_expenditure_type_id
+      - service_expenditure_id
+      - service_contractor_type_id
+      - service_contractor_id
+
+    checkbox: !!seq
+      - service_is_rendered_during_period
+    attach: !!seq
+    inputs: !!seq
+      - service_purpose
+      - service_task
+      - service_amount
+
+  get: browser.get('/services')
+  title: 'Услуги | СПОК'
+  purse_number: '4548 6584 4848 9987'
+  purpose: 'for testing'
+  amount: 101
+  comment: 'For Testing'
+  number_service: 134580
+  click_submit: 'browser.actions().mouseMove(element.all(by.css("button.btn-primary")).get(0), {x: 10, y: 10,}).click().perform();'
+  new:
+    get: browser.get('/services/new')
+    title: 'Добавление услуги | СПОК'
+
+DDS:
+  ids:
+    service:
+      selectors: !!seq
+      checkbox: !!seq
+      attach: !!seq
+      inputs: !!seq
+  get: browser.get('/demands')
+  title: 'Движение денежных средств | СПОК'
+  purse_number: '4548 6584 4848 9987'
+  purpose: 'for testing'
+  amount: 101
+  comment: 'For Testing'
+  number_service: 134580
+  click_submit: 'browser.actions().mouseMove(element.all(by.css("button.btn-primary")).get(0), {x: 10, y: 10,}).click().perform();'
+
+
 users:
   get: browser.get('/system/users')
   title: 'Пользователи | СПОК'

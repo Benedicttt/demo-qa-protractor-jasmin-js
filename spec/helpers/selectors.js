@@ -1,4 +1,3 @@
-
 module.exports = {
     wait_id_select: function(id, ms){
         let until = protractor.ExpectedConditions;

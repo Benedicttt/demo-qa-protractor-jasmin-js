@@ -1,5 +1,5 @@
 module.exports = {
-    demands_buttons: function() {
+    buttons: function() {
         it("click Save button",  () => {
             var btn = element.all(by.css("button.btn-primary")).get(0);
             var EC = protractor.ExpectedConditions;
@@ -41,12 +41,73 @@ module.exports = {
             expect(elem.getAttribute('value')).toEqual(page.demands.purse_number.toString());
         } else if(id.toString() === "demand_refundable_service_id") {
             elem.clear();
-            elem.sendKeys(134580);
-            expect(elem.getAttribute('value')).toEqual('134580');
+            elem.sendKeys(page.demands.number_service);
+            expect(elem.getAttribute('value')).toEqual(page.demands.number_service.toString());
         } else {
             elem.clear();
             elem.sendKeys(id.toString());
             expect(elem.getAttribute('value')).toEqual(id.toString());
         }
+    },
+
+    returns: function() {
+        it('demand_is_payment_on_site',  () => {
+            expect(element(by.id('demand_is_payment_on_site')).isDisplayed()).toBeTruthy();
+        });
+
+        page.demands.ids.return.selectors.forEach(function (id) {
+            it(`ID: ${id}`,  () => {
+                tag_selector.click_id_on_option(id.toString(), 3, 2000);
+            });
+        });
+
+        page.demands.ids.return.checkbox.forEach(function (id) {
+            it(`ID: ${id}`,  () => {
+                let elem = element(by.id(id.toString()));
+
+                elem.click();
+                expect(elem.getAttribute('checked')).toBeTruthy();
+            });
+        });
+
+        page.demands.ids.return.inputs.forEach(function (id) {
+            it(`ID: ${id}`,  () => {
+                demands_shared.inputs_set(id);
+            });
+        });
+
+        it('fist click button save', () => {
+            var btn = element.all(by.css("button.btn-primary")).get(0);
+
+            browser.wait(protractor.ExpectedConditions.visibilityOf(btn), 6000);
+            action(page.demands.click_submit)
+        });
+    },
+
+    services: function() {
+        it('demand_is_payment_on_site',  () => {
+            expect(element(by.id('demand_is_payment_on_site')).isDisplayed()).toBeTruthy();
+        });
+
+        page.demands.ids.service.selectors.forEach(function (id) {
+            it(`ID: ${id}`,  () => {
+                tag_selector.click_id_on_option(id.toString(), 3, 2000);
+            });
+        });
+
+        page.demands.ids.service.checkbox.forEach(function (id) {
+            it(`ID: ${id}`,  () => {
+                let elem = element(by.id(id.toString()));
+
+                elem.click();
+                expect(elem.getAttribute('checked')).toBeTruthy();
+            });
+        });
+
+        page.demands.ids.service.inputs.forEach(function (id) {
+            it(`ID: ${id}`,  () => {
+                demands_shared.inputs_set(id);
+            });
+        });
     }
 };

@@ -6,7 +6,6 @@ const user_object = require('./spec/panel/page_object/user.js');
 const helper = require('./spec/helpers/base.js');
 const selectors = require('./spec/helpers/selectors.js');
 const for_css = require('./spec/helpers/css_selectors.js');
-const shared = require('./spec/shared/demands.js');
 
 const setting = yaml.safeLoad(fs.readFileSync('spec/support/settings.yml', 'utf8'));
 const page = yaml.safeLoad(fs.readFileSync('spec/support/pages.yml', 'utf8'));
@@ -17,6 +16,9 @@ const { SpecReporter } = require('jasmine-spec-reporter');
 
 const outputFilename = './spec/support/user.json';
 
+const demands_shared = require('./spec/shared/demands.js');
+const services_shared = require('./spec/shared/services.js');
+
 exports.config = {
     capabilities: {
         browserName: 'chrome',
@@ -24,11 +26,12 @@ exports.config = {
                 args: [
                    // "--headless",
                     "--no-sandbox",
-                    "--disable-gpu"]
+                    "--disable-gpu",
+                    "--window-size=1980,1080"
+                ]
             },
         // shardTestFiles: true,
         // maxInstances: 2,
-
         browserName: 'firefox',
             // 'moz:firefoxOptions': {
             //     args: ['--headless']
@@ -53,34 +56,35 @@ exports.config = {
     ],
     framework: 'jasmine',
     onPrepare() {
-        browser.manage().window().maximize();
         global.getRandomString = getRandomString;
 
-        global.admin = 'user86@gmail.com';
-        global.id_email = 'user_email';
-        global.id_pass = 'user_password';
-        global.id_pass_conf = 'user_password_confirmation';
-        global.password = '123456';
-        global.user_email = 'spok_' + getRandomString(10) + '@gmail.com';
-        global.EC = protractor.ExpectedConditions;
+        global.admin           = 'user86@gmail.com';
+        global.id_email        = 'user_email';
+        global.id_pass         = 'user_password';
+        global.id_pass_conf    = 'user_password_confirmation';
+        global.password        = '123456';
+        global.user_email      = 'spok_' + getRandomString(10) + '@gmail.com';
+        global.EC              = protractor.ExpectedConditions;
 
-        global.fs = fs;
-        global.user = user;
-        global.user_object = user_object;
-        global.setting = setting;
-        global.form = form;
-        global.page = page;
-        global.shared = shared;
+        global.fs              = fs;
+        global.user            = user;
+        global.user_object     = user_object;
+        global.setting         = setting;
+        global.form            = form;
+        global.page            = page;
 
-        global.go = helper.runner;
-        global.set = helper.runner;
-        global.action = helper.runner;
+        global.go              = helper.runner;
+        global.set             = helper.runner;
+        global.action          = helper.runner;
 
-        global.helper = helper;
-        global.tag_selector = selectors;
-        global.for_css = for_css;
+        global.helper          = helper;
+        global.tag_selector    = selectors;
+        global.for_css         = for_css;
 
-        global.outputFilename = outputFilename;
+        global.outputFilename  = outputFilename;
+
+        global.demands_shared  = demands_shared;
+        global.services_shared = services_shared;
 
         // jasmine.getEnv().afterEach(function (done) {
         //     browser.takeScreenshot().then(function (png) {
@@ -108,15 +112,15 @@ exports.config = {
         jasmine.getEnv().addReporter(new AllureReporter());
 
         jasmine.getEnv().addReporter(new SpecReporter({
-            displayStacktrace: 'none',      // display stacktrace for each failed assertion, values: (all|specs|summary|none)
-            displaySuccessesSummary: false, // display summary of all successes after execution
+            displayStacktrace: 'all',      // display stacktrace for each failed assertion, values: (all|specs|summary|none)
+            displaySuccessesSummary: true, // display summary of all successes after execution
             displayFailuresSummary: true,   // display summary of all failures after execution
             displayPendingSummary: true,    // display summary of all pending specs after execution
             displaySuccessfulSpec: true,    // display each successful spec
             displayFailedSpec: true,        // display each failed spec
-            displayPendingSpec: false,      // display each pending spec
-            displaySpecDuration: false,     // display each spec duration
-            displaySuiteNumber: false,      // display each suite number (hierarchical)
+            displayPendingSpec: true,      // display each pending spec
+            displaySpecDuration: true,     // display each spec duration
+            displaySuiteNumber: true,      // display each suite number (hierarchical)
             colors: {
                 success: 'red',
                 failure: 'red',

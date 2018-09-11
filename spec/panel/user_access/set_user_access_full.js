@@ -6,7 +6,27 @@ describe('User add full access on admin', function() {
         expect(browser.getTitle()).toEqual(page.users.title);
     });
 
+    it('set access in user last', function () {
+        element.all(by.css('.btn-mini')).get(0).click();
+        element.all(by.css('.action')).each(function (checkbox) {
+            if (checkbox.isDisplayed()) {
+                checkbox.getAttribute('id').then(function (id) {
+                    browser.actions().mouseMove(checkbox).click().perform();
+
+                    elem = element(by.id(id));
+                    expect(elem.getAttribute('checked')).toBeTruthy();
+                });
+            }
+        });
+    });
+
+    it("click accept",  () => {
+        btn = element(by.css("button.btn-primary"));
+        btn.click();
+    });
+
     it("Find user '/system/users' and (go to modal/add) projects", function() {
+        go(page.users.get);
         element.all(by.css('.icon-list-alt')).get(0).click();
     });
 
@@ -32,25 +52,5 @@ describe('User add full access on admin', function() {
 
         browser.wait(EC.visibilityOf(element.all(by.css("a.btn")).get(0)).call(), 8000, 'Button not visible');
         element.all(by.css("a.btn")).get(0).click();
-    });
-
-    it('set access in user last', function () {
-        element.all(by.css('.btn-mini')).get(0).click();
-        element.all(by.css('.action')).each(function (checkbox) {
-            if (checkbox.isDisplayed()) {
-                checkbox.getAttribute('id').then(function (id) {
-                    browser.actions().mouseMove(checkbox).click().perform();
-
-                    elem = element(by.id(id));
-                    expect(elem.getAttribute('checked')).toBeTruthy();
-                });
-            }
-        });
-
-        it("click accept",  () => {
-            btn = element(by.css("button.btn-primary"));
-            btn.isEnabled() === true ? action(page.sign_in.click_submit) : browser.sleep(1000); action(page.sign_in.click_submit)
-        });
-        element(by.css(".btn-primary")).click();
     });
 });
