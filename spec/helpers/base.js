@@ -43,16 +43,6 @@ module.exports = {
         element.all(by.css('.btn.btn-mini')).get(index_elem).click().then(function () {
             browser.sleep(1000);
             for_css.wait_css('#modal form', 4000);
-                Number.prototype.times = function (cb) {
-                    var i = -1;
-
-                    while (++i < this) {
-                        cb
-                    }
-
-                    return +this;
-                };
-
             if (count_click > 0) {
                 element(by.css('#modal form')).submit();
                 browser.sleep(1000);
@@ -65,20 +55,10 @@ module.exports = {
     },
 
     check_success_sign: function (css, index_elem = null, expect_text = null, log = null){
-        element.all(by.css(css)).each(function (elem, index) {
-            elem.getAttribute('class').then(function (attr) {
-                if ( attr === 'label label-success' ) {
-                    if ( log === true ) {
-                        elem.getText().then(function (text){ console.log( text, index ) })
-                    }
-
-                    if ( index === index_elem ) {
-                        elem.getText().then(function (text) {
-                            expect(text).toEqual(expect_text)
-                        })
-                    }
-                }
-            });
-        });
+        for_css.wait_css("td.no-wrap > a, td.no-wrap > span", 5000);
+        element.all(by.css(css)).get(index_elem).getText().then(function (result) {
+            if ( log === true) { console.log(result, index_elem) }
+            expect(result).toEqual(expect_text)
+        })
     }
 };

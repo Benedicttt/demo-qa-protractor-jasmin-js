@@ -24,7 +24,7 @@ exports.config = {
         browserName: 'chrome',
             chromeOptions: {
                 args: [
-                   // "--headless",
+                    // "--headless",
                     "--no-sandbox",
                     "--disable-gpu",
                     "--window-size=1980,1080"
@@ -86,54 +86,25 @@ exports.config = {
         global.demands_shared  = demands_shared;
         global.services_shared = services_shared;
 
-        // jasmine.getEnv().afterEach(function (done) {
-        //     browser.takeScreenshot().then(function (png) {
-        //         allure.createAttachment('Screenshot', function () {
-        //             return new Buffer(png, 'base64')
-        //         }, 'image/png')();
-        //         done();
-        //     })
-        // });
-
-        var addScreenShots = new function () {
-            this.specDone = function (result) {
-                // console.log(result);
-                if (result.status === "failed") {
+        var addScreenShots = {
+            specDone: function (result) {
+                if (result.status === 'failed') {
                     browser.takeScreenshot().then(function (png) {
-                        allure.createAttachment('Screenshot', function () {
+                        allure.createAttachment('Screen', function () {
                             return new Buffer(png, 'base64')
                         }, 'image/png')();
                     });
                 }
-            };
+            }
         };
 
         jasmine.getEnv().addReporter(addScreenShots);
-        jasmine.getEnv().addReporter(new AllureReporter());
-
-        jasmine.getEnv().addReporter(new SpecReporter({
-            displayStacktrace: 'all',      // display stacktrace for each failed assertion, values: (all|specs|summary|none)
-            displaySuccessesSummary: true, // display summary of all successes after execution
-            displayFailuresSummary: true,   // display summary of all failures after execution
-            displayPendingSummary: true,    // display summary of all pending specs after execution
-            displaySuccessfulSpec: true,    // display each successful spec
-            displayFailedSpec: true,        // display each failed spec
-            displayPendingSpec: true,      // display each pending spec
-            displaySpecDuration: true,     // display each spec duration
-            displaySuiteNumber: true,      // display each suite number (hierarchical)
-            colors: {
-                success: 'red',
-                failure: 'red',
-                pending: 'yellow'
-            },
-            prefixes: {
-                success: '✓ ',
-                failure: '✗ ',
-                pending: '* '
-            },
-            customProcessors: [],
-
+        jasmine.getEnv().addReporter(new AllureReporter({
+            allureReport: {
+                resultsDir: './allure-results/'
+            }
         }));
+        jasmine.getEnv().addReporter(new SpecReporter( { displayStacktrace: 'all' } ));
     }
 };
 

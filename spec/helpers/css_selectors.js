@@ -5,9 +5,13 @@ module.exports = {
         browser.wait(until.presenceOf(elem), ms, 'Element taking too long to appear in the DOM');
     } ,
 
-    wait_css: function(css, ms){
+    wait_css: function(css, ms, index = null){
         let until = protractor.ExpectedConditions;
-        elem = element(by.css(css));
+        if ( index !== null ){
+            elem = element.all(by.css(css)).get(index);
+        } else {
+            elem = element(by.css(css));
+        }
         browser.wait(until.presenceOf(elem), ms, 'Element taking too long to appear in the DOM');
     } ,
 
