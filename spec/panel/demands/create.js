@@ -25,12 +25,7 @@ describe('Demands', () => {
             });
 
             it('check success sign', () => {
-                go(page.demands.get);
-                for_css.wait_css("input[value=is_paid]", 5000);
-                element(by.css('input[value=is_paid]')).click();
-                browser.sleep(500);
-                element(by.css('.btn.btn-primary')).click();
-                for_css.wait_xpath("//*[@id=\"demands\"]/tbody/tr[1]/td[11]/a[2]", 10000);
+                for_css.wait_xpath("//*[@id=\"demands\"]/tbody/tr[1]/td[11]/a[2]", 3000);
 
                 helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 0, "Подписана");
                 helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 3, "Подписана");
