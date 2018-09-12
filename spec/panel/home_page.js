@@ -1,6 +1,6 @@
 describe('Home page', function() {
     beforeAll(() => {
-        // browser.manage().window().maximize();
+            // browser.manage().window().maximize();
     });
 
     set(setting.angular_wait_false);

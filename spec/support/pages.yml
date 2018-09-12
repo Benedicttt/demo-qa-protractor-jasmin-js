@@ -59,7 +59,6 @@ demands:
         - demand_is_monthly_payment
         - demand_is_salary
         - demand_is_profits_distribution
-        - demand_is_advanced_payment
         - demand_is_plan_paid_date_period
       #       - regular_payment_at #Авансовый платеж
       #       - demand_is_distributed # Распределение

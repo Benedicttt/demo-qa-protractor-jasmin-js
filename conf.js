@@ -19,8 +19,73 @@ const outputFilename = './spec/support/user.json';
 const demands_shared = require('./spec/shared/demands.js');
 const services_shared = require('./spec/shared/services.js');
 
+let VideoReporter = require('protractor-video-reporter');
+let path = require('path');
+
+
+var addScreenShots = {
+    specDone: function (result) {
+        if (result.status === 'failed') {
+            browser.takeScreenshot().then(function (png) {
+                allure.createAttachment('Screen', function () {
+                    return new Buffer(png, 'base64')
+                }, 'image/png')();
+            });
+        }
+    }
+};
+
+VideoReporter.prototype.jasmineStarted = function () {
+    var self = this;
+    if (self.options.singleVideo) {
+        var new_date = new Date().toString();
+        var videoPath = path.join(self.options.baseDirectory, new_date.toString() + "protractor-specs.mpg");
+
+        self._startScreencast(videoPath);
+
+        if (self.options.createSubtitles) {
+            self._subtitles = [];
+            self._jasmineStartTime = new Date();
+        }
+    }
+};
+
+var videoReporter = new VideoReporter({
+    baseDirectory: "/Users/benedict/work/binomo/smoke/video/",
+    createSubtitles: true,
+    singleVideo: true,
+    ffmpegCmd: '/usr/local/bin/ffmpeg',
+    ffmpegArgs: [
+        '-f', 'avfoundation',
+        '-i', '1',
+        '-pix_fmt','yuv420p',
+        '-r','24',
+        '-video_size', 'woxga',
+        '-q:v','10',
+    ]
+});
+
+var getRandomString = function(length) {
+    var string = '';
+    var letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+    for (i = 0; i < length; i++) {
+        string += letters.charAt(Math.floor(Math.random() * letters.length));
+    }
+    return string;
+};
+
 exports.config = {
+    seleniumAddress: 'http://localhost:4444/wd/hub',
+    baseUrl: 'http://panel:3000',
+    // baseUrl: 'http://192.168.5.75:3000',
+    // baseUrl: 'http://localhost:3000',
+    // directConnect: true,
     capabilities: {
+        browserName: 'firefox',
+            'moz:firefoxOptions': {
+                args: ['--headless']
+            },
+
         browserName: 'chrome',
             chromeOptions: {
                 args: [
@@ -32,14 +97,7 @@ exports.config = {
             },
         // shardTestFiles: true,
         // maxInstances: 2,
-        browserName: 'firefox',
-            // 'moz:firefoxOptions': {
-            //     args: ['--headless']
-            // }
-
     },
-    directConnect: true,
-    baseUrl: 'http://localhost:3000',
     specs: [
         "spec/panel/home_page.js",
         "spec/panel/sign_up.js",
@@ -86,17 +144,6 @@ exports.config = {
         global.demands_shared  = demands_shared;
         global.services_shared = services_shared;
 
-        var addScreenShots = {
-            specDone: function (result) {
-                if (result.status === 'failed') {
-                    browser.takeScreenshot().then(function (png) {
-                        allure.createAttachment('Screen', function () {
-                            return new Buffer(png, 'base64')
-                        }, 'image/png')();
-                    });
-                }
-            }
-        };
 
         jasmine.getEnv().addReporter(addScreenShots);
         jasmine.getEnv().addReporter(new AllureReporter({
@@ -105,15 +152,8 @@ exports.config = {
             }
         }));
         jasmine.getEnv().addReporter(new SpecReporter( { displayStacktrace: 'all' } ));
+        // console.log(process.env);
+        process.env.recording_video === 'true' ? jasmine.getEnv().addReporter(videoReporter) : console.log("Video not recording")
     }
-};
 
-var getRandomString = function(length) {
-    var string = '';
-    var letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-    for (i = 0; i < length; i++) {
-        string += letters.charAt(Math.floor(Math.random() * letters.length));
-    }
-    return string;
 };
-
