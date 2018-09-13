@@ -14,7 +14,7 @@ const form = yaml.safeLoad(fs.readFileSync('spec/support/forms.yml', 'utf8'));
 const AllureReporter = require('jasmine-allure-reporter');
 const { SpecReporter } = require('jasmine-spec-reporter');
 
-const outputFilename = './spec/support/user.json';
+const outputFilename = './spec/support/';
 
 const demands_shared = require('./spec/shared/demands.js');
 const services_shared = require('./spec/shared/services.js');
@@ -75,11 +75,11 @@ var getRandomString = function(length) {
 };
 
 exports.config = {
-    seleniumAddress: 'http://localhost:4444/wd/hub',
-    baseUrl: 'http://panel:3000',
-    // baseUrl: 'http://192.168.5.75:3000',
-    // baseUrl: 'http://localhost:3000',
-    // directConnect: true,
+    // seleniumAddress: 'http://localhost:4444/wd/hub',
+    // baseUrl: 'http://panel:3000',
+
+    baseUrl: 'http://localhost:3000',
+    directConnect: true,
     capabilities: {
         browserName: 'firefox',
             'moz:firefoxOptions': {
@@ -103,6 +103,7 @@ exports.config = {
         "spec/panel/sign_up.js",
         "spec/panel/sign_in.js",
         "spec/panel/user_access/set_user_access_full.js",
+        "spec/panel/services/create.js",
         "spec/panel/**/*.js"
     ],
     allScriptsTimeout: 10000,
@@ -157,3 +158,8 @@ exports.config = {
     }
 
 };
+
+// arr = []
+//     %w[operation demand service].each { |index| arr << index.classify }
+// arr.each { |i| i.constantize.all.each { |i| i.delete } }
+

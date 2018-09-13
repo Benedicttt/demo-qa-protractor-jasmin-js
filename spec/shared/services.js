@@ -28,12 +28,12 @@ module.exports = {
         });
     },
 
-    service_create: function(){
+    service_frame: function() {
         it('service_service_source_id',  () => {
             expect(element(by.id('service_service_source_id')).isDisplayed()).toBeTruthy();
         });
 
-        page.services.ids.checkbox.forEach(function (id) {
+        page.services.as.ids.checkbox.forEach(function (id) {
             let elem = element(by.id(id.toString()));
 
             it(`ID: ${id}`,  () => {
@@ -42,13 +42,7 @@ module.exports = {
             });
         });
 
-        page.services.ids.selectors.forEach(function (id) {
-            it(`ID: ${id}`,  () => {
-                tag_selector.click_id_on_option(id.toString(), 1, 5000);
-            });
-        });
-
-        page.services.ids.inputs.forEach(function (id) {
+        page.services.as.ids.inputs.forEach(function (id) {
             let elem = element(by.id(id.toString()));
 
             it(`ID: ${id}`,  () => {
@@ -64,5 +58,23 @@ module.exports = {
                 }
             });
         });
+    },
+
+    create: function(from){
+        this.service_frame();
+
+        if ( from === 0) {
+            page.services.as.ids.selectors.forEach(function (id) {
+                it(`ID: ${id}`,  () => {
+                    id === 'service_service_source_id' ? tag_selector.click_id_on_option(id.toString(), from, 5000) : tag_selector.click_id_on_option(id.toString(), 1, 5000);
+                });
+            });
+        } else {
+            page.services.we.ids.selectors.forEach(function (id) {
+                it(`ID: ${id}`,  () => {
+                    id === 'service_service_source_id' ? tag_selector.click_id_on_option(id.toString(), from, 5000) : tag_selector.click_id_on_option(id.toString(), 1, 5000);
+                });
+            });
+        }
     }
 };

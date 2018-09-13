@@ -89,22 +89,39 @@ demands:
     title: 'Добавление заявки | СПОК'
 
 services:
-  ids:
-    selectors: !!seq
-      - service_service_source_id
-      - service_project_id
-      - service_expenditure_type_id
-      - service_expenditure_id
-      - service_contractor_type_id
-      - service_contractor_id
 
-    checkbox: !!seq
-      - service_is_rendered_during_period
-    attach: !!seq
-    inputs: !!seq
-      - service_purpose
-      - service_task
-      - service_amount
+  as:
+    ids:
+      selectors: !!seq
+        - service_service_source_id
+        - service_project_id
+        - service_contractor_type_id
+        - service_contractor_id
+        - service_nomenclature_id
+
+      checkbox: !!seq
+        - service_is_rendered_during_period
+      inputs: !!seq
+        - service_purpose
+        - service_task
+        - service_amount
+
+  we:
+    ids:
+      selectors: !!seq
+        - service_service_source_id
+        - service_project_id
+        - service_expenditure_type_id
+        - service_expenditure_id
+        - service_contractor_type_id
+        - service_contractor_id
+
+      checkbox: !!seq
+        - service_is_rendered_during_period
+      inputs: !!seq
+        - service_purpose
+        - service_task
+        - service_amount
 
   get: browser.get('/services')
   title: 'Услуги | СПОК'

@@ -34,7 +34,7 @@ describe('Demands', () => {
         });
     });
 
-    describe('Create service and returned with advance_payment', () => {
+    describe('Create service with advance_payment', () => {
         describe('Fill form inputs, select, checkbox:', () => {
             beforeAll( () => {
                 go(page.demands.new.get);
@@ -47,7 +47,9 @@ describe('Demands', () => {
             demands_shared.check_status_order_service();
             demands_shared.check_notify_for_demand();
         });
+    });
 
+    describe('Create return with advance_payment', () => {
         describe('Fill form inputs, select, checkbox:', () => {
             beforeAll( () => {
                 go(page.demands.new.get);

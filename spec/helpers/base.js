@@ -21,9 +21,10 @@ module.exports = {
         return element(by.id(id)).getAttribute(value);
     },
 
-    write_in_file: function (data) {
-        fs.writeFile(outputFilename, data, (error) => {  });
+    write_in_file: function (name_file, data) {
+        fs.writeFile(outputFilename + name_file, data, (error) => {  });
     },
+
     addCookie: function() {
         browser.get("/");
         browser.manage().deleteAllCookies();
@@ -38,6 +39,11 @@ module.exports = {
         );
         browser.get("/");
     },
+
+    last_number_service: function () {
+        return JSON.parse(fs.readFileSync('./spec/support/service.json'))['service']['we']['number'];
+    },
+
     sign_order_xpath: function (xpath_elem, index_elem, count_click) {
         for_css.wait_xpath(xpath_elem, 5000);
         element.all(by.css('.btn.btn-mini')).get(index_elem).click().then(function () {

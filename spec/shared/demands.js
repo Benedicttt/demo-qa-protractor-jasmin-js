@@ -84,8 +84,8 @@ module.exports = {
             expect(elem.getAttribute('value')).toEqual(page.demands.purse_number.toString());
         } else if(id.toString() === "demand_refundable_service_id") {
             elem.clear();
-            elem.sendKeys(page.demands.number_service);
-            expect(elem.getAttribute('value')).toEqual(page.demands.number_service.toString());
+            elem.sendKeys(helper.last_number_service());
+            expect(elem.getAttribute('value')).toEqual(helper.last_number_service().toString());
         } else {
             elem.clear();
             elem.sendKeys(id.toString());
@@ -155,7 +155,7 @@ module.exports = {
     },
 
     check_status_order_service: function() {
-        describe('Check order signed and order payed `returned`', () => {
+        describe('Check order signed and order payed `services`', () => {
             it('sign and pay', () => {
                 helper.sign_order_xpath("//*[@id=\"demands\"]/tbody/tr[1]/td[11]/a[2]", 1, 0);
                 helper.sign_order_xpath("//*[@id=\"demands\"]/tbody/tr[1]/td[12]/a[2]", 2, 0);
@@ -174,6 +174,12 @@ module.exports = {
 
     check_status_order_returned: function() {
         describe('Check order signed and order payed `returned`', () => {
+            it('unchecked is_paid in filter', () => {
+                for_css.wait_css("input[value=is_paid]", 5000);
+                element(by.css("input[value=is_paid]")).click();
+                action(page.demands.click_submit)
+
+            });
             it('sign and pay', () => {
                 helper.sign_order_xpath("//*[@id=\"demands\"]/tbody/tr[1]/td[12]/a[2]", 1, 0);
                 helper.sign_order_xpath("//*[@id=\"demands\"]/tbody/tr[1]/td[13]/a", 2, 1);
@@ -181,6 +187,7 @@ module.exports = {
 
             it('check success sign', () => {
                 go(page.demands.get);
+                browser.sleep(1000);
                 for_css.wait_xpath("//*[@id=\"demands\"]/tbody/tr[1]/td[12]/a[2]", 5000);
 
                 helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 1, "Подписана");

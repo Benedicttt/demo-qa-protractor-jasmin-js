@@ -17,7 +17,7 @@ describe('Sign up', function() {
                         "value": "${cookie[0].value}"
                     }
                 }`;
-            helper.write_in_file(data)
+            helper.write_in_file('user.json', data)
         });
     });
 
