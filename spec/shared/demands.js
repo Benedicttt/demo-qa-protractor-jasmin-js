@@ -163,7 +163,7 @@ module.exports = {
             });
 
             it('check success sign', () => {
-                for_css.wait_xpath("//*[@id=\"demands\"]/tbody/tr[1]/td[11]/a[2]", 3000);
+                for_css.wait_xpath("//*[@id=\"demands\"]/tbody/tr[1]/td[11]/a[2]", 5000);
 
                 helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 0, "Подписана");
                 helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 3, "Подписана");
@@ -174,22 +174,24 @@ module.exports = {
 
     check_status_order_returned: function() {
         describe('Check order signed and order payed `returned`', () => {
-            it('unchecked is_paid in filter', () => {
-                for_css.wait_css("input[value=is_paid]", 5000);
-                element(by.css("input[value=is_paid]")).click();
-                action(page.demands.click_submit)
 
-            });
             it('sign and pay', () => {
                 helper.sign_order_xpath("//*[@id=\"demands\"]/tbody/tr[1]/td[12]/a[2]", 1, 0);
                 helper.sign_order_xpath("//*[@id=\"demands\"]/tbody/tr[1]/td[13]/a", 2, 1);
             });
 
-            it('check success sign', () => {
+            it('unchecked is_paid in filter', () => {
                 go(page.demands.get);
-                browser.sleep(1000);
-                for_css.wait_xpath("//*[@id=\"demands\"]/tbody/tr[1]/td[12]/a[2]", 5000);
+                for_css.wait_css("#filter_is_paid > label", 5000);
+                element(by.css("#filter_is_paid > label")).click();
 
+                browser.actions().mouseMove(element.all(by.css("button.btn-primary")).get(0), {x: 10, y: 10,}).click().perform();
+                browser.sleep(200);
+                browser.actions().mouseMove(element.all(by.css("button.btn-primary")).get(0), {x: 10, y: 10,}).click().perform();
+                for_css.wait_xpath("//*[@id=\"demands\"]/tbody/tr[1]/td[12]/a[1]", 5000)
+            });
+
+            it('check success sign', () => {
                 helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 1, "Подписана");
                 helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 3, "Оплачена");
             });
