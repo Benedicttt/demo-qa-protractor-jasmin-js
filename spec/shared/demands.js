@@ -186,15 +186,12 @@ module.exports = {
                 element(by.css("#filter_is_paid > label")).click();
 
                 browser.actions().mouseMove(element.all(by.css("button.btn-primary")).get(0), {x: 10, y: 10,}).click().perform();
-                browser.sleep(200);
+                browser.sleep(750);
                 browser.actions().mouseMove(element.all(by.css("button.btn-primary")).get(0), {x: 10, y: 10,}).click().perform();
+                browser.sleep(700);
                 for_css.wait_xpath("//*[@id=\"demands\"]/tbody/tr[1]/td[12]/a[1]", 5000)
             });
-
-            it('check success sign', () => {
-                helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 1, "Подписана");
-                helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 3, "Оплачена");
-            });
+            
         });
     }
 };

@@ -31,6 +31,13 @@ describe('Demands', () => {
             demands_shared.returns();
             demands_shared.buttons();
             demands_shared.check_status_order_returned();
+
+            it('check success sign', () => {
+                for_css.wait_xpath("//*[@id=\"demands\"]/tbody/tr/td[13]", 5000);
+                helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 0, "Подписана");
+                helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 1, "Оплачена");
+
+            });
         });
     });
 
@@ -61,6 +68,13 @@ describe('Demands', () => {
             demands_shared.buttons();
             demands_shared.check_status_order_returned();
             demands_shared.check_notify_for_demand();
+
+            it('check success sign', () => {
+                for_css.wait_xpath("//*[@id=\"demands\"]/tbody/tr/td[13]", 5000);
+                helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 1, "Подписана");
+                helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 3, "Оплачена");
+
+            });
         });
     });
 });
