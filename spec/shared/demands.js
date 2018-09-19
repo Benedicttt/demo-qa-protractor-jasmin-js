@@ -191,7 +191,21 @@ module.exports = {
                 browser.sleep(700);
                 for_css.wait_xpath("//*[@id=\"demands\"]/tbody/tr[1]/td[12]/a[1]", 5000)
             });
-            
+
         });
+    },
+
+    check_dds: function() {
+        it('check DDS document', () => {
+            for_css.wait_css(".btn-group .icon-info-sign", 5000);
+            element.all(by.css(".btn-group i.icon-info-sign")).get(0).click();
+            element(by.css(".popover.clickover")).isDisplayed();
+
+            element.all(by.css(".show_entities > a")).get(2).getAttribute('href').then(function (value) {
+                let id = value.match(/\d+/g)[1];
+                let query = "/fin_indicators/operations/highlight_operation?operation_id=";
+                expect(value).toEqual(page.app_host + query + id);
+            })
+        } );
     }
 };

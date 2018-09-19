@@ -18,6 +18,7 @@ describe('Demands', () => {
             demands_shared.services();
             demands_shared.buttons();
             demands_shared.check_status_order_service();
+            demands_shared.check_dds();
         });
     });
 
@@ -36,8 +37,9 @@ describe('Demands', () => {
                 for_css.wait_xpath("//*[@id=\"demands\"]/tbody/tr/td[13]", 5000);
                 helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 0, "Подписана");
                 helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 1, "Оплачена");
-
             });
+
+            demands_shared.check_dds();
         });
     });
 
@@ -53,6 +55,7 @@ describe('Demands', () => {
             demands_shared.buttons();
             demands_shared.check_status_order_service();
             demands_shared.check_notify_for_demand();
+            demands_shared.check_dds();
         });
     });
 
@@ -73,8 +76,9 @@ describe('Demands', () => {
                 for_css.wait_xpath("//*[@id=\"demands\"]/tbody/tr/td[13]", 5000);
                 helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 1, "Подписана");
                 helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 3, "Оплачена");
-
             });
+
+            demands_shared.check_dds();
         });
     });
 });
