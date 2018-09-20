@@ -195,17 +195,52 @@ module.exports = {
         });
     },
 
-    check_dds: function() {
-        it('check DDS document', () => {
+    check_data_popup: function(name) {
+        it('Find popup', () => {
             for_css.wait_css(".btn-group .icon-info-sign", 5000);
-            element.all(by.css(".btn-group i.icon-info-sign")).get(0).click();
-            element(by.css(".popover.clickover")).isDisplayed();
+            current_popup = element.all(by.css(".btn-group i.icon-info-sign")).get(0)
+            current_popup.click();
+            current_popup.isDisplayed();
+        });
 
-            element.all(by.css(".show_entities > a")).get(2).getAttribute('href').then(function (value) {
-                let id = value.match(/\d+/g)[1];
-                let query = "/fin_indicators/operations/highlight_operation?operation_id=";
-                expect(value).toEqual(page.app_host + query + id);
-            })
-        } );
+        if ( name == "DEMANDS" ){
+            it('check DEMANDS document', () => {
+                elem = element.all(by.css(".show_entities > a")).get(1);
+                for_css.wait_css(".show_entities > a", 5000, 1);
+
+                elem.getAttribute('href').then(function (value) {
+                    let id = value.match(/\d+/g)[1];
+                    let query = "/services/highlight_service?service_id=";
+                    expect(value).toEqual(page.app_host + query + id);
+                })
+            });
+        }
+
+        if ( name == "SERVICE" ){
+            it('check SERVICE document', () => {
+                elem = element.all(by.css(".show_entities > a")).get(1);
+                for_css.wait_css(".show_entities > a", 5000, 1);
+
+                elem.getAttribute('href').then(function (value) {
+                    let id = value.match(/\d+/g)[1];
+                    let query = "/services/highlight_service?service_id=";
+                    expect(value).toEqual(page.app_host + query + id);
+                })
+            });
+        }
+
+        if ( name == "DDS" ){
+            it('check DDS document', () => {
+                elem = element.all(by.css(".show_entities > a")).get(2);
+                for_css.wait_css(".show_entities > a", 5000, 2);
+
+                elem.getAttribute('href').then(function (value) {
+                    let id = value.match(/\d+/g)[1];
+                    let query = "/fin_indicators/operations/highlight_operation?operation_id=";
+                    expect(value).toEqual(page.app_host + query + id);
+                })
+            });
+
+        }
     }
 };

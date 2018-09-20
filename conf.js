@@ -18,6 +18,7 @@ const outputFilename = './spec/support/';
 
 const demands_shared = require('./spec/shared/demands.js');
 const services_shared = require('./spec/shared/services.js');
+const receipts_shared = require('./spec/shared/receipts.js');
 
 let VideoReporter = require('protractor-video-reporter');
 let path = require('path');
@@ -89,7 +90,6 @@ exports.config = {
         browserName: 'chrome',
             chromeOptions: {
                 args: [
-                    // "--headless",
                     "--no-sandbox",
                     "--disable-gpu",
                     "--window-size=1980,1080"
@@ -144,6 +144,7 @@ exports.config = {
 
         global.demands_shared  = demands_shared;
         global.services_shared = services_shared;
+        global.receipts_shared = receipts_shared;
 
 
         jasmine.getEnv().addReporter(addScreenShots);

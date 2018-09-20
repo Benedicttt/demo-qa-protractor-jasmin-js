@@ -33,7 +33,7 @@ module.exports = {
             expect(element(by.id('service_service_source_id')).isDisplayed()).toBeTruthy();
         });
 
-        page.services.as.ids.checkbox.forEach(function (id) {
+        page.services.us.ids.checkbox.forEach(function (id) {
             let elem = element(by.id(id.toString()));
 
             it(`ID: ${id}`,  () => {
@@ -42,7 +42,7 @@ module.exports = {
             });
         });
 
-        page.services.as.ids.inputs.forEach(function (id) {
+        page.services.us.ids.inputs.forEach(function (id) {
             let elem = element(by.id(id.toString()));
 
             it(`ID: ${id}`,  () => {
@@ -64,7 +64,7 @@ module.exports = {
         this.service_frame();
 
         if ( from === 0) {
-            page.services.as.ids.selectors.forEach(function (id) {
+            page.services.us.ids.selectors.forEach(function (id) {
                 it(`ID: ${id}`,  () => {
                     id === 'service_service_source_id' ? tag_selector.click_id_on_option(id.toString(), from, 5000) : tag_selector.click_id_on_option(id.toString(), 1, 5000);
                 });

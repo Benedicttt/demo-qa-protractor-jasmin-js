@@ -40,8 +40,12 @@ module.exports = {
         browser.get("/");
     },
 
-    last_number_service: function () {
+    first_number_service: function () {
         return JSON.parse(fs.readFileSync('./spec/support/service.json'))['service']['we']['number'];
+    },
+
+    last_number_service: function () {
+        return JSON.parse(fs.readFileSync('./spec/support/service.json'))['service']['us']['number'];
     },
 
     sign_order_xpath: function (xpath_elem, index_elem, count_click) {
@@ -62,6 +66,7 @@ module.exports = {
 
     check_success_sign: function (css, index_elem = null, expect_text = null, log = null){
         for_css.wait_css("td.no-wrap > a, td.no-wrap > span", 5000);
+        browser.sleep(500);
         element.all(by.css(css)).get(index_elem).getText().then(function (result) {
             if ( log === true) { console.log(result, index_elem) }
             expect(result).toEqual(expect_text)

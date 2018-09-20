@@ -18,7 +18,10 @@ describe('Demands', () => {
             demands_shared.services();
             demands_shared.buttons();
             demands_shared.check_status_order_service();
-            demands_shared.check_dds();
+            
+            demands_shared.check_data_popup("SERVICE");
+            demands_shared.check_data_popup("DDS");
+            demands_shared.check_data_popup("DEMANDS");
         });
     });
 
@@ -39,7 +42,9 @@ describe('Demands', () => {
                 helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 1, "Оплачена");
             });
 
-            demands_shared.check_dds();
+            demands_shared.check_data_popup("SERVICE");
+            demands_shared.check_data_popup("DDS");
+            demands_shared.check_data_popup("DEMANDS");
         });
     });
 
@@ -55,11 +60,14 @@ describe('Demands', () => {
             demands_shared.buttons();
             demands_shared.check_status_order_service();
             demands_shared.check_notify_for_demand();
-            demands_shared.check_dds();
+            
+            demands_shared.check_data_popup("SERVICE");
+            demands_shared.check_data_popup("DDS");
+            demands_shared.check_data_popup("DEMANDS");
         });
     });
 
-    describe('Create return with advance_payment', () => {
+    describe('Create return with advance_payment.', () => {
         describe('Fill form inputs, select, checkbox:', () => {
             beforeAll( () => {
                 go(page.demands.new.get);
@@ -74,11 +82,13 @@ describe('Demands', () => {
 
             it('check success sign', () => {
                 for_css.wait_xpath("//*[@id=\"demands\"]/tbody/tr/td[13]", 5000);
-                helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 1, "Подписана");
-                helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 3, "Оплачена");
+                helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 0, "Подписана");
+                helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 1, "Оплачена");
             });
 
-            demands_shared.check_dds();
+            demands_shared.check_data_popup("SERVICE");
+            demands_shared.check_data_popup("DDS");
+            demands_shared.check_data_popup("DEMANDS");
         });
     });
 });

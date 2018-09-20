@@ -9,7 +9,7 @@ describe('Services', () => {
     });
 
     describe('Create service', () => {
-        describe('Fill form inputs for AS, select, checkbox:', () => {
+        describe('Fill form inputs for US, select, checkbox:', () => {
 
             beforeAll( () => {
                 go(page.services.new.get);
@@ -19,12 +19,12 @@ describe('Services', () => {
             afterAll( () => {
                 for_css.wait_xpath("//*[@id=\"services\"]/tbody/tr[1]/td[1]", 5000);
                 element(by.xpath("//*[@id=\"services\"]/tbody/tr[1]/td[1]")).getText().then(function (text) {
-                    let data = `{ "service": { "we": { "number": ${text} } } }`;
+                    let data = `{ "service": { "us": { "number": ${text} }, "we": { "number": ${parseInt(text) + 1 } } } }`;
                     helper.write_in_file('service.json', data)
                 });
             });
 
-            services_shared.create(0); //0 - we, 1 - as
+            services_shared.create(0); //0 - we, 1 - us
             services_shared.buttons();
 
             it('sign', () => {
@@ -44,7 +44,7 @@ describe('Services', () => {
                 expect(browser.getTitle()).toEqual(page.services.new.title);
             });
 
-            services_shared.create(1); //0 - we, 1 - as
+            services_shared.create(1); //0 - we, 1 - us
             services_shared.buttons();
 
             it('sign', () => {
