@@ -12,6 +12,7 @@ describe('Finances receipts', () => {
     
         receipts_shared.fill_data();
         receipts_shared.buttons();
+        receipts_shared.click_popup_info();
         receipts_shared.check_data_popup("SERVICE");
         receipts_shared.check_data_popup("DDS");
     });
@@ -29,6 +30,7 @@ describe('Finances receipts', () => {
         receipts_shared.fill_data();
         receipts_shared.fill_data_return();
         receipts_shared.buttons();
+        receipts_shared.click_popup_info();
         receipts_shared.check_data_popup("DDS", 0);
     });
 
@@ -50,7 +52,6 @@ describe('Finances receipts', () => {
         receipts_shared.check_data_popup("DDS")
         receipts_shared.check_data_popup("NDS", "us")
         receipts_shared.check_data_popup("NDS", "we")
-        
     });
 });
 
