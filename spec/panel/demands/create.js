@@ -16,20 +16,37 @@ describe('Demands', () => {
 
         describe('Fill form inputs, select, checkbox:', () => {
             demands_shared.services();
-            browser.sleep(1000)
-            
-            it('', function() {
+
+            it('add inventory', () => {
                 tag_selector.from_text('css', '#demand_contractor_type_id > option', "--  На имущество")
-                browser.sleep(6000)
+
+                for_css.wait_id('link_service_properties', 5000)
+                element(by.id('link_service_properties')).click()
+
+                for_css.wait_id('service_properties_amount', 3000)
+                element(by.id('service_properties_amount')).sendKeys('1');
+
+                element(by.id('service_properties_name')).sendKeys('--  На имущество');
+                element.all(by.css('.btn-primary')).get(0).click()
+                tag_selector.from_text('css', '#demand_contractor_id > option', " Vendor Properties : Контрагент #50")
+
+                for_css.wait_id('create_distribution', 2000);
+                element(by.id('create_distribution')).click();
+                for_css.wait_id('distribution_share', 2000);
+                element(by.id('distribution_share')).sendKeys(1);
+                action(page.demands.click_submit);
             })
-        
-            // demands_shared.services();
-            // demands_shared.buttons();
-            // demands_shared.check_status_order_service();
+
+            demands_shared.buttons();
+            it('', () => {
+                helper.sign_order_xpath("//*[@id=\"demands\"]/tbody/tr[1]/td[11]/a[2]", 1, 0);
+            })
             
-            // demands_shared.check_data_popup("SERVICE");
-            // demands_shared.check_data_popup("DDS");
-            // demands_shared.check_data_popup("DEMANDS");
+            demands_shared.check_status_order_service();
+
+            demands_shared.check_data_popup("SERVICE");
+            demands_shared.check_data_popup("DDS");
+            demands_shared.check_data_popup("DEMANDS");
         });
     });
 
