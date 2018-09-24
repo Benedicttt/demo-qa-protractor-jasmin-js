@@ -1,5 +1,6 @@
 describe('User add full access on admin', function() {
     beforeAll(function () {
+        browser.driver.manage().window().maximize();
         user_object.authorization(admin);
         go(page.users.get);
 
@@ -34,7 +35,6 @@ describe('User add full access on admin', function() {
         var until = protractor.ExpectedConditions;
         checkbox = element.all(by.css("label > input.project"));
         browser.wait(until.presenceOf(checkbox), 5000, 'Element taking too long to appear in the DOM');
-
         checkbox.each(function (box) {
             browser.actions().mouseMove(box, {x: 10, y: 10,}).click().perform();
             expect(box.getAttribute('checked')).toBeTruthy();

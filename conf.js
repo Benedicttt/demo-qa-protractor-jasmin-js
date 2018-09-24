@@ -1,6 +1,6 @@
 const yaml = require('js-yaml');
 const fs = require('fs');
-let user = JSON.parse(fs.readFileSync('./spec/support/user.json'));
+const path = require('path');
 
 const user_object = require('./spec/panel/page_object/user.js');
 const helper = require('./spec/helpers/base.js');
@@ -19,9 +19,10 @@ const outputFilename = './spec/support/';
 const demands_shared = require('./spec/shared/demands.js');
 const services_shared = require('./spec/shared/services.js');
 const receipts_shared = require('./spec/shared/receipts.js');
+const conversion_shared = require('./spec/shared/conversion.js');
 
+let user = JSON.parse(fs.readFileSync('./spec/support/user.json'));
 let VideoReporter = require('protractor-video-reporter');
-let path = require('path');
 
 
 var addScreenShots = {
@@ -76,11 +77,9 @@ var getRandomString = function(length) {
 };
 
 exports.config = {
-    // seleniumAddress: 'http://localhost:4444/wd/hub',
-    // baseUrl: 'http://panel:3000',
-
+    // seleniumAddress: 'http://localhost:9515',
     baseUrl: 'http://localhost:3000',
-    directConnect: true,
+    // directConnect: true,
     capabilities: {
         browserName: 'firefox',
             'moz:firefoxOptions': {
@@ -97,6 +96,10 @@ exports.config = {
             },
         // shardTestFiles: true,
         // maxInstances: 2,
+
+        browserName: 'phantomjs',
+        'phantomjs.binary.path': require('phantomjs-prebuilt').path,
+        'phantomjs.cli.args': ['--logfile=PATH', '--loglevel=DEBUG']  
     },
     specs: [
         "spec/panel/home_page.js",
@@ -145,6 +148,7 @@ exports.config = {
         global.demands_shared  = demands_shared;
         global.services_shared = services_shared;
         global.receipts_shared = receipts_shared;
+        global.conversion_shared = conversion_shared;
 
 
         jasmine.getEnv().addReporter(addScreenShots);

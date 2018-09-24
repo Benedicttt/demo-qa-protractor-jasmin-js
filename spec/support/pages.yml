@@ -172,8 +172,39 @@ receipts:
       - receipt_purpose
       - receipt_amount
       - receipt_amocrm_id
-    selectors_nds:
+    selectors_nds: !!seq
       - receipt_project_us_nds
       - receipt_project_we_nds
       - receipt_nds_percent
+
+conversion:
+  title: 'Конвертация | СПОК'
+  purse_number: '4548 6584 4848 9987'
+  purpose: 'for testing'
+  amount: 100
+  comment: 'For Testing'
+  click_submit: 'browser.actions().mouseMove(element.all(by.css("button.btn-primary")).get(0), {x: 10, y: 10,}).click().perform();'
+  get: browser.get('/fin_operations/money_transfers/new')
+  ids:
+    selectors: !!seq
+      - money_transfer_sender_project_id
+      - money_transfer_sender_account_id
+      - money_transfer_receiver_project_id
+      - money_transfer_receiver_account_id
+      - money_transfer_cc_project_id
+    checkboxes: !!seq
+      - money_transfer_is_commission_exist
+      - money_transfer_is_commission_from_sender
+    inputs: !!seq
+      - money_transfer_sender_amount
+      - money_transfer_receiver_amount
+      - money_transfer_commission
+      - money_transfer_comment
+    selectors_nds: !!seq
+      - money_transfer_project_us_nds
+      - money_transfer_project_we_nds
+      - money_transfer_nds_percent
       
+
+
+
