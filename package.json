@@ -4,8 +4,6 @@
   "description": "",
   "main": "conf.js",
   "dependencies": {
-    "angular": "^1.7.4",
-    "chrome": "^0.1.0",
     "ffmpeg": "0.0.4",
     "fs-extra": "^7.0.0",
     "html-reporter": "^2.21.3",
@@ -24,7 +22,6 @@
     "protractor-html-reporter-2": "^1.0.4",
     "protractor-http-client": "^1.0.4",
     "protractor-video-reporter": "^0.3.0",
-    "require-all": "^3.0.0",
     "webdriver": "^5.0.0-alpha.7",
     "yamljs": "^0.3.0"
   },
@@ -34,7 +31,8 @@
     "grunt-protractor-runner": "^5.0.0",
     "parallel-protractor": "^1.0.0",
     "phantomjs": "^2.1.7",
-    "protractor-beautiful-reporter": "^1.2.5"
+    "protractor-beautiful-reporter": "^1.2.5",
+    "webdriver-manager": "^12.1.0"
   },
   "scripts": {
     "chrome": "protractor conf.js  --browser chrome --continue-on-error --disableChecks",

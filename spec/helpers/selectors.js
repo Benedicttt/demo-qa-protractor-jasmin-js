@@ -16,7 +16,7 @@ module.exports = {
         elem = element(by.xpath(xpath)).all(by.tagName('option'));
         browser.wait(until.presenceOf(elem), ms, 'Element taking too long to appear in the DOM');
     },
-/////////////////////////////////////////////////
+
     click_id_on_option: (id, index, ms) => {
         tag_selector.wait_id_select(id, ms);
         element(by.id(id)).all(by.tagName('option')).then(function(options){
@@ -36,6 +36,19 @@ module.exports = {
         element(by.xpath(xpath)).all(by.tagName('option')).then(function(options){
             options[index].click();
         });
+    },
+
+    from_text: function(type, data_selector, search_text) {
+        let selectors = element.all(by[ type ? 'css' : '' || type ? 'id' : '' || type ? 'xpath' : '' ](data_selector))
+        selectors.each(function(elem) {
+            elem.getText().then(function(text) {
+                console.log(text)
+                if ( text === search_text ) {
+                    elem.click()
+                    expect(elem.getText()).toEqual(search_text)
+                } 
+            })
+        })
     }
 };
 
