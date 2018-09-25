@@ -31,7 +31,7 @@ module.exports = {
     fill_data: function() {
         page.conversion.ids.selectors.forEach(function (id) {
             it(`ID: ${id}`,  () => {
-                tag_selector.click_id_on_option(id.toString(), 2, 2000);
+                tag_selector.click_id_on_option(id.toString(), 2, 5000);
             });
         });
 
@@ -67,7 +67,7 @@ module.exports = {
         it(`fill conversion_is_nds`,  () => {
             page.conversion.ids.selectors_nds.forEach(function (id) {
                 it(`ID: ${id}`,  () => {
-                    tag_selector.click_id_on_option(id.toString(), 2, 2000);
+                    tag_selector.click_id_on_option(id.toString(), 2, 5000);
                 });
             });
 

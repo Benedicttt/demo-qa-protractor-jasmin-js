@@ -52,7 +52,7 @@ module.exports = {
         for_css.wait_xpath(xpath_elem, 5000);
         element.all(by.css('.btn.btn-mini')).get(index_elem).click().then(function () {
             browser.sleep(1000);
-            for_css.wait_css('#modal form', 4000);
+            for_css.wait_css('#modal form', 10000);
             if (count_click > 0) {
                 element(by.css('#modal form')).submit();
                 browser.sleep(1000);
