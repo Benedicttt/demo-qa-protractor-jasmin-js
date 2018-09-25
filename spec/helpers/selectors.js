@@ -40,9 +40,9 @@ module.exports = {
 
     from_text: function(type, data_selector, search_text) {
         let selectors = element.all(by[ type ? 'css' : '' || type ? 'id' : '' || type ? 'xpath' : '' ](data_selector))
-        type === 'css' ? for_css.wait_css(data_selector, 3000) : console.log("Wrong" + `'${data_selector}'` );
-        type === 'id' ? for_css.wait_id(data_selector, 3000) : console.log("Wrong" + `'${data_selector}'` );
-        type === 'xpath' ? for_css.wait_xpath(data_selector, 3000) : console.log("Wrong" + `'${data_selector}'` );
+        type === 'css' ? for_css.wait_css(data_selector, 3000) : '';
+        type === 'id' ? for_css.wait_id(data_selector, 3000) : '';
+        type === 'xpath' ? for_css.wait_xpath(data_selector, 3000) : '';
 
         selectors.each(function(elem) {
             elem.getText().then(function(text) {
