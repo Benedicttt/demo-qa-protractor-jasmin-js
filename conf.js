@@ -91,7 +91,7 @@ exports.config = {
                 args: [
                     "--no-sandbox",
                     "--disable-gpu",
-                    "--window-size=1980,1080"
+                    "--window-size=1600,900"
                 ]
             },
         // shardTestFiles: true,

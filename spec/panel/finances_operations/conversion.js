@@ -2,6 +2,7 @@ describe('Finances conversions', () => {
     describe('Create conversion not NDS', () => {
         beforeAll( () => {
             user_object.authorization(helper.user_email_last());
+            browser.driver.manage().window().maximize();
         });
         
         it(`Go to page and check title ${page.conversion.title}`,  () => {

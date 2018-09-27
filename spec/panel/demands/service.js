@@ -1,6 +1,7 @@
 describe('Demands', () => {
     beforeAll( () => {
         user_object.authorization(helper.user_email_last());
+        browser.driver.manage().window().maximize();
     });
 
     it(`Go to page and check title ${page.demands.title}`,  () => {
@@ -85,13 +86,19 @@ describe('Demands', () => {
                 go(page.demands.get);
             });
             
-            it('copy return document', () => {
+            it('copy service document', () => {
+                for_css.wait_css("#filter_is_paid > label", 5000);
+                element(by.css("#filter_is_paid > label")).click();
+
                 for_css.wait_css('.icon-file', 5000)
                 element.all(by.css('.icon-file')).get(0).click()
+                
+                for_css.wait_css(".btn.btn-primary", 5000)
+                element.all(by.css(".btn.btn-primary")).get(0).click()
             })
 
             demands_shared.buttons();
-            demands_shared.check_status_order_returned();
+            demands_shared.check_status_order_service();
             
             demands_shared.check_data_popup("SERVICE");
             demands_shared.check_data_popup("DDS");

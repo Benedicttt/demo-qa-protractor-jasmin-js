@@ -1,6 +1,7 @@
 describe('Demands', () => {
     beforeAll( () => {
         user_object.authorization(helper.user_email_last());
+        browser.driver.manage().window().maximize();
     });
 
     it(`Go to page and check title ${page.demands.title}`,  () => {
@@ -63,12 +64,16 @@ describe('Demands', () => {
             });
             
             it('copy return document', () => {
+                for_css.wait_css("#filter_is_paid > label", 5000);
+                element(by.css("#filter_is_paid > label")).click();
+
                 for_css.wait_css('.icon-file', 5000)
                 element.all(by.css('.icon-file')).get(0).click()
                 for_css.wait_id('demand_is_refund', 5000)
 
                 expect(element(by.id('demand_is_refund')).getAttribute('checked')).toBeTruthy();
                 element(by.id('demand_is_refund')).click()
+                
                 expect(element(by.id('demand_is_refund')).getAttribute('checked')).toBeFalsy();
                 element(by.id('demand_is_refund')).click()
 

@@ -182,6 +182,7 @@ module.exports = {
 
             it('unchecked is_paid in filter', () => {
                 go(page.demands.get);
+                
                 for_css.wait_css("#filter_is_paid > label", 5000);
                 element(by.css("#filter_is_paid > label")).click();
 
