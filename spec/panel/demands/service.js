@@ -80,29 +80,31 @@ describe('Demands', () => {
         });
     });
 
-    describe('Copy service demand', () => {
-        describe('Click btn copy and check', () => {
-            beforeAll( () => {
-                go(page.demands.get);
-            });
-            
-            it('copy service document', () => {
-                for_css.wait_css("#filter_is_paid > label", 5000);
-                element(by.css("#filter_is_paid > label")).click();
-
-                for_css.wait_css('.icon-file', 5000)
-                element.all(by.css('.icon-file')).get(0).click()
-                
-                for_css.wait_css(".btn.btn-primary", 5000)
-                element.all(by.css(".btn.btn-primary")).get(0).click()
-            })
-
-            demands_shared.buttons();
-            demands_shared.check_status_order_service();
-            
-            demands_shared.check_data_popup("SERVICE");
-            demands_shared.check_data_popup("DDS");
-            demands_shared.check_data_popup("DEMANDS");
+    describe('Copy service demand, click btn copy and check', () => {
+        beforeAll( () => {
+            go(page.demands.get);
         });
+        
+        it('copy service document', () => {
+            for_css.wait_css("#filter_is_paid > label", 5000);
+            element(by.css("#filter_is_paid > label")).click();
+            element(by.id('filter_all')).click()
+    
+            for_css.wait_css(".btn.btn-primary", 5000)
+            element(by.css(".btn.btn-primary")).click()
+
+            for_css.wait_css('.icon-file', 5000)
+            element.all(by.css('.icon-file')).get(0).click()
+            
+            for_css.wait_css(".btn.btn-primary", 5000)
+            element(by.css(".btn.btn-primary")).click()
+        })
+
+        demands_shared.buttons();
+        demands_shared.check_status_order_service();
+        
+        demands_shared.check_data_popup("SERVICE");
+        demands_shared.check_data_popup("DDS");
+        demands_shared.check_data_popup("DEMANDS");
     });
 });

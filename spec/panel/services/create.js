@@ -1,7 +1,6 @@
 describe('Services', () => {
     beforeAll( () => {
         user_object.authorization(helper.user_email_last());
-        browser.driver.manage().window().maximize();
     });
 
     it(`Go to page and check title ${page.services.title}`,  () => {
@@ -14,6 +13,7 @@ describe('Services', () => {
 
             beforeAll( () => {
                 go(page.services.new.get);
+                browser.driver.manage().window().maximize();
                 expect(browser.getTitle()).toEqual(page.services.new.title);
             });
 
@@ -42,6 +42,7 @@ describe('Services', () => {
 
             beforeAll( () => {
                 go(page.services.new.get);
+                browser.driver.manage().window().maximize();
                 expect(browser.getTitle()).toEqual(page.services.new.title);
             });
 

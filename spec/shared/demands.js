@@ -101,7 +101,6 @@ module.exports = {
             browser.wait(protractor.ExpectedConditions.visibilityOf(btn), 6000);
             browser.wait(EC.elementToBeClickable(btn.isEnabled()), 5000);
             btn.click();
-            // action(page.demands.click_submit);
         });
 
         it("click accept",  () => {
@@ -174,25 +173,26 @@ module.exports = {
 
     check_status_order_returned: function() {
         describe('Check order signed and order payed `returned`', () => {
-
             it('sign and pay', () => {
-                helper.sign_order_xpath("//*[@id=\"demands\"]/tbody/tr[1]/td[12]/a[2]", 1, 0);
+                helper.sign_order_xpath("//*[@id=\"demands\"]/tbody/tr[1]/td[12]/a[2]", 1, 0);    
                 helper.sign_order_xpath("//*[@id=\"demands\"]/tbody/tr[1]/td[13]/a", 2, 1);
             });
 
             it('unchecked is_paid in filter', () => {
                 go(page.demands.get);
-                
+
                 for_css.wait_css("#filter_is_paid > label", 5000);
                 element(by.css("#filter_is_paid > label")).click();
+                element(by.id('filter_all')).click()
 
+                browser.sleep(1000);
                 browser.actions().mouseMove(element.all(by.css("button.btn-primary")).get(0), {x: 10, y: 10,}).click().perform();
-                browser.sleep(750);
-                browser.actions().mouseMove(element.all(by.css("button.btn-primary")).get(0), {x: 10, y: 10,}).click().perform();
-                browser.sleep(700);
-                for_css.wait_xpath("//*[@id=\"demands\"]/tbody/tr[1]/td[12]/a[1]", 5000)
+                element.all(by.css('td.no-wrap > a, td.no-wrap > span')).get(0).getText().then((text) => {
+                    if ( text === '. . . . . .' ) { 
+                        browser.sleep(3000)      
+                    }
+                });
             });
-
         });
     },
 
