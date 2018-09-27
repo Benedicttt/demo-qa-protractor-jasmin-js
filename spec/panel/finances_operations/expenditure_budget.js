@@ -1,3 +1,5 @@
+
+
 describe('Expenditure budget', () => {
     beforeAll( () => {
         user_object.authorization(helper.user_email_last());
@@ -28,20 +30,25 @@ describe('Expenditure budget', () => {
             for_css.wait_css(".table.table-striped.table-condensed.treeview a.btn.btn-mini", 5000)
         })
 
-        it('click btn`s', () => {
+        let random_number = Math.floor(Math.random() * 100); 
+        let random_number_index = Math.floor(Math.random() * 10); 
 
-            element.all(by.xpath("/html/body/div[3]/table")).each((table)=> {
-                table(by.xpath("/tbody/tr")).each((tr)=> {
-                    console.log(tr)
+        it('click btn`s, fill data', () => {
+            path_from_button = "//td[5]/span[contains(text(), '—')]/../..//parent::*/a[@title='Создать']"
+            element.all(by.xpath(path_from_button)).get(random_number_index).click()    
+                for_css.wait_id('budget_amount', 5000)
+                element(by.id('budget_amount')).clear();
+                element(by.id('budget_amount')).sendKeys(random_number);
+                element(by.id("create-confirm")).click();
+        })
 
-                })
-            })
-            // element.all(by.css(".table.table-striped.table-condensed.treeview a.btn.btn-mini")).get(1).click()
-            // for_css.wait_id('budget_amount', 5000)
-            // element(by.id('budget_amount')).clear();
-            // element(by.id('budget_amount')).sendKeys('11');
-            // element(by.id("create-confirm")).click();
-            browser.sleep(5000)
+        it('check budget', () => {
+            result_in_table = `//td[3]/span[contains(text(), '${random_number}.0')]`
+            for_css.wait_xpath(result_in_table, 5000);    
+
+            let expected = element.all(by.xpath(result_in_table)).get(0) 
+            expect(expected.getAttribute('title')).toEqual("Сумма бюджетов за выбранный период")
+            expect(expected.getText()).toEqual(random_number.toString() + ".0" )
         })
     })
 })

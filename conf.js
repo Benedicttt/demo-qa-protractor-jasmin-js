@@ -163,7 +163,7 @@ exports.config = {
     }
 
 };
-//
+
 // arr = []
 //     %w[operation demand service].each { |index| arr << index.classify }
 // arr.each { |i| i.constantize.all.each { |i| i.delete } }
