@@ -78,4 +78,24 @@ describe('Demands', () => {
             demands_shared.check_data_popup("DEMANDS");
         });
     });
+
+    describe('Copy service demand', () => {
+        describe('Click btn copy and check', () => {
+            beforeAll( () => {
+                go(page.demands.get);
+            });
+            
+            it('copy return document', () => {
+                for_css.wait_css('.icon-file', 5000)
+                element.all(by.css('.icon-file')).get(0).click()
+            })
+
+            demands_shared.buttons();
+            demands_shared.check_status_order_returned();
+            
+            demands_shared.check_data_popup("SERVICE");
+            demands_shared.check_data_popup("DDS");
+            demands_shared.check_data_popup("DEMANDS");
+        });
+    });
 });

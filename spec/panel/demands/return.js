@@ -55,4 +55,38 @@ describe('Demands', () => {
             demands_shared.check_data_popup("DEMANDS");
         });
     });
+
+    describe('Copy return demand', () => {
+        describe('Click btn copy and check', () => {
+            beforeAll( () => {
+                go(page.demands.get);
+            });
+            
+            it('copy return document', () => {
+                for_css.wait_css('.icon-file', 5000)
+                element.all(by.css('.icon-file')).get(0).click()
+                for_css.wait_id('demand_is_refund', 5000)
+
+                expect(element(by.id('demand_is_refund')).getAttribute('checked')).toBeTruthy();
+                element(by.id('demand_is_refund')).click()
+                expect(element(by.id('demand_is_refund')).getAttribute('checked')).toBeFalsy();
+                element(by.id('demand_is_refund')).click()
+
+                elem = element(by.id('demand_refundable_service_id'))
+                elem.clear();
+                elem.sendKeys(helper.last_number_service());
+                expect(elem.getAttribute('value')).toEqual(helper.last_number_service().toString());
+               
+                for_css.wait_css(".btn.btn-primary", 5000)
+                element(by.css(".btn.btn-primary")).click()
+            })
+
+            demands_shared.buttons();
+            demands_shared.check_status_order_returned();
+            
+            demands_shared.check_data_popup("SERVICE");
+            demands_shared.check_data_popup("DDS");
+            demands_shared.check_data_popup("DEMANDS");
+        });
+    });
 });
