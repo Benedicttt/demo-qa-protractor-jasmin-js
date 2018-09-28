@@ -89,7 +89,7 @@ describe('Demands', () => {
             for_css.wait_css("#filter_is_paid > label", 5000);
             element(by.css("#filter_is_paid > label")).click();
  
-            browser.sleep(500)
+            browser.sleep(1000)
             element(by.id('filter_all')).click()
 
             for_css.wait_css(".btn.btn-primary", 5000)

@@ -46,6 +46,7 @@ describe('Demands', () => {
             demands_shared.check_notify_for_demand();
 
             it('check success sign', () => {
+                browser.sleep(500)
                 for_css.wait_xpath("//*[@id=\"demands\"]/tbody/tr/td[13]", 5000);
                 helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 0, "Подписана");
                 helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 1, "Оплачена");
@@ -66,15 +67,15 @@ describe('Demands', () => {
             it('copy return document', () => {
                 for_css.wait_css("#filter_is_paid > label", 5000);
                 element(by.css("#filter_is_paid > label")).click();
-     
+                browser.sleep(3000)
+
                 for_css.wait_css('.icon-file', 5000)
                 element.all(by.css('.icon-file')).get(0).click()
-                for_css.wait_id('demand_is_refund', 5000)
 
-                expect(element(by.id('demand_is_refund')).getAttribute('checked')).toBeTruthy();
+                for_css.wait_id('demand_is_refund', 5000)
+                browser.sleep(300)
                 element(by.id('demand_is_refund')).click()
                 
-                expect(element(by.id('demand_is_refund')).getAttribute('checked')).toBeFalsy();
                 element(by.id('demand_is_refund')).click()
 
                 elem = element(by.id('demand_refundable_service_id'))
