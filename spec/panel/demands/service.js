@@ -88,16 +88,24 @@ describe('Demands', () => {
         it('copy service document', () => {
             for_css.wait_css("#filter_is_paid > label", 5000);
             element(by.css("#filter_is_paid > label")).click();
+ 
+            browser.sleep(500)
             element(by.id('filter_all')).click()
-    
+
             for_css.wait_css(".btn.btn-primary", 5000)
             element(by.css(".btn.btn-primary")).click()
-
+            browser.sleep(1000)
+            element(by.css(".btn.btn-primary")).click()
+            browser.sleep(1000)
+            
+            var until = protractor.ExpectedConditions;
+            signed = element.all(by.css('td.no-wrap > a, td.no-wrap > span')).get(0)
+            browser.wait(until.presenceOf(signed.getText()), 5000, 'Element taking too long to appear in the DOM');
+            browser.wait(EC.textToBePresentInElement(signed, "Подписана"), 5000);
+                
+            
             for_css.wait_css('.icon-file', 5000)
             element.all(by.css('.icon-file')).get(0).click()
-            
-            for_css.wait_css(".btn.btn-primary", 5000)
-            element(by.css(".btn.btn-primary")).click()
         })
 
         demands_shared.buttons();

@@ -187,6 +187,7 @@ module.exports = {
 
                 browser.sleep(1000);
                 browser.actions().mouseMove(element.all(by.css("button.btn-primary")).get(0), {x: 10, y: 10,}).click().perform();
+               
                 element.all(by.css('td.no-wrap > a, td.no-wrap > span')).get(0).getText().then((text) => {
                     if ( text === '. . . . . .' ) { 
                         browser.sleep(3000)      

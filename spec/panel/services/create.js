@@ -55,6 +55,7 @@ describe('Services', () => {
             });
 
             it('check success sign', () => {
+                browser.sleep(500)    
                 helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 0, "Подписана");
             });
         });
