@@ -1,7 +1,6 @@
 describe('Demands', () => {
     beforeAll( () => {
         user_object.authorization(helper.user_email_last());
-        browser.driver.manage().window().maximize();
     });
 
     it(`Go to page and check title ${page.demands.title}`,  () => {
@@ -12,6 +11,7 @@ describe('Demands', () => {
     describe('Create service', () => {
         describe('Fill form inputs, select, checkbox:', () => {
             beforeAll( () => {
+                browser.driver.manage().window().maximize();
                 go(page.demands.new.get);
                 expect(browser.getTitle()).toEqual(page.demands.new.title);
             });
@@ -64,6 +64,7 @@ describe('Demands', () => {
     describe('Create service with advance_payment', () => {
         describe('Fill form inputs, select, checkbox:', () => {
             beforeAll( () => {
+                browser.driver.manage().window().maximize();
                 go(page.demands.new.get);
                 expect(browser.getTitle()).toEqual(page.demands.new.title);
             });
@@ -82,6 +83,7 @@ describe('Demands', () => {
 
     describe('Copy service demand, click btn copy and check', () => {
         beforeAll( () => {
+            browser.driver.manage().window().maximize();
             go(page.demands.get);
         });
         

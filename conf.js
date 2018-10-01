@@ -79,7 +79,7 @@ var getRandomString = function(length) {
 exports.config = {
     // seleniumAddress: 'http://localhost:9515',
     baseUrl: 'http://localhost:3000',
-    // directConnect: true,
+    directConnect: true,
     capabilities: {
         browserName: 'firefox',
             'moz:firefoxOptions': {
@@ -114,6 +114,8 @@ exports.config = {
     ],
     framework: 'jasmine',
     onPrepare() {
+        browser.driver.manage().window().maximize();
+
         global.getRandomString = getRandomString;
 
         global.admin           = 'user86@gmail.com';

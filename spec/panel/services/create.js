@@ -28,6 +28,19 @@ describe('Services', () => {
             services_shared.create(0); //0 - we, 1 - us
             services_shared.buttons();
 
+            it('click `filter_all`', () => {
+                for_css.wait_css("#filter_all", 5000);
+                for_css.wait_css(".btn.btn-primary", 5000)
+                
+                element(by.id("filter_all")).click();
+                browser.sleep(500)
+
+                element(by.css(".btn.btn-primary")).click()
+                browser.sleep(1000)
+                element(by.css(".btn.btn-primary")).click()
+                browser.sleep(1000)
+            })
+
             it('sign', () => {
                 for_css.wait_xpath("//*[@id=\"services\"]/tbody/tr[1]/td[11]/a[2]", 10000);
                 helper.sign_order_xpath("//*[@id=\"services\"]/tbody/tr[1]/td[11]/a[2]", 0, 1);
@@ -48,7 +61,20 @@ describe('Services', () => {
 
             services_shared.create(1); //0 - we, 1 - us
             services_shared.buttons();
+            
+            it('click `filter_all`', () => {
+                for_css.wait_css("#filter_all", 5000);
+                for_css.wait_css(".btn.btn-primary", 5000)
+                
+                element(by.id("filter_all")).click();
+                browser.sleep(500)
 
+                element(by.css(".btn.btn-primary")).click()
+                browser.sleep(1000)
+                element(by.css(".btn.btn-primary")).click()
+                browser.sleep(1000)
+            })
+            
             it('sign', () => {
                 for_css.wait_xpath("//*[@id=\"services\"]/tbody/tr[1]/td[11]/a[2]", 10000);
                 helper.sign_order_xpath("//*[@id=\"services\"]/tbody/tr[1]/td[11]/a[2]", 0, 1);
