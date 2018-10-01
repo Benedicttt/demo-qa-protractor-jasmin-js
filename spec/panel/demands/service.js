@@ -86,12 +86,8 @@ describe('Demands', () => {
         });
         
         it('copy service document', () => {
-            for_css.wait_css("#filter_is_paid > label", 5000);
-            element(by.css("#filter_is_paid > label")).click();
- 
-            browser.sleep(1000)
-            element(by.id('filter_all')).click()
-
+            helper.click_is_paid_and_filter_all()
+                
             for_css.wait_css(".btn.btn-primary", 5000)
             element(by.css(".btn.btn-primary")).click()
             browser.sleep(1000)

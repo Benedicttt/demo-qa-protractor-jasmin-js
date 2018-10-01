@@ -71,5 +71,19 @@ module.exports = {
             if ( log === true) { console.log(result, index_elem) }
             expect(result).toEqual(expect_text)
         })
+    },
+
+    click_is_paid_and_filter_all: function () {
+        for_css.wait_css("#filter_is_paid > label", 5000);
+        for_css.wait_css(".btn.btn-primary", 5000)
+        
+        element(by.css("#filter_is_paid > label")).click();
+        browser.sleep(1000)
+
+        element(by.css(".btn.btn-primary")).click()
+        browser.sleep(1000)
+        element(by.css(".btn.btn-primary")).click()
+        browser.sleep(1000)
     }
+
 };

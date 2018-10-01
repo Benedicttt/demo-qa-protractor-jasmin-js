@@ -65,10 +65,8 @@ describe('Demands', () => {
             });
             
             it('copy return document', () => {
-                for_css.wait_css("#filter_is_paid > label", 5000);
-                element(by.css("#filter_is_paid > label")).click();
-                browser.sleep(3000)
-
+                helper.click_is_paid_and_filter_all()
+                
                 for_css.wait_css('.icon-file', 5000)
                 element.all(by.css('.icon-file')).get(0).click()
 
@@ -85,6 +83,10 @@ describe('Demands', () => {
                
                 for_css.wait_css(".btn.btn-primary", 5000)
                 element(by.css(".btn.btn-primary")).click()
+                browser.sleep(1000)
+                for_css.wait_css(".btn.btn-primary", 5000)
+                element(by.css(".btn.btn-primary")).click()
+                browser.sleep(1000)
             })
 
             demands_shared.buttons();
