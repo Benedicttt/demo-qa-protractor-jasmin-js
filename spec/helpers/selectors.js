@@ -52,6 +52,29 @@ module.exports = {
                 } 
             })
         })
+    },
+
+    selectOption: function (selector, item) {
+        tag_selector.wait_id_select(selector, 2000);
+        var selectList, desiredOption;
+        selectList = element(by.id(selector));
+        selectList.all(protractor.By.tagName('option'))
+            .then(function (options) {
+                options.some(function (option) {
+                    option.getText().then(function (text) {
+                        if (item.toLowerCase() === text.toLowerCase()) {
+                            desiredOption = option;
+                            return true;
+                        }
+                        return true;
+                    });
+                });
+            })
+            .then(function () {
+                if (desiredOption) {
+                    desiredOption.click();
+            }
+        });
     }
 };
 

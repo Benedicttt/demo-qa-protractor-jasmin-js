@@ -114,11 +114,14 @@ exports.config = {
     ],
     framework: 'jasmine',
     onPrepare() {
-        browser.driver.manage().window().maximize();
+        var width = 1620;
+        var height = 1080;
+        browser.driver.manage().window().setSize(width, height);           
+       
 
         global.getRandomString = getRandomString;
 
-        global.admin           = 'user86@gmail.com';
+        global.admin           = 'admin@404-group.info';
         global.id_email        = 'user_email';
         global.id_pass         = 'user_password';
         global.id_pass_conf    = 'user_password_confirmation';

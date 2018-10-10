@@ -11,7 +11,6 @@ describe('Demands', () => {
     describe('Create service', () => {
         describe('Fill form inputs, select, checkbox:', () => {
             beforeAll( () => {
-                browser.driver.manage().window().maximize();
                 go(page.demands.new.get);
                 expect(browser.getTitle()).toEqual(page.demands.new.title);
             });
@@ -20,7 +19,6 @@ describe('Demands', () => {
 
             it('add inventory', () => {
                 tag_selector.from_text('css', '#demand_contractor_type_id > option', "--  На имущество")
-
                 for_css.wait_id('link_service_properties', 5000)
                 element(by.id('link_service_properties')).click()
 
@@ -29,7 +27,7 @@ describe('Demands', () => {
 
                 element(by.id('service_properties_name')).sendKeys('--  На имущество');
                 element.all(by.css('.btn-primary')).get(0).click()
-                tag_selector.from_text('css', '#demand_contractor_id > option', " Vendor Properties : Контрагент #50")
+                tag_selector.from_text('css', '#demand_contractor_id > option', " Одноразовый")
 
                 for_css.wait_id('create_distribution', 5000);
                 element(by.id('create_distribution')).click();
@@ -64,7 +62,6 @@ describe('Demands', () => {
     describe('Create service with advance_payment', () => {
         describe('Fill form inputs, select, checkbox:', () => {
             beforeAll( () => {
-                browser.driver.manage().window().maximize();
                 go(page.demands.new.get);
                 expect(browser.getTitle()).toEqual(page.demands.new.title);
             });
@@ -83,7 +80,6 @@ describe('Demands', () => {
 
     describe('Copy service demand, click btn copy and check', () => {
         beforeAll( () => {
-            browser.driver.manage().window().maximize();
             go(page.demands.get);
         });
         

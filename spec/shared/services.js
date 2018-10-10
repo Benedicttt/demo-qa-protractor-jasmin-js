@@ -58,23 +58,5 @@ module.exports = {
                 }
             });
         });
-    },
-
-    create: function(from){
-        this.service_frame();
-
-        if ( from === 0) {
-            page.services.us.ids.selectors.forEach(function (id) {
-                it(`ID: ${id}`,  () => {
-                    id === 'service_service_source_id' ? tag_selector.click_id_on_option(id.toString(), from, 5000) : tag_selector.click_id_on_option(id.toString(), 1, 5000);
-                });
-            });
-        } else {
-            page.services.we.ids.selectors.forEach(function (id) {
-                it(`ID: ${id}`,  () => {
-                    id === 'service_service_source_id' ? tag_selector.click_id_on_option(id.toString(), from, 5000) : tag_selector.click_id_on_option(id.toString(), 1, 5000);
-                });
-            });
-        }
     }
 };

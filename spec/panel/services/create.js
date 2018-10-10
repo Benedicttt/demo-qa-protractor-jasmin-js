@@ -13,7 +13,6 @@ describe('Services', () => {
 
             beforeAll( () => {
                 go(page.services.new.get);
-                browser.driver.manage().window().maximize();
                 expect(browser.getTitle()).toEqual(page.services.new.title);
             });
 
@@ -25,9 +24,19 @@ describe('Services', () => {
                 });
             });
 
-            services_shared.create(0); //0 - we, 1 - us
-            services_shared.buttons();
 
+            it('fill page', () => {
+                tag_selector.selectOption("service_service_source_id", "Мы")
+                tag_selector.selectOption("service_project_id", "Админ")
+
+                tag_selector.selectOption("service_contractor_type_id", " Покупатель")
+                tag_selector.selectOption("service_contractor_id", " Контекст")
+                tag_selector.selectOption("service_nomenclature_id", " Входящий НДС")
+            })
+
+            services_shared.service_frame();    
+            services_shared.buttons();
+            
             it('click `filter_all`', () => {
                 for_css.wait_css("#filter_all", 5000);
                 for_css.wait_css(".btn.btn-primary", 5000)
@@ -55,11 +64,23 @@ describe('Services', () => {
 
             beforeAll( () => {
                 go(page.services.new.get);
-                browser.driver.manage().window().maximize();
                 expect(browser.getTitle()).toEqual(page.services.new.title);
             });
 
-            services_shared.create(1); //0 - we, 1 - us
+            it('fill page', () => {
+                tag_selector.selectOption("service_service_source_id", "Нам")
+                tag_selector.selectOption("service_project_id", "Админ")
+
+                tag_selector.selectOption("service_expenditure_type_id", " Арендные платежи")
+                tag_selector.selectOption("service_expenditure_id", " Аренда")
+                
+                tag_selector.selectOption("service_contractor_type_id", " Покупатель")
+                tag_selector.selectOption("service_contractor_id", " Контекст")
+                
+                browser.sleep(2000)
+            })
+
+            services_shared.service_frame();
             services_shared.buttons();
             
             it('click `filter_all`', () => {

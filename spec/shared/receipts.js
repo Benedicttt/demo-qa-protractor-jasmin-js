@@ -41,7 +41,11 @@ module.exports = {
     fill_data: function() {
         page.receipts.ids.selectors.forEach(function (id) {
             it(`ID: ${id}`,  () => {
-                tag_selector.click_id_on_option(id.toString(), 3, 5000);
+                if (id == "receipt_account_id"){
+                    tag_selector.click_id_on_option(id.toString(), 0, 5000);
+                } else {
+                    tag_selector.click_id_on_option(id.toString(), 3, 5000);
+                }
             });
         });
 

@@ -2,20 +2,28 @@ module.exports = {
     buttons: function() {
         it("click Save button",  () => {
             let EC = protractor.ExpectedConditions;
-            let btn = element.all(by.css("#new_money_transfer > div.form-actions > button")).get(0);
+            let btn = element(by.css(".form-actions > .btn-primary"));
             
             browser.wait(protractor.ExpectedConditions.visibilityOf(btn), 6000);
             browser.wait(EC.elementToBeClickable(btn.isEnabled()), 5000);
             btn.click();
+
+            let btn_nds = element(by.id("repeat-confirm"));
+            
+            browser.wait(protractor.ExpectedConditions.visibilityOf(btn_nds), 6000);
+            browser.wait(EC.elementToBeClickable(btn_nds.isEnabled()), 5000);
+            btn_nds.click();
+
         });
 
         it("click YES",  () => {
-            let btn = element.all(by.css(".btn-primary")).get(0);
+            let btn = element(by.css(".confirm-convertion"));
             let EC = protractor.ExpectedConditions;
 
             browser.wait(protractor.ExpectedConditions.visibilityOf(btn), 6000);
             browser.wait(EC.elementToBeClickable(btn.isEnabled()), 5000);
             btn.click();
+            browser.sleep(10000)
         });
 
         it("assert create current DDS",  () => {
@@ -31,7 +39,11 @@ module.exports = {
     fill_data: function() {
         page.conversion.ids.selectors.forEach(function (id) {
             it(`ID: ${id}`,  () => {
-                tag_selector.click_id_on_option(id.toString(), 2, 5000);
+                if (id == "money_transfer_receiver_account_id" || id == "money_transfer_sender_account_id") {
+                    tag_selector.click_id_on_option(id.toString(), 0, 5000);
+                } else {
+                    tag_selector.click_id_on_option(id.toString(), 2, 5000);
+                }
             });
         });
 

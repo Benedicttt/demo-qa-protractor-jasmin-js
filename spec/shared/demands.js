@@ -6,7 +6,11 @@ module.exports = {
 
         page.demands.ids.return.selectors.forEach(function (id) {
             it(`ID: ${id}`,  () => {
-                tag_selector.click_id_on_option(id.toString(), 3, 5000);
+                if (id == "demand_account_id") {
+                    tag_selector.click_id_on_option(id.toString(), 0, 5000);
+                } else {
+                    tag_selector.click_id_on_option(id.toString(), 3, 5000);
+                }
             });
         });
 
@@ -40,7 +44,11 @@ module.exports = {
 
         page.demands.ids.service.selectors.forEach(function (id) {
             it(`ID: ${id}`,  () => {
-                tag_selector.click_id_on_option(id.toString(), 3, 5000);
+                if (id == "demand_account_id") {
+                    tag_selector.click_id_on_option(id.toString(), 0, 5000);
+                } else {
+                    tag_selector.click_id_on_option(id.toString(), 3, 5000);
+                }
             });
         });
 

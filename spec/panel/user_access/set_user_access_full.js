@@ -1,14 +1,15 @@
 describe('User add full access on admin', function() {
     beforeAll(function () {
-        browser.driver.manage().window().maximize();
         user_object.authorization(admin);
         go(page.users.get);
-
         expect(browser.getTitle()).toEqual(page.users.title);
     });
 
     it('set access in user last', function () {
-        element.all(by.css('.btn-mini')).get(0).click();
+        xpath = "//*[@id=\"users\"]/tbody/tr/td[contains(text(),\"" + helper.user_email_last().toLowerCase() + "\")]/..//i[@class=\'icon-lock\']"
+        btn_mini = element(by.xpath(xpath))
+        btn_mini.click()
+
         element.all(by.css('.action')).each(function (checkbox) {
             if (checkbox.isDisplayed()) {
                 checkbox.getAttribute('id').then(function (id) {
@@ -28,7 +29,10 @@ describe('User add full access on admin', function() {
 
     it("Find user '/system/users' and (go to modal/add) projects", function() {
         go(page.users.get);
-        element.all(by.css('.icon-list-alt')).get(0).click();
+        browser.sleep(2000)
+        xpath = "//*[@id=\"users\"]/tbody/tr/td[contains(text(),\"" + helper.user_email_last().toLowerCase() + "\")]/..//i[@class=\'icon-list-alt\']"
+        icon_list_alt = element(by.xpath(xpath))
+        icon_list_alt.click()
     });
 
     it("add all projects", function() {
@@ -45,7 +49,11 @@ describe('User add full access on admin', function() {
 
     it("Add access signature for demands", function () {
         go(page.users.get);
-        element.all(by.css('.btn-mini')).get(0).click();
+        xpath = "//*[@id=\"users\"]/tbody/tr/td[contains(text(),\"" + helper.user_email_last().toLowerCase() + "\")]/..//i[@class=\'icon-lock\']"
+        btn_mini = element(by.xpath(xpath))
+        btn_mini.click()
+
+        for_css.wait_css('a.text-success', 3000)
         element.all(by.css('a.text-success')).get(0).click();
         element(by.id('demands_sign')).click();
         element.all(by.css(".btn.btn-primary")).get(0).click();
