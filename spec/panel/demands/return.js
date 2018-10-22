@@ -65,7 +65,7 @@ describe('Demands', () => {
             
             it('copy return document', () => {
                 helper.click_is_paid_and_filter_all()
-                
+
                 for_css.wait_css('.icon-file', 5000)
                 element.all(by.css('.icon-file')).get(0).click()
 

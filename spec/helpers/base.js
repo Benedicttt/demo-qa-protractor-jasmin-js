@@ -78,8 +78,9 @@ module.exports = {
         for_css.wait_css(".btn.btn-primary", 5000)
         
         element(by.css("#filter_is_paid > label")).click();
-
+        browser.sleep(500)
         element(by.css(".btn.btn-primary")).click()
+        browser.sleep(1000)
         element(by.css(".btn.btn-primary")).click()
     }
 
