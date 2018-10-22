@@ -42,12 +42,9 @@ describe('Services', () => {
                 for_css.wait_css(".btn.btn-primary", 5000)
                 
                 element(by.id("filter_all")).click();
-                browser.sleep(500)
 
                 element(by.css(".btn.btn-primary")).click()
-                browser.sleep(1000)
                 element(by.css(".btn.btn-primary")).click()
-                browser.sleep(1000)
             })
 
             it('sign', () => {
@@ -56,6 +53,7 @@ describe('Services', () => {
             });
 
             it('check success sign', () => {
+                browser.sleep(1500)
                 helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 0, "Подписана");
             });
         });
@@ -88,12 +86,9 @@ describe('Services', () => {
                 for_css.wait_css(".btn.btn-primary", 5000)
                 
                 element(by.id("filter_all")).click();
-                browser.sleep(500)
 
                 element(by.css(".btn.btn-primary")).click()
-                browser.sleep(1000)
                 element(by.css(".btn.btn-primary")).click()
-                browser.sleep(1000)
             })
             
             it('sign', () => {
@@ -102,7 +97,6 @@ describe('Services', () => {
             });
 
             it('check success sign', () => {
-                browser.sleep(500)    
                 helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 0, "Подписана");
             });
         });

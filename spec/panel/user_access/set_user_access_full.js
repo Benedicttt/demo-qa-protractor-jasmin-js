@@ -29,7 +29,7 @@ describe('User add full access on admin', function() {
 
     it("Find user '/system/users' and (go to modal/add) projects", function() {
         go(page.users.get);
-        browser.sleep(2000)
+        browser.sleep(500)
         xpath = "//*[@id=\"users\"]/tbody/tr/td[contains(text(),\"" + helper.user_email_last().toLowerCase() + "\")]/..//i[@class=\'icon-list-alt\']"
         icon_list_alt = element(by.xpath(xpath))
         icon_list_alt.click()

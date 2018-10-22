@@ -84,14 +84,13 @@ describe('Demands', () => {
         });
         
         it('copy service document', () => {
+            browser.sleep(1500)
             helper.click_is_paid_and_filter_all()
                 
             for_css.wait_css(".btn.btn-primary", 5000)
             element(by.css(".btn.btn-primary")).click()
-            browser.sleep(1000)
             element(by.css(".btn.btn-primary")).click()
-            browser.sleep(1000)
-            
+
             var until = protractor.ExpectedConditions;
             signed = element.all(by.css('td.no-wrap > a, td.no-wrap > span')).get(0)
             browser.wait(until.presenceOf(signed.getText()), 5000, 'Element taking too long to appear in the DOM');

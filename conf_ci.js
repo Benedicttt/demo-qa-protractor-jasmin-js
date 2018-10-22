@@ -6,14 +6,6 @@ const user_object = require('./spec/panel/page_object/user.js');
 const helper = require('./spec/helpers/base.js');
 const selectors = require('./spec/helpers/selectors.js');
 const for_css = require('./spec/helpers/css_selectors.js');
-const demands_shared = require('./spec/shared/demands.js');
-const services_shared = require('./spec/shared/services.js');
-const receipts_shared = require('./spec/shared/receipts.js');
-const conversion_shared = require('./spec/shared/conversion.js');
-
-data = fs.readFileSync('./spec/support/user.json')
-let user = JSON.parse(data);
-let VideoReporter = require('protractor-video-reporter');
 
 const setting = yaml.safeLoad(fs.readFileSync('spec/support/settings.yml', 'utf8'));
 const page = yaml.safeLoad(fs.readFileSync('spec/support/pages.yml', 'utf8'));
@@ -24,6 +16,15 @@ const { SpecReporter } = require('jasmine-spec-reporter');
 
 const outputFilename = './spec/support/';
 
+const demands_shared = require('./spec/shared/demands.js');
+const services_shared = require('./spec/shared/services.js');
+const receipts_shared = require('./spec/shared/receipts.js');
+const conversion_shared = require('./spec/shared/conversion.js');
+
+
+let user = JSON.parse( fs.readFileSync('./spec/support/user.json') );
+
+let VideoReporter = require('protractor-video-reporter');
 
 
 var addScreenShots = {
@@ -53,20 +54,20 @@ VideoReporter.prototype.jasmineStarted = function () {
     }
 };
 
-var videoReporter = new VideoReporter({
-    baseDirectory: "/Users/benedict/work/binomo/smoke/video/",
-    createSubtitles: true,
-    singleVideo: true,
-    ffmpegCmd: '/usr/local/bin/ffmpeg',
-    ffmpegArgs: [
-        '-f', 'avfoundation',
-        '-i', '1',
-        '-pix_fmt','yuv420p',
-        '-r','24',
-        '-video_size', 'woxga',
-        '-q:v','10',
-    ]
-});
+// var videoReporter = new VideoReporter({
+//     baseDirectory: "/Users/benedict/work/binomo/smoke/video/",
+//     createSubtitles: true,
+//     singleVideo: true,
+//     ffmpegCmd: '/usr/local/bin/ffmpeg',
+//     ffmpegArgs: [
+//         '-f', 'avfoundation',
+//         '-i', '1',
+//         '-pix_fmt','yuv420p',
+//         '-r','24',
+//         '-video_size', 'woxga',
+//         '-q:v','10',
+//     ]
+// });
 
 var getRandomString = function(length) {
     var string = '';
@@ -78,30 +79,27 @@ var getRandomString = function(length) {
 };
 
 exports.config = {
-    // selenium: {
-    //     start_process: false
-    // },
-
-    // seleniumAddress: 'http://localhost:4444/wd/hub',
-    // baseUrl: 'http://192.168.1.154:3000',
-    baseUrl: 'http://localhost:3000',
-
-    // directConnect: false,
-    directConnect: true,
+    chromeDriver: 'node_modules/protractor/node_modules/webdriver-manager/selenium/chromedriver_2.42',
+    seleniumAddress: 'http://localhost:4444/wd/hub',
+    baseUrl: 'http://192.168.5.75:3000',
+    directConnect: false,
     capabilities: {
+        browserName: 'firefox',
+        'moz:firefoxOptions': {
+            args: ['--headless']
+        },
+
         browserName: 'chrome',
-            version: '70.0',
-          enableVNC: true,
-        enableVideo: false,
-            chromeOptions: {
-                args: [ "--disable-gpu", "--window-size=1920x1080" ]
-            }
-
+        chromeOptions: {
+            args: [ "--disable-gpu", "--window-size=1920x1080" ]
+        },
         // shardTestFiles: true,
-        // maxInstances: 5,
+        // maxInstances: 2,
 
+        browserName: 'phantomjs',
+        'phantomjs.binary.path': require('phantomjs-prebuilt').path,
+        'phantomjs.cli.args': ['--logfile=PATH', '--loglevel=DEBUG']
     },
-
     specs: [
         "spec/panel/home_page.js",
         "spec/panel/sign_up.js",
@@ -118,12 +116,11 @@ exports.config = {
         'node_modules/jquery/dist/jquery.min.js'
     ],
     framework: 'jasmine',
-
     onPrepare() {
         var width = 1620;
         var height = 1080;
-        browser.driver.manage().window().setSize(width, height);           
-       
+        browser.driver.manage().window().setSize(width, height);
+
 
         global.getRandomString = getRandomString;
 

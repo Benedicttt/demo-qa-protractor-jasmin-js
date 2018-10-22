@@ -125,7 +125,7 @@ services:
   title: 'Услуги | СПОК'
   purse_number: '4548 6584 4848 9987'
   purpose: 'for testing'
-  amount: 10000
+  amount: 1000
   comment: 'For Testing'
   click_submit: 'browser.actions().mouseMove(element.all(by.css("button.btn-primary")).get(0), {x: 10, y: 10,}).click().perform();'
   new:

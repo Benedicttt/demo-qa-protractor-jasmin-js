@@ -51,8 +51,8 @@ module.exports = {
     sign_order_xpath: function (xpath_elem, index_elem, count_click) {
         for_css.wait_xpath(xpath_elem, 5000);
         element.all(by.css('.btn.btn-mini')).get(index_elem).click().then(function () {
-            browser.sleep(1000);
-            for_css.wait_css('#modal form', 10000);
+            browser.sleep(1500);
+            for_css.wait_css('#modal form', 5000);
             if (count_click > 0) {
                 element(by.css('#modal form')).submit();
                 browser.sleep(1000);
@@ -78,12 +78,9 @@ module.exports = {
         for_css.wait_css(".btn.btn-primary", 5000)
         
         element(by.css("#filter_is_paid > label")).click();
-        browser.sleep(1000)
 
         element(by.css(".btn.btn-primary")).click()
-        browser.sleep(1000)
         element(by.css(".btn.btn-primary")).click()
-        browser.sleep(1000)
     }
 
 };

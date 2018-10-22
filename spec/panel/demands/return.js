@@ -21,6 +21,7 @@ describe('Demands', () => {
 
             it('check success sign', () => {
                 for_css.wait_xpath("//*[@id=\"demands\"]/tbody/tr/td[13]", 5000);
+
                 helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 0, "Подписана");
                 helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 1, "Оплачена");
             });
@@ -45,7 +46,6 @@ describe('Demands', () => {
             demands_shared.check_notify_for_demand();
 
             it('check success sign', () => {
-                browser.sleep(500)
                 for_css.wait_xpath("//*[@id=\"demands\"]/tbody/tr/td[13]", 5000);
                 helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 0, "Подписана");
                 helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 1, "Оплачена");
@@ -70,7 +70,6 @@ describe('Demands', () => {
                 element.all(by.css('.icon-file')).get(0).click()
 
                 for_css.wait_id('demand_is_refund', 5000)
-                browser.sleep(300)
                 element(by.id('demand_is_refund')).click()
                 
                 element(by.id('demand_is_refund')).click()
@@ -82,10 +81,8 @@ describe('Demands', () => {
                
                 for_css.wait_css(".btn.btn-primary", 5000)
                 element(by.css(".btn.btn-primary")).click()
-                browser.sleep(1000)
                 for_css.wait_css(".btn.btn-primary", 5000)
                 element(by.css(".btn.btn-primary")).click()
-                browser.sleep(1000)
             })
 
             demands_shared.buttons();

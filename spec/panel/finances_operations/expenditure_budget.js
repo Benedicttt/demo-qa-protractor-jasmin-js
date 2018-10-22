@@ -1,5 +1,3 @@
-
-
 describe('Expenditure budget', () => {
     beforeAll( () => {
         user_object.authorization(helper.user_email_last());

@@ -128,6 +128,7 @@ module.exports = {
     check_data_popup: function(name, index_name = null) {
         if ( name == "SERVICE" ){
             it('check SERVICE document', () => {
+                browser.sleep(1500)
                 let elem = element.all(by.css(".show_entities > a")).get(0);
                 for_css.wait_css(".show_entities > a", 5000, 0);
 
@@ -141,6 +142,7 @@ module.exports = {
 
         if ( name == "DDS" ){
             it('check DDS document', () => {
+                browser.sleep(1500)
                 let elem = element.all(by.css(".show_entities > a"));
 
                 index_name == null ? for_css.wait_css(".show_entities > a", 5000, 1) : for_css.wait_css(".show_entities > a", 5000, index_name)
@@ -156,6 +158,7 @@ module.exports = {
 
         if ( name === "NDS" && index_name === "we" ){
             it('check NDS document WE', () => {
+                browser.sleep(1500)
                 let elem = element.all(by.css(".show_entities > a")).get(2);
 
                 elem.getAttribute('href').then(function (value) {
@@ -168,6 +171,7 @@ module.exports = {
 
         if ( name === "NDS" && index_name === "us" ){
             it('check NDS document US', () => {
+                browser.sleep(1500)
                 let elem = element.all(by.css(".show_entities > a")).get(3);
 
                 elem.getAttribute('href').then(function (value) {

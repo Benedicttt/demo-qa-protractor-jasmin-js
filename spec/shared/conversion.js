@@ -23,7 +23,6 @@ module.exports = {
             browser.wait(protractor.ExpectedConditions.visibilityOf(btn), 6000);
             browser.wait(EC.elementToBeClickable(btn.isEnabled()), 5000);
             btn.click();
-            browser.sleep(10000)
         });
 
         it("assert create current DDS",  () => {
@@ -109,6 +108,7 @@ module.exports = {
     check_data_popup: function(name, index_name = null) {
         if ( name == "SERVICE" ){
             it('check SERVICE document', () => {
+                browser.sleep(1500)
                 let elem = element.all(by.css(".show_entities > a")).get(1);
                 for_css.wait_css(".show_entities > a", 5000, 1);
 

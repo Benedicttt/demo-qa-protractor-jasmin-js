@@ -121,6 +121,7 @@ module.exports = {
         });
 
         it("assert create current demand",  () => {
+            browser.sleep(1500)
             let expectedUrl = browser.baseUrl + '/demands';
             let EC = browser.ExpectedConditions;
 
@@ -164,13 +165,14 @@ module.exports = {
     check_status_order_service: function() {
         describe('Check order signed and order payed `services`', () => {
             it('sign and pay', () => {
-                browser.sleep(1000)
                 helper.sign_order_xpath("//*[@id=\"demands\"]/tbody/tr[1]/td[11]/a[2]", 1, 0);
                 helper.sign_order_xpath("//*[@id=\"demands\"]/tbody/tr[1]/td[12]/a[2]", 2, 0);
                 helper.sign_order_xpath("//*[@id=\"demands\"]/tbody/tr[1]/td[13]/a", 3, 1);
             });
 
             it('check success sign', () => {
+                browser.sleep(1500)
+
                 for_css.wait_xpath("//*[@id=\"demands\"]/tbody/tr[1]/td[11]/a[2]", 5000);
 
                 helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 0, "Подписана");

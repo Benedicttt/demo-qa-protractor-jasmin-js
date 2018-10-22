@@ -3,7 +3,7 @@ module.exports = {
         let until = protractor.ExpectedConditions;
         elem = element(by.id(id));
         browser.wait(until.presenceOf(elem), ms, 'Element taking too long to appear in the DOM');
-    } ,
+    },
 
     wait_css: function(css, ms, index = null){
         let until = protractor.ExpectedConditions;
@@ -13,7 +13,7 @@ module.exports = {
             elem = element(by.css(css));
         }
         browser.wait(until.presenceOf(elem), ms, 'Element taking too long to appear in the DOM');
-    } ,
+    },
 
     wait_xpath: function(xpath, ms){
         let until = protractor.ExpectedConditions;

@@ -55,7 +55,7 @@ module.exports = {
     },
 
     selectOption: function (selector, item) {
-        tag_selector.wait_id_select(selector, 2000);
+        tag_selector.wait_id_select(selector, 5000);
         var selectList, desiredOption;
         selectList = element(by.id(selector));
         selectList.all(protractor.By.tagName('option'))
