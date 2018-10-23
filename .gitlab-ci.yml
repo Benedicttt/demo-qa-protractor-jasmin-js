@@ -1,17 +1,16 @@
 stages:
   - build
-  - report
+  - tests
+  - cleanup
 
-
-
-build_job:
+base image:
   stage: build
-  
+
   script:
-    - exit 0;
-    
-build_report:
-  stage: report
-  
+    - docker build --tag application:base --file .docker/base.Dockerfile .
+
+application image:
+  stage: build
+
   script:
-    - exit 0;
+    - docker build --tag application:latest --file .docker/base.Dockerfile .
