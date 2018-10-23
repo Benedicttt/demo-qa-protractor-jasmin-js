@@ -135,7 +135,7 @@ module.exports = {
                 elem.getAttribute('href').then(function (value) {
                     let id = value.match(/\d+/g)[1];
                     let query = "/services/highlight_service?service_id=";
-                    expect(value).toEqual(page.app_host + query + id);
+                    expect(value).toEqual(browser.baseUrl + query + id);
                 })
             });
         }
@@ -151,7 +151,7 @@ module.exports = {
                 find_elem.getAttribute('href').then(function (value) {
                     let id = value.match(/\d+/g)[1];
                     let query = "/fin_indicators/operations/highlight_operation?operation_id=";
-                    expect(value).toEqual(page.app_host + query + id);
+                    expect(value).toEqual(browser.baseUrl + query + id);
                 })
             });
         }
@@ -164,7 +164,7 @@ module.exports = {
                 elem.getAttribute('href').then(function (value) {
                     let id = value.match(/\d+/g)[1];
                     let query = "/services/highlight_service?service_id=";
-                    expect(value).toEqual(page.app_host + query + id);
+                    expect(value).toEqual(browser.baseUrl + query + id);
                 })
             });
         }
@@ -177,7 +177,7 @@ module.exports = {
                 elem.getAttribute('href').then(function (value) {
                     let id = value.match(/\d+/g)[1];
                     let query = "/services/highlight_service?service_id=";
-                    expect(value).toEqual(page.app_host + query + id);
+                    expect(value).toEqual(browser.baseUrl + query + id);
                 })
             });
         }

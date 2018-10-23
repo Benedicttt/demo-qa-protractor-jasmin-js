@@ -16,13 +16,13 @@ describe('Home page', function() {
     it('should have a link sign_in', function () {
         let sign_in_link = element(by.linkText("Вход в систему")).getAttribute('href');
 
-        expect(sign_in_link).toBe(page.app_host + "/users/sign_in");
+        expect(sign_in_link).toBe(browser.baseUrl + "/users/sign_in");
     });
 
     it('should have a link sign_up', function () {
         let sign_up_link = element(by.linkText("Регистрация")).getAttribute('href');
 
-        expect(sign_up_link).toBe(page.app_host + "/users/sign_up");
+        expect(sign_up_link).toBe(browser.baseUrl + "/users/sign_up");
     });
 
     it('should text center', function () {

@@ -78,21 +78,20 @@ var getRandomString = function(length) {
 };
 
 exports.config = {
-    // selenium: {
-    //     start_process: false
-    // },
+    selenium: {
+        start_process: false
+    },
 
-    // seleniumAddress: 'http://localhost:4444/wd/hub',
-    // baseUrl: 'http://192.168.1.154:3000',
-    baseUrl: 'http://localhost:3000',
+    seleniumAddress: 'http://localhost:4444/wd/hub',
+    baseUrl: process.env.APP_HOST,
 
-    // directConnect: false,
-    directConnect: true,
+    directConnect: false,
+    // directConnect: true,
     capabilities: {
         browserName: 'chrome',
-            version: '70.0',
-          enableVNC: true,
-        enableVideo: false,
+        //     version: '70.0',
+        //   enableVNC: true,
+        // enableVideo: false,
             chromeOptions: {
                 args: [ "--disable-gpu", "--window-size=1920x1080" ]
             }
