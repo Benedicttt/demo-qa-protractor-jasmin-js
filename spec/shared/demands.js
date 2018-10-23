@@ -219,7 +219,7 @@ module.exports = {
         if ( name == "DEMANDS" ){
             it('check DEMANDS document', () => {
                 elem = element.all(by.css(".show_entities > a")).get(0);
-                for_css.wait_css(".show_entities > a", 5000, 0);
+                for_css.wait_css(".show_entities > a", 5000, 1);
 
                 elem.getAttribute('href').then(function (value) {
                     let id = value.match(/\d+/g).slice(-1)[0];
