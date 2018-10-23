@@ -1,3 +1,9 @@
 stages:
   - build
   - report
+  
+build_job:
+  stage: build
+  
+  script:
+    - exit 0;
