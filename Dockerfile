@@ -1,4 +1,4 @@
-FROM selenium/standalone-chrome
+FROM application:base
 
 USER root
 
