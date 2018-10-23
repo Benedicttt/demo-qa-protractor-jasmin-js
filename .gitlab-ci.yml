@@ -1,0 +1,15 @@
+stages:
+  - build
+  - report
+  
+build_job:
+  stage: build
+  
+  script:
+    - exit 0;
+    
+build_report:
+  stage: report
+  
+  script:
+    - exit 0;
