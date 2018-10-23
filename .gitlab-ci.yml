@@ -6,7 +6,7 @@ stages:
 base image:
   stage: build
   tags:
-    - smoke-fin
+    - test-finances-shell
 
   script:
     - docker build --tag application:base --file .docker/base.Dockerfile .
@@ -14,7 +14,7 @@ base image:
 application image:
   stage: build
   tags:
-    - smoke-fin
+    - test-finances-shell
 
   script:
     - docker build --tag application:latest --file .docker/base.Dockerfile .
