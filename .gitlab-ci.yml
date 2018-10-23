@@ -5,12 +5,16 @@ stages:
 
 base image:
   stage: build
+  tags:
+    - smoke-fin
 
   script:
     - docker build --tag application:base --file .docker/base.Dockerfile .
 
 application image:
   stage: build
+  tags:
+    - smoke-fin
 
   script:
     - docker build --tag application:latest --file .docker/base.Dockerfile .
