@@ -1,14 +1,18 @@
 FROM selenium/standalone-chrome
 
-RUN sudo mkdir -pv /app
+USER root
+
+RUN curl --silent --location https://deb.nodesource.com/setup_10.x | bash - \
+    && apt update \
+    && apt install -y -q nodejs \
+    && rm -rf /var/lib/apt/lists/*
+
+
 WORKDIR /app
 
-RUN sudo curl --silent --location https://deb.nodesource.com/setup_10.x | sudo bash -
-RUN sudo apt install -y nodejs
-RUN sudo npm i -g ntl protractor webdriver-manager
+COPY package.json /app
 
-COPY .
+RUN npm i < ./package.json
 
-RUN sudo npm i
+USER seluser
 
-CMD [ "tail", "-f", "/dev/null" ]

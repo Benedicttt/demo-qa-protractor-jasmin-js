@@ -13,8 +13,6 @@ const conversion_shared = require('./spec/shared/conversion.js');
 
 data = fs.readFileSync('./spec/support/user.json')
 let user = JSON.parse(data);
-let VideoReporter = require('protractor-video-reporter');
-
 const setting = yaml.safeLoad(fs.readFileSync('spec/support/settings.yml', 'utf8'));
 const page = yaml.safeLoad(fs.readFileSync('spec/support/pages.yml', 'utf8'));
 const form = yaml.safeLoad(fs.readFileSync('spec/support/forms.yml', 'utf8'));
@@ -37,36 +35,6 @@ var addScreenShots = {
         }
     }
 };
-
-VideoReporter.prototype.jasmineStarted = function () {
-    var self = this;
-    if (self.options.singleVideo) {
-        var new_date = new Date().toString();
-        var videoPath = path.join(self.options.baseDirectory, new_date.toString() + "protractor-specs.mpg");
-
-        self._startScreencast(videoPath);
-
-        if (self.options.createSubtitles) {
-            self._subtitles = [];
-            self._jasmineStartTime = new Date();
-        }
-    }
-};
-
-var videoReporter = new VideoReporter({
-    baseDirectory: "/Users/benedict/work/binomo/smoke/video/",
-    createSubtitles: true,
-    singleVideo: true,
-    ffmpegCmd: '/usr/local/bin/ffmpeg',
-    ffmpegArgs: [
-        '-f', 'avfoundation',
-        '-i', '1',
-        '-pix_fmt','yuv420p',
-        '-r','24',
-        '-video_size', 'woxga',
-        '-q:v','10',
-    ]
-});
 
 var getRandomString = function(length) {
     var string = '';

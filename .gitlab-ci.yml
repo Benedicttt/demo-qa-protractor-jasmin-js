@@ -1,7 +1,9 @@
 stages:
   - build
   - report
-  
+
+
+
 build_job:
   stage: build
   
