@@ -10,11 +10,11 @@ describe('User add full access on admin', function() {
         btn_mini = element(by.xpath(xpath))
         btn_mini.click()
 
+        browser.executeScript("$('.action').click()")
+
         element.all(by.css('.action')).each(function (checkbox) {
             if (checkbox.isDisplayed()) {
                 checkbox.getAttribute('id').then(function (id) {
-                    browser.actions().mouseMove(checkbox).click().perform();
-
                     elem = element(by.id(id));
                     expect(elem.getAttribute('checked')).toBeTruthy();
                 });

@@ -46,14 +46,9 @@ var getRandomString = function(length) {
 };
 
 exports.config = {
-    selenium: {
-        start_process: false
-    },
-
-    seleniumAddress: 'http://localhost:4444/wd/hub',
     baseUrl: process.env.APP_HOST,
 
-    directConnect: false,
+    directConnect: true,
     capabilities: {
         browserName: 'chrome',
             chromeOptions: {
