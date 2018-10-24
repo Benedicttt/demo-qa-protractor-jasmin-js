@@ -58,6 +58,7 @@ RUN  mkdir -p /opt/bin
 #======================================
 # Add Grid check script
 #======================================
+RUN cd .docker/Base/
 COPY check-grid.sh entry_point.sh /opt/bin/
 RUN chmod +x /opt/bin/check-grid.sh
 
