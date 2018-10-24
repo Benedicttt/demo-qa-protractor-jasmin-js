@@ -16,9 +16,9 @@ WORKDIR /app
 
 RUN npm i < package.json
 
-USER seluser
-
 RUN mkdir /app/allure-results
 RUN chown -R seluser /app/allure-results
+
+USER seluser
 
 EXPOSE 4444
