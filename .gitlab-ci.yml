@@ -1,15 +1,19 @@
 stages:
+  - pre-build
   - build
   - tests
   - cleanup
 
 base image:
-  stage: build
+  stage: pre-build
   tags:
     - test-finances-shell
 
   script:
-    - docker build --tag application:base --file .docker/base.Dockerfile .
+    - docker build --tag selenium:base .docker/Base
+    - docker build --tag selenium:nodebase .docker/NodeBase
+    - docker build --tag selenium:nodechrome .docker/NodeChrome
+  when: manual
 
 application image:
   stage: build
@@ -17,4 +21,4 @@ application image:
     - test-finances-shell
 
   script:
-    - docker build --tag application:latest --file .docker/base.Dockerfile .
+    - docker build --tag application:latest --file .docker/application.Dockerfile .
