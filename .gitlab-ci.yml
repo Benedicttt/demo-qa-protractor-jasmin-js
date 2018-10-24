@@ -29,13 +29,9 @@ smoke:
   tags:
     - test-finances-docker
 
-  before_script:
-    - export TARGET_HOST=https://test-finances.404-group.info
-
   variables:
-    APP_HOST: $TARGET_HOST
+    APP_HOST: https://test-finances.404-group.info
 
   script:
-    - cd /app
-    - sleep 300
-    #- APP_HOST=https://test-finances.404-group.info node_modules/protractor/bin/protractor conf.js --browser chrome  --capabilities.chromeOptions.args headless
+    - node_modules/protractor/bin/protractor conf.js --browser chrome --capabilities.chromeOptions.args headless
+
