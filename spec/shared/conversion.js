@@ -113,7 +113,7 @@ module.exports = {
                 for_css.wait_css(".show_entities > a", 5000, 1);
 
                 elem.getAttribute('href').then(function (value) {
-                    let id = value.match(/\d+/g)[1];
+                    let id = value.match(/\d+/g).slice(-1)[0]; console.log(value.match(/\d+/g).slice(-1)[0]);
                     let query = "/services/highlight_service?service_id=";
                     expect(value).toEqual(browser.baseUrl + query + id);
                 })
@@ -128,7 +128,7 @@ module.exports = {
                 index_name == null ? find_elem = elem.get(0) : find_elem = elem.get(index_name) 
 
                 find_elem.getAttribute('href').then(function (value) {
-                    let id = value.match(/\d+/g)[1];
+                    let id = value.match(/\d+/g).slice(-1)[0]; console.log(value.match(/\d+/g).slice(-1)[0]);
                     let query = "/fin_indicators/operations/highlight_operation?operation_id=";
                     expect(value).toEqual(browser.baseUrl + query + id);
                 })
@@ -143,7 +143,7 @@ module.exports = {
                 index_name == null ? find_elem = elem.get(2) : find_elem = elem.get(index_name) 
 
                 find_elem.getAttribute('href').then(function (value) {
-                    let id = value.match(/\d+/g)[1];
+                    let id = value.match(/\d+/g).slice(-1)[0]; console.log(value.match(/\d+/g).slice(-1)[0]);
                     let query = "/fin_indicators/operations/highlight_operation?operation_id=";
                     expect(value).toEqual(browser.baseUrl + query + id);
                 })
@@ -155,7 +155,7 @@ module.exports = {
                 let elem = element.all(by.css(".show_entities > a")).get(4);
 
                 elem.getAttribute('href').then(function (value) {
-                    let id = value.match(/\d+/g)[1];
+                    let id = value.match(/\d+/g).slice(-1)[0]; console.log(value.match(/\d+/g).slice(-1)[0]);
                     let query = "/services/highlight_service?service_id=";
                     expect(value).toEqual(browser.baseUrl + query + id);
                 })
@@ -167,7 +167,7 @@ module.exports = {
                 let elem = element.all(by.css(".show_entities > a")).get(3);
 
                 elem.getAttribute('href').then(function (value) {
-                    let id = value.match(/\d+/g)[1];
+                    let id = value.match(/\d+/g).slice(-1)[0]; console.log(value.match(/\d+/g).slice(-1)[0]);
                     let query = "/services/highlight_service?service_id=";
                     expect(value).toEqual(browser.baseUrl + query + id);
                 })
