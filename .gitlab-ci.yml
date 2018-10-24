@@ -22,3 +22,18 @@ application image:
 
   script:
     - docker build --tag application:latest --file .docker/application.Dockerfile .
+
+smoke:
+  stage: tests
+  image: application:latest
+  tags:
+    - test-finances-docker
+
+  before_script:
+    - export TARGET_HOST=https://test-finances.404-group.info
+
+  environment: 
+    APP_HOST: $TARGET_HOST
+
+  script:
+    - node_modules/protractor/bin/protractor conf.js --browser chrome  --capabilities.chromeOptions.args headless
