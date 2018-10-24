@@ -32,7 +32,7 @@ smoke:
   before_script:
     - export TARGET_HOST=https://test-finances.404-group.info
 
-  environment: 
+  variables:
     APP_HOST: $TARGET_HOST
 
   script:
