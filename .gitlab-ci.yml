@@ -35,8 +35,6 @@ smoke:
     APP_HOST: https://test-finances.404-group.info
 
   script:
-    #- ./node_modules/protractor/bin/protractor conf.js --browser chrome --capabilities.chromeOptions.args headless
-    - ls -l
-    - pwd
-    - ls -l node_modules/protractor/bin/protractor
+    - cd /app; ./node_modules/protractor/bin/protractor conf.js --browser chrome --capabilities.chromeOptions.args headless
+    - ps aux
 
