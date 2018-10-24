@@ -50,7 +50,7 @@ exports.config = {
         start_process: false
     },
 
-    seleniumAddress: 'http://localhost:4444/wd/hub',
+    seleniumAddress: 'http://application:4444/wd/hub',
     baseUrl: process.env.APP_HOST,
 
     directConnect: false,

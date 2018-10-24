@@ -28,6 +28,8 @@ application image:
 smoke:
   stage: tests
   image: application:latest
+  services:
+    - application:latest
   tags:
     - test-finances-docker
 
@@ -35,6 +37,5 @@ smoke:
     APP_HOST: https://test-finances.404-group.info
 
   script:
-    - /opt/bin/entry_point.sh
     - cd /app; ./node_modules/protractor/bin/protractor conf.js --browser chrome --capabilities.chromeOptions.args headless
 
