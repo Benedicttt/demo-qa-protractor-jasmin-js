@@ -29,10 +29,6 @@ smoke:
   tags:
     - test-finances-docker
 
-  artifacts:
-    paths:
-      - /app
-
   before_script:
     - export TARGET_HOST=https://test-finances.404-group.info
 
@@ -40,4 +36,5 @@ smoke:
     APP_HOST: $TARGET_HOST
 
   script:
+    - cd /app
     - node_modules/protractor/bin/protractor conf.js --browser chrome  --capabilities.chromeOptions.args headless
