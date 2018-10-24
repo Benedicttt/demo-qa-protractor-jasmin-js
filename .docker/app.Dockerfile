@@ -1,4 +1,4 @@
-FROM selenium/node-chrome:3.14.0-iron
+FROM selenium:nodechrome
 LABEL authors=SeleniumHQ
 
 USER seluser
