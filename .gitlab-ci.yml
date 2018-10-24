@@ -9,9 +9,9 @@ base image:
     - test-finances-shell
 
   script:
-    - docker build --tag selenium:base --file .docker/Base/Dockerfile .
-    - docker build --tag selenium:nodebase --file .docker/NodeBase/Dockerfile .
-    - docker build --tag selenium:nodechrome --file .docker/NodeChrome/Dockerfile .
+    - docker build --tag selenium:base .docker/Base
+    - docker build --tag selenium:nodebase .docker/NodeBase
+    - docker build --tag selenium:nodechrome .docker/NodeChrome
   when: manual
 
 application image:
