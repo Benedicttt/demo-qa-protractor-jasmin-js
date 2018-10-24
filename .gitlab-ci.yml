@@ -1,10 +1,11 @@
 stages:
+  - pre-build
   - build
   - tests
   - cleanup
 
 base image:
-  stage: build
+  stage: pre-build
   tags:
     - test-finances-shell
 
@@ -20,4 +21,4 @@ application image:
     - test-finances-shell
 
   script:
-    - docker build --tag application:latest --file .docker/app.Dockerfile .
+    - docker build --tag application:latest --file .docker/application.Dockerfile .
