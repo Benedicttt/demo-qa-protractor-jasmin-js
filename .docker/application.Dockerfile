@@ -18,6 +18,6 @@ RUN npm i < package.json
 
 USER seluser
 
-RUN chown -R sleuser /app/allure-results
+RUN chown -R seluser /app/allure-results
 
 EXPOSE 4444

@@ -23,8 +23,6 @@ application image:
   script:
     - docker build --tag application:latest --file .docker/application.Dockerfile .
 
-  when: manual
-
 smoke:
   stage: tests
   image: application:latest
