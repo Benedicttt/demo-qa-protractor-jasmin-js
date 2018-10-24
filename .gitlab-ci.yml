@@ -27,7 +27,7 @@ smoke:
   stage: tests
   image: application:latest
   services:
-    - application:latest
+    - selenium:nodechrome
   tags:
     - test-finances-docker
 
