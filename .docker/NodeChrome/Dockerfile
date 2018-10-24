@@ -55,3 +55,4 @@ COPY generate_config /opt/bin/generate_config
 
 # Generating a default config during build time
 RUN /opt/bin/generate_config > /opt/selenium/config.json
+COPY standalone/selenium.conf /etc/supervisor/conf.d/
