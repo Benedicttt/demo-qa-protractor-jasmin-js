@@ -126,9 +126,7 @@ exports.config = {
 
         jasmine.getEnv().addReporter(addScreenShots);
         jasmine.getEnv().addReporter(new AllureReporter({
-            allureReport: {
-                resultsDir: './public/'
-            }
+            resultsDir: './public/'
         }));
         jasmine.getEnv().addReporter(new SpecReporter( { displayStacktrace: 'all' } ));
         // console.log(process.env);

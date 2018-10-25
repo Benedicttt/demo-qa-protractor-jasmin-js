@@ -4,27 +4,18 @@ module.exports = {
             let selector = `form > div:nth-child(${num})`;
 
 
-            element.all(by.css(selector)).map(function (elements_in_form) {
-                return elements_in_form
+            browser.findElement(protractor.By.tagName(selector)).findElements(protractor.By.tagName('input')).then(function(array_elements){
+                array_elements.forEach((elem)=> {
+                    if (elem.getAttribute('id') !== null) {
+                        elem.getAttribute('id').then(function (id) {
+                            elem = element(by.id(id));
+                            expect(elem.getAttribute('checked')).toBeTruthy();
+                        });
+                    }
 
-            }).then(function (elem) {
-                expect(elem.getAttribute('checked')).toBeTruthy();
-                // if (checkbox.getAttribute('class') === 'checkbox') {
-                //     checkbox.getAttribute('class').then(function (id) {
-                //         elem = element(by.css(id));
-                //
-                //         if (string === true) {
-                //             console.log("true")
-                //             expect(elem.getAttribute('checked')).toBeTruthy();
-                //
-                //         } else {
-                //             console.log("false")
-                //             expect(elem.getAttribute('checked')).toBeD = Falsy();
-                //         }
-                //     });
-                // }
+                });
+            });
 
-            })
         })
     },
 
