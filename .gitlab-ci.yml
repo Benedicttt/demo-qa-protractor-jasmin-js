@@ -2,6 +2,7 @@ stages:
   - pre-build
   - build
   - tests
+  - report
   - cleanup
 
 base image:
