@@ -59,7 +59,7 @@ RUN /opt/bin/generate_config > /opt/selenium/config.json
 # Install allure
 USER root
 
-RUN apt-get install -y software-properties-common
+RUN apt-get update
 RUN apt-get install -y software-properties-common
 RUN apt-get update
 RUN apt-get -y install allure
