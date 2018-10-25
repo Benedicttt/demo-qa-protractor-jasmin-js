@@ -122,7 +122,7 @@ exports.config = {
 
         jasmine.getEnv().addReporter(addScreenShots);
         jasmine.getEnv().addReporter(new AllureReporter({
-            resultsDir: './public/'
+            resultsDir: './allure-results/'
         }));
 
         jasmine.getEnv().addReporter(new SpecReporter( { displayStacktrace: 'all' } ));

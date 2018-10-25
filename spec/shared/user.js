@@ -1,11 +1,27 @@
 module.exports = {
     check_checkbox_in_block: (num, string) => {
         it(`check checkbox on => ${string}`, () => {
-            let selector = `form > div:nth-child(${num})`;
+            let selector = `form > div:nth-child(${num}) input[type=checkbox]`;
 
-            browser.findElement(protractor.By.tagName(selector)).findElements(protractor.By.tagName("input")).then(function(rows){
-                rows.forEach(function(row){ row.getAttribute('id').then((e) => { console.log(e) }) })
-            });
+            element.all(by.css(selector)).each(function(elem, index) {
+
+                elem.getAttribute('checked').then(function(status) {
+                    if (status) {
+                        elem.getAttribute('id').then(function (id) {
+                            elem = element(by.id(id));
+
+                            if (string === true) {
+                                expect(elem.getAttribute('checked')).toBeTruthy() ;
+                            } else {
+                                expect(elem.getAttribute('checked')).toBeFalsy() ;
+                            }
+
+                        });
+                    }
+
+                })
+            })
+
         })
     },
 
@@ -14,9 +30,9 @@ module.exports = {
             let selector = `form > div:nth-child(${num})`;
             let xpath = "//*[@id=\"users\"]/tbody/tr/td[contains(text(),\"" +
                 helper.user_email_last().toLowerCase() +
-                "\")]/..//i[@class=\'icon-lock\']"
+                "\")]/..//i[@class=\'icon-lock\']";
 
-            let btn_mini = element(by.xpath(xpath))
+            let btn_mini = element(by.xpath(xpath));
 
 
             user_object.authorization(admin);
@@ -24,15 +40,15 @@ module.exports = {
             expect(browser.getTitle()).toEqual(page.users.title);
 
             btn_mini.click()
-            for_css.wait_css('.action', 5000)
+            for_css.wait_css('.action', 5000);
 
             browser.executeScript(`$('${selector}').find("input[type=\'checkbox\']").click()`);
-            element(by.css(".btn-primary")).click()
+            element(by.css(".btn-primary")).click();
 
             browser.navigate().refresh()
         });
 
-        user_shared.check_checkbox_in_block(5, false)
+        user_shared.check_checkbox_in_block(5, true)
 
     },
 
@@ -40,9 +56,9 @@ module.exports = {
         it('after click checkbox access', () => {
             let xpath = "//*[@id=\"users\"]/tbody/tr/td[contains(text(),\"" +
                 helper.user_email_last().toLowerCase() +
-                "\")]/..//i[@class=\'icon-lock\']"
+                "\")]/..//i[@class=\'icon-lock\']";
 
-            let btn_mini = element(by.xpath(xpath))
+            let btn_mini = element(by.xpath(xpath));
             let selector = `form > div:nth-child(${num})`;
 
 
@@ -51,10 +67,10 @@ module.exports = {
             expect(browser.getTitle()).toEqual(page.users.title);
 
             btn_mini.click()
-            for_css.wait_css('.action', 5000)
+            for_css.wait_css('.action', 5000);
 
             browser.executeScript(`$('${selector}').find("input[type=\'checkbox\']").click()`);
-            element(by.css(".btn-primary")).click()
+            element(by.css(".btn-primary")).click();
 
             browser.navigate().refresh()
         });
