@@ -37,6 +37,7 @@ smoke:
 
   script:
     - cd /app && node_modules/protractor/bin/protractor conf.js --browser chrome --capabilities.chromeOptions.args headless --specs ./spec/panel/home_page.js
+    - allure generate ./result -o ./public --clean
 
   artifacts:
     paths:
@@ -55,10 +56,10 @@ pages:
     paths:
     - public
 
-clean application image:
-  stage: cleanup
-  tags:
-    - test-finances-shell
-
-  script:
-    - docker image rmi application:latest
+#clean application image:
+#  stage: cleanup
+#  tags:
+#    - test-finances-shell
+#
+#  script:
+#    - docker image rmi application:latest
