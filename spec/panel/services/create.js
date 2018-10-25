@@ -17,7 +17,7 @@ describe('Services', () => {
             });
 
             afterAll( () => {
-                for_css.wait_xpath("//*[@id=\"services\"]/tbody/tr[1]/td[1]", 5000);
+                for_css.wait_xpath("//*[@id=\"services\"]/tbody/tr[1]/td[1]", 2300);
                 element(by.xpath("//*[@id=\"services\"]/tbody/tr[1]/td[1]")).getText().then(function (text) {
                     let data = `{ "service": { "us": { "number": ${text} }, "we": { "number": ${parseInt(text) + 1 } } } }`;
                     helper.write_in_file('service.json', data)
@@ -38,8 +38,8 @@ describe('Services', () => {
             services_shared.buttons();
             
             it('click `filter_all`', () => {
-                for_css.wait_css("#filter_all", 5000);
-                for_css.wait_css(".btn.btn-primary", 5000)
+                for_css.wait_css("#filter_all", 2300);
+                for_css.wait_css(".btn.btn-primary", 2300)
                 
                 element(by.id("filter_all")).click();
 
@@ -75,15 +75,15 @@ describe('Services', () => {
                 tag_selector.selectOption("service_contractor_type_id", " Покупатель")
                 tag_selector.selectOption("service_contractor_id", " Контекст")
                 
-                browser.sleep(2000)
+                browser.sleep(1500)
             })
 
             services_shared.service_frame();
             services_shared.buttons();
             
             it('click `filter_all`', () => {
-                for_css.wait_css("#filter_all", 5000);
-                for_css.wait_css(".btn.btn-primary", 5000)
+                for_css.wait_css("#filter_all", 2300);
+                for_css.wait_css(".btn.btn-primary", 2300)
                 
                 element(by.id("filter_all")).click();
 
