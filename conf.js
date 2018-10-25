@@ -92,7 +92,7 @@ exports.config = {
 
         global.getRandomString = getRandomString;
 
-        global.admin           = 'admin@404-group.info';
+        global.admin           = 'admin@404-group.test';
         global.id_email        = 'user_email';
         global.id_pass         = 'user_password';
         global.id_pass_conf    = 'user_password_confirmation';

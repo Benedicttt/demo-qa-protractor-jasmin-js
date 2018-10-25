@@ -5,13 +5,13 @@ describe('Expenditure budget', () => {
         expect(browser.getTitle()).toEqual("Бюджетирование | СПОК");
     });
     
-    describe('Set filter', () => {
+    describe('Set filter.', () => {
         it('set project', () => {
             let checkbox = element.all(by.css("label > input.project"));
             
-            for_css.wait_css('.btn-small', 5000)
+            for_css.wait_css('.btn-small', 2000)
             element(by.css(".btn-small")).click()
-            for_css.wait_css("label > input.project", 5000)
+            for_css.wait_css("label > input.project", 2000)
 
             checkbox.each(function (box) {
                 browser.actions().mouseMove(box, {x: 10, y: 10,}).click().perform();
@@ -25,7 +25,7 @@ describe('Expenditure budget', () => {
             element(by.css('input[name="filters[show_unsigned]"]')).click();
             element(by.css('input[name="filters[expenditures_order_by_type]"]')).click()
             element(by.css(".form-actions > .btn-primary")).click();
-            for_css.wait_css(".table.table-striped.table-condensed.treeview a.btn.btn-mini", 5000)
+            for_css.wait_css(".table.table-striped.table-condensed.treeview a.btn.btn-mini", 2000)
         })
 
         let random_number = Math.floor(Math.random() * 100); 
@@ -34,7 +34,7 @@ describe('Expenditure budget', () => {
         it('click btn`s, fill data', () => {
             path_from_button = "//td[5]/span[contains(text(), '—')]/../..//parent::*/a[@title='Создать']"
             element.all(by.xpath(path_from_button)).get(random_number_index).click()    
-                for_css.wait_id('budget_amount', 5000)
+                for_css.wait_id('budget_amount', 2000)
                 element(by.id('budget_amount')).clear();
                 element(by.id('budget_amount')).sendKeys(random_number);
                 element(by.id("create-confirm")).click();
@@ -42,7 +42,7 @@ describe('Expenditure budget', () => {
 
         it('check budget', () => {
             result_in_table = `//td[3]/span[contains(text(), '${random_number}.0')]`
-            for_css.wait_xpath(result_in_table, 5000);    
+            for_css.wait_xpath(result_in_table, 2000);
 
             let expected = element.all(by.xpath(result_in_table)).get(0) 
             expect(expected.getAttribute('title')).toEqual("Сумма бюджетов за выбранный период")

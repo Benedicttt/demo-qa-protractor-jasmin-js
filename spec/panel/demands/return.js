@@ -21,6 +21,7 @@ describe('Demands', () => {
 
             it('check success sign', () => {
                 for_css.wait_xpath("//*[@id=\"demands\"]/tbody/tr/td[13]", 5000);
+                browser.sleep(500)
 
                 helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 0, "Подписана");
                 helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 1, "Оплачена");
@@ -83,6 +84,7 @@ describe('Demands', () => {
                 element(by.css(".btn.btn-primary")).click()
                 for_css.wait_css(".btn.btn-primary", 5000)
                 element(by.css(".btn.btn-primary")).click()
+                browser.sleep(500)
             })
 
             demands_shared.buttons();

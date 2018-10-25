@@ -38,7 +38,7 @@ describe('User add full access on admin', function() {
     it("add all projects", function() {
         var until = protractor.ExpectedConditions;
         checkbox = element.all(by.css("label > input.project"));
-        browser.wait(until.presenceOf(checkbox), 5000, 'Element taking too long to appear in the DOM');
+        browser.wait(until.presenceOf(checkbox), 2000, 'Element taking too long to appear in the DOM');
         checkbox.each(function (box) {
             browser.actions().mouseMove(box, {x: 10, y: 10,}).click().perform();
             expect(box.getAttribute('checked')).toBeTruthy();
@@ -53,7 +53,7 @@ describe('User add full access on admin', function() {
         btn_mini = element(by.xpath(xpath))
         btn_mini.click()
 
-        for_css.wait_css('a.text-success', 3000)
+        for_css.wait_css('a.text-success', 2000)
         element.all(by.css('a.text-success')).get(0).click();
         element(by.id('demands_sign')).click();
         element.all(by.css(".btn.btn-primary")).get(0).click();

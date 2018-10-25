@@ -40,6 +40,7 @@ describe('Demands', () => {
 
             it('confirmed sign', () => {
                 helper.sign_order_xpath("//*[@id=\"demands\"]/tbody/tr[1]/td[11]/a[2]", 1, 0);
+                browser.sleep(1000)
             })
             
             demands_shared.check_status_order_service();
