@@ -61,6 +61,7 @@ USER root
 
 RUN apt-get update
 RUN apt-get install -y software-properties-common
+RUN apt-add-repository -y ppa:qameta/allure
 RUN apt-get update
 RUN apt-get -y install allure
 
