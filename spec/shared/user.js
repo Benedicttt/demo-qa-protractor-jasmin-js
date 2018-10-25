@@ -4,11 +4,11 @@ module.exports = {
             let selector = `form > div:nth-child(${num})`;
 
 
-            element.all(by.css(selector)).map(function (tags) {
+            element.all(by.css(selector)).map(function (elements_in_form) {
+                return elements_in_form
 
-                tags.getAttribute().then(function(text) {
-                    console.log(text.getTagName());
-                });
+            }).then(function (elem) {
+                expect(elem.getAttribute('checked')).toBeTruthy();
                 // if (checkbox.getAttribute('class') === 'checkbox') {
                 //     checkbox.getAttribute('class').then(function (id) {
                 //         elem = element(by.css(id));
