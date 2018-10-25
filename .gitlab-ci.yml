@@ -26,15 +26,14 @@ application image:
 smoke:
   stage: tests
   image: application:latest
+  services:
+    - selenium:nodechrome
   tags:
     - test-finances-docker
 
-  before_script:
-    - export TARGET_HOST=https://test-finances.404-group.info
-
   variables:
-    APP_HOST: $TARGET_HOST
+    APP_HOST: https://test-finances.404-group.info
 
   script:
-    - cd /app
-    - APP_HOST=$APP_HOST node_modules/protractor/bin/protractor conf.js --browser chrome  --capabilities.chromeOptions.args headless
+    - cd /app && node_modules/protractor/bin/protractor conf.js --browser chrome --capabilities.chromeOptions.args headless
+

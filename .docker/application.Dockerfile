@@ -1,14 +1,4 @@
-FROM selenium:nodechrome
-LABEL authors=SeleniumHQ
-
-USER root
-
-RUN curl --silent --location https://deb.nodesource.com/setup_10.x | bash - \
-    && apt update \
-    && apt install -y -q nodejs \
-    && rm -rf /var/lib/apt/lists/*
-
-COPY standalone/selenium.conf /etc/supervisor/conf.d/
+FROM node:10-alpine
 
 COPY . /app
 
@@ -16,6 +6,3 @@ WORKDIR /app
 
 RUN npm i < package.json
 
-USER seluser
-
-EXPOSE 4444
