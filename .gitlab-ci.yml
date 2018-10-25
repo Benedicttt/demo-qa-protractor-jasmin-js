@@ -37,3 +37,17 @@ smoke:
   script:
     - cd /app && node_modules/protractor/bin/protractor conf.js --browser chrome --capabilities.chromeOptions.args headless --specs ./spec/panel/home_page.js
 
+  artifacts:
+    paths:
+      - public
+    expire_in: 5 day
+
+pages:
+  stage: report
+  script:
+    - ""
+  artifacts:
+    paths:
+    - public
+    
+
