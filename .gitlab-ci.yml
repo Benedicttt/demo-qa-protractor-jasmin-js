@@ -3,7 +3,6 @@ stages:
   - build
   - tests
   - report
-  - cleanup
 
 base image:
   stage: pre-build
@@ -23,6 +22,7 @@ application image:
 
   script:
     - docker build --tag application:latest --file .docker/application.Dockerfile .
+  when: manual
 
 smoke:
   stage: tests
@@ -36,12 +36,13 @@ smoke:
     APP_HOST: https://test-finances.404-group.info
 
   script:
-    - cd /app && node_modules/protractor/bin/protractor conf.js --browser chrome --capabilities.chromeOptions.args headless --specs ./spec/panel/home_page.js
+    - /node_modules/protractor/bin/protractor conf.js --browser chrome --capabilities.chromeOptions.args headless --specs spec/panel/home_page.js
+    - allure generate allure-results -o public --clean
 
   artifacts:
     paths:
       - public
-    expire_in: 5 day
+    expire_in: 1 day
 
 pages:
   stage: report
@@ -53,12 +54,6 @@ pages:
 
   artifacts:
     paths:
-    - public
+      - public
+    expire_in: 1 day 
 
-clean application image:
-  stage: cleanup
-  tags:
-    - test-finances-shell
-
-  script:
-    - docker image rmi application:latest
