@@ -48,10 +48,18 @@ pages:
   stage: report
   tags:
     - test-finances-docker
+
   script:
     - ""
+
   artifacts:
     paths:
     - public
-    
 
+clean application image:
+  stage: cleanup
+  tags:
+    - test-finances-shell
+
+  script:
+    - docker image rmi application:latest
