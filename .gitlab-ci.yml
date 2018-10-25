@@ -35,11 +35,9 @@ smoke:
   variables:
     APP_HOST: https://test-finances.404-group.info
 
-  after_script:
-    - allure generate allure-results -o public --clean
-
   script:
     - /node_modules/protractor/bin/protractor conf.js --suite preconditions --browser chrome --capabilities.chromeOptions.args headless --specs spec/panel/home_page.js
+    - allure generate allure-results -o public --clean
   allow_failure: true
 
   artifacts:

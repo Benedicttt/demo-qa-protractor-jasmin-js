@@ -32,7 +32,7 @@ module.exports = {
         it('fist click button save', () => {
             var btn = element.all(by.css("button.btn-primary")).get(0);
 
-            browser.wait(protractor.ExpectedConditions.visibilityOf(btn), 6000);
+            browser.wait(protractor.ExpectedConditions.visibilityOf(btn), 3000);
             action(page.demands.click_submit)
         });
     },
@@ -106,7 +106,7 @@ module.exports = {
             var btn = element.all(by.css("#new_demand > div.form-actions > button")).get(0);
             var EC = protractor.ExpectedConditions;
 
-            browser.wait(protractor.ExpectedConditions.visibilityOf(btn), 6000);
+            browser.wait(protractor.ExpectedConditions.visibilityOf(btn), 3000);
             browser.wait(EC.elementToBeClickable(btn.isEnabled()), 5000);
             btn.click();
         });
@@ -115,7 +115,7 @@ module.exports = {
             var btn = element.all(by.css("button.btn-primary")).get(0);
             var EC = protractor.ExpectedConditions;
 
-            browser.wait(protractor.ExpectedConditions.visibilityOf(btn), 6000);
+            browser.wait(protractor.ExpectedConditions.visibilityOf(btn), 3000);
             browser.wait(EC.elementToBeClickable(btn.isEnabled()), 5000);
             action(page.demands.click_submit);
         });

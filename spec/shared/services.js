@@ -4,7 +4,7 @@ module.exports = {
             var btn = element.all(by.css("button.btn-primary")).get(0);
             var EC = protractor.ExpectedConditions;
 
-            browser.wait(protractor.ExpectedConditions.visibilityOf(btn), 6000);
+            browser.wait(protractor.ExpectedConditions.visibilityOf(btn), 3000);
             browser.wait(EC.elementToBeClickable(btn.isEnabled()), 5000);
             action(page.services.click_submit)
         });
@@ -13,7 +13,7 @@ module.exports = {
             var btn = element.all(by.css("button.btn-primary")).get(0);
             var EC = protractor.ExpectedConditions;
 
-            browser.wait(protractor.ExpectedConditions.visibilityOf(btn), 6000);
+            browser.wait(protractor.ExpectedConditions.visibilityOf(btn), 3000);
             browser.wait(EC.elementToBeClickable(btn.isEnabled()), 5000);
             action(page.services.click_submit);
         });

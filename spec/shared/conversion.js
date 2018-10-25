@@ -4,13 +4,13 @@ module.exports = {
             let EC = protractor.ExpectedConditions;
             let btn = element(by.css(".form-actions > .btn-primary"));
             
-            browser.wait(protractor.ExpectedConditions.visibilityOf(btn), 6000);
+            browser.wait(protractor.ExpectedConditions.visibilityOf(btn), 3000);
             browser.wait(EC.elementToBeClickable(btn.isEnabled()), 5000);
             btn.click();
 
             let btn_nds = element(by.id("repeat-confirm"));
             
-            browser.wait(protractor.ExpectedConditions.visibilityOf(btn_nds), 6000);
+            browser.wait(protractor.ExpectedConditions.visibilityOf(btn_nds), 3000);
             browser.wait(EC.elementToBeClickable(btn_nds.isEnabled()), 5000);
             btn_nds.click();
 
@@ -20,7 +20,7 @@ module.exports = {
             let btn = element(by.css(".confirm-convertion"));
             let EC = protractor.ExpectedConditions;
 
-            browser.wait(protractor.ExpectedConditions.visibilityOf(btn), 6000);
+            browser.wait(protractor.ExpectedConditions.visibilityOf(btn), 3000);
             browser.wait(EC.elementToBeClickable(btn.isEnabled()), 5000);
             btn.click();
         });
