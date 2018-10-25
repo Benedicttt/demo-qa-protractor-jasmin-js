@@ -4,18 +4,11 @@ module.exports = {
             let selector = `form > div:nth-child(${num})`;
 
 
-            browser.findElement(protractor.By.tagName(selector)).findElements(protractor.By.tagName('input')).then(function(array_elements){
-                array_elements.forEach((elem)=> {
-                    if (elem.getAttribute('id') !== null) {
-                        elem.getAttribute('id').then(function (id) {
-                            elem = element(by.id(id));
-                            expect(elem.getAttribute('checked')).toBeTruthy();
-                        });
-                    }
-
-                });
+            browser.findElement(protractor.By.tagName(selector)).findElements(protractor.By.tagName('input')).then(function(elem){
+                elem.then(function(d){
+                    console.log(d.getAttribute('id'))
+                })
             });
-
         })
     },
 
