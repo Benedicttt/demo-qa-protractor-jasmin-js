@@ -55,4 +55,12 @@ COPY generate_config /opt/bin/generate_config
 
 # Generating a default config during build time
 RUN /opt/bin/generate_config > /opt/selenium/config.json
+
+# Install allure
+RUN apt-get install -y software-properties-common
+RUN apt-get install -y software-properties-common
+RUN apt-get update
+RUN apt-get -y install allure
+
+# Copy config for selenium
 COPY standalone/selenium.conf /etc/supervisor/conf.d/
