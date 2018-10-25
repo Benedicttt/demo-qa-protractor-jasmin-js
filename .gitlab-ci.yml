@@ -45,6 +45,8 @@ smoke:
 
 pages:
   stage: report
+  tags:
+    - test-finances-docker
   script:
     - ""
   artifacts:
