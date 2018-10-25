@@ -9,4 +9,4 @@ spec/support/user.json
 spec/support/service.json
 ./spec/support/service.json
 ./spec/support/user.json
-./public
+public
