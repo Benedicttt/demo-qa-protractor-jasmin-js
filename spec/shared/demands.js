@@ -121,7 +121,7 @@ module.exports = {
         });
 
         it("assert create current demand",  () => {
-            browser.sleep(1500)
+            browser.sleep(1000)
             let expectedUrl = browser.baseUrl + '/demands';
             let EC = browser.ExpectedConditions;
 
