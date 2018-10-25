@@ -37,8 +37,8 @@ smoke:
 
   script:
     - /node_modules/protractor/bin/protractor conf.js --suite preconditions --browser chrome --capabilities.chromeOptions.args headless --specs spec/panel/home_page.js
+    # TODO: after the fall of the tests you need to create a report anyway!!!
     - allure generate allure-results -o public --clean
-  allow_failure: true
 
   artifacts:
     paths:
