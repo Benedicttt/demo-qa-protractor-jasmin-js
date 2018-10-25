@@ -58,10 +58,3 @@ pages:
       - public
     expire_in: 1 day 
 
-#clean application image:
-#  stage: cleanup
-#  tags:
-#    - test-finances-shell
-#
-#  script:
-#    - docker image rmi application:latest
