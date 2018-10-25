@@ -3,11 +3,8 @@ module.exports = {
         it(`check checkbox on => ${string}`, () => {
             let selector = `form > div:nth-child(${num})`;
 
-
-            browser.findElement(protractor.By.tagName(selector)).findElements(protractor.By.tagName('input')).then(function(elem){
-                elem.then(function(d){
-                    console.log(d.getAttribute('id'))
-                })
+            browser.findElement(protractor.By.tagName(selector)).findElements(protractor.By.tagName("input")).then(function(rows){
+                rows.forEach(function(row){ row.getAttribute('id').then((e) => { console.log(e) }) })
             });
         })
     },
