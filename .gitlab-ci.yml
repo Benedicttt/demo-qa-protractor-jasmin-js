@@ -37,7 +37,7 @@ smoke:
 
   script:
     - cd /app && node_modules/protractor/bin/protractor conf.js --browser chrome --capabilities.chromeOptions.args headless --specs ./spec/panel/home_page.js
-    - cd /app &&  allure generate ./result -o ./public/ --clean
+
   artifacts:
     paths:
       - public
