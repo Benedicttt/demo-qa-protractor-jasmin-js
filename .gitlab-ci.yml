@@ -2,6 +2,7 @@ stages:
   - pre-build
   - build
   - tests
+  - report
   - cleanup
 
 base image:
@@ -36,4 +37,21 @@ smoke:
 
   script:
     - cd /app && node_modules/protractor/bin/protractor conf.js --browser chrome --capabilities.chromeOptions.args headless --specs ./spec/panel/home_page.js
+    - sleep 120
+
+  artifacts:
+    paths:
+      - public
+    expire_in: 5 day
+
+pages:
+  stage: report
+  tags:
+    - test-finances-docker
+  script:
+    - ""
+  artifacts:
+    paths:
+    - public
+    
 
