@@ -222,7 +222,7 @@ module.exports = {
                 for_css.wait_css(".show_entities > a", 5000, 1);
 
                 elem.getAttribute('href').then(function (value) {
-                    let id = value.match(/\d+/g).slice(-1)[0]; console.log(value.match(/\d+/g).slice(-1)[0]);
+                    let id = value.match(/\d+/g).slice(-1)[0];
                     let query = "/services/highlight_service?service_id=";
                     expect(value).toEqual(browser.baseUrl + query + id);
                 })
@@ -235,7 +235,7 @@ module.exports = {
                 for_css.wait_css(".show_entities > a", 5000, 1);
 
                 elem.getAttribute('href').then(function (value) {
-                    let id = value.match(/\d+/g).slice(-1)[0]; console.log(value.match(/\d+/g).slice(-1)[0]);
+                    let id = value.match(/\d+/g).slice(-1)[0];
                     let query = "/services/highlight_service?service_id=";
                     expect(value).toEqual(browser.baseUrl + query + id);
                 })
@@ -248,7 +248,7 @@ module.exports = {
                 for_css.wait_css(".show_entities > a", 5000, 2);
 
                 elem.getAttribute('href').then(function (value) {
-                    let id = value.match(/\d+/g).slice(-1)[0]; console.log(value.match(/\d+/g).slice(-1)[0]);
+                    let id = value.match(/\d+/g).slice(-1)[0];
                     let query = "/fin_indicators/operations/highlight_operation?operation_id=";
                     expect(value).toEqual(browser.baseUrl + query + id);
                 })

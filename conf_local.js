@@ -3,6 +3,8 @@ const fs = require('fs');
 const path = require('path');
 
 const user_object = require('./spec/panel/page_object/user.js');
+const user_shared = require('./spec/shared/user.js');
+
 const helper = require('./spec/helpers/base.js');
 const selectors = require('./spec/helpers/selectors.js');
 const for_css = require('./spec/helpers/css_selectors.js');
@@ -21,6 +23,7 @@ const AllureReporter = require('jasmine-allure-reporter');
 const { SpecReporter } = require('jasmine-spec-reporter');
 
 const outputFilename = './spec/support/';
+
 
 
 
@@ -114,12 +117,13 @@ exports.config = {
         global.services_shared = services_shared;
         global.receipts_shared = receipts_shared;
         global.conversion_shared = conversion_shared;
+        global.user_shared = user_shared;
 
 
         jasmine.getEnv().addReporter(addScreenShots);
         jasmine.getEnv().addReporter(new AllureReporter({
             allureReport: {
-                resultsDir: './allure-results/'
+                resultsDir: './public/'
             }
         }));
         jasmine.getEnv().addReporter(new SpecReporter( { displayStacktrace: 'all' } ));
