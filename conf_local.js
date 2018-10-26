@@ -84,7 +84,9 @@ exports.config = {
             "spec/panel/user_access/set_user_access_full.js",
             "spec/panel/services/create.js",
             "spec/panel/**/*.js"
-        ]
+        ],
+
+
     },
 
     allScriptsTimeout: 10000,
