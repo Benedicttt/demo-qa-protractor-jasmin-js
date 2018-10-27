@@ -92,22 +92,23 @@ module.exports = {
 
     write_after_ids_service: function(boolean) {
         if (boolean = true) {
-            for_css.wait_xpath("//*[@id=\"services\"]/tbody/tr[1]/td[1]", 2300);
-            element(by.xpath("//*[@id=\"services\"]/tbody/tr[1]/td[1]")).getText().then(function (text) {
-                let data = ` { 
-                                "service": { 
-                                    "us": { 
-                                        "number": ${text} 
-                                        }, 
-                                    "we": { 
-                                        "number": ${parseInt(text) + 1 }
-                                         } 
-                                }
-                             }`;
+            it("write in file id`s services",  () => {
+                for_css.wait_xpath("//*[@id=\"services\"]/tbody/tr[1]/td[1]", 2300);
+                element(by.xpath("//*[@id=\"services\"]/tbody/tr[1]/td[1]")).getText().then(function (text) {
+                    let data = ` { 
+                                    "service": { 
+                                        "us": { 
+                                            "number": ${text} 
+                                            }, 
+                                        "we": { 
+                                            "number": ${parseInt(text) + 1 }
+                                             } 
+                                    }
+                                 }`;
 
-                helper.write_in_file('service.json', data)
+                    helper.write_in_file('service.json', data)
+                });
             });
         }
     }
-
 };

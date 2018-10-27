@@ -150,7 +150,7 @@ exports.config = {
 
         services: [
             "spec/panel/services/us.js",
-            // "spec/panel/services/we.js"
+            "spec/panel/services/we.js"
         ]
 
 
