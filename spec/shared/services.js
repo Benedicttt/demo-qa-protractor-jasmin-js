@@ -37,30 +37,6 @@ module.exports = {
         });
 
 
-        services_shared.buttons();
-
-        it('click `filter_all`', () => {
-            for_css.wait_css("#filter_all", 2300);
-            for_css.wait_css(".btn.btn-primary", 2300)
-
-            element(by.id("filter_all")).click();
-
-            element(by.css(".btn.btn-primary")).click()
-            element(by.css(".btn.btn-primary")).click()
-        })
-
-        it('sign', () => {
-            for_css.wait_xpath("//*[@id=\"services\"]/tbody/tr[1]/td[11]/a[2]", 2500);
-            helper.sign_order_xpath("//*[@id=\"services\"]/tbody/tr[1]/td[11]/a[2]", 0, 1);
-        });
-
-        it('check success sign', () => {
-            browser.sleep(1500)
-            helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 0, "Подписана");
-        });
-    },
-
-    buttons: function() {
         it("click Save button",  () => {
             let btn = element.all(by.css("button.btn-primary")).get(0);
             let EC = protractor.ExpectedConditions;
@@ -87,8 +63,27 @@ module.exports = {
             browser.wait(EC.urlIs(expectedUrl), 2500);
             expect(browser.getCurrentUrl()).toEqual(expectedUrl);
         });
-    },
 
+        it('click `filter_all`', () => {
+            for_css.wait_css("#filter_all", 2300);
+            for_css.wait_css(".btn.btn-primary", 2300)
+
+            element(by.id("filter_all")).click();
+
+            element(by.css(".btn.btn-primary")).click()
+            element(by.css(".btn.btn-primary")).click()
+        })
+
+        it('sign', () => {
+            for_css.wait_xpath("//*[@id=\"services\"]/tbody/tr[1]/td[11]/a[2]", 2500);
+            helper.sign_order_xpath("//*[@id=\"services\"]/tbody/tr[1]/td[11]/a[2]", 0, 1);
+        });
+
+        it('check success sign', () => {
+            browser.sleep(1500)
+            helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 0, "Подписана");
+        });
+    },
 
     write_after_ids_service: function(boolean) {
         if (boolean = true) {

@@ -12,7 +12,8 @@ describe('Demands, create new, type `returned`', () => {
     });
 
     describe('Fill form inputs, select, checkbox:', () => {
-        demands_shared.run_test_case("case_1")
+        demands_shared.run_test_case_return("case_1")
+        // demands_shared.run_test_case_service("case_2")
     });
 
     // describe('Create return with advance_payment.', () => {
