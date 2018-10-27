@@ -14,6 +14,7 @@ describe('Services new', () => {
     describe('Fill form inputs for type US:', () => {
 
         services_shared.run_test_case("base_us")
+        services_shared.write_after_ids_service(true)
         // it('fill page', () => {
         //     tag_selector.selectOption("service_service_source_id", "Мы")
         //     tag_selector.selectOption("service_project_id", "Админ")

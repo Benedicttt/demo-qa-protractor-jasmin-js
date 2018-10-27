@@ -62,8 +62,8 @@ module.exports = {
 
     buttons: function() {
         it("click Save button",  () => {
-            var btn = element.all(by.css("button.btn-primary")).get(0);
-            var EC = protractor.ExpectedConditions;
+            let btn = element.all(by.css("button.btn-primary")).get(0);
+            let EC = protractor.ExpectedConditions;
 
             browser.wait(protractor.ExpectedConditions.visibilityOf(btn), 2500);
             browser.wait(EC.elementToBeClickable(btn.isEnabled()), 2500);
@@ -71,8 +71,8 @@ module.exports = {
         });
 
         it("click accept",  () => {
-            var btn = element.all(by.css("button.btn-primary")).get(0);
-            var EC = protractor.ExpectedConditions;
+            let btn = element.all(by.css("button.btn-primary")).get(0);
+            let EC = protractor.ExpectedConditions;
 
             browser.wait(protractor.ExpectedConditions.visibilityOf(btn), 2500);
             browser.wait(EC.elementToBeClickable(btn.isEnabled()), 2500);
@@ -91,7 +91,7 @@ module.exports = {
 
 
     write_after_ids_service: function(boolean) {
-        afterAll( () => {
+        if (boolean = true) {
             for_css.wait_xpath("//*[@id=\"services\"]/tbody/tr[1]/td[1]", 2300);
             element(by.xpath("//*[@id=\"services\"]/tbody/tr[1]/td[1]")).getText().then(function (text) {
                 let data = ` { 
@@ -107,7 +107,7 @@ module.exports = {
 
                 helper.write_in_file('service.json', data)
             });
-        });
+        }
     }
 
 };
