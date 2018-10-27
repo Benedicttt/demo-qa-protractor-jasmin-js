@@ -54,52 +54,13 @@ demands:
   purpose: 'for testing'
   amount: 101
   comment: 'For Testing'
-  click_submit: 'browser.actions().mouseMove(element.all(by.css("button.btn-primary")).get(0), {x: 10, y: 10,}).click().perform();'
   new:
     get: browser.get('/demands/new')
     title: 'Добавление заявки | СПОК'
 
 services:
-  us:
-    ids:
-      selectors: !!seq
-        - service_service_source_id
-        - service_project_id
-        - service_contractor_type_id
-        - service_contractor_id
-        - service_nomenclature_id
-
-      checkbox: !!seq
-        - service_is_rendered_during_period
-      inputs: !!seq
-        - service_purpose
-        - service_task
-        - service_amount
-
-  we:
-    ids:
-      selectors: !!seq
-        - service_service_source_id
-        - service_project_id
-        - service_expenditure_type_id
-        - service_expenditure_id
-        - service_contractor_type_id
-        - service_contractor_id
-
-      checkbox: !!seq
-        - service_is_rendered_during_period
-      inputs: !!seq
-        - service_purpose
-        - service_task
-        - service_amount
-
   get: browser.get('/services')
   title: 'Услуги | СПОК'
-  purse_number: '4548 6584 4848 9987'
-  purpose: 'for testing'
-  amount: 1000
-  comment: 'For Testing'
-  click_submit: 'browser.actions().mouseMove(element.all(by.css("button.btn-primary")).get(0), {x: 10, y: 10,}).click().perform();'
   new:
     get: browser.get('/services/new')
     title: 'Добавление услуги | СПОК'

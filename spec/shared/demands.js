@@ -5,13 +5,9 @@ const scenarios = yaml.safeLoad(file).demand;
 
 module.exports = {
     run_test_case: function(name_case) {
-        it('demand_is_payment_on_site',  () => {
-            expect(element(by.id('demand_is_payment_on_site')).isDisplayed()).toBeTruthy();
-        });
-
         scenarios.return[`${name_case}`].selector.map(function(id) {
-            let value = `${Object.values(id)[0]}`
-            let key = `${Object.keys(id)[0]}`
+            let value = `${Object.values(id)[0]}`;
+            let key = `${Object.keys(id)[0]}`;
 
             it(`{ ${key}: ${value} }`, () => {
                 tag_selector.selectOption(key, value)
@@ -19,23 +15,23 @@ module.exports = {
         });
 
         scenarios.return[`${name_case}`].checkbox.map(function(id) {
-            let value = `${Object.values(id)[0]}`
-            let key = `${Object.keys(id)[0]}`
+            let value = `${Object.values(id)[0]}`;
+            let key = `${Object.keys(id)[0]}`;
 
             if (Object.values(id)[0] === true) {
                 it(`{ ${key}: ${value} }`, () => {
-                    element(by.id(`${key}`)).click()
+                    element(by.id(`${key}`)).click();
                     browser.sleep(100)
                 })
             }
         });
 
         scenarios.return[`${name_case}`].input.map(function(id) {
-            let value = `${Object.values(id)[0]}`
-            let key = `${Object.keys(id)[0]}`
+            let value = `${Object.values(id)[0]}`;
+            let key = `${Object.keys(id)[0]}`;
 
             it(`{ ${key}: ${value} }`, () => {
-                element(by.id(`${key}`)).clear()
+                element(by.id(`${key}`)).clear();
                 element(by.id(`${key}`)).sendKeys(`${value}`)
             })
         });
@@ -52,7 +48,7 @@ module.exports = {
         demands_shared.buttons();
 
         it('sign and pay', () => {
-            browser.sleep(1000)
+            browser.sleep(1000);
             helper.sign_order_xpath("//*[@id=\"demands\"]/tbody/tr[1]/td[12]/a[2]", 1, 0);
             helper.sign_order_xpath("//*[@id=\"demands\"]/tbody/tr[1]/td[13]/a", 2, 1);
         });
@@ -62,7 +58,7 @@ module.exports = {
 
             for_css.wait_css("#filter_is_paid > label", 5000);
             element(by.css("#filter_is_paid > label")).click();
-            element(by.id('filter_all')).click()
+            element(by.id('filter_all')).click();
 
             browser.sleep(1000);
             browser.actions().mouseMove(element.all(by.css("button.btn-primary")).get(0), {x: 10, y: 10,}).click().perform();
@@ -76,7 +72,7 @@ module.exports = {
 
         it('check success sign', () => {
             for_css.wait_xpath("//*[@id=\"demands\"]/tbody/tr/td[13]", 5000);
-            browser.sleep(500)
+            browser.sleep(500);
 
             helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 0, "Подписана");
             helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 1, "Оплачена");
