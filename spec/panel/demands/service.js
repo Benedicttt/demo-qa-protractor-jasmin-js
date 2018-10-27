@@ -1,3 +1,22 @@
+describe('Demands, create new, type `returned`', () => {
+    beforeAll( () => {
+        user_object.authorization(helper.user_email_last());
+    });
+
+    it(`Go to page and check title ${page.demands.title}`,  () => {
+        go(page.demands.get);
+        expect(browser.getTitle()).toEqual(page.demands.title);
+
+        go(page.demands.new.get);
+        expect(browser.getTitle()).toEqual(page.demands.new.title);
+    });
+
+    describe('Fill form inputs, select, checkbox:', () => {
+        demands_shared.run_test_case_service("case_1")
+    });
+});
+
+
 describe('Demands', () => {
     beforeAll( () => {
         user_object.authorization(helper.user_email_last());
@@ -19,7 +38,7 @@ describe('Demands', () => {
 
             it('add inventory', () => {
                 tag_selector.from_text('css', '#demand_contractor_type_id > option', "--  На имущество")
-                for_css.wait_id('link_service_properties', 5000)
+                for_css.wait_id('link_service_properties', 2000)
                 element(by.id('link_service_properties')).click()
 
                 for_css.wait_id('service_properties_amount', 3000)
@@ -29,9 +48,9 @@ describe('Demands', () => {
                 element.all(by.css('.btn-primary')).get(0).click()
                 tag_selector.from_text('css', '#demand_contractor_id > option', " Одноразовый")
 
-                for_css.wait_id('create_distribution', 5000);
+                for_css.wait_id('create_distribution', 2000);
                 element(by.id('create_distribution')).click();
-                for_css.wait_id('distribution_share', 5000);
+                for_css.wait_id('distribution_share', 2000);
                 element(by.id('distribution_share')).sendKeys(1);
                 action(page.demands.click_submit);
             })
@@ -86,17 +105,17 @@ describe('Demands', () => {
         
         it('copy service document', () => {
             helper.click_is_paid_and_filter_all()
-            for_css.wait_css(".btn.btn-primary", 5000)
+            for_css.wait_css(".btn.btn-primary", 2000)
             element(by.css(".btn.btn-primary")).click()
             element(by.css(".btn.btn-primary")).click()
 
             var until = protractor.ExpectedConditions;
             signed = element.all(by.css('td.no-wrap > a, td.no-wrap > span')).get(0)
-            browser.wait(until.presenceOf(signed.getText()), 5000, 'Element taking too long to appear in the DOM');
-            browser.wait(EC.textToBePresentInElement(signed, "Подписана"), 5000);
+            browser.wait(until.presenceOf(signed.getText()), 2000, 'Element taking too long to appear in the DOM');
+            browser.wait(EC.textToBePresentInElement(signed, "Подписана"), 2000);
                 
             
-            for_css.wait_css('.icon-file', 5000)
+            for_css.wait_css('.icon-file', 2000)
             element.all(by.css('.icon-file')).get(0).click()
         })
 

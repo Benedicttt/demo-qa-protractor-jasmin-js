@@ -25,9 +25,15 @@ demand:
         - demand_comment: "for test case  1 in demand return"
         - demand_task: 123
         - demand_refundable_service_id: "us"
+      attributes: !!seq
+        - advances:       true
+        - click_buttons:  true
+        - check_statuses: true
+        - check_notify:   true
+        - check_popup:    true
 
   service:
-    case_2:
+    case_1:
       selector: !!seq
         - demand_project_id: "Админ"
         - demand_account_id: "Стандартный рублевый счет "

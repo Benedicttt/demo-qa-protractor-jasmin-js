@@ -16,7 +16,6 @@ users:
   get: browser.get('/system/users')
   title: 'Пользователи | СПОК'
 
-
 demands:
   get: browser.get('/demands')
   title: 'Заявки | СПОК'
@@ -32,12 +31,6 @@ services:
     title: 'Добавление услуги | СПОК'
 
 DDS:
-  ids:
-    service:
-      selectors: !!seq
-      checkbox: !!seq
-      attach: !!seq
-      inputs: !!seq
   get: browser.get('/fin_indicators/operations')
   title: 'ДДС | СПОК'
   purse_number: '4548 6584 4848 9987'

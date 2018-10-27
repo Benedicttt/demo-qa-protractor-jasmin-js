@@ -11,9 +11,9 @@ service:
       - service_is_rendered_during_period: true
 
     input: !!seq
-      - service_purpose: "for test test case `base_us` 1 service"
+      - service_purpose: "for test test case base_us service"
       - service_task: 123
-      - service_amount: 1002
+      - service_amount: 100001
 
   base_we:
     selector: !!seq
@@ -29,6 +29,6 @@ service:
       - service_is_rendered_during_period: true
 
     input: !!seq
-      - service_purpose: "for test test case `base_we` 1 service"
+      - service_purpose: "for test test case base_we service"
       - service_task: 123
-      - service_amount: 1002
+      - service_amount: 100002

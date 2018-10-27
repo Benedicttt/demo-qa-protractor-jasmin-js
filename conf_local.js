@@ -64,7 +64,7 @@ exports.config = {
     },
 
     allScriptsTimeout: 10000,
-    getPageTimeout: 15000,
+    getPageTimeout: 12000,
 
     files: [
         'node_modules/jquery/dist/jquery.js',
