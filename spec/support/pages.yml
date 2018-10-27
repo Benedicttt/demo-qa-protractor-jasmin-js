@@ -47,33 +47,6 @@ demands:
         - demand_amount
         - demand_comment
         - demand_task
-    return:
-      selectors: !!seq
-        - demand_project_id
-        - demand_account_id
-        - demand_contractor_type_id
-        - demand_contractor_id
-      checkbox: !!seq
-        - demand_is_refund
-        - demand_is_payment_on_site
-        - demand_is_plan_paid_date
-        - demand_is_regular_payment
-        - demand_is_monthly_payment
-        - demand_is_salary
-        - demand_is_profits_distribution
-        - demand_is_plan_paid_date_period
-      attach: !!seq
-        - account_upload
-        - demand_file_path
-        - uploaded_file_list
-      inputs: !!seq
-        - demand_payment_site_info
-        - demand_purse_number
-        - demand_purpose
-        - demand_amount
-        - demand_comment
-        - demand_task
-        - demand_refundable_service_id
 
   get: browser.get('/demands')
   title: 'Заявки | СПОК'

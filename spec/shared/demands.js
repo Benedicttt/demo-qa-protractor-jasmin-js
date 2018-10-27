@@ -1,41 +1,114 @@
+const yaml = require('js-yaml');
+const fs = require('fs');
+let file = fs.readFileSync('spec/panel/test_case/demands/test_case.yml', 'utf8')
+const scenarios = yaml.safeLoad(file).demand;
+
 module.exports = {
-    returns: function() {
+    run_test_case: function(name_case) {
         it('demand_is_payment_on_site',  () => {
             expect(element(by.id('demand_is_payment_on_site')).isDisplayed()).toBeTruthy();
         });
 
-        page.demands.ids.return.selectors.forEach(function (id) {
-            it(`ID: ${id}`,  () => {
-                if (id == "demand_account_id") {
-                    tag_selector.click_id_on_option(id.toString(), 0, 5000);
-                } else {
-                    tag_selector.click_id_on_option(id.toString(), 3, 5000);
+        scenarios.return[`${name_case}`].selector.map(function(id) {
+            let value = `${Object.values(id)[0]}`
+            let key = `${Object.keys(id)[0]}`
+
+            it(`{ ${key}: ${value} }`, () => {
+                tag_selector.selectOption(key, value)
+            })
+        });
+
+        scenarios.return[`${name_case}`].checkbox.map(function(id) {
+            let value = `${Object.values(id)[0]}`
+            let key = `${Object.keys(id)[0]}`
+
+            if (Object.values(id)[0] === true) {
+                it(`{ ${key}: ${value} }`, () => {
+                    element(by.id(`${key}`)).click()
+                    browser.sleep(100)
+                })
+            }
+        });
+
+        scenarios.return[`${name_case}`].input.map(function(id) {
+            let value = `${Object.values(id)[0]}`
+            let key = `${Object.keys(id)[0]}`
+
+            it(`{ ${key}: ${value} }`, () => {
+                element(by.id(`${key}`)).clear()
+                element(by.id(`${key}`)).sendKeys(`${value}`)
+            })
+        });
+
+        it("click Save button",  () => {
+            let btn = element.all(by.css("button.btn-primary")).get(0);
+            let EC = protractor.ExpectedConditions;
+
+            browser.wait(protractor.ExpectedConditions.visibilityOf(btn), 2500);
+            browser.wait(EC.elementToBeClickable(btn.isEnabled()), 2500);
+            btn.click()
+        });
+
+        demands_shared.buttons();
+
+        it('sign and pay', () => {
+            browser.sleep(1000)
+            helper.sign_order_xpath("//*[@id=\"demands\"]/tbody/tr[1]/td[12]/a[2]", 1, 0);
+            helper.sign_order_xpath("//*[@id=\"demands\"]/tbody/tr[1]/td[13]/a", 2, 1);
+        });
+
+        it('unchecked is_paid in filter', () => {
+            go(page.demands.get);
+
+            for_css.wait_css("#filter_is_paid > label", 5000);
+            element(by.css("#filter_is_paid > label")).click();
+            element(by.id('filter_all')).click()
+
+            browser.sleep(1000);
+            browser.actions().mouseMove(element.all(by.css("button.btn-primary")).get(0), {x: 10, y: 10,}).click().perform();
+
+            element.all(by.css('td.no-wrap > a, td.no-wrap > span')).get(0).getText().then((text) => {
+                if ( text === '. . . . . .' ) {
+                    browser.sleep(3000)
                 }
             });
         });
 
-        page.demands.ids.return.checkbox.forEach(function (id) {
-            it(`ID: ${id}`,  () => {
-                let elem = element(by.id(id.toString()));
+        it('check success sign', () => {
+            for_css.wait_xpath("//*[@id=\"demands\"]/tbody/tr/td[13]", 5000);
+            browser.sleep(500)
 
-                elem.click();
-                expect(elem.getAttribute('checked')).toBeTruthy();
-            });
+            helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 0, "Подписана");
+            helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 1, "Оплачена");
         });
 
-        page.demands.ids.return.inputs.forEach(function (id) {
-            it(`ID: ${id}`,  () => {
-                demands_shared.inputs_set(id);
-            });
-        });
-
-        it('fist click button save', () => {
-            var btn = element.all(by.css("button.btn-primary")).get(0);
-
-            browser.wait(protractor.ExpectedConditions.visibilityOf(btn), 3000);
-            action(page.demands.click_submit)
-        });
+        demands_shared.check_data_popup("SERVICE");
+        demands_shared.check_data_popup("DDS");
+        demands_shared.check_data_popup("DEMANDS");
     },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     services: function() {
         it('demand_is_payment_on_site',  () => {
@@ -183,32 +256,7 @@ module.exports = {
         });
     },
 
-    check_status_order_returned: function() {
-        describe('Check order signed and order payed `returned`', () => {
-            it('sign and pay', () => {
-                browser.sleep(1000)
-                helper.sign_order_xpath("//*[@id=\"demands\"]/tbody/tr[1]/td[12]/a[2]", 1, 0);    
-                helper.sign_order_xpath("//*[@id=\"demands\"]/tbody/tr[1]/td[13]/a", 2, 1);
-            });
 
-            it('unchecked is_paid in filter', () => {
-                go(page.demands.get);
-
-                for_css.wait_css("#filter_is_paid > label", 5000);
-                element(by.css("#filter_is_paid > label")).click();
-                element(by.id('filter_all')).click()
-
-                browser.sleep(1000);
-                browser.actions().mouseMove(element.all(by.css("button.btn-primary")).get(0), {x: 10, y: 10,}).click().perform();
-               
-                element.all(by.css('td.no-wrap > a, td.no-wrap > span')).get(0).getText().then((text) => {
-                    if ( text === '. . . . . .' ) { 
-                        browser.sleep(3000)      
-                    }
-                });
-            });
-        });
-    },
 
     check_data_popup: function(name) {
         it('Find popup', () => {
