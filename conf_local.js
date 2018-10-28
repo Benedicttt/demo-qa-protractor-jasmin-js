@@ -145,7 +145,8 @@ exports.config = {
         ],
 
         demands: [
-            "spec/panel/demands/return.js",
+            // "spec/panel/demands/return.js",
+            "spec/panel/demands/service.js"
         ],
 
         services: [
