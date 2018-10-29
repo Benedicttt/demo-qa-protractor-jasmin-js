@@ -76,22 +76,19 @@ module.exports = {
             }
 
             if (key === "check_statuses_return" && value === 'true') {
-                if (key === "add_inventory" && value === 'true') {
-                    browser.executeScript("$('.icon-indent-left')[0].click()")
-                    browser.sleep(200)
-                    browser.executeScript("$('.btn-primary')[0].click()")
-                }
+                browser.sleep(1000)
+                browser.executeScript("$('.icon-indent-left')[0].click()")
+                browser.sleep(1000)
+                browser.executeScript("$('.btn-primary')[0].click()")
 
                 demands_shared.check_status_order_return()
             }
 
             if (key === "check_statuses_service" && value === 'true') {
-                if (key === "add_inventory" && value === 'true') {
-                    browser.executeScript("$('.icon-indent-left')[0].click()")
-                    browser.sleep(200)
-                    browser.executeScript("$('.btn-primary')[0].click()")
-                }
-
+                browser.sleep(2000)
+                browser.executeScript("$('.icon-indent-left')[0].click()")
+                browser.sleep(1000)
+                browser.executeScript("$('.btn-primary')[0].click()")
                 demands_shared.check_status_order_service()
             }
 
@@ -192,22 +189,22 @@ module.exports = {
                 if (key === "click_buttons" && value === 'true') { demands_shared.buttons() }
 
                 if (key === "check_statuses_return" && value === 'true')  { demands_shared.check_status_order_return() }
-                if (key === "check_statuses_service" && value === 'true') { demands_shared.check_status_order_service() }
-                if (key === "demand_is_distributed" && value === 'true')  { demands_shared.demand_is_distributed() }
+            //     if (key === "check_statuses_service" && value === 'true') { demands_shared.check_status_order_service() }
+            //     if (key === "demand_is_distributed" && value === 'true')  { demands_shared.demand_is_distributed() }
                 if (key === "add_inventory" && value === 'true')          { demands_shared.add_inventory() }
                 if (key === "check_notify" && value === 'true')           { demands_shared.check_notify_for_demand() }
-
-                let current_popup;
-                if (key === "check_popup" && value === 'true') {
-                    for_css.wait_css(".btn-group .icon-info-sign", 2500);
-                    current_popup = element.all(by.css(".btn-group i.icon-info-sign")).get(0)
-                    current_popup.click();
-                    current_popup.isDisplayed();
-
-                    demands_shared.check_data_popup("SERVICE");
-                    demands_shared.check_data_popup("DDS");
-                    demands_shared.check_data_popup("DEMANDS");
-                }
+            //
+            //     let current_popup;
+            //     if (key === "check_popup" && value === 'true') {
+            //         for_css.wait_css(".btn-group .icon-info-sign", 2500);
+            //         current_popup = element.all(by.css(".btn-group i.icon-info-sign")).get(0)
+            //         current_popup.click();
+            //         current_popup.isDisplayed();
+            //
+            //         demands_shared.check_data_popup("SERVICE");
+            //         demands_shared.check_data_popup("DDS");
+            //         demands_shared.check_data_popup("DEMANDS");
+            //     }
             });
         });
     },
@@ -231,11 +228,34 @@ module.exports = {
             expect(browser.getCurrentUrl()).toEqual(expectedUrl);
     },
 
+    //TODO:sign and pay
     check_status_order_return: function() {
-        //TODO:sign and pay
-            browser.sleep(1000);
-            helper.sign_order_xpath("//*[@id=\"demands\"]/tbody/tr[1]/td[12]/a[2]", 1, 0);
-            helper.sign_order_xpath("//*[@id=\"demands\"]/tbody/tr[1]/td[13]/a", 2, 1);
+            for_css.wait_xpath("*//th[@class='span1'][9]/a[contains(text(), \"Подпись\")]/following::*/td[12]/a[@title=\"Подписать\"]/child::*", 3000)
+
+            let sign_service = element.all(by.xpath("*//th[@class='span1'][9]/a[contains(text(), \"Подпись\")]/following::*/td[12]/a[@title=\"Подписать\"]/child::*")).get(0);
+            sign_service.click();
+
+            let btn_sign_service = "#modal > div.modal-footer > button.btn.btn-primary";
+            for_css.wait_css(btn_sign_service, 2500)
+            element(by.css(btn_sign_service)).click()
+
+
+            // let sign_demand  = element.all(by.xpath("*//th[@class='span1'][8][contains(text(), \"Услуга\")]/following::*/td[12]/a[@title=\"Подписать\"] /child::*")).get(0);
+            // sign_demand.click();
+            // btn.click();
+
+            for_css.wait_xpath("*//th[@class='span1'][10]/a[contains(text(), \"Оплата\")]/following::*/td[13]/a[@title=\"Выставить на оплату\"]/parent::*/a", 3000)
+            let paid_demand  = element.all(by.xpath("*//th[@class='span1'][10]/a[contains(text(), \"Оплата\")]/following::*/td[13]/a[@title=\"Выставить на оплату\"]/child::*")).get(0);
+            paid_demand.click();
+            let btn_paid_demand = "#modal > div.modal-footer > button.btn.btn-primary";
+            for_css.wait_css(btn_paid_demand, 2500)
+            element(by.css(btn_paid_demand)).click()
+
+
+            // element.all(by.css(css)).get(index_elem).getText().then(function (result) {
+            //     if ( log === true) { console.log(result, index_elem) }
+            //     expect(result).toEqual(expect_text)
+            // })
 
         //TODO: unchecked is_paid in filter
             go(page.demands.get);
