@@ -129,6 +129,7 @@ demand:
 
       attributes: !!seq
         - advances:               false
+        - add_inventory:          false
         - demand_is_distributed:  true
         - click_buttons:          true
         - check_statuses_service: true

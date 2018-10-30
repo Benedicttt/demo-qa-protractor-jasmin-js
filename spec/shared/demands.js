@@ -83,7 +83,10 @@ module.exports = {
                     demands_shared.check_data_popup("DEMANDS");
                 }
             });
-            if (key === "check_statuses_service" && value === 'true') { demands_shared.check_status_order_service() }
+            if (key === "check_statuses_service" && value === 'true') {
+                let params = scenarios.service[`${name_case}`].attributes
+                demands_shared.check_status_order_service(params)
+            }
         });
     },
 
@@ -254,28 +257,41 @@ module.exports = {
         helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 1, "Оплачена");
     },
 
-    check_status_order_service: function() {
+    check_status_order_service: function(params) {
         it('sign amortization', () => {
-            //TODO: AMORTIZATION
-            browser.sleep(1000);
-            for_css.wait_xpath("*//th[@class='span1'][8][contains(text(), \"Услуга\")]/following::*/td[11]/a[@title=\"Задать процент амортизации\"]/i", 3000)
-            element.all(by.xpath("*//th[@class='span1'][8][contains(text(), \"Услуга\")]/following::*/td[11]/a[@title=\"Задать процент амортизации\"]/i")).get(0).click();
 
-            for_css.wait_xpath("//h3[contains(text(), \"Число периодов амортизации имущества\")]", 5000)
-            element.all(by.css('.btn-primary')).get(0).click()
-            browser.sleep(1000)
+            params.map(function(attribute) {
+                let value = `${Object.values(attribute)[0]}`;
+                let key = `${Object.keys(attribute)[0]}`;
+
+                if (key === "add_inventory" && value === 'true') {
+                    console.log("1")
+                    //TODO: AMORTIZATION
+                    browser.sleep(1000);
+                    for_css.wait_xpath("*//th[@class='span1'][8][contains(text(), \"Услуга\")]/following::*/td[11]/a[@title=\"Задать процент амортизации\"]/i", 3000)
+                    element.all(by.xpath("*//th[@class='span1'][8][contains(text(), \"Услуга\")]/following::*/td[11]/a[@title=\"Задать процент амортизации\"]/i")).get(0).click();
+
+                    for_css.wait_xpath("//h3[contains(text(), \"Число периодов амортизации имущества\")]", 5000)
+                    element.all(by.css('.btn-primary')).get(0).click()
+                    browser.sleep(1000)
+                    browser.navigate().refresh();
+                }
+            });
+
         });
 
         it('sign service', () => {
-            //TODO: SERVICE
-            let xpath_service = "*//th[@class='span1'][8][contains(text(), \"Услуга\")]/following::*/td[11]/a[@title=\"Подписать\"]/child::*"
-            element.all(by.xpath(xpath_service)).get(0).click();
-            browser.sleep(1000)
 
-            for_css.wait_xpath("//h3[contains(text(), \"Подпись услуги\")]", 2500)
-            element.all(by.css('.btn-primary')).get(0).click()
+            //TODO: SERVICE
+            let xpath_service = "*//th[@class='span1'][8][contains(text(), \"Услуга\")]/following::*/td[11]/a[@title=\"Подписать\"]/child::*";
+            for_css.wait_xpath(xpath_service, 3000)
+            element.all(by.xpath(xpath_service)).get(0).click();
             browser.sleep(1000);
-            browser.navigate().refresh();
+
+            for_css.wait_xpath("//h3[contains(text(), \"Подпись услуги\")]", 2500);
+            element.all(by.css('.btn-primary')).get(0).click();
+            browser.sleep(1000);
+            helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 1, "Подписана");
         });
 
         it('sign demand', () => {
@@ -288,6 +304,7 @@ module.exports = {
 
             for_css.wait_xpath("//h3[contains(text(), \"Подпись заявки\")]", 2500)
             element.all(by.css('.btn-primary')).get(0).click()
+            helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 4, "Подписана");
         });
 
         it('paid', () => {
@@ -303,6 +320,7 @@ module.exports = {
 
             for_css.wait_xpath("//td[contains(text(), \"Комиссия:\")]", 2500)
             element.all(by.css('.btn-primary')).get(0).click()
+            helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 5, "Оплачена");
         });
 
         it('check all', () => {
@@ -326,9 +344,6 @@ module.exports = {
                 y: 10,
             }).click().perform();
 
-            helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 0, "Подписана");
-            helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 3, "Подписана");
-            helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 4, "Оплачена");
         });
     },
 
