@@ -65,6 +65,12 @@ module.exports = {
     },
 
     check_success_sign: function (css, index_elem = null, expect_text = null, log = null){
+        element.all(by.css('td.no-wrap > a, td.no-wrap > span')).get(0).getText().then((text) => {
+            if ( text === '. . . . . .' ) {
+                browser.sleep(3000)
+            }
+        });
+
         for_css.wait_css("td.no-wrap > a, td.no-wrap > span", 2000);
         browser.sleep(500);
         element.all(by.css(css)).get(index_elem).getText().then(function (result) {
