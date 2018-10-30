@@ -70,7 +70,10 @@ module.exports = {
 
                 if (key === "click_buttons" && value === 'true') { demands_shared.buttons() }
                 if (key === "check_statuses_return" && value === 'true')  { demands_shared.check_status_order_return(name_case) }
+            });
+
                 if (key === "check_statuses_service" && value === 'true') { demands_shared.check_status_order_service(name_case) }
+            it(`{ ${key}: ${value} }`, () => {
                 if (key === "check_notify" && value === 'true')           { demands_shared.check_notify_for_demand() }
 
                 let current_popup;
@@ -154,9 +157,7 @@ module.exports = {
 
                 if (key === "click_buttons" && value === 'true') { demands_shared.buttons() }
                 if (key === "check_statuses_return" && value === 'true')  { demands_shared.check_status_order_return(name_case) }
-                if (key === "check_statuses_service" && value === 'true') {
-                    demands_shared.check_status_order_service()
-                }
+                if (key === "check_statuses_service" && value === 'true') { demands_shared.check_status_order_service() }
 
                 if (key === "check_notify" && value === 'true')           { demands_shared.check_notify_for_demand() }
 
@@ -258,63 +259,84 @@ module.exports = {
     },
 
     check_status_order_service: function() {
-        //TODO: AMORTIZATION
-        browser.sleep(1000);
-        for_css.wait_xpath("*//th[@class='span1'][8][contains(text(), \"Услуга\")]/following::*/td[11]/a[@title=\"Задать процент амортизации\"]/i", 3000)
-        element.all(by.xpath("*//th[@class='span1'][8][contains(text(), \"Услуга\")]/following::*/td[11]/a[@title=\"Задать процент амортизации\"]/i")).get(0).click();
+        it('sign amortization', () => {
 
-        for_css.wait_xpath("//h3[contains(text(), \"Число периодов амортизации имущества\")]", 5000)
-        element.all(by.css('.btn-primary')).get(0).click()
-        browser.sleep(1000)
+            //TODO: AMORTIZATION
+            browser.sleep(1000);
+            for_css.wait_xpath("*//th[@class='span1'][8][contains(text(), \"Услуга\")]/following::*/td[11]/a[@title=\"Задать процент амортизации\"]/i", 3000)
+            element.all(by.xpath("*//th[@class='span1'][8][contains(text(), \"Услуга\")]/following::*/td[11]/a[@title=\"Задать процент амортизации\"]/i")).get(0).click();
 
+            for_css.wait_xpath("//h3[contains(text(), \"Число периодов амортизации имущества\")]", 5000)
+            element.all(by.css('.btn-primary')).get(0).click()
+            browser.sleep(1000)
+        });
 
-        //TODO: SERVICE
-        let xpath_service = "*//th[@class='span1'][8][contains(text(), \"Услуга\")]/following::*/td[11]/a[@title=\"Подписать\"]/child::*"
-        element.all(by.xpath(xpath_service)).get(0).click();
-        browser.sleep(1000)
+        it('sign service', () => {
+            //TODO: SERVICE
+            let xpath_service = "*//th[@class='span1'][8][contains(text(), \"Услуга\")]/following::*/td[11]/a[@title=\"Подписать\"]/child::*"
+            element.all(by.xpath(xpath_service)).get(0).click();
+            browser.sleep(1000)
 
-        browser.executeScript("$('#modal form').submit()")
+            browser.executeScript("$('#modal form').submit()")
 
-        for_css.wait_xpath("//h3[contains(text(), \"Подпись услуги\")]", 2500)
-        browser.executeScript("$('#modal form').submit()")
-        browser.sleep(1000);
-        browser.navigate().refresh();
+            for_css.wait_xpath("//h3[contains(text(), \"Подпись услуги\")]", 2500)
+            browser.executeScript("$('#modal form').submit()")
+            browser.sleep(1000);
+            browser.navigate().refresh();
+        });
 
-        //TODO: SIGN
-        for_css.wait_xpath("*//th[@class='span1'][9]/a[contains(text(), \"Подпись\")]/following::*/td[12]/a[@title=\"Подписать\"]/child::*", 3000)
-        let sign_service = element.all(by.xpath("*//th[@class='span1'][9]/a[contains(text(), \"Подпись\")]/following::*/td[12]/a[@title=\"Подписать\"]/child::*")).get(0);
-        sign_service.click();
+        it('sign demand', () => {
 
-        for_css.wait_xpath("//h3[contains(text(), \"Подпись заявки\")]", 2500)
-        browser.executeScript("$('#modal form').submit()")
+            //TODO: SIGN
+            browser.sleep(1000)
+            for_css.wait_xpath("*//th[@class='span1'][9]/a[contains(text(), \"Подпись\")]/following::*/td[12]/a[@title=\"Подписать\"]/child::*", 3000)
+            let sign_service = element.all(by.xpath("*//th[@class='span1'][9]/a[contains(text(), \"Подпись\")]/following::*/td[12]/a[@title=\"Подписать\"]/child::*")).get(0);
+            sign_service.click();
 
-        //TODO: PAID
-        for_css.wait_xpath('//*[@id="demands"]/tbody/tr[1]/td[13]/a', 3000)
-        let icon_paid = element.all(by.xpath("*//th[@class='span1'][10]/a[contains(text(), \"Оплата\")]/following::*/td[13]/a[@title=\"Выставить на оплату\"]/parent::*/a")).get(0)
-        icon_paid.click()
+            for_css.wait_xpath("//h3[contains(text(), \"Подпись заявки\")]", 2500)
+            browser.executeScript("$('#modal form').submit()")
+        });
 
-        for_css.wait_xpath("//h3[contains(text(), \"Выставление заявки на оплату\")]", 2500)
-        browser.executeScript("$('#modal form').submit()")
+        it('paid', () => {
 
-        for_css.wait_xpath("//td[contains(text(), \"Комиссия:\")]", 2500)
-        browser.executeScript("$('#modal form').submit()")
+            //TODO: PAID
+            browser.sleep(1000)
+            for_css.wait_xpath('//*[@id="demands"]/tbody/tr[1]/td[13]/a', 3000)
+            let icon_paid = element.all(by.xpath("*//th[@class='span1'][10]/a[contains(text(), \"Оплата\")]/following::*/td[13]/a[@title=\"Выставить на оплату\"]/parent::*/a")).get(0)
+            icon_paid.click()
 
-        //TODO: unchecked is_paid in filter
-        go(page.demands.get);
+            for_css.wait_xpath("//h3[contains(text(), \"Выставление заявки на оплату\")]", 2500)
+            browser.executeScript("$('#modal form').submit()")
 
-        for_css.wait_css("#filter_is_paid > label", 2500);
-        element(by.css("#filter_is_paid > label")).click();
-        element(by.id('filter_all')).click();
+            for_css.wait_xpath("//td[contains(text(), \"Комиссия:\")]", 2500)
+            browser.executeScript("$('#modal form').submit()")
+        });
 
-        browser.sleep(300);
-        browser.actions().mouseMove(element.all(by.css("button.btn-primary")).get(0), {x: 10, y: 10,}).click().perform();
+        it('check all', () => {
 
-        browser.sleep(1000);
-        browser.actions().mouseMove(element.all(by.css("button.btn-primary")).get(0), {x: 10, y: 10,}).click().perform();
+            //TODO: unchecked is_paid in filter
+            go(page.demands.get);
 
-        helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 0, "Подписана");
-        helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 3, "Подписана");
-        helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 4, "Оплачена");
+            for_css.wait_css("#filter_is_paid > label", 2500);
+            element(by.css("#filter_is_paid > label")).click();
+            element(by.id('filter_all')).click();
+
+            browser.sleep(300);
+            browser.actions().mouseMove(element.all(by.css("button.btn-primary")).get(0), {
+                x: 10,
+                y: 10,
+            }).click().perform();
+
+            browser.sleep(1000);
+            browser.actions().mouseMove(element.all(by.css("button.btn-primary")).get(0), {
+                x: 10,
+                y: 10,
+            }).click().perform();
+
+            helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 0, "Подписана");
+            helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 3, "Подписана");
+            helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 4, "Оплачена");
+        });
     },
 
     check_data_popup: function(name) {
