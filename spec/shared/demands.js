@@ -304,6 +304,7 @@ module.exports = {
 
             for_css.wait_xpath("//h3[contains(text(), \"Подпись заявки\")]", 2500)
             element.all(by.css('.btn-primary')).get(0).click()
+            browser.sleep(1000)
             helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 4, "Подписана");
         });
 
@@ -320,31 +321,32 @@ module.exports = {
 
             for_css.wait_xpath("//td[contains(text(), \"Комиссия:\")]", 2500)
             element.all(by.css('.btn-primary')).get(0).click()
-            helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 5, "Оплачена");
+            browser.sleep(1000)
+            helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 4, "Оплачена");
         });
 
-        it('check all', () => {
-
-            //TODO: unchecked is_paid in filter
-            go(page.demands.get);
-
-            for_css.wait_css("#filter_is_paid > label", 2500);
-            element(by.css("#filter_is_paid > label")).click();
-            element(by.id('filter_all')).click();
-
-            browser.sleep(300);
-            browser.actions().mouseMove(element.all(by.css("button.btn-primary")).get(0), {
-                x: 10,
-                y: 10,
-            }).click().perform();
-
-            browser.sleep(1000);
-            browser.actions().mouseMove(element.all(by.css("button.btn-primary")).get(0), {
-                x: 10,
-                y: 10,
-            }).click().perform();
-
-        });
+        // it('check all', () => {
+        //
+        //     //TODO: unchecked is_paid in filter
+        //     go(page.demands.get);
+        //
+        //     for_css.wait_css("#filter_is_paid > label", 2500);
+        //     element(by.css("#filter_is_paid > label")).click();
+        //     element(by.id('filter_all')).click();
+        //
+        //     browser.sleep(300);
+        //     browser.actions().mouseMove(element.all(by.css("button.btn-primary")).get(0), {
+        //         x: 10,
+        //         y: 10,
+        //     }).click().perform();
+        //
+        //     browser.sleep(1000);
+        //     browser.actions().mouseMove(element.all(by.css("button.btn-primary")).get(0), {
+        //         x: 10,
+        //         y: 10,
+        //     }).click().perform();
+        //
+        // });
     },
 
     check_data_popup: function(name) {

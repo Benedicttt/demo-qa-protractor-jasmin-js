@@ -29,8 +29,8 @@ demand:
         - advances:              true
         - click_buttons:         true
         - check_statuses_return: true
-        - check_notify:          true
         - check_popup:           true
+        - check_notify:          true
 
     case_2:
       selector: !!seq
@@ -63,8 +63,8 @@ demand:
         - click_buttons:         true
         - check_statuses_return: true
         - demand_is_distributed: false
-        - check_notify:          false
         - check_popup:           true
+        - check_notify:          false
 
   service:
     case_1:
@@ -98,8 +98,8 @@ demand:
         - demand_is_distributed:  true
         - click_buttons:          true
         - check_statuses_service: true
-        - check_notify:           false
         - check_popup:            true
+        - check_notify:           false
 
     case_2:
       selector: !!seq
@@ -133,8 +133,8 @@ demand:
         - demand_is_distributed:  true
         - click_buttons:          true
         - check_statuses_service: true
-        - check_notify:           false
         - check_popup:            true
+        - check_notify:           false
 
     case_3:
       selector: !!seq
@@ -168,5 +168,5 @@ demand:
         - demand_is_distributed:  false
         - click_buttons:          true
         - check_statuses_service: true
-        - check_notify:           false
         - check_popup:            true
+        - check_notify:           false
