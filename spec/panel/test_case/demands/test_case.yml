@@ -163,9 +163,9 @@ demand:
 
       attributes: !!seq
         - advances:               false
-        - add_inventory:          add
+        - add_inventory:          true
         - demand_is_distributed:  false
         - click_buttons:          true
         - check_statuses_service: true
-#        - check_notify:           true
-#        - check_popup:            true
+        - check_notify:           true
+        - check_popup:            true

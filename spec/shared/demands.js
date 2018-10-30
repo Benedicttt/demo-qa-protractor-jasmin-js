@@ -60,36 +60,31 @@ module.exports = {
         });
 
         scenarios.service[`${name_case}`].attributes.map(function(attribute){
+            let value = `${Object.values(attribute)[0]}`;
+            let key = `${Object.keys(attribute)[0]}`;
 
-                demands_shared.check_all_params(attribute)
+            it(`{ ${key}: ${value} }`, () => {
+                if (key === "advances" && value === 'true')      { demands_shared.advance_payment() }
+                if (key === "demand_is_distributed" && value === 'true')  { demands_shared.demand_is_distributed() }
+                if (key === "add_inventory" && value === 'true')          { demands_shared.add_inventory() }
+
+                if (key === "click_buttons" && value === 'true') { demands_shared.buttons() }
+                if (key === "check_statuses_return" && value === 'true')  { demands_shared.check_status_order_return(name_case) }
+                if (key === "check_statuses_service" && value === 'true') { demands_shared.check_status_order_service(name_case) }
+                if (key === "check_notify" && value === 'true')           { demands_shared.check_notify_for_demand() }
+
+                let current_popup;
+                if (key === "check_popup" && value === 'true') {
+                    for_css.wait_css(".btn-group .icon-info-sign", 2500);
+                    current_popup = element.all(by.css(".btn-group i.icon-info-sign")).get(0)
+                    current_popup.click();
+                    current_popup.isDisplayed();
+
+                    demands_shared.check_data_popup("SERVICE");
+                    demands_shared.check_data_popup("DDS");
+                    demands_shared.check_data_popup("DEMANDS");
+                }
             });
-    },
-
-    check_all_params: function(attribute) {
-        let value = `${Object.values(attribute)[0]}`;
-        let key = `${Object.keys(attribute)[0]}`;
-
-        it(`{ ${key}: ${value} }`, () => {
-            if (key === "advances" && value === 'true')      { demands_shared.advance_payment() }
-            if (key === "demand_is_distributed" && value === 'true')  { demands_shared.demand_is_distributed() }
-            if (key === "add_inventory" && value === 'true')          { demands_shared.add_inventory() }
-
-            if (key === "click_buttons" && value === 'true') { demands_shared.buttons() }
-            if (key === "check_statuses_return" && value === 'true')  { demands_shared.check_status_order_return() }
-            if (key === "check_statuses_service" && value === 'true') { demands_shared.check_status_order_service() }
-            if (key === "check_notify" && value === 'true')           { demands_shared.check_notify_for_demand() }
-
-            let current_popup;
-            if (key === "check_popup" && value === 'true') {
-                for_css.wait_css(".btn-group .icon-info-sign", 2500);
-                current_popup = element.all(by.css(".btn-group i.icon-info-sign")).get(0)
-                current_popup.click();
-                current_popup.isDisplayed();
-
-                demands_shared.check_data_popup("SERVICE");
-                demands_shared.check_data_popup("DDS");
-                demands_shared.check_data_popup("DEMANDS");
-            }
         });
     },
 
@@ -158,8 +153,11 @@ module.exports = {
                 if (key === "add_inventory" && value === 'true')          { demands_shared.add_inventory() }
 
                 if (key === "click_buttons" && value === 'true') { demands_shared.buttons() }
-                if (key === "check_statuses_return" && value === 'true')  { demands_shared.check_status_order_return() }
-                if (key === "check_statuses_service" && value === 'true') { demands_shared.check_status_order_service() }
+                if (key === "check_statuses_return" && value === 'true')  { demands_shared.check_status_order_return(name_case) }
+                if (key === "check_statuses_service" && value === 'true') {
+                    demands_shared.check_status_order_service()
+                }
+
                 if (key === "check_notify" && value === 'true')           { demands_shared.check_notify_for_demand() }
 
                 let current_popup;
@@ -260,70 +258,63 @@ module.exports = {
     },
 
     check_status_order_service: function() {
-        //TODO: SERVICE
-        for_css.wait_xpath("*//th[@class='span1'][9]/a[contains(text(), \"Подпись\")]/following::*/td[11]/a[@title=\"Задать процент амортизации\"]/i", 3000)
-        element.all(by.xpath('*//th[@class="span1"][9]/a[contains(text(), "Подпись")]/following::*/td[11]/a[@title="Задать процент амортизации"]/i')).get(0).click();
+        //TODO: AMORTIZATION
+        browser.sleep(1000);
+        for_css.wait_xpath("*//th[@class='span1'][8][contains(text(), \"Услуга\")]/following::*/td[11]/a[@title=\"Задать процент амортизации\"]/i", 3000)
+        element.all(by.xpath("*//th[@class='span1'][8][contains(text(), \"Услуга\")]/following::*/td[11]/a[@title=\"Задать процент амортизации\"]/i")).get(0).click();
 
         for_css.wait_xpath("//h3[contains(text(), \"Число периодов амортизации имущества\")]", 5000)
-        browser.sleep(3000)
         element.all(by.css('.btn-primary')).get(0).click()
-        //
-        // browser.sleep(3000)
-        // browser.navigate().refresh()
-
-        // for_css.wait_xpath("*//th[@class='span1'][9]/a[contains(text(), \"Подпись\")]/following::*/td[11]/a[@title=\"Подписать\"]/child::*", 3000)
-        // let sign_service_last = element(by.xpath("*//th[@class='span1'][9]/a[contains(text(), \"Подпись\")]/following::*/td[11]/a[@title=\"Подписать\"]/child::*"));
-        // sign_service_last.click();
-        //
-        // browser.executeScript("$('#modal form').submit()")
-        // browser.navigate().refresh()
+        browser.sleep(1000)
 
 
-        // browser.sleep(2000)
-        // for_css.wait_xpath("*//th[@class='span1'][9]/a[contains(text(), \"Подпись\")]/following::*/td[12]/a[@title=\"Подписать\"]/child::*", 3000)
-        // let sign_service = element.all(by.xpath("*//th[@class='span1'][9]/a[contains(text(), \"Подпись\")]/following::*/td[12]/a[@title=\"Подписать\"]/child::*")).get(0);
-        // sign_service.click();
-        //
-        // for_css.wait_xpath("//h3[contains(text(), \"Подпись услуги\")]", 2500)
-        // element(by.css(".btn-primary")).click()
+        //TODO: SERVICE
+        let xpath_service = "*//th[@class='span1'][8][contains(text(), \"Услуга\")]/following::*/td[11]/a[@title=\"Подписать\"]/child::*"
+        element.all(by.xpath(xpath_service)).get(0).click();
+        browser.sleep(1000)
 
-        // //TODO: SIGN
-        // for_css.wait_xpath("*//th[@class='span1'][9]/a[contains(text(), \"Подпись\")]/following::*/td[12]/a[@title=\"Подписать\"]/child::*", 3000)
-        // let sign_service = element.all(by.xpath("*//th[@class='span1'][9]/a[contains(text(), \"Подпись\")]/following::*/td[12]/a[@title=\"Подписать\"]/child::*")).get(0);
-        // sign_service.click();
-        //
-        // for_css.wait_xpath("//h3[contains(text(), \"Подпись заявки\")]", 2500)
-        // browser.executeScript("$('#modal form').submit()")
-        // browser.navigate().refresh()
-        //
-        // //TODO: PAID
-        // for_css.wait_xpath('//*[@id="demands"]/tbody/tr[1]/td[13]/a', 3000)
-        // let icon_paid = element.all(by.xpath("*//th[@class='span1'][10]/a[contains(text(), \"Оплата\")]/following::*/td[13]/a[@title=\"Выставить на оплату\"]/parent::*/a")).get(0)
-        // icon_paid.click()
-        //
-        // for_css.wait_xpath("//h3[contains(text(), \"Выставление заявки на оплату\")]", 2500)
-        // browser.executeScript("$('#modal form').submit()")
-        //
-        // for_css.wait_xpath("//td[contains(text(), \"Комиссия:\")]", 2500)
-        // browser.executeScript("$('#modal form').submit()")
-        //
-        // //TODO: check success sign
-        // for_css.wait_xpath("//*[@id=\"demands\"]/tbody/tr/td[13]", 2500);
-        // browser.sleep(500);
-        //
-        // //TODO: unchecked is_paid in filter
-        // go(page.demands.get);
-        //
-        // for_css.wait_css("#filter_is_paid > label", 2500);
-        // element(by.css("#filter_is_paid > label")).click();
-        // element(by.id('filter_all')).click();
+        browser.executeScript("$('#modal form').submit()")
 
-        // browser.sleep(10000);
-        // browser.actions().mouseMove(element.all(by.css("button.btn-primary")).get(0), {x: 10, y: 10,}).click().perform();
-        //
-        // helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 0, "Подписана");
-        // helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 3, "Подписана");
-        // helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 4, "Оплачена");
+        for_css.wait_xpath("//h3[contains(text(), \"Подпись услуги\")]", 2500)
+        browser.executeScript("$('#modal form').submit()")
+        browser.sleep(1000);
+        browser.navigate().refresh();
+
+        //TODO: SIGN
+        for_css.wait_xpath("*//th[@class='span1'][9]/a[contains(text(), \"Подпись\")]/following::*/td[12]/a[@title=\"Подписать\"]/child::*", 3000)
+        let sign_service = element.all(by.xpath("*//th[@class='span1'][9]/a[contains(text(), \"Подпись\")]/following::*/td[12]/a[@title=\"Подписать\"]/child::*")).get(0);
+        sign_service.click();
+
+        for_css.wait_xpath("//h3[contains(text(), \"Подпись заявки\")]", 2500)
+        browser.executeScript("$('#modal form').submit()")
+
+        //TODO: PAID
+        for_css.wait_xpath('//*[@id="demands"]/tbody/tr[1]/td[13]/a', 3000)
+        let icon_paid = element.all(by.xpath("*//th[@class='span1'][10]/a[contains(text(), \"Оплата\")]/following::*/td[13]/a[@title=\"Выставить на оплату\"]/parent::*/a")).get(0)
+        icon_paid.click()
+
+        for_css.wait_xpath("//h3[contains(text(), \"Выставление заявки на оплату\")]", 2500)
+        browser.executeScript("$('#modal form').submit()")
+
+        for_css.wait_xpath("//td[contains(text(), \"Комиссия:\")]", 2500)
+        browser.executeScript("$('#modal form').submit()")
+
+        //TODO: unchecked is_paid in filter
+        go(page.demands.get);
+
+        for_css.wait_css("#filter_is_paid > label", 2500);
+        element(by.css("#filter_is_paid > label")).click();
+        element(by.id('filter_all')).click();
+
+        browser.sleep(300);
+        browser.actions().mouseMove(element.all(by.css("button.btn-primary")).get(0), {x: 10, y: 10,}).click().perform();
+
+        browser.sleep(1000);
+        browser.actions().mouseMove(element.all(by.css("button.btn-primary")).get(0), {x: 10, y: 10,}).click().perform();
+
+        helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 0, "Подписана");
+        helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 3, "Подписана");
+        helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 4, "Оплачена");
     },
 
     check_data_popup: function(name) {
