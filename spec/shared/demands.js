@@ -69,14 +69,9 @@ module.exports = {
                 if (key === "add_inventory" && value === 'true')          { demands_shared.add_inventory() }
 
                 if (key === "click_buttons" && value === 'true') { demands_shared.buttons() }
-                if (key === "check_statuses_return" && value === 'true')  { demands_shared.check_status_order_return(name_case) }
-            });
-
-                if (key === "check_statuses_service" && value === 'true') { demands_shared.check_status_order_service(name_case) }
-            it(`{ ${key}: ${value} }`, () => {
+                if (key === "check_statuses_return" && value === 'true')  { demands_shared.check_status_order_return() }
                 if (key === "check_notify" && value === 'true')           { demands_shared.check_notify_for_demand() }
 
-                let current_popup;
                 if (key === "check_popup" && value === 'true') {
                     for_css.wait_css(".btn-group .icon-info-sign", 2500);
                     current_popup = element.all(by.css(".btn-group i.icon-info-sign")).get(0)
@@ -88,6 +83,7 @@ module.exports = {
                     demands_shared.check_data_popup("DEMANDS");
                 }
             });
+            if (key === "check_statuses_service" && value === 'true') { demands_shared.check_status_order_service() }
         });
     },
 
@@ -156,7 +152,7 @@ module.exports = {
                 if (key === "add_inventory" && value === 'true')          { demands_shared.add_inventory() }
 
                 if (key === "click_buttons" && value === 'true') { demands_shared.buttons() }
-                if (key === "check_statuses_return" && value === 'true')  { demands_shared.check_status_order_return(name_case) }
+                if (key === "check_statuses_return" && value === 'true')  { demands_shared.check_status_order_return() }
                 if (key === "check_statuses_service" && value === 'true') { demands_shared.check_status_order_service() }
 
                 if (key === "check_notify" && value === 'true')           { demands_shared.check_notify_for_demand() }
@@ -229,10 +225,10 @@ module.exports = {
             icon_paid.click()
 
         for_css.wait_xpath("//h3[contains(text(), \"Выставление заявки на оплату\")]", 2500)
-            browser.executeScript("$('#modal form').submit()")
+        element.all(by.css('.btn-primary')).get(0).click()
 
         for_css.wait_xpath("//td[contains(text(), \"Комиссия:\")]", 2500)
-            browser.executeScript("$('#modal form').submit()")
+        element.all(by.css('.btn-primary')).get(0).click()
 
         //TODO: check success sign
         for_css.wait_xpath("//*[@id=\"demands\"]/tbody/tr/td[13]", 2500);
@@ -260,7 +256,6 @@ module.exports = {
 
     check_status_order_service: function() {
         it('sign amortization', () => {
-
             //TODO: AMORTIZATION
             browser.sleep(1000);
             for_css.wait_xpath("*//th[@class='span1'][8][contains(text(), \"Услуга\")]/following::*/td[11]/a[@title=\"Задать процент амортизации\"]/i", 3000)
@@ -277,10 +272,8 @@ module.exports = {
             element.all(by.xpath(xpath_service)).get(0).click();
             browser.sleep(1000)
 
-            browser.executeScript("$('#modal form').submit()")
-
             for_css.wait_xpath("//h3[contains(text(), \"Подпись услуги\")]", 2500)
-            browser.executeScript("$('#modal form').submit()")
+            element.all(by.css('.btn-primary')).get(0).click()
             browser.sleep(1000);
             browser.navigate().refresh();
         });
@@ -294,7 +287,7 @@ module.exports = {
             sign_service.click();
 
             for_css.wait_xpath("//h3[contains(text(), \"Подпись заявки\")]", 2500)
-            browser.executeScript("$('#modal form').submit()")
+            element.all(by.css('.btn-primary')).get(0).click()
         });
 
         it('paid', () => {
@@ -306,10 +299,10 @@ module.exports = {
             icon_paid.click()
 
             for_css.wait_xpath("//h3[contains(text(), \"Выставление заявки на оплату\")]", 2500)
-            browser.executeScript("$('#modal form').submit()")
+            element.all(by.css('.btn-primary')).get(0).click()
 
             for_css.wait_xpath("//td[contains(text(), \"Комиссия:\")]", 2500)
-            browser.executeScript("$('#modal form').submit()")
+            element.all(by.css('.btn-primary')).get(0).click()
         });
 
         it('check all', () => {
