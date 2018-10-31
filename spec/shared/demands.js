@@ -31,7 +31,7 @@ module.exports = {
             let value = `${Object.values(id)[0]}`;
             let key = `${Object.keys(id)[0]}`;
 
-            if (Object.values(id)[0] === true) {
+            if (Object.values(id)[0] === 'true') {
                 it(`{ ${key}: ${value} }`, () => {
                     element(by.id(`${key}`)).click();
                     browser.sleep(100)
@@ -60,38 +60,11 @@ module.exports = {
         });
 
         scenarios.service[`${name_case}`].attributes.map(function(attribute){
-            let value = `${Object.values(attribute)[0]}`;
-            let key = `${Object.keys(attribute)[0]}`;
-
-            it(`{ ${key}: ${value} }`, () => {
-                if (key === "advances" && value === 'true')      { demands_shared.advance_payment() }
-                if (key === "demand_is_distributed" && value === 'true')  { demands_shared.demand_is_distributed() }
-                if (key === "add_inventory" && value === 'true')          { demands_shared.add_inventory() }
-
-                if (key === "click_buttons" && value === 'true') { demands_shared.buttons() }
-                if (key === "check_statuses_return" && value === 'true')  { demands_shared.check_status_order_return() }
-                if (key === "check_notify" && value === 'true')           { demands_shared.check_notify_for_demand() }
-
-                if (key === "check_popup" && value === 'true') {
-                    for_css.wait_css(".btn-group .icon-info-sign", 2500);
-                    current_popup = element.all(by.css(".btn-group i.icon-info-sign")).get(0)
-                    current_popup.click();
-                    current_popup.isDisplayed();
-
-                    demands_shared.check_data_popup("SERVICE");
-                    demands_shared.check_data_popup("DDS");
-                    demands_shared.check_data_popup("DEMANDS");
-                }
-            });
-            if (key === "check_statuses_service" && value === 'true') {
-                let params = scenarios.service[`${name_case}`].attributes
-                demands_shared.check_status_order_service(params)
-            }
+            demands_shared.runner_demand_attr(name_case, attribute)
         });
     },
 
     run_test_case_return: function(name_case) {
-
         it(`Go to page and check title ${page.demands.title}`,  () => {
             user_object.authorization(helper.user_email_last());
 
@@ -106,7 +79,7 @@ module.exports = {
             let value = `${Object.values(id)[0]}`;
             let key = `${Object.keys(id)[0]}`;
 
-            it(`{ ${key}: ${value} }`, () => {
+            it(`{ select ${key}: ${value} }`, () => {
                 tag_selector.selectOption(key, value)
             })
         });
@@ -115,8 +88,8 @@ module.exports = {
             let value = `${Object.values(id)[0]}`;
             let key = `${Object.keys(id)[0]}`;
 
-            if (Object.values(id)[0] === true) {
-                it(`{ ${key}: ${value} }`, () => {
+            if (Object.values(id)[0] === 'true') {
+                it(`{ checkbox ${key}: ${value} }`, () => {
                     element(by.id(`${key}`)).click();
                     browser.sleep(100)
                 })
@@ -127,7 +100,7 @@ module.exports = {
             let value = `${Object.values(id)[0]}`;
             let key = `${Object.keys(id)[0]}`;
 
-            it(`{ ${key}: ${value} }`, () => {
+            it(`{ input ${key}: ${value} }`, () => {
                 element(by.id(`${key}`)).clear();
 
                 if ( value === 'us') {
@@ -145,48 +118,68 @@ module.exports = {
         });
 
         scenarios.return[`${name_case}`].attributes.map(function(attribute){
-
-            let value = `${Object.values(attribute)[0]}`;
-            let key = `${Object.keys(attribute)[0]}`;
-
-            it(`{ ${key}: ${value} }`, () => {
-                if (key === "advances" && value === 'true')      { demands_shared.advance_payment() }
-                if (key === "demand_is_distributed" && value === 'true')  { demands_shared.demand_is_distributed() }
-                if (key === "add_inventory" && value === 'true')          { demands_shared.add_inventory() }
-
-                if (key === "click_buttons" && value === 'true') { demands_shared.buttons() }
-                if (key === "check_statuses_return" && value === 'true')  { demands_shared.check_status_order_return() }
-                if (key === "check_statuses_service" && value === 'true') { demands_shared.check_status_order_service() }
-
-                if (key === "check_notify" && value === 'true')           { demands_shared.check_notify_for_demand() }
-
-                let current_popup;
-                if (key === "check_popup" && value === 'true') {
-                    for_css.wait_css(".btn-group .icon-info-sign", 2500);
-                    current_popup = element.all(by.css(".btn-group i.icon-info-sign")).get(0)
-                    current_popup.click();
-                    current_popup.isDisplayed();
-
-                    demands_shared.check_data_popup("SERVICE");
-                    demands_shared.check_data_popup("DDS");
-                    demands_shared.check_data_popup("DEMANDS");
-                }
-            });
+            demands_shared.runner_demand_attr(name_case, attribute)
         });
     },
+
+    runner_demand_attr(name_case, attribute) {
+        let value = `${Object.values(attribute)[0]}`;
+        let key = `${Object.keys(attribute)[0]}`;
+
+        it(`{ ${key}: ${value} }`, () => {
+            if (key === "advances" && value === 'true') {
+                demands_shared.advance_payment()
+            }
+            if (key === "demand_is_distributed" && value === 'true') {
+                demands_shared.demand_is_distributed()
+            }
+            if (key === "add_inventory" && value === 'true') {
+                demands_shared.add_inventory()
+            }
+
+            if (key === "click_buttons" && value === 'true') {
+                demands_shared.buttons()
+            }
+
+            if (key === "check_notify" && value === 'true') {
+                demands_shared.check_notify_for_demand()
+            }
+
+            if (key === "check_popup" && value === 'true') {
+                for_css.wait_css(".btn-group .icon-info-sign", 2500);
+                current_popup = element.all(by.css(".btn-group i.icon-info-sign")).get(0)
+                current_popup.click();
+                current_popup.isDisplayed();
+
+                demands_shared.check_data_popup("SERVICE");
+                demands_shared.check_data_popup("DDS");
+                demands_shared.check_data_popup("DEMANDS");
+            }
+        });
+
+        if (key === "check_statuses_service" && value === 'true') {
+            demands_shared.check_status_order(attribute)
+        }
+
+        if (key === "check_statuses_return" && value === 'true') {
+            demands_shared.check_status_order(attribute)
+        }
+    },
+
+
 
     //TODO: Add inventory
     add_inventory: function() {
         tag_selector.selectOption('demand_contractor_type_id', "--  На имущество")
         tag_selector.selectOption('demand_contractor_id', " Webazilla")
 
-        for_css.wait_id('link_service_properties', 2000)
-        element(by.id('link_service_properties')).click()
+        for_css.wait_id('link_service_properties', 2000);
+        element(by.id('link_service_properties')).click();
 
-        for_css.wait_id('service_properties_amount', 2000)
+        for_css.wait_id('service_properties_amount', 2000);
         element(by.id('service_properties_amount')).sendKeys('1');
         element(by.id('service_properties_name')).sendKeys('--  На имущество');
-        element.all(by.css('.btn-primary')).get(0).click()
+        element.all(by.css('.btn-primary')).get(0).click();
 
         tag_selector.selectOption('demand_contractor_id', " Webazilla")
     },
@@ -194,7 +187,7 @@ module.exports = {
     //TODO: Base template function for template `run test case`
     buttons: function() {
             browser.executeScript("$('#new_demand > div.form-actions > button')[0].click()")
-            browser.sleep(3000)
+            browser.sleep(3000);
             browser.executeScript("$('#new_demand > div.form-actions > button')[0].click()")
 
             let btn_last = element.all(by.css("button.btn-primary")).get(0);
@@ -210,62 +203,14 @@ module.exports = {
             expect(browser.getCurrentUrl()).toEqual(expectedUrl);
     },
 
-    //TODO:sign and pay
-    check_status_order_return: function() {
-        //TODO: SIGN
-        for_css.wait_xpath("*//th[@class='span1'][9]/a[contains(text(), \"Подпись\")]/following::*/td[12]/a[@title=\"Подписать\"]/child::*", 3000)
-        let sign_service = element.all(by.xpath("*//th[@class='span1'][9]/a[contains(text(), \"Подпись\")]/following::*/td[12]/a[@title=\"Подписать\"]/child::*")).get(0);
-        sign_service.click();
+    check_status_order: function(attribute) {
+        let value = `${Object.values(attribute)[0]}`;
+        let key = `${Object.keys(attribute)[0]}`;
 
-        for_css.wait_xpath("//h3[contains(text(), \"Подпись заявки\")]", 2500)
-            let btn_sign_service = "#modal > div.modal-footer > button.btn.btn-primary";
-            element(by.css(btn_sign_service)).click()
-            browser.navigate().refresh()
+        if (key === "check_statuses_service" && value === 'true') {
+            if (key === "add_inventory" && value === 'true') {
+                it('sign amortization', () => {
 
-        //TODO: PAID
-        for_css.wait_xpath('//*[@id="demands"]/tbody/tr[1]/td[13]/a', 3000)
-            let icon_paid = element.all(by.xpath("*//th[@class='span1'][10]/a[contains(text(), \"Оплата\")]/following::*/td[13]/a[@title=\"Выставить на оплату\"]/parent::*/a")).get(0)
-            icon_paid.click()
-
-        for_css.wait_xpath("//h3[contains(text(), \"Выставление заявки на оплату\")]", 2500)
-        element.all(by.css('.btn-primary')).get(0).click()
-
-        for_css.wait_xpath("//td[contains(text(), \"Комиссия:\")]", 2500)
-        element.all(by.css('.btn-primary')).get(0).click()
-
-        //TODO: check success sign
-        for_css.wait_xpath("//*[@id=\"demands\"]/tbody/tr/td[13]", 2500);
-        browser.sleep(500);
-
-        //TODO: unchecked is_paid in filter
-        go(page.demands.get);
-
-        for_css.wait_css("#filter_is_paid > label", 2500);
-        element(by.css("#filter_is_paid > label")).click();
-
-        browser.sleep(300);
-        element(by.id('filter_all')).click();
-
-        browser.sleep(300);
-        browser.actions().mouseMove(element.all(by.css("button.btn-primary")).get(0), {x: 10, y: 10,}).click().perform();
-        browser.sleep(1000);
-
-        browser.actions().mouseMove(element.all(by.css("button.btn-primary")).get(0), {x: 10, y: 10,}).click().perform();
-        browser.sleep(1000);
-
-        helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 0, "Подписана");
-        helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 1, "Оплачена");
-    },
-
-    check_status_order_service: function(params) {
-        it('sign amortization', () => {
-
-            params.map(function(attribute) {
-                let value = `${Object.values(attribute)[0]}`;
-                let key = `${Object.keys(attribute)[0]}`;
-
-                if (key === "add_inventory" && value === 'true') {
-                    console.log("1")
                     //TODO: AMORTIZATION
                     browser.sleep(1000);
                     for_css.wait_xpath("*//th[@class='span1'][8][contains(text(), \"Услуга\")]/following::*/td[11]/a[@title=\"Задать процент амортизации\"]/i", 3000)
@@ -275,24 +220,25 @@ module.exports = {
                     element.all(by.css('.btn-primary')).get(0).click()
                     browser.sleep(1000)
                     browser.navigate().refresh();
-                }
+                });
+
+            }
+
+            it('sign service', () => {
+
+                //TODO: SERVICE
+                let xpath_service = "*//th[@class='span1'][8][contains(text(), \"Услуга\")]/following::*/td[11]/a[@title=\"Подписать\"]/child::*";
+                for_css.wait_xpath(xpath_service, 3000)
+                element.all(by.xpath(xpath_service)).get(0).click();
+                browser.sleep(1000);
+
+                for_css.wait_xpath("//h3[contains(text(), \"Подпись услуги\")]", 2500);
+                element.all(by.css('.btn-primary')).get(0).click();
+                browser.sleep(1000);
+                helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 1, "Подписана");
             });
 
-        });
-
-        it('sign service', () => {
-
-            //TODO: SERVICE
-            let xpath_service = "*//th[@class='span1'][8][contains(text(), \"Услуга\")]/following::*/td[11]/a[@title=\"Подписать\"]/child::*";
-            for_css.wait_xpath(xpath_service, 3000)
-            element.all(by.xpath(xpath_service)).get(0).click();
-            browser.sleep(1000);
-
-            for_css.wait_xpath("//h3[contains(text(), \"Подпись услуги\")]", 2500);
-            element.all(by.css('.btn-primary')).get(0).click();
-            browser.sleep(1000);
-            helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 1, "Подписана");
-        });
+        }
 
         it('sign demand', () => {
 
@@ -305,7 +251,13 @@ module.exports = {
             for_css.wait_xpath("//h3[contains(text(), \"Подпись заявки\")]", 2500)
             element.all(by.css('.btn-primary')).get(0).click()
             browser.sleep(1000)
-            helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 4, "Подписана");
+
+            if (key === "check_statuses_service" && value === 'true') {
+                helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 4, "Подписана");
+            }
+            if (key === "check_statuses_return" && value === 'true') {
+                helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 1, "Подписана");
+            }
         });
 
         it('paid', () => {
@@ -322,36 +274,22 @@ module.exports = {
             for_css.wait_xpath("//td[contains(text(), \"Комиссия:\")]", 2500)
             element.all(by.css('.btn-primary')).get(0).click()
             browser.sleep(1000)
-            helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 4, "Оплачена");
+
+            if (key === "check_statuses_service" && value === 'true') {
+                console.log(1)
+                helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 4, "Оплачена");
+            }
+            if (key === "check_statuses_return" && value === 'true') {
+                console.log(1)
+                helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 1, "Оплачена");
+            }
         });
 
-        // it('check all', () => {
-        //
-        //     //TODO: unchecked is_paid in filter
-        //     go(page.demands.get);
-        //
-        //     for_css.wait_css("#filter_is_paid > label", 2500);
-        //     element(by.css("#filter_is_paid > label")).click();
-        //     element(by.id('filter_all')).click();
-        //
-        //     browser.sleep(300);
-        //     browser.actions().mouseMove(element.all(by.css("button.btn-primary")).get(0), {
-        //         x: 10,
-        //         y: 10,
-        //     }).click().perform();
-        //
-        //     browser.sleep(1000);
-        //     browser.actions().mouseMove(element.all(by.css("button.btn-primary")).get(0), {
-        //         x: 10,
-        //         y: 10,
-        //     }).click().perform();
-        //
-        // });
     },
 
     check_data_popup: function(name) {
 
-        if ( name == "DEMANDS" ){
+        if ( name === "DEMANDS" ){
             elem = element.all(by.css(".show_entities > a")).get(0);
             for_css.wait_css(".show_entities > a", 2500, 1);
 
@@ -362,7 +300,7 @@ module.exports = {
             })
         }
 
-        if ( name == "SERVICE" ){
+        if ( name === "SERVICE" ){
             elem = element.all(by.css(".show_entities > a")).get(1);
             for_css.wait_css(".show_entities > a", 2500, 1);
 
@@ -373,7 +311,7 @@ module.exports = {
             })
         }
 
-        if ( name == "DDS" ){
+        if ( name === "DDS" ){
             elem = element.all(by.css(".show_entities > a")).get(2);
             for_css.wait_css(".show_entities > a", 2500, 2);
 
@@ -421,7 +359,7 @@ module.exports = {
                 browser.sleep(500);
             }
             let first_notify = element(by.css('#queue_regular_payment_notification > span > a'));
-            first_notify.isPresent() === true ? first_notify.click() : expect(first_notify.isPresent()).toBe(false);
+            first_notify.isPresent() === 'true' ? first_notify.click() : expect(first_notify.isPresent()).toBe(false);
         });
     }
 };

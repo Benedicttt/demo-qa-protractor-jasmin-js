@@ -27,6 +27,7 @@ demand:
         - demand_refundable_service_id: "us"
       attributes: !!seq
         - advances:              true
+        - add_inventory:         true
         - click_buttons:         true
         - check_statuses_return: true
         - check_popup:           true
