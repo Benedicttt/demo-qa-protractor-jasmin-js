@@ -25,8 +25,7 @@ const { SpecReporter } = require('jasmine-spec-reporter');
 const outputFilename = './spec/support/';
 
 
-
-var addScreenShots = {
+let addScreenShots = {
     specDone: function (result) {
         if (result.status === 'failed') {
             browser.takeScreenshot().then(function (png) {
@@ -38,9 +37,9 @@ var addScreenShots = {
     }
 };
 
-var getRandomString = function(length) {
-    var string = '';
-    var letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+let getRandomString = function(length) {
+    let string = '';
+    let letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
     for (i = 0; i < length; i++) {
         string += letters.charAt(Math.floor(Math.random() * letters.length));
     }
@@ -77,8 +76,8 @@ exports.config = {
     framework: 'jasmine',
 
     onPrepare() {
-        var width = 1620;
-        var height = 1080;
+        let width = 1620;
+        let height = 1080;
         browser.driver.manage().window().setSize(width, height);           
        
 
