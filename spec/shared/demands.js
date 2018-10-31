@@ -49,7 +49,7 @@ module.exports = {
                 element(by.id(`${key}`)).clear();
 
                 if ( value === 'us') {
-                    element(by.id(`${key}`)).sendKeys(services_ids.us.number)
+                    element(by.id(`${key}`)).sendKeys(helper.created_services("us"))
 
                 } else if ( value === 'we') {
                     element(by.id(`${key}`)).sendKeys(services_ids.we.number)
@@ -107,12 +107,12 @@ module.exports = {
                 element(by.id(`${key}`)).clear();
 
                 if ( value === 'us') {
-                    console.log(`number service: ${services_ids.us.number}`)
+                    console.log(`number service: ${helper.created_services("us")}`)
 
-                    element(by.id(`${key}`)).sendKeys(services_ids.us.number)
+                    element(by.id(`${key}`)).sendKeys(helper.created_services("us"))
 
                 } else if ( value === 'we') {
-                    console.log(`number service: ${services_ids.us.number}`)
+                    console.log(`number service: ${helper.created_services("us")}`)
 
                     element(by.id(`${key}`)).sendKeys(services_ids.we.number)
 
@@ -152,7 +152,7 @@ module.exports = {
             }
 
             if (key === "check_popup" && value === 'true') {
-                for_css.wait_css(".btn-group .icon-info-sign", 2500);
+                for_css.wait_css(".btn-group .icon-info-sign", 5000);
                 current_popup = element.all(by.css(".btn-group i.icon-info-sign")).get(0)
                 current_popup.click();
                 current_popup.isDisplayed();
@@ -216,14 +216,14 @@ module.exports = {
 
             let btn_last = element.all(by.css("button.btn-primary")).get(0);
             browser.wait(protractor.ExpectedConditions.visibilityOf(btn_last), 3000);
-            browser.wait(EC.elementToBeClickable(btn_last.isEnabled()), 2500);
+            browser.wait(EC.elementToBeClickable(btn_last.isEnabled()), 5000);
             btn_last.click()
 
             browser.sleep(1000)
             let expectedUrl = browser.baseUrl + '/demands';
 
-            browser.wait(EC.urlContains(expectedUrl), 2500);
-            browser.wait(EC.urlIs(expectedUrl), 2500);
+            browser.wait(EC.urlContains(expectedUrl), 5000);
+            browser.wait(EC.urlIs(expectedUrl), 5000);
             expect(browser.getCurrentUrl()).toEqual(expectedUrl);
     },
 
@@ -239,7 +239,7 @@ module.exports = {
                 element.all(by.xpath(xpath_service)).get(0).click();
                 browser.sleep(1000);
 
-                for_css.wait_xpath("//h3[contains(text(), \"Подпись услуги\")]", 2500);
+                for_css.wait_xpath("//h3[contains(text(), \"Подпись услуги\")]", 5000);
                 element.all(by.css('.btn-primary')).get(0).click();
                 browser.sleep(1000);
                 helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 1, "Подписана");
@@ -255,7 +255,7 @@ module.exports = {
             let sign_service = element.all(by.xpath("*//th[@class='span1'][9]/a[contains(text(), \"Подпись\")]/following::*/td[12]/a[@title=\"Подписать\"]/child::*")).get(0);
             sign_service.click();
 
-            for_css.wait_xpath("//h3[contains(text(), \"Подпись заявки\")]", 2500);
+            for_css.wait_xpath("//h3[contains(text(), \"Подпись заявки\")]", 5000);
             element.all(by.css('.btn-primary')).get(0).click();
             browser.sleep(1000)
 
@@ -275,10 +275,10 @@ module.exports = {
             let icon_paid = element.all(by.xpath("*//th[@class='span1'][10]/a[contains(text(), \"Оплата\")]/following::*/td[13]/a[@title=\"Выставить на оплату\"]/parent::*/a")).get(0)
             icon_paid.click()
 
-            for_css.wait_xpath("//h3[contains(text(), \"Выставление заявки на оплату\")]", 2500)
+            for_css.wait_xpath("//h3[contains(text(), \"Выставление заявки на оплату\")]", 5000)
             element.all(by.css('.btn-primary')).get(0).click();
 
-            for_css.wait_xpath("//td[contains(text(), \"Комиссия:\")]", 2500)
+            for_css.wait_xpath("//td[contains(text(), \"Комиссия:\")]", 5000)
             element.all(by.css('.btn-primary')).get(0).click();
             browser.sleep(1000)
 
@@ -296,7 +296,7 @@ module.exports = {
 
         if ( name === "DEMANDS" ){
             elem = element.all(by.css(".show_entities > a")).get(0);
-            for_css.wait_css(".show_entities > a", 2500, 1);
+            for_css.wait_css(".show_entities > a", 5000, 1);
 
             elem.getAttribute('href').then(function (value) {
                 let id = value.match(/\d+/g).slice(-1)[0];
@@ -307,7 +307,7 @@ module.exports = {
 
         if ( name === "SERVICE" ){
             elem = element.all(by.css(".show_entities > a")).get(1);
-            for_css.wait_css(".show_entities > a", 2500, 1);
+            for_css.wait_css(".show_entities > a", 5000, 1);
 
             elem.getAttribute('href').then(function (value) {
                 let id = value.match(/\d+/g).slice(-1)[0];
@@ -318,7 +318,7 @@ module.exports = {
 
         if ( name === "DDS" ){
             elem = element.all(by.css(".show_entities > a")).get(2);
-            for_css.wait_css(".show_entities > a", 2500, 2);
+            for_css.wait_css(".show_entities > a", 5000, 2);
 
             elem.getAttribute('href').then(function (value) {
                 let id = value.match(/\d+/g).slice(-1)[0];
@@ -329,25 +329,25 @@ module.exports = {
     },
 
     demand_is_distributed: function() {
-        for_css.wait_id('demand_is_distributed', 2500);
+        for_css.wait_id('demand_is_distributed', 5000);
         element(by.id('demand_is_distributed')).click();
 
         expect(element(by.id('demand_is_distributed')).getAttribute('checked')).toBeTruthy();
 
-        for_css.wait_id('create_distribution', 2500);
+        for_css.wait_id('create_distribution', 5000);
         element(by.id('create_distribution')).click();
-        for_css.wait_id('distribution_share', 2500);
+        for_css.wait_id('distribution_share', 5000);
         element(by.id('distribution_share')).sendKeys(1);
         element.all(by.css(".btn-primary")).get(0).click()
 
     },
     advance_payment: function() {
-        for_css.wait_id('demand_is_advanced_payment', 2500);
+        for_css.wait_id('demand_is_advanced_payment', 5000);
         element(by.id('demand_is_advanced_payment')).click();
         expect(element(by.id('demand_is_advanced_payment')).getAttribute('checked')).toBeTruthy();
-        for_css.wait_id('create_payment', 2500);
+        for_css.wait_id('create_payment', 5000);
         element(by.id('create_payment')).click();
-        for_css.wait_id('payment_amount', 2500);
+        for_css.wait_id('payment_amount', 5000);
         element(by.id('payment_amount')).sendKeys(101);
 
         element.all(by.css(".btn-primary")).get(0).click()

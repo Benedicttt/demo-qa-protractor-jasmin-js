@@ -7,6 +7,10 @@ module.exports = {
         return JSON.parse(fs.readFileSync('./spec/support/user.json'))['user']['password'];
     },
 
+    created_services: function (who) {
+        return JSON.parse(fs.readFileSync('./spec/support/service.json'))['service'][who]['number'];
+    },
+
     runner: function(string_command) {
         const test = new Function(string_command);
         test();
