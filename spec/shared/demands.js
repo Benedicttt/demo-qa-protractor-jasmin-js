@@ -31,8 +31,8 @@ module.exports = {
             let value = `${Object.values(id)[0]}`;
             let key = `${Object.keys(id)[0]}`;
 
-            if (Object.values(id)[0] === 'true') {
-                it(`{ ${key}: ${value} }`, () => {
+            if (Object.values(id)[0] === true) {
+                it(`{ checkbox ${key}: ${value} }`, () => {
                     element(by.id(`${key}`)).click();
                     browser.sleep(100)
                 })
@@ -88,7 +88,7 @@ module.exports = {
             let value = `${Object.values(id)[0]}`;
             let key = `${Object.keys(id)[0]}`;
 
-            if (Object.values(id)[0] === 'true') {
+            if (Object.values(id)[0] === true) {
                 it(`{ checkbox ${key}: ${value} }`, () => {
                     element(by.id(`${key}`)).click();
                     browser.sleep(100)
@@ -210,7 +210,7 @@ module.exports = {
         if (key === "check_statuses_service" && value === 'true') {
             if (key === "add_inventory" && value === 'true') {
                 it('sign amortization', () => {
-
+                    consol.log("1")
                     //TODO: AMORTIZATION
                     browser.sleep(1000);
                     for_css.wait_xpath("*//th[@class='span1'][8][contains(text(), \"Услуга\")]/following::*/td[11]/a[@title=\"Задать процент амортизации\"]/i", 3000)
@@ -228,14 +228,14 @@ module.exports = {
 
                 //TODO: SERVICE
                 let xpath_service = "*//th[@class='span1'][8][contains(text(), \"Услуга\")]/following::*/td[11]/a[@title=\"Подписать\"]/child::*";
-                for_css.wait_xpath(xpath_service, 3000)
+                for_css.wait_xpath(xpath_service, 3000);
                 element.all(by.xpath(xpath_service)).get(0).click();
                 browser.sleep(1000);
 
                 for_css.wait_xpath("//h3[contains(text(), \"Подпись услуги\")]", 2500);
                 element.all(by.css('.btn-primary')).get(0).click();
                 browser.sleep(1000);
-                helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 1, "Подписана");
+                helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 0, "Подписана");
             });
 
         }
@@ -248,8 +248,8 @@ module.exports = {
             let sign_service = element.all(by.xpath("*//th[@class='span1'][9]/a[contains(text(), \"Подпись\")]/following::*/td[12]/a[@title=\"Подписать\"]/child::*")).get(0);
             sign_service.click();
 
-            for_css.wait_xpath("//h3[contains(text(), \"Подпись заявки\")]", 2500)
-            element.all(by.css('.btn-primary')).get(0).click()
+            for_css.wait_xpath("//h3[contains(text(), \"Подпись заявки\")]", 2500);
+            element.all(by.css('.btn-primary')).get(0).click();
             browser.sleep(1000)
 
             if (key === "check_statuses_service" && value === 'true') {
@@ -269,10 +269,10 @@ module.exports = {
             icon_paid.click()
 
             for_css.wait_xpath("//h3[contains(text(), \"Выставление заявки на оплату\")]", 2500)
-            element.all(by.css('.btn-primary')).get(0).click()
+            element.all(by.css('.btn-primary')).get(0).click();
 
             for_css.wait_xpath("//td[contains(text(), \"Комиссия:\")]", 2500)
-            element.all(by.css('.btn-primary')).get(0).click()
+            element.all(by.css('.btn-primary')).get(0).click();
             browser.sleep(1000)
 
             if (key === "check_statuses_service" && value === 'true') {
@@ -359,7 +359,7 @@ module.exports = {
                 browser.sleep(500);
             }
             let first_notify = element(by.css('#queue_regular_payment_notification > span > a'));
-            first_notify.isPresent() === 'true' ? first_notify.click() : expect(first_notify.isPresent()).toBe(false);
+            first_notify.isPresent() === true ? first_notify.click() : expect(first_notify.isPresent()).toBe(false);
         });
     }
 };
