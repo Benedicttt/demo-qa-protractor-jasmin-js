@@ -25,9 +25,11 @@ demand:
         - demand_comment:               "for test case  1 in demand return"
         - demand_task:                  123
         - demand_refundable_service_id: "us"
+
       attributes: !!seq
         - advances:              true
         - add_inventory:         true
+        - demand_is_distributed: false
         - click_buttons:         true
         - check_statuses_return: true
         - check_popup:           true
@@ -61,11 +63,48 @@ demand:
 
       attributes: !!seq
         - advances:              false
+        - add_inventory:         true
+        - demand_is_distributed: false
         - click_buttons:         true
         - check_statuses_return: true
-        - demand_is_distributed: false
         - check_popup:           true
         - check_notify:          false
+
+    case_3:
+      selector: !!seq
+        - demand_project_id:         "Админ"
+        - demand_account_id:         "Стандартный рублевый счет "
+        - demand_contractor_type_id: " Покупатель"
+        - demand_contractor_id:      " Контекст"
+
+      checkbox: !!seq
+        - demand_is_refund: true
+        - demand_is_payment_on_site:       false
+        - demand_is_plan_paid_date:        true
+        - demand_is_regular_payment:       true
+        - demand_is_monthly_payment:       true
+        - demand_is_salary:                true
+        - demand_is_profits_distribution:  true
+        - demand_is_plan_paid_date_period: true
+
+      input: !!seq
+#        - demand_payment_site_info:     "for test case  1 in demand return"
+        - demand_purse_number:          "1234 1234 1234 1234"
+        - demand_purpose:               "for test case  1 in demand return"
+        - demand_amount:                1001
+#        - demand_comment:               "for test case  1 in demand return"
+        - demand_task:                  123
+        - demand_refundable_service_id: "us"
+
+      attributes: !!seq
+        - advances:              true
+        - add_inventory:         false
+        - demand_is_distributed: false
+        - click_buttons:         true
+        - check_statuses_return: true
+        - check_popup:           true
+        - check_notify:          true
+
 
   service:
     case_1:
@@ -96,6 +135,7 @@ demand:
 
       attributes: !!seq
         - advances:               false
+        - add_inventory:          true
         - demand_is_distributed:  true
         - click_buttons:          true
         - check_statuses_service: true
@@ -166,6 +206,76 @@ demand:
       attributes: !!seq
         - advances:               false
         - add_inventory:          true
+        - demand_is_distributed:  false
+        - click_buttons:          true
+        - check_statuses_service: true
+        - check_popup:            true
+        - check_notify:           false
+
+    case_4:
+      selector: !!seq
+        - demand_project_id:          "Админ"
+        - demand_account_id:          "Стандартный рублевый счет "
+        - demand_contractor_type_id:  " Покупатель"
+        - demand_contractor_id:       " Контекст"
+        - demand_expenditure_type_id: " Арендные платежи"
+        - demand_expenditure_id:      " Аренда"
+
+      checkbox: !!seq
+        - demand_is_payment_on_site:       true
+        - demand_is_plan_paid_date:        true
+        - demand_is_regular_payment:       true
+        - demand_is_monthly_payment:       true
+        - demand_is_salary:                true
+        - demand_is_profits_distribution:  true
+        - demand_is_plan_paid_date_period: true
+
+      input: !!seq
+        - demand_payment_site_info: "for test case  1 in demand return"
+        - demand_purse_number:      "1234 1234 1234 1234"
+        - demand_purpose:           "for test case  1 in demand return"
+        - demand_amount:            1001
+        - demand_comment:           "for test case  1 in demand return"
+        - demand_task:              123
+
+      attributes: !!seq
+        - advances:               true
+        - add_inventory:          false
+        - demand_is_distributed:  true
+        - click_buttons:          true
+        - check_statuses_service: true
+        - check_popup:            true
+        - check_notify:           false
+
+    case_5:
+      selector: !!seq
+        - demand_project_id:          "Админ"
+        - demand_account_id:          "Стандартный рублевый счет "
+        - demand_contractor_type_id:  " Покупатель"
+        - demand_contractor_id:       " Контекст"
+        - demand_expenditure_type_id: " Арендные платежи"
+        - demand_expenditure_id:      " Аренда"
+
+      checkbox: !!seq
+        - demand_is_payment_on_site:       true
+        - demand_is_plan_paid_date:        true
+        - demand_is_regular_payment:       true
+        - demand_is_monthly_payment:       true
+        - demand_is_salary:                true
+        - demand_is_profits_distribution:  true
+        - demand_is_plan_paid_date_period: true
+
+      input: !!seq
+        - demand_payment_site_info: "for test case  1 in demand return"
+        - demand_purse_number:      "1234 1234 1234 1234"
+        - demand_purpose:           "for test case  1 in demand return"
+        - demand_amount:            1001
+        - demand_comment:           "for test case  1 in demand return"
+        - demand_task:              123
+
+      attributes: !!seq
+        - advances:               fasle
+        - add_inventory:          false
         - demand_is_distributed:  false
         - click_buttons:          true
         - check_statuses_service: true

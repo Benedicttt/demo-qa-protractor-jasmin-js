@@ -102,20 +102,24 @@ module.exports = {
             let value = `${Object.values(id)[0]}`;
             let key = `${Object.keys(id)[0]}`;
 
+
             it(`{ input ${key}: ${value} }`, () => {
                 element(by.id(`${key}`)).clear();
 
                 if ( value === 'us') {
+                    console.log(`number service: ${services_ids.us.number}`)
+
                     element(by.id(`${key}`)).sendKeys(services_ids.us.number)
 
                 } else if ( value === 'we') {
+                    console.log(`number service: ${services_ids.us.number}`)
+
                     element(by.id(`${key}`)).sendKeys(services_ids.we.number)
 
                 } else {
                     element(by.id(`${key}`)).sendKeys(`${value}`)
 
                 }
-
             })
         });
 

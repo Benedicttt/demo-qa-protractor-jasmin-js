@@ -8,4 +8,8 @@ describe('Demands, create new, type `returned`', () => {
         demands_shared.run_test_case_return("case_2")
     });
 
+    describe('case_3', () => {
+        demands_shared.run_test_case_return("case_2")
+    });
+
 });
