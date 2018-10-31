@@ -134,8 +134,7 @@ exports.config = {
             "spec/panel/home_page.js",
             "spec/panel/sign_up.js",
             "spec/panel/sign_in.js",
-            "spec/panel/user_access/set_user_access_full.js",
-            "spec/panel/services/create.js",
+            "spec/panel/user_access/set_user_access_full.js"
         ],
 
         regression: [
