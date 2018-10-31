@@ -1,0 +1,34 @@
+service:
+  base_us:
+    selector: !!seq
+      - service_service_source_id: "Мы"
+      - service_contractor_type_id: " Покупатель"
+      - service_project_id: "Админ"
+      - service_contractor_id: " Контекст"
+      - service_nomenclature_id: " Административные услуги"
+
+    checkbox: !!seq
+      - service_is_rendered_during_period: true
+
+    input: !!seq
+      - service_purpose: "for test test case base_us service"
+      - service_task: 123
+      - service_amount: 100001
+
+  base_we:
+    selector: !!seq
+      - service_service_source_id: "Нам"
+      - service_project_id: "Админ"
+      - service_expenditure_type_id: " Мотивационные затраты"
+      - service_expenditure_id: " 13-я зарплата"
+      - service_contractor_type_id: " Покупатель"
+      - service_contractor_id: " Контекст"
+
+
+    checkbox: !!seq
+      - service_is_rendered_during_period: true
+
+    input: !!seq
+      - service_purpose: "for test test case base_we service"
+      - service_task: 123
+      - service_amount: 100002

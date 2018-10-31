@@ -49,10 +49,10 @@ module.exports = {
     },
 
     sign_order_xpath: function (xpath_elem, index_elem, count_click) {
-        for_css.wait_xpath(xpath_elem, 5000);
+        for_css.wait_xpath(xpath_elem, 2000);
         element.all(by.css('.btn.btn-mini')).get(index_elem).click().then(function () {
             browser.sleep(1500);
-            for_css.wait_css('#modal form', 5000);
+            for_css.wait_css('#modal form', 2000);
             if (count_click > 0) {
                 element(by.css('#modal form')).submit();
                 browser.sleep(1000);
@@ -65,7 +65,13 @@ module.exports = {
     },
 
     check_success_sign: function (css, index_elem = null, expect_text = null, log = null){
-        for_css.wait_css("td.no-wrap > a, td.no-wrap > span", 5000);
+        element.all(by.css('td.no-wrap > a, td.no-wrap > span')).get(0).getText().then((text) => {
+            if ( text === '. . . . . .' ) {
+                browser.sleep(3000)
+            }
+        });
+
+        for_css.wait_css("td.no-wrap > a, td.no-wrap > span", 2000);
         browser.sleep(500);
         element.all(by.css(css)).get(index_elem).getText().then(function (result) {
             if ( log === true) { console.log(result, index_elem) }
@@ -74,8 +80,8 @@ module.exports = {
     },
 
     click_is_paid_and_filter_all: function () {
-        for_css.wait_css("#filter_is_paid > label", 5000);
-        for_css.wait_css(".btn.btn-primary", 5000)
+        for_css.wait_css("#filter_is_paid > label", 2000);
+        for_css.wait_css(".btn.btn-primary", 2000)
         
         element(by.css("#filter_is_paid > label")).click();
         browser.sleep(500)

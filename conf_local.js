@@ -63,34 +63,8 @@ exports.config = {
 
     },
 
-    suites: {
-        authentication: [
-            "spec/panel/home_page.js",
-            "spec/panel/sign_up.js",
-            "spec/panel/sign_in.js"],
-
-        preconditions: [
-            "spec/panel/home_page.js",
-            "spec/panel/sign_up.js",
-            "spec/panel/sign_in.js",
-            "spec/panel/user_access/set_user_access_full.js",
-            "spec/panel/services/create.js",
-        ],
-
-        regression: [
-            "spec/panel/home_page.js",
-            "spec/panel/sign_up.js",
-            "spec/panel/sign_in.js",
-            "spec/panel/user_access/set_user_access_full.js",
-            "spec/panel/services/create.js",
-            "spec/panel/**/*.js"
-        ],
-
-
-    },
-
     allScriptsTimeout: 10000,
-    getPageTimeout: 15000,
+    getPageTimeout: 12000,
 
     files: [
         'node_modules/jquery/dist/jquery.js',
@@ -144,7 +118,44 @@ exports.config = {
         }));
 
         jasmine.getEnv().addReporter(new SpecReporter( { displayStacktrace: 'all' } ));
-    }
+    },
+
+
+    suites: {
+        authentication: [
+            "spec/panel/home_page.js",
+            "spec/panel/sign_up.js",
+            "spec/panel/sign_in.js"],
+
+        preconditions: [
+            "spec/panel/home_page.js",
+            "spec/panel/sign_up.js",
+            "spec/panel/sign_in.js",
+            "spec/panel/user_access/set_user_access_full.js",
+            "spec/panel/services/create.js",
+        ],
+
+        regression: [
+            "spec/panel/home_page.js",
+            "spec/panel/sign_up.js",
+            "spec/panel/sign_in.js",
+            "spec/panel/user_access/set_user_access_full.js",
+            "spec/panel/services/create.js",
+            "spec/panel/**/*.js"
+        ],
+
+        demands: [
+            "spec/panel/demands/return.js",
+            "spec/panel/demands/service.js"
+        ],
+
+        services: [
+            "spec/panel/services/us.js",
+            "spec/panel/services/we.js"
+        ]
+
+
+    },
 
 };
 
