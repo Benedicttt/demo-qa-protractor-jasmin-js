@@ -131,32 +131,25 @@ exports.config = {
             "spec/panel/sign_in.js"],
 
         preconditions: [
-            "spec/panel/home_page.js",
-            "spec/panel/sign_up.js",
-            "spec/panel/sign_in.js",
-            "spec/panel/user_access/set_user_access_full.js"
+            "spec/panel/preconditions/home_page.js",
+            "spec/panel/preconditions/sign_up.js",
+            "spec/panel/preconditions/sign_in.js",
+            "spec/panel/preconditions/user_access/set_user_access_full.js",
         ],
 
         regression: [
-            "spec/panel/home_page.js",
-            "spec/panel/sign_up.js",
-            "spec/panel/sign_in.js",
-            "spec/panel/user_access/set_user_access_full.js",
-            "spec/panel/services/receipt.js",
-            "spec/panel/**/*.js"
+            "spec/panel/regression/**/*.js"
         ],
 
         demands: [
-            "spec/panel/demands/return.js",
-            "spec/panel/demands/service.js"
+            "spec/panel/regression/demands/return.js",
+            "spec/panel/regression/demands/service.js"
         ],
 
         services: [
-            "spec/panel/services/us.js",
-            "spec/panel/services/we.js"
+            "spec/panel/regression/services/us.js",
+            "spec/panel/regression/services/we.js"
         ]
-
-
     }
 };
 
