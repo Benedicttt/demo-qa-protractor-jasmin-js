@@ -87,8 +87,8 @@ module.exports = {
         });
     },
 
-    write_after_ids_service: function(params) {
-        if (params = true) {
+    write_after_ids_service: function(boolean_type) {
+        if (boolean_type === true) {
             it("write in file id`s services",  () => {
                 for_css.wait_xpath("//*[@id=\"services\"]/tbody/tr[1]/td[1]", 2000);
                 element(by.xpath("//*[@id=\"services\"]/tbody/tr[1]/td[1]")).getText().then(function (text) {

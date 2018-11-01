@@ -267,13 +267,12 @@ module.exports = {
         });
 
         it('paid', () => {
-
             //TODO: PAID
             browser.sleep(1200)
+
             for_css.wait_xpath('//*[@id="demands"]/tbody/tr[1]/td[13]/a', 3000)
             let icon_paid = element.all(by.xpath("*//th[@class='span1'][10]/a[contains(text(), \"Оплата\")]/following::*/td[13]/a[@title=\"Выставить на оплату\"]/parent::*/a")).get(0)
             icon_paid.click()
-
             for_css.wait_xpath("//h3[contains(text(), \"Выставление заявки на оплату\")]", 5000)
             element.all(by.css('.btn-primary')).get(0).click();
 

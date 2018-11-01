@@ -125,7 +125,10 @@ exports.config = {
             "spec/panel/sign_in.js"],
 
         preconditions: [
-            "spec/panel/preconditions/**/*.js"
+            "spec/panel/preconditions/home_page.js",
+            "spec/panel/preconditions/sign_up.js",
+            "spec/panel/preconditions/sign_in.js",
+            "spec/panel/preconditions/user_access/set_user_access_full.js",
         ],
 
         regression: [
