@@ -99,17 +99,19 @@ module.exports = {
     click_popup_info: function() {
         it('Find popup', () => {
             for_css.wait_css(".btn-group .icon-info-sign", 2000);
-            current_popup = element.all(by.css(".btn-group i.icon-info-sign")).get(0)
+            let current_popup = element.all(by.css(".btn-group i.icon-info-sign")).get(0)
             current_popup.click();
             current_popup.isDisplayed();
-            browser.sleep(500)
+            for_css.wait_css(".popover-title", 3000, 0)
+            browser.sleep(3000)
+
         });
     },
 
     check_data_popup: function(name, index_name = null) {
-        if ( name == "SERVICE" ){
+        if ( name === "SERVICE" ){
             it('check SERVICE document', () => {
-                browser.sleep(1500)
+
                 let elem = element.all(by.css(".show_entities > a"));
 
                 index_name == null ? for_css.wait_css(".show_entities > a", 2000, 0) : for_css.wait_css(".show_entities > a", 2000, index_name)
@@ -123,7 +125,7 @@ module.exports = {
             });
         }
 
-        if ( name == "DDS" ){
+        if ( name === "DDS" ){
             it('check DDS document', () => {
                 let elem = element.all(by.css(".show_entities > a"));
 
@@ -138,7 +140,7 @@ module.exports = {
             });
         }
 
-        if ( name == "DDS COMMISION" ){
+        if ( name === "DDS COMMISION" ){
             it('check DDS document for commision', () => {
                 let elem = element.all(by.css(".show_entities > a"));
 

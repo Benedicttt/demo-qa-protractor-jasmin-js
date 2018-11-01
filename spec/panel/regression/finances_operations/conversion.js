@@ -11,9 +11,9 @@ describe('Finances conversions', () => {
 
         conversion_shared.fill_data();
         conversion_shared.buttons();
-        conversion_shared.click_popup_info();
+        conversion_shared.click_popup_info()
 
-        conversion_shared.check_data_popup("SERVICE");
+        conversion_shared.check_data_popup("SERVICE", 1);
         conversion_shared.check_data_popup("DDS");
         conversion_shared.check_data_popup("DDS COMMISION");
     });
@@ -31,9 +31,9 @@ describe('Finances conversions', () => {
         conversion_shared.fill_data();
         conversion_shared.fill_data_nds();
         conversion_shared.buttons();
-        conversion_shared.click_popup_info();
+        conversion_shared.click_popup_info()
 
-        conversion_shared.check_data_popup("SERVICE");
+        conversion_shared.check_data_popup("SERVICE", 1);
         conversion_shared.check_data_popup("DDS");
         conversion_shared.check_data_popup("DDS COMMISION");
         conversion_shared.check_data_popup("NDS", "us");

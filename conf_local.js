@@ -22,12 +22,10 @@ const form = yaml.safeLoad(fs.readFileSync('spec/support/forms.yml', 'utf8'));
 const AllureReporter = require('jasmine-allure-reporter');
 const { SpecReporter } = require('jasmine-spec-reporter');
 
-const outputFilename = './spec/support/';
+let outputFilename = './spec/support/';
 
 
-
-
-var addScreenShots = {
+const addScreenShots = {
     specDone: function (result) {
         if (result.status === 'failed') {
             browser.takeScreenshot().then(function (png) {
@@ -39,9 +37,9 @@ var addScreenShots = {
     }
 };
 
-var getRandomString = function(length) {
-    var string = '';
-    var letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+let getRandomString = function(length) {
+    let string = '';
+    let letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
     for (i = 0; i < length; i++) {
         string += letters.charAt(Math.floor(Math.random() * letters.length));
     }
@@ -73,8 +71,8 @@ exports.config = {
     framework: 'jasmine',
 
     onPrepare() {
-        var width = 1620;
-        var height = 1080;
+        let width = 1620;
+        let height = 1080;
         browser.driver.manage().window().setSize(width, height);           
        
 
@@ -127,35 +125,23 @@ exports.config = {
             "spec/panel/sign_in.js"],
 
         preconditions: [
-            "spec/panel/home_page.js",
-            "spec/panel/sign_up.js",
-            "spec/panel/sign_in.js",
-            "spec/panel/user_access/set_user_access_full.js"
+            "spec/panel/preconditions/**/*.js"
         ],
 
         regression: [
-            "spec/panel/home_page.js",
-            "spec/panel/sign_up.js",
-            "spec/panel/sign_in.js",
-            "spec/panel/user_access/set_user_access_full.js",
-            "spec/panel/services/us.js",
-            "spec/panel/services/we.js",
-            "spec/panel/**/*.js"
+            "spec/panel/regression/**/*.js"
         ],
 
         demands: [
-            "spec/panel/demands/return.js",
-            "spec/panel/demands/service.js"
+            "spec/panel/regression/demands/return.js",
+            "spec/panel/regression/demands/service.js"
         ],
 
         services: [
-            "spec/panel/services/us.js",
-            "spec/panel/services/we.js"
+            "spec/panel/regression/services/us.js",
+            "spec/panel/regression/services/we.js"
         ]
-
-
     }
-
 };
 
 // arr = []
