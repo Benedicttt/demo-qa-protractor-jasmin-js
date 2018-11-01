@@ -156,7 +156,6 @@ module.exports = {
                 current_popup = element.all(by.css(".btn-group i.icon-info-sign")).get(0)
                 current_popup.click();
                 current_popup.isDisplayed();
-
                 demands_shared.check_data_popup("SERVICE");
                 demands_shared.check_data_popup("DDS");
                 demands_shared.check_data_popup("DEMANDS");
@@ -295,7 +294,9 @@ module.exports = {
     check_data_popup: function(name) {
 
         if ( name === "DEMANDS" ){
-            elem = element.all(by.css(".show_entities > a")).get(0);
+            browser.sleep(1500)
+
+            let elem = element.all(by.css(".show_entities > a")).get(0);
             for_css.wait_css(".show_entities > a", 5000, 1);
 
             elem.getAttribute('href').then(function (value) {
@@ -306,7 +307,7 @@ module.exports = {
         }
 
         if ( name === "SERVICE" ){
-            elem = element.all(by.css(".show_entities > a")).get(1);
+            let elem = element.all(by.css(".show_entities > a")).get(1);
             for_css.wait_css(".show_entities > a", 5000, 1);
 
             elem.getAttribute('href').then(function (value) {
@@ -317,7 +318,7 @@ module.exports = {
         }
 
         if ( name === "DDS" ){
-            elem = element.all(by.css(".show_entities > a")).get(2);
+            let elem = element.all(by.css(".show_entities > a")).get(2);
             for_css.wait_css(".show_entities > a", 5000, 2);
 
             elem.getAttribute('href').then(function (value) {

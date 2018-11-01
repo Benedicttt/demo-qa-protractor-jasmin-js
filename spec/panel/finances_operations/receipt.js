@@ -33,7 +33,7 @@ describe('Create receipt plus `return`', () => {
     receipts_shared.check_data_popup("DDS", 0);
 });
 
-describe('Create receipt plus `NDS`', () => {
+fdescribe('Create receipt plus `NDS`', () => {
     beforeAll( () => {
         user_object.authorization(helper.user_email_last());
     });
@@ -48,9 +48,9 @@ describe('Create receipt plus `NDS`', () => {
     receipts_shared.buttons()
     receipts_shared.click_popup_info()
 
-    receipts_shared.check_data_popup("SERVICE")
-    receipts_shared.check_data_popup("DDS")
-    receipts_shared.check_data_popup("NDS", "us")
+    receipts_shared.check_data_popup("SERVICE", 0);
+    receipts_shared.check_data_popup("DDS");
+    receipts_shared.check_data_popup("NDS", "us");
     receipts_shared.check_data_popup("NDS", "we")
 });
 

@@ -110,7 +110,7 @@ module.exports = {
         if ( name == "SERVICE" ){
             it('check SERVICE document', () => {
                 browser.sleep(1500)
-                let elem = element.all(by.css(".show_entities > a")).get(1);
+                let elem = element.all(by.css(".show_entities > a"));
 
                 index_name == null ? for_css.wait_css(".show_entities > a", 2000, 0) : for_css.wait_css(".show_entities > a", 2000, index_name)
                 index_name == null ? find_elem = elem.get(0) : find_elem = elem.get(index_name)
