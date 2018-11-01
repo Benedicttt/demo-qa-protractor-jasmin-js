@@ -2,8 +2,8 @@ service:
   base_us:
     selector: !!seq
       - service_service_source_id: "Мы"
-      - service_contractor_type_id: " Покупатель"
       - service_project_id: "Админ"
+      - service_contractor_type_id: " Покупатель"
       - service_contractor_id: " Контекст"
       - service_nomenclature_id: " Административные услуги"
 
@@ -19,10 +19,10 @@ service:
     selector: !!seq
       - service_service_source_id: "Нам"
       - service_project_id: "Админ"
-      - service_expenditure_type_id: " Мотивационные затраты"
-      - service_expenditure_id: " 13-я зарплата"
       - service_contractor_type_id: " Покупатель"
       - service_contractor_id: " Контекст"
+      - service_expenditure_type_id: " Мотивационные затраты"
+      - service_expenditure_id: " 13-я зарплата"
 
 
     checkbox: !!seq
