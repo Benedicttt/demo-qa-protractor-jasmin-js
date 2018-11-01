@@ -29,6 +29,7 @@ module.exports = {
         });
 
         it("assert create current DDS",  () => {
+            browser.sleep(1000)
             let expectedUrl = browser.baseUrl + '/fin_indicators/operations';
             let EC = browser.ExpectedConditions;
 

@@ -102,6 +102,7 @@ module.exports = {
             current_popup = element.all(by.css(".btn-group i.icon-info-sign")).get(0)
             current_popup.click();
             current_popup.isDisplayed();
+            browser.sleep(500)
         });
     },
 
@@ -110,9 +111,11 @@ module.exports = {
             it('check SERVICE document', () => {
                 browser.sleep(1500)
                 let elem = element.all(by.css(".show_entities > a")).get(1);
-                for_css.wait_css(".show_entities > a", 2000, 1);
 
-                elem.getAttribute('href').then(function (value) {
+                index_name == null ? for_css.wait_css(".show_entities > a", 2000, 0) : for_css.wait_css(".show_entities > a", 2000, index_name)
+                index_name == null ? find_elem = elem.get(0) : find_elem = elem.get(index_name)
+
+                find_elem.getAttribute('href').then(function (value) {
                     let id = value.match(/\d+/g).slice(-1)[0];
                     let query = "/services/highlight_service?service_id=";
                     expect(value).toEqual(browser.baseUrl + query + id);
