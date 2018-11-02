@@ -135,6 +135,8 @@ exports.config = {
             "spec/panel/preconditions/sign_up.js",
             "spec/panel/preconditions/sign_in.js",
             "spec/panel/preconditions/user_access/set_user_access_full.js",
+            "spec/panel/regression/services/us.js",
+            "spec/panel/regression/services/we.js"
         ],
 
         regression: [
