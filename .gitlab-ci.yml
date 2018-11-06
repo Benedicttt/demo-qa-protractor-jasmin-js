@@ -35,8 +35,8 @@ smoke:
   variables:
     APP_HOST: https://test-finances.404-group.info
 
-  before_script:
-      - /node_modules/protractor/bin/protractor conf.js --browser chrome --continue-on-error --disableChecks --capabilities.chromeOptions.args window-size=1920,1080 --suite preconditions,regression --capabilities.chromeOptions.args headless
+  script:
+    - /node_modules/protractor/bin/protractor conf.js --browser chrome --continue-on-error --disableChecks --capabilities.chromeOptions.args window-size=1920,1080 --suite preconditions,regression --capabilities.chromeOptions.args headless
 
   after_script:
     - allure generate allure-results -o public --clean
@@ -45,6 +45,8 @@ smoke:
     paths:
       - public
     expire_in: 1 day
+
+  allow_failure: yes
 
 pages:
   stage: report
