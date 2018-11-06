@@ -25,7 +25,6 @@ module.exports = {
             let key = `${Object.keys(id)[0]}`;
 
             it(`{ ${key}: ${value} }`, () => {
-                browser.sleep(500)
                 tag_selector.selectOption(key, value)
             })
         });
@@ -83,7 +82,6 @@ module.exports = {
             let key = `${Object.keys(id)[0]}`;
 
             it(`{ select ${key}: ${value} }`, () => {
-                browser.sleep(500)
                 tag_selector.selectOption(key, value)
             })
         });
@@ -104,11 +102,12 @@ module.exports = {
             let value = `${Object.values(id)[0]}`;
             let key = `${Object.keys(id)[0]}`;
 
+
             it(`{ input ${key}: ${value} }`, () => {
                 element(by.id(`${key}`)).clear();
 
                 if ( value === 'us') {
-                    console.log(`number service: ${helper.created_services("us")}`);
+                    console.log(`number service: ${helper.created_services("us")}`)
 
                     element(by.id(`${key}`)).sendKeys(helper.created_services("us"))
 
@@ -137,11 +136,9 @@ module.exports = {
             if (key === "advances" && value === 'true') {
                 demands_shared.advance_payment()
             }
-
             if (key === "demand_is_distributed" && value === 'true') {
                 demands_shared.demand_is_distributed()
             }
-
             if (key === "add_inventory" && value === 'true') {
                 demands_shared.add_inventory()
             }
@@ -173,13 +170,13 @@ module.exports = {
 
                     //TODO: AMORTIZATION
                     if (key === "add_inventory" && value === 'true') {
-                        browser.sleep(2500);
+                        browser.sleep(1000);
                         for_css.wait_xpath("*//th[@class='span1'][8][contains(text(), \"Услуга\")]/following::*/td[11]/a[@title=\"Задать процент амортизации\"]/i", 3000)
                         element.all(by.xpath("*//th[@class='span1'][8][contains(text(), \"Услуга\")]/following::*/td[11]/a[@title=\"Задать процент амортизации\"]/i")).get(0).click();
 
                         for_css.wait_xpath("//h3[contains(text(), \"Число периодов амортизации имущества\")]", 5000)
                         element.all(by.css('.btn-primary')).get(0).click()
-                        browser.sleep(1500)
+                        browser.sleep(1000)
                         browser.navigate().refresh();
                     }
                 });
@@ -199,10 +196,10 @@ module.exports = {
         tag_selector.selectOption('demand_contractor_type_id', "--  На имущество")
         tag_selector.selectOption('demand_contractor_id', " Webazilla")
 
-        for_css.wait_id('link_service_properties', 3000);
+        for_css.wait_id('link_service_properties', 2000);
         element(by.id('link_service_properties')).click();
 
-        for_css.wait_id('service_properties_amount', 3000);
+        for_css.wait_id('service_properties_amount', 2000);
         element(by.id('service_properties_amount')).sendKeys('1');
         element(by.id('service_properties_name')).sendKeys('--  На имущество');
         element.all(by.css('.btn-primary')).get(0).click();
@@ -212,21 +209,21 @@ module.exports = {
 
     //TODO: Base template function for template `run test case`
     buttons: function() {
-            browser.executeScript("$('#new_demand > div.form-actions > button')[0].click()")
-            browser.sleep(3000);
-            browser.executeScript("$('#new_demand > div.form-actions > button')[0].click()")
+        browser.executeScript("$('#new_demand > div.form-actions > button')[0].click()")
+        browser.sleep(3000);
+        browser.executeScript("$('#new_demand > div.form-actions > button')[0].click()")
 
-            let btn_last = element.all(by.css("button.btn-primary")).get(0);
-            browser.wait(protractor.ExpectedConditions.visibilityOf(btn_last), 3000);
-            browser.wait(EC.elementToBeClickable(btn_last.isEnabled()), 5000);
-            btn_last.click()
+        let btn_last = element.all(by.css("button.btn-primary")).get(0);
+        browser.wait(protractor.ExpectedConditions.visibilityOf(btn_last), 3000);
+        browser.wait(EC.elementToBeClickable(btn_last.isEnabled()), 5000);
+        btn_last.click()
 
-            browser.sleep(1000)
-            let expectedUrl = browser.baseUrl + '/demands';
+        browser.sleep(1000)
+        let expectedUrl = browser.baseUrl + '/demands';
 
-            browser.wait(EC.urlContains(expectedUrl), 5000);
-            browser.wait(EC.urlIs(expectedUrl), 5000);
-            expect(browser.getCurrentUrl()).toEqual(expectedUrl);
+        browser.wait(EC.urlContains(expectedUrl), 5000);
+        browser.wait(EC.urlIs(expectedUrl), 5000);
+        expect(browser.getCurrentUrl()).toEqual(expectedUrl);
     },
 
     check_status_order: function(attribute) {

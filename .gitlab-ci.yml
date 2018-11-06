@@ -36,9 +36,11 @@ smoke:
     APP_HOST: https://test-finances.404-group.info
 
   script:
+    - npm cache clear --force
     - /node_modules/protractor/bin/protractor conf.js --suite preconditions,regression --browser chrome
-    # TODO: after the fall of the tests you need to create a report anyway!!!
     - allure generate allure-results -o public --clean
+
+  when: always
 
   artifacts:
     paths:
