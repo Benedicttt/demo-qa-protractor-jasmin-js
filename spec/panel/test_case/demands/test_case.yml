@@ -43,7 +43,7 @@ demand:
         - demand_contractor_id:      " Контекст"
 
       checkbox: !!seq
-        - demand_is_refund: true
+        - demand_is_refund:                true
         - demand_is_payment_on_site:       true
         - demand_is_plan_paid_date:        true
         - demand_is_regular_payment:       true
@@ -56,9 +56,9 @@ demand:
         - demand_payment_site_info:     "for test case  1 in demand return"
         - demand_purse_number:          "1234 1234 1234 1234"
         - demand_purpose:               "for test case  1 in demand return"
-        - demand_amount:                1001
+        - demand_amount:                1003
         - demand_comment:               "for test case  1 in demand return"
-        - demand_task:                  123
+        - demand_task:                  3214
         - demand_refundable_service_id: "us"
 
       attributes: !!seq
@@ -164,9 +164,9 @@ demand:
         - demand_payment_site_info: "for test case  1 in demand return"
         - demand_purse_number:      "1234 1234 1234 1234"
         - demand_purpose:           "for test case  1 in demand return"
-        - demand_amount:            1001
+        - demand_amount:            1002
         - demand_comment:           "for test case  1 in demand return"
-        - demand_task:              123
+        - demand_task:              1234
 
       attributes: !!seq
         - advances:               false

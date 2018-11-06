@@ -41,6 +41,17 @@ module.exports = {
             }
         });
 
+        scenarios.service[`${name_case}`].attributes.map(function(attribute) {
+            let value = `${Object.values(attribute)[0]}`;
+            let key = `${Object.keys(attribute)[0]}`;
+
+            it(`{ input ${key}: ${value} }`, () => {
+                if (key === "add_inventory" && value === 'true') {
+                    demands_shared.add_inventory()
+                }
+            });
+        });
+
         scenarios.service[`${name_case}`].input.map(function(id) {
             let value = `${Object.values(id)[0]}`;
             let key = `${Object.keys(id)[0]}`;
@@ -60,6 +71,7 @@ module.exports = {
                 }
             })
         });
+
 
         scenarios.service[`${name_case}`].attributes.map(function(attribute){
             demands_shared.runner_demand_attr(name_case, attribute)
@@ -96,6 +108,17 @@ module.exports = {
                     browser.sleep(100)
                 })
             }
+        });
+
+        scenarios.return[`${name_case}`].attributes.map(function(attribute) {
+            let value = `${Object.values(attribute)[0]}`;
+            let key = `${Object.keys(attribute)[0]}`;
+
+            it(`{ input ${key}: ${value} }`, () => {
+                if (key === "add_inventory" && value === 'true') {
+                    demands_shared.add_inventory()
+                }
+            });
         });
 
         scenarios.return[`${name_case}`].input.map(function(id) {
@@ -138,9 +161,6 @@ module.exports = {
             }
             if (key === "demand_is_distributed" && value === 'true') {
                 demands_shared.demand_is_distributed()
-            }
-            if (key === "add_inventory" && value === 'true') {
-                demands_shared.add_inventory()
             }
 
             if (key === "click_buttons" && value === 'true') {

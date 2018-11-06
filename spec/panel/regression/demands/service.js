@@ -1,4 +1,4 @@
-describe('Demands, create new, type `service`', () => {
+fdescribe('Demands, create new, type `service`', () => {
 
     describe('case_1', () => {
         demands_shared.run_test_case_service("case_1")
