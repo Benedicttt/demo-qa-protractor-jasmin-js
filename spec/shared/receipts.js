@@ -47,6 +47,7 @@ module.exports = {
                 } else {
                     tag_selector.click_id_on_option(id.toString(), 3, 2000);
                 }
+                browser.sleep(200)
             });
         });
 
