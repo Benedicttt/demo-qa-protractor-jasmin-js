@@ -36,11 +36,12 @@ smoke:
     APP_HOST: https://test-finances.404-group.info
 
   script:
-    - npm cache clear --force
-    - /node_modules/protractor/bin/protractor conf.js --suite preconditions,regression --browser chrome  --capabilities.chromeOptions.args headless
-    - allure generate allure-results -o public --clean
+    - /node_modules/protractor/bin/protractor conf.js  \
+        --browser chrome --continue-on-error --disableChecks  \
+        --capabilities.chromeOptions.args window-size=1920,1080 \
+        --suite preconditions,regression --capabilities.chromeOptions.args headless
 
-  when: always
+    - allure generate allure-results -o public --clean
 
   artifacts:
     paths:

@@ -218,6 +218,7 @@ module.exports = {
 
         for_css.wait_id('link_service_properties', 3000);
         element(by.id('link_service_properties')).click();
+        browser.sleep(500)
 
         for_css.wait_id('service_properties_amount', 3000);
         element(by.id('service_properties_amount')).sendKeys('1');
