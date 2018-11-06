@@ -83,7 +83,7 @@ exports.config = {
 
         global.getRandomString = getRandomString;
 
-        global.admin           = 'admin@404-group.test';
+        global.admin           = 'admin@404-group.info';
         global.id_email        = 'user_email';
         global.id_pass         = 'user_password';
         global.id_pass_conf    = 'user_password_confirmation';
@@ -135,8 +135,8 @@ exports.config = {
             "spec/panel/preconditions/sign_up.js",
             "spec/panel/preconditions/sign_in.js",
             "spec/panel/preconditions/user_access/set_user_access_full.js",
-            "spec/panel/regression/services/us.js",
-            "spec/panel/regression/services/we.js"
+            "spec/panel/preconditions/services/us.js",
+            "spec/panel/preconditions/services/we.js"
         ],
 
         regression: [
@@ -149,8 +149,8 @@ exports.config = {
         ],
 
         services: [
-            "spec/panel/regression/services/us.js",
-            "spec/panel/regression/services/we.js"
+            "spec/panel/preconditions/services/us.js",
+            "spec/panel/preconditions/services/we.js"
         ]
     }
 };
