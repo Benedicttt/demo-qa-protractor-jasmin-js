@@ -25,7 +25,8 @@ module.exports = {
             let key = `${Object.keys(id)[0]}`;
 
             it(`{ ${key}: ${value} }`, () => {
-                tag_selector.selectOption(key, value)
+                browser.sleep(200);
+                tag_selector.selectOption(key, value);
             })
         });
 
@@ -94,6 +95,7 @@ module.exports = {
             let key = `${Object.keys(id)[0]}`;
 
             it(`{ select ${key}: ${value} }`, () => {
+                browser.sleep(200);
                 tag_selector.selectOption(key, value)
             })
         });

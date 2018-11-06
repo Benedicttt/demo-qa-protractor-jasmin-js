@@ -47,8 +47,6 @@ smoke:
     expire_in: 1 day
     when: always
 
-  allow_failure: yes
-
 pages:
   stage: report
   tags:
