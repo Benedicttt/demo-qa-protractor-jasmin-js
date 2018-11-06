@@ -5,8 +5,6 @@ describe('User add full access on admin', function() {
         it('check pages and access', () =>{ });
 
         user_shared.checked_access(5)
-
-
     });
 
     describe('Set mid access in user `Кадры`', () => {
@@ -15,7 +13,7 @@ describe('User add full access on admin', function() {
         it('check pages and access', () =>{ });
 
         user_shared.checked_access(6)
-    })
+    });
 
     describe('Set mid access in user `Система`', () => {
         user_shared.unchecked_access(7)
@@ -23,7 +21,7 @@ describe('User add full access on admin', function() {
         it('check pages and access', () =>{ });
 
         user_shared.checked_access(7)
-    })
+    });
 
     describe('Set mid access in user `Справочники`', () => {
         user_shared.unchecked_access(8)
@@ -31,7 +29,7 @@ describe('User add full access on admin', function() {
         it('check pages and access', () =>{ });
 
         user_shared.checked_access(8)
-    })
+    });
 
     describe('Set mid access in user `Услуги`', () => {
         user_shared.unchecked_access(9)
@@ -39,7 +37,7 @@ describe('User add full access on admin', function() {
         it('check pages and access', () =>{ });
 
         user_shared.checked_access(9)
-    })
+    });
 
     describe('Set mid access in user `Фин. операции`', () => {
         user_shared.unchecked_access(10)
@@ -47,7 +45,7 @@ describe('User add full access on admin', function() {
         it('check pages and access', () =>{ });
 
         user_shared.checked_access(10)
-    })
+    });
 
     describe('Set mid access in user `Фин. показатели`', () => {
         user_shared.unchecked_access(12)
@@ -55,7 +53,7 @@ describe('User add full access on admin', function() {
         it('check pages and access', () =>{ });
 
         user_shared.checked_access(12)
-    })
+    });
 
     describe('Set mid access in user `Техничка`', () => {
         user_shared.unchecked_access(13)
@@ -63,5 +61,5 @@ describe('User add full access on admin', function() {
         it('check pages and access', () =>{ });
 
         user_shared.checked_access(13)
-    })
+    });
 });
