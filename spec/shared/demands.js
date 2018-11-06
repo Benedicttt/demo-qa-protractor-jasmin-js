@@ -176,8 +176,8 @@ module.exports = {
 
                     //TODO: AMORTIZATION
                     if (key === "add_inventory" && value === 'true') {
-                        browser.sleep(1500);
-                        for_css.wait_xpath("*//th[@class='span1'][8][contains(text(), \"Услуга\")]/following::*/td[11]/a[@title=\"Задать процент амортизации\"]/i", 5000)
+                        browser.sleep(2000);
+                        for_css.wait_xpath("*//th[@class='span1'][8][contains(text(), \"Услуга\")]/following::*/td[11]/a[@title=\"Задать процент амортизации\"]/i", 3000)
                         element.all(by.xpath("*//th[@class='span1'][8][contains(text(), \"Услуга\")]/following::*/td[11]/a[@title=\"Задать процент амортизации\"]/i")).get(0).click();
 
                         for_css.wait_xpath("//h3[contains(text(), \"Число периодов амортизации имущества\")]", 5000)
