@@ -25,6 +25,7 @@ module.exports = {
             let key = `${Object.keys(id)[0]}`;
 
             it(`{ ${key}: ${value} }`, () => {
+                browser.sleep(300)
                 tag_selector.selectOption(key, value)
             })
         });
@@ -35,8 +36,8 @@ module.exports = {
 
             if (Object.values(id)[0] === true) {
                 it(`{ checkbox ${key}: ${value} }`, () => {
+                    browser.sleep(300)
                     element(by.id(`${key}`)).click();
-                    browser.sleep(100)
                 })
             }
         });
@@ -46,6 +47,7 @@ module.exports = {
             let key = `${Object.keys(id)[0]}`;
 
             it(`{ ${key}: ${value} }`, () => {
+                browser.sleep(300)
                 element(by.id(`${key}`)).clear();
 
                 if ( value === 'us') {
@@ -82,6 +84,7 @@ module.exports = {
             let key = `${Object.keys(id)[0]}`;
 
             it(`{ select ${key}: ${value} }`, () => {
+                browser.sleep(300)
                 tag_selector.selectOption(key, value)
             })
         });
@@ -92,6 +95,7 @@ module.exports = {
 
             if (Object.values(id)[0] === true) {
                 it(`{ checkbox ${key}: ${value} }`, () => {
+                    browser.sleep(300)
                     element(by.id(`${key}`)).click();
                     browser.sleep(100)
                 })
@@ -104,6 +108,7 @@ module.exports = {
 
 
             it(`{ input ${key}: ${value} }`, () => {
+                browser.sleep(300)
                 element(by.id(`${key}`)).clear();
 
                 if (key === "add_inventory" && value === 'true') {
@@ -137,6 +142,7 @@ module.exports = {
         let key = `${Object.keys(attribute)[0]}`;
 
         it(`{ ${key}: ${value} }`, () => {
+            browser.sleep(300)
             if (key === "advances" && value === 'true') {
                 demands_shared.advance_payment()
             }
