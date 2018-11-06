@@ -36,11 +36,7 @@ smoke:
     APP_HOST: https://test-finances.404-group.info
 
   script:
-    - /node_modules/protractor/bin/protractor conf.js  \
-        --browser chrome --continue-on-error --disableChecks  \
-        --capabilities.chromeOptions.args window-size=1920,1080 \
-        --suite preconditions,regression --capabilities.chromeOptions.args headless
-
+    - /node_modules/protractor/bin/protractor conf.js --browser chrome --continue-on-error --disableChecks --capabilities.chromeOptions.args window-size=1920,1080 --suite preconditions,regression --capabilities.chromeOptions.args headless
     - allure generate allure-results -o public --clean
 
   artifacts:
