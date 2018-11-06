@@ -30,5 +30,5 @@ service:
 
     input: !!seq
       - service_purpose: "for test test case base_we service"
-      - service_task: 123
+      - service_task: 321
       - service_amount: 100002

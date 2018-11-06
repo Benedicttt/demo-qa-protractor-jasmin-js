@@ -196,10 +196,10 @@ module.exports = {
         tag_selector.selectOption('demand_contractor_type_id', "--  На имущество")
         tag_selector.selectOption('demand_contractor_id', " Webazilla")
 
-        for_css.wait_id('link_service_properties', 2000);
+        for_css.wait_id('link_service_properties', 3000);
         element(by.id('link_service_properties')).click();
 
-        for_css.wait_id('service_properties_amount', 2000);
+        for_css.wait_id('service_properties_amount', 3000);
         element(by.id('service_properties_amount')).sendKeys('1');
         element(by.id('service_properties_name')).sendKeys('--  На имущество');
         element.all(by.css('.btn-primary')).get(0).click();
@@ -247,7 +247,6 @@ module.exports = {
         }
 
         it('sign demand', () => {
-
             //TODO: SIGN
             browser.sleep(1000)
             for_css.wait_xpath("*//th[@class='span1'][9]/a[contains(text(), \"Подпись\")]/following::*/td[12]/a[@title=\"Подписать\"]/child::*", 3000)
