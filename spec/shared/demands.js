@@ -25,7 +25,6 @@ module.exports = {
             let key = `${Object.keys(id)[0]}`;
 
             it(`{ ${key}: ${value} }`, () => {
-                browser.sleep(300)
                 tag_selector.selectOption(key, value)
             })
         });
@@ -36,8 +35,8 @@ module.exports = {
 
             if (Object.values(id)[0] === true) {
                 it(`{ checkbox ${key}: ${value} }`, () => {
-                    browser.sleep(300)
                     element(by.id(`${key}`)).click();
+                    browser.sleep(100)
                 })
             }
         });
@@ -47,7 +46,6 @@ module.exports = {
             let key = `${Object.keys(id)[0]}`;
 
             it(`{ ${key}: ${value} }`, () => {
-                browser.sleep(300)
                 element(by.id(`${key}`)).clear();
 
                 if ( value === 'us') {
@@ -84,7 +82,6 @@ module.exports = {
             let key = `${Object.keys(id)[0]}`;
 
             it(`{ select ${key}: ${value} }`, () => {
-                browser.sleep(300)
                 tag_selector.selectOption(key, value)
             })
         });
@@ -95,7 +92,6 @@ module.exports = {
 
             if (Object.values(id)[0] === true) {
                 it(`{ checkbox ${key}: ${value} }`, () => {
-                    browser.sleep(300)
                     element(by.id(`${key}`)).click();
                     browser.sleep(100)
                 })
@@ -108,12 +104,7 @@ module.exports = {
 
 
             it(`{ input ${key}: ${value} }`, () => {
-                browser.sleep(300)
                 element(by.id(`${key}`)).clear();
-
-                if (key === "add_inventory" && value === 'true') {
-                    demands_shared.add_inventory()
-                }
 
                 if ( value === 'us') {
                     console.log(`number service: ${helper.created_services("us")}`)
@@ -142,7 +133,6 @@ module.exports = {
         let key = `${Object.keys(attribute)[0]}`;
 
         it(`{ ${key}: ${value} }`, () => {
-            browser.sleep(300)
             if (key === "advances" && value === 'true') {
                 demands_shared.advance_payment()
             }
@@ -150,10 +140,10 @@ module.exports = {
             if (key === "demand_is_distributed" && value === 'true') {
                 demands_shared.demand_is_distributed()
             }
-            //
-            // if (key === "add_inventory" && value === 'true') {
-            //     demands_shared.add_inventory()
-            // }
+
+            if (key === "add_inventory" && value === 'true') {
+                demands_shared.add_inventory()
+            }
 
             if (key === "click_buttons" && value === 'true') {
                 demands_shared.buttons()
@@ -182,7 +172,7 @@ module.exports = {
 
                     //TODO: AMORTIZATION
                     if (key === "add_inventory" && value === 'true') {
-                        browser.sleep(2000);
+                        browser.sleep(2500);
                         for_css.wait_xpath("*//th[@class='span1'][8][contains(text(), \"Услуга\")]/following::*/td[11]/a[@title=\"Задать процент амортизации\"]/i", 3000)
                         element.all(by.xpath("*//th[@class='span1'][8][contains(text(), \"Услуга\")]/following::*/td[11]/a[@title=\"Задать процент амортизации\"]/i")).get(0).click();
 
