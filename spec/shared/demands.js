@@ -106,6 +106,10 @@ module.exports = {
             it(`{ input ${key}: ${value} }`, () => {
                 element(by.id(`${key}`)).clear();
 
+                if (key === "add_inventory" && value === 'true') {
+                    demands_shared.add_inventory()
+                }
+
                 if ( value === 'us') {
                     console.log(`number service: ${helper.created_services("us")}`)
 
@@ -136,12 +140,14 @@ module.exports = {
             if (key === "advances" && value === 'true') {
                 demands_shared.advance_payment()
             }
+
             if (key === "demand_is_distributed" && value === 'true') {
                 demands_shared.demand_is_distributed()
             }
-            if (key === "add_inventory" && value === 'true') {
-                demands_shared.add_inventory()
-            }
+            //
+            // if (key === "add_inventory" && value === 'true') {
+            //     demands_shared.add_inventory()
+            // }
 
             if (key === "click_buttons" && value === 'true') {
                 demands_shared.buttons()
@@ -196,10 +202,10 @@ module.exports = {
         tag_selector.selectOption('demand_contractor_type_id', "--  На имущество")
         tag_selector.selectOption('demand_contractor_id', " Webazilla")
 
-        for_css.wait_id('link_service_properties', 2000);
+        for_css.wait_id('link_service_properties', 3000);
         element(by.id('link_service_properties')).click();
 
-        for_css.wait_id('service_properties_amount', 2000);
+        for_css.wait_id('service_properties_amount', 3000);
         element(by.id('service_properties_amount')).sendKeys('1');
         element(by.id('service_properties_name')).sendKeys('--  На имущество');
         element.all(by.css('.btn-primary')).get(0).click();
