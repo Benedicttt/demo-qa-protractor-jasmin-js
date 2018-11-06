@@ -74,6 +74,7 @@ module.exports = {
 
             element(by.css(".btn.btn-primary")).click();
             element(by.css(".btn.btn-primary")).click()
+            browser.sleep(500);
         })
 
         it('sign', () => {
