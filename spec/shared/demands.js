@@ -224,6 +224,7 @@ module.exports = {
         element(by.id('service_properties_amount')).sendKeys('1');
         element(by.id('service_properties_name')).sendKeys('--  На имущество');
         element.all(by.css('.btn-primary')).get(0).click();
+        browser.sleep(200)
 
         tag_selector.selectOption('demand_contractor_id', " Webazilla")
     },
