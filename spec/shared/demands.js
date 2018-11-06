@@ -25,6 +25,7 @@ module.exports = {
             let key = `${Object.keys(id)[0]}`;
 
             it(`{ ${key}: ${value} }`, () => {
+                browser.sleep(500)
                 tag_selector.selectOption(key, value)
             })
         });
@@ -82,6 +83,7 @@ module.exports = {
             let key = `${Object.keys(id)[0]}`;
 
             it(`{ select ${key}: ${value} }`, () => {
+                browser.sleep(500)
                 tag_selector.selectOption(key, value)
             })
         });
@@ -102,12 +104,11 @@ module.exports = {
             let value = `${Object.values(id)[0]}`;
             let key = `${Object.keys(id)[0]}`;
 
-
             it(`{ input ${key}: ${value} }`, () => {
                 element(by.id(`${key}`)).clear();
 
                 if ( value === 'us') {
-                    console.log(`number service: ${helper.created_services("us")}`)
+                    console.log(`number service: ${helper.created_services("us")}`);
 
                     element(by.id(`${key}`)).sendKeys(helper.created_services("us"))
 
