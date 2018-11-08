@@ -38,25 +38,40 @@ module.exports = {
         });
     },
 
-    from_text: function(type, data_selector, search_text) {
-        let selectors = element.all(by[ type ? 'css' : '' || type ? 'id' : '' || type ? 'xpath' : '' ](data_selector))
+    from_text: function(type, data_selector, search_text, action) {
+        const selectors = element.all(by[type ? 'css' : '' || type ? 'id' : '' || type ? 'xpath' : ''](data_selector))
         type === 'css' ? for_css.wait_css(data_selector, 3000) : '';
         type === 'id' ? for_css.wait_id(data_selector, 3000) : '';
         type === 'xpath' ? for_css.wait_xpath(data_selector, 3000) : '';
 
-        selectors.each(function(elem) {
-            elem.getText().then(function(text) {
-                if ( text === search_text ) {
-                    elem.click()
-                    expect(elem.getText()).toEqual(search_text)
-                } 
-            })
-        })
+        selectors.map(function(item, index_elem) {
+        }).then( (text) => {
+            let limit = text.length;
+
+            for (let index = 0; index < limit; index++) {
+                let index_elem = index;
+
+                let option = selectors.get(index).getText();
+                option.then((text)=>{
+                    if( text === search_text ) {
+                       action === 'click' ? selectors.get(index_elem).click() : '';
+
+                       if ( action === 'return_text' ) {
+                          return selectors.get(index).getText();
+                       }
+                    }
+
+                })
+            };
+        });
+
+
     },
 
     selectOption: function (selector, item) {
         tag_selector.wait_id_select(selector, 2000);
-        var selectList, desiredOption;
+        let selectList, desiredOption;
+
         selectList = element(by.id(selector));
         selectList.all(protractor.By.tagName('option'))
             .then(function (options) {

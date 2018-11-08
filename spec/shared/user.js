@@ -40,8 +40,10 @@ module.exports = {
             expect(browser.getTitle()).toEqual(page.users.title);
 
             btn_mini.click();
+
             for_css.wait_css(`${selector}  input[type=checkbox]`, 2000);
-            browser.executeScript(`$('${selector} input[type=checkbox]').not(this).prop('checked', false);`);
+            browser.executeScript("$('.action').not(this).prop('checked', false)")
+
 
             element(by.css(".btn-primary")).click();
             browser.navigate().refresh()
@@ -65,6 +67,8 @@ module.exports = {
             expect(browser.getTitle()).toEqual(page.users.title);
 
             btn_mini.click();
+            browser.executeScript("$('.action').not(this).prop('checked', false)")
+
             for_css.wait_css(`${selector} input[type=checkbox]`, 2000);
             browser.executeScript(`$('${selector} input[type=checkbox]').not(this).prop('checked', true);`);
 
