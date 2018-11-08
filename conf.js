@@ -151,6 +151,11 @@ exports.config = {
         services: [
             "spec/panel/preconditions/services/us.js",
             "spec/panel/preconditions/services/we.js"
+        ],
+
+        check_user_access: [
+            "spec/panel/preconditions/user_access/set_user_access_mid.js"
+
         ]
     }
 };
