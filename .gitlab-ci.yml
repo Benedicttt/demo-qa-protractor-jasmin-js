@@ -41,6 +41,9 @@ smoke:
   after_script:
     - allure generate allure-results -o public --clean
 
+  only:
+    - master
+
   artifacts:
     paths:
       - public
@@ -49,13 +52,13 @@ smoke:
 
   allow_failure: yes
 
-  only:
-    - master
-    
 pages:
   stage: report
   tags:
     - test-finances-docker
+
+  only:
+    - master
 
   script:
     - ""
