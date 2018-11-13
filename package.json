@@ -6,7 +6,6 @@
   "dependencies": {
     "angular": "^1.7.4",
     "chrome": "^0.1.0",
-    "edit-json-file": "^1.2.0",
     "ffmpeg": "0.0.4",
     "fs-extra": "^7.0.0",
     "html-reporter": "^2.21.3",
@@ -28,6 +27,7 @@
   "devDependencies": {
     "@types/jquery": "^3.3.9",
     "allure-commandline": "^2.7.0",
+    "edit-json-file": "^1.2.0",
     "fs-extra": "^7.0.0",
     "jasmine-allure-reporter": "^1.0.2",
     "jasmine-reporters": "^2.3.2",
