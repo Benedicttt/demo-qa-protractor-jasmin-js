@@ -6,6 +6,7 @@
   "dependencies": {
     "angular": "^1.7.4",
     "chrome": "^0.1.0",
+    "edit-json-file": "^1.2.0",
     "ffmpeg": "0.0.4",
     "fs-extra": "^7.0.0",
     "html-reporter": "^2.21.3",
@@ -42,7 +43,7 @@
     "chrome(headless) and report": "APP_HOST=http://localhost:3000 rm -rf allure-report allure-results && protractor conf.js  --browser chrome --continue-on-error --disableChecks --capabilities.chromeOptions.args headless --capabilities.chromeOptions.args window-size=1920,1080 && allure generate allure-results --clean -o allure-report && allure serve ./allure-results",
     "firefox": "APP_HOST=http://localhost:3000 protractor conf.js  --browser firefox",
     "firefox_headless": "APP_HOST=http://localhost:3000 MOZ_HEADLESS=1 protractor conf.js  --browser firefox",
-    "webdriver-update": "node_modules/protractor/bin/webdriver-manager update",
+    "webdriver-update": "./node_modules/protractor/bin/webdriver-manager update",
     "trouble": "APP_HOST=http://localhost:3000 protractor --troubleshoot true conf.js --browser 'chrome'",
     "allure server ./allure-result": "allure generate allure-results --clean -o allure-report && allure serve ./allure-results",
     "clear cache": "npm cache clean --force",

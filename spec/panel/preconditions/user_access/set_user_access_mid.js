@@ -1,6 +1,9 @@
 describe('Set mid access in user  on `Заявки`', () => {
-    // user_shared.checked_access(5);
-    user_object.authorization(helper.user_email_last());
+    user_shared.checked_access(5);
+
+    it('authorization user', () => {
+        user_object.authorization(helper.user_email_last());
+    });
 
     it('check menu in header', () =>{
         let equal = [ 'СПОК', 'Заявки', helper.user_email_last().toLowerCase(), '', '', 'a.petrov@404-group.com' ]
@@ -21,10 +24,7 @@ describe('Set mid access in user  on `Заявки`', () => {
         }).then( (text) => {
             text.map( (text_elem) => {
                 if ( text_elem === "Заявки" ) {
-                    let click_selector = tag_selector.from_text("css", "a", 'Заявки', 'click')
-                    click_selector
-                    let a = tag_selector.from_text("css", "a", 'Заявки', 'return_text')
-                    console.log(a)
+                    tag_selector.from_text("css", "a", 'Заявки', 'click');
                 }
             });
 

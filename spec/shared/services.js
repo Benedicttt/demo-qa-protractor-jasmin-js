@@ -93,18 +93,16 @@ module.exports = {
             it("write in file id`s services",  () => {
                 for_css.wait_xpath("//*[@id=\"services\"]/tbody/tr[1]/td[1]", 2000);
                 element(by.xpath("//*[@id=\"services\"]/tbody/tr[1]/td[1]")).getText().then(function (text) {
-                    let data = ` { 
-                                    "service": { 
-                                        "us": { 
-                                            "number": ${text} 
-                                            }, 
-                                        "we": { 
-                                            "number": ${parseInt(text) + 1 }
-                                             } 
-                                    }
-                                 }`;
 
-                    helper.write_in_file('service.json', data)
+                    let file = editJsonFile("./spec/support/service.json");
+                    let set_params  = file.get();
+
+                    set_params["service"] = {}
+                    set_params["service"]['us'] = {}
+                    set_params["service"]['we'] = {}
+                    set_params["service"]["us"]['number'] =  text;
+                    set_params["service"]["we"]['number'] =  `${parseInt(text) + 1}`;
+                    file.save()
                 });
             });
         }

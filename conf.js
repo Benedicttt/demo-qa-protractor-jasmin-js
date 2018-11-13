@@ -1,6 +1,7 @@
 const yaml = require('js-yaml');
 const fs = require('fs');
 const path = require('path');
+const editJsonFile = require("edit-json-file");
 
 const user_object = require('./spec/panel/page_object/user.js');
 const user_shared = require('./spec/shared/user.js');
@@ -12,6 +13,8 @@ const demands_shared = require('./spec/shared/demands.js');
 const services_shared = require('./spec/shared/services.js');
 const receipts_shared = require('./spec/shared/receipts.js');
 const conversion_shared = require('./spec/shared/conversion.js');
+const salary_shared = require('./spec/shared/salary.js');
+const employee_shared = require('./spec/shared/employee.js');
 
 data = fs.readFileSync('./spec/support/user.json')
 let user = JSON.parse(data);
@@ -22,20 +25,21 @@ const form = yaml.safeLoad(fs.readFileSync('spec/support/forms.yml', 'utf8'));
 const AllureReporter = require('jasmine-allure-reporter');
 const { SpecReporter } = require('jasmine-spec-reporter');
 
-const outputFilename = './spec/support/';
+let outputFilename = './spec/support/';
 
 
-let addScreenShots = {
+const addScreenShots = {
     specDone: function (result) {
-        // if (result.status === 'failed') {
+        if (result.status === 'failed') {
             browser.takeScreenshot().then(function (png) {
                 allure.createAttachment('Screen', function () {
                     return new Buffer(png, 'base64')
                 }, 'image/png')();
             });
-        // }
+        }
     }
 };
+
 
 let getRandomString = function(length) {
     let string = '';
@@ -83,10 +87,10 @@ exports.config = {
 
         global.getRandomString = getRandomString;
 
-        global.admin           = 'admin@404-group.info';
         global.id_email        = 'user_email';
         global.id_pass         = 'user_password';
         global.id_pass_conf    = 'user_password_confirmation';
+        global.admin           = 'admin@404-group.info';
         global.password        = '123456';
         global.user_email      = 'spok_' + getRandomString(10) + '@gmail.com';
         global.EC              = protractor.ExpectedConditions;
@@ -113,7 +117,8 @@ exports.config = {
         global.receipts_shared = receipts_shared;
         global.conversion_shared = conversion_shared;
         global.user_shared = user_shared;
-
+        global.salary_shared = salary_shared;
+        global.employee_shared = employee_shared;
 
         jasmine.getEnv().addReporter(addScreenShots);
         jasmine.getEnv().addReporter(new AllureReporter({

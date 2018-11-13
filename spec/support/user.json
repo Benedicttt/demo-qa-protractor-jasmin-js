@@ -1,10 +1,17 @@
 {
-                    "user": {
-                        "email": "spok_OuYMQtTYqu@gmail.com",
-                        "password": "123456"
-                    },
-                    "cookie": {
-                        "name": "_session_id",
-                        "value": "88e88966a7f5743c19974d035e97866c"
-                    }
-                }
+  "user": {
+    "email": "spok_ImkapMdBbg@gmail.com",
+    "password": "123456"
+  },
+  "cookie": {
+    "name": "_session_id",
+    "value": "090c004db387c7ea75d716fce5800c69"
+  },
+  "case_1": {
+    "employee": {
+      "last_name": "Kievskiy",
+      "name": "Sergey",
+      "middle_name": "Borisovich"
+    }
+  }
+}

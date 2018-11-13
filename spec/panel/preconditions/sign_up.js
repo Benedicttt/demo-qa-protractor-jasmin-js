@@ -6,18 +6,17 @@ describe('Sign up', function() {
 
     afterAll(function () {
         browser.manage().getCookies().then(function (cookie) {
-            let data =
-                `{
-                    "user": {
-                        "email": "${user_email}",
-                        "password": "${password}"
-                    },
-                    "cookie": {
-                        "name": "${cookie[0].name}",
-                        "value": "${cookie[0].value}"
-                    }
-                }`;
-            helper.write_in_file('user.json', data)
+
+            let file = editJsonFile("./spec/support/user.json");
+            let set_params  = file.get();
+            set_params["user"] = {}
+            set_params["cookie"] = {}
+
+            set_params["user"]["email"] = user_email;
+            set_params["user"]["password"] = password;
+            set_params["cookie"]["name"] = cookie[0].name;
+            set_params["cookie"]["value"] = cookie[0].value;
+            file.save()
         });
     });
 

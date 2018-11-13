@@ -55,10 +55,6 @@ module.exports = {
                 option.then((text)=>{
                     if( text === search_text ) {
                        action === 'click' ? selectors.get(index_elem).click() : '';
-
-                       if ( action === 'return_text' ) {
-                          return selectors.get(index).getText();
-                       }
                     }
 
                 })

@@ -1,0 +1,34 @@
+employee:
+  case_1:
+    selector: !!seq
+      - employee_project_id:            "Админ"
+      - employee_payer_project_id:      "Админ"
+      - employee_expenditure_id:        "Зарплата"
+      - employee_payer_pointer:         "со счета ePayment USD"
+      - employee_payer_cash_project_id: "Админ"
+      - employee_payer_epay_project_id: "Админ"
+
+    checkbox: !!seq
+      - employee_is_in_staff:                true
+
+    input: !!seq
+      - employee_last_name:          "Kievskiy"
+      - employee_name:               "Sergey"
+      - employee_middle_name:        "Borisovich"
+      - employee_position:           "Программист"
+      - employee_email:              "test197@yopmial.com"
+      - employee_phone:              "+79816878787"
+      - employee_comment:            "comment employee"
+      - employee_rate:               100000
+      - employee_premium:            10000
+      - employee_salary_by_contract: 20000
+      - employee_epay_purse:         123-123456
+
+    attributes: !!seq
+      - advances:              true
+      - add_inventory:         true
+      - demand_is_distributed: false
+      - click_buttons:         true
+      - check_statuses_return: true
+      - check_popup:           true
+      - check_notify:          true

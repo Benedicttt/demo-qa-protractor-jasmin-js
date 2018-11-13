@@ -281,3 +281,31 @@ demand:
         - check_statuses_service: true
         - check_popup:            true
         - check_notify:           false
+
+  case_6:
+      selector: !!seq
+        - demand_project_id:          "Админ"
+        - demand_account_id:          "epay "
+        - demand_contractor_type_id:  " Подотчетник"
+        - demand_contractor_id:       " Контекст"
+
+      checkbox: !!seq
+        - demand_is_service_rendered:      true
+        - demand_is_salary:                true
+
+      input: !!seq
+        - demand_payment_site_info: "for test case  1 in demand return"
+        - demand_purse_number:      "1234 1234 1234 1234"
+        - demand_purpose:           "for test case  1 in demand return"
+        - demand_amount:            1001
+        - demand_comment:           "for test case  1 in demand return"
+        - demand_task:              123
+
+      attributes: !!seq
+        - advances:               fasle
+        - add_inventory:          false
+        - demand_is_distributed:  false
+        - click_buttons:          true
+        - check_statuses_service: true
+        - check_popup:            true
+        - check_notify:           false

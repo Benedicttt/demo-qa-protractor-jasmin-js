@@ -25,10 +25,6 @@ module.exports = {
         return element(by.id(id)).getAttribute(value);
     },
 
-    write_in_file: function (name_file, data) {
-        fs.writeFile(outputFilename + name_file, data, (error) => {  });
-    },
-
     addCookie: function() {
         browser.get("/");
         browser.manage().deleteAllCookies();

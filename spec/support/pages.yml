@@ -16,6 +16,13 @@ users:
   get: browser.get('/system/users')
   title: 'Пользователи | СПОК'
 
+employee:
+  get: browser.get('/employees')
+  title: 'Кадры | СПОК'
+  new:
+    get: browser.get('/employees/new')
+    title: 'Добавление сотрудника | СПОК'
+
 demands:
   get: browser.get('/demands')
   title: 'Заявки | СПОК'

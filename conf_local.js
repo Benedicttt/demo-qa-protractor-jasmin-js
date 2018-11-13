@@ -1,6 +1,7 @@
 const yaml = require('js-yaml');
 const fs = require('fs');
 const path = require('path');
+const editJsonFile = require("edit-json-file");
 
 const user_object = require('./spec/panel/page_object/user.js');
 const user_shared = require('./spec/shared/user.js');
@@ -12,6 +13,8 @@ const demands_shared = require('./spec/shared/demands.js');
 const services_shared = require('./spec/shared/services.js');
 const receipts_shared = require('./spec/shared/receipts.js');
 const conversion_shared = require('./spec/shared/conversion.js');
+const salary_shared = require('./spec/shared/salary.js');
+const employee_shared = require('./spec/shared/employee.js');
 
 data = fs.readFileSync('./spec/support/user.json')
 let user = JSON.parse(data);
@@ -87,6 +90,7 @@ exports.config = {
         global.EC              = protractor.ExpectedConditions;
 
         global.fs              = fs;
+        global.editJsonFile    = editJsonFile
         global.user            = user;
         global.user_object     = user_object;
         global.setting         = setting;
@@ -108,6 +112,8 @@ exports.config = {
         global.receipts_shared = receipts_shared;
         global.conversion_shared = conversion_shared;
         global.user_shared = user_shared;
+        global.salary_shared = salary_shared;
+        global.employee_shared = employee_shared;
 
 
         jasmine.getEnv().addReporter(addScreenShots);
