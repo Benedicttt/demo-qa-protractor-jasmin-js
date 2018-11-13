@@ -22,7 +22,8 @@
     "require-all": "^3.0.0",
     "webdriver": "^5.0.0-alpha.7",
     "webdriverio": "^4.13.2",
-    "yamljs": "^0.3.0"
+    "yamljs": "^0.3.0",
+    "edit-json-file": "^1.2.0"
   },
   "devDependencies": {
     "@types/jquery": "^3.3.9",
