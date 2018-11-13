@@ -1,7 +1,7 @@
 module.exports = {
     buttons: function() {
         it("click Save button",  () => {
-
+            browser.sleep(500)
             let EC = protractor.ExpectedConditions;
             let btn = element.all(by.css("#new_receipt > div.form-actions > button")).get(0);
             
@@ -11,6 +11,7 @@ module.exports = {
         });
 
         it("click accept NDS",  () => {
+            browser.sleep(500)
             let btn = element(by.css("#repeat-confirm"));
             let EC = protractor.ExpectedConditions;
 
@@ -20,6 +21,7 @@ module.exports = {
         });
 
         it("click YES",  () => {
+            browser.sleep(500)
             let btn = element.all(by.css(".btn-primary")).get(0);
             let EC = protractor.ExpectedConditions;
 
