@@ -82,20 +82,21 @@ exports.config = {
     onPrepare() {
         let width = 1620;
         let height = 1080;
-        browser.driver.manage().window().setSize(width, height);           
-       
+        browser.driver.manage().window().setSize(width, height);
+
 
         global.getRandomString = getRandomString;
 
+        global.admin           = 'admin@404-group.info';
         global.id_email        = 'user_email';
         global.id_pass         = 'user_password';
         global.id_pass_conf    = 'user_password_confirmation';
-        global.admin           = 'admin@404-group.info';
         global.password        = '123456';
         global.user_email      = 'spok_' + getRandomString(10) + '@gmail.com';
         global.EC              = protractor.ExpectedConditions;
 
         global.fs              = fs;
+        global.editJsonFile    = editJsonFile
         global.user            = user;
         global.user_object     = user_object;
         global.setting         = setting;
