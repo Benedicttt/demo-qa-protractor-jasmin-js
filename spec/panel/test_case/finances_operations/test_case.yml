@@ -53,7 +53,7 @@ receipts:
         - receipt_project_we_nds:            "Promotion"
         - receipt_nds_percent:               "20%"
 
-    click_accept_NDS:         false
+    click_accept_NDS:         true
     check_data_popup_service: true
     check_data_popup_dds:     true
     check_data_nds_we:        true
@@ -89,7 +89,7 @@ receipts:
         - receipt_project_we_nds:            "Promotion"
         - receipt_nds_percent:               "20%"
 
-    click_accept_NDS:         false
+    click_accept_NDS:         true
     check_data_popup_service: false
     check_data_popup_demand:  false
     check_data_popup_dds:     true
@@ -180,7 +180,7 @@ conversion:
       - money_transfer_commission: 1000
       - money_transfer_comment: "conversion case_3"
 
-    click_accept_NDS: false
+    click_accept_NDS: true
     fill_nds_form:    false
 
     check_data_popup_dds:                          true
@@ -205,7 +205,7 @@ conversion:
 #      - money_transfer_commission: 1000
       - money_transfer_comment: "conversion case_4"
 
-    click_accept_NDS: false
+    click_accept_NDS: true
     fill_nds_form: true
     nds_form:
       checkbox: !!seq
