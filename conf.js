@@ -11,10 +11,10 @@ const selectors = require('./spec/helpers/selectors.js');
 const for_css = require('./spec/helpers/css_selectors.js');
 const demands_shared = require('./spec/shared/demands.js');
 const services_shared = require('./spec/shared/services.js');
-const receipts_shared = require('./spec/shared/receipts.js');
 const conversion_shared = require('./spec/shared/conversion.js');
 const salary_shared = require('./spec/shared/salary.js');
 const employee_shared = require('./spec/shared/employee.js');
+const receipts_shared = require('./spec/shared/receipts.js');
 
 data = fs.readFileSync('./spec/support/user.json')
 let user = JSON.parse(data);
@@ -39,7 +39,6 @@ const addScreenShots = {
         }
     }
 };
-
 
 let getRandomString = function(length) {
     let string = '';
@@ -94,7 +93,7 @@ exports.config = {
         global.password        = '123456';
         global.user_email      = 'spok_' + getRandomString(10) + '@gmail.com';
         global.EC              = protractor.ExpectedConditions;
-
+        global.globalTimeout   = 3000;
         global.fs              = fs;
         global.editJsonFile    = editJsonFile
         global.user            = user;
@@ -121,13 +120,13 @@ exports.config = {
         global.salary_shared = salary_shared;
         global.employee_shared = employee_shared;
 
+
         jasmine.getEnv().addReporter(addScreenShots);
         jasmine.getEnv().addReporter(new AllureReporter({
             resultsDir: './allure-results/'
         }));
+
         jasmine.getEnv().addReporter(new SpecReporter( { displayStacktrace: 'all' } ));
-        // console.log(process.env);
-        process.env.recording_video === 'true' ? jasmine.getEnv().addReporter(videoReporter) : console.log("Video not recording")
     },
 
     suites: {
@@ -142,7 +141,8 @@ exports.config = {
             "spec/panel/preconditions/sign_in.js",
             "spec/panel/preconditions/user_access/set_user_access_full.js",
             "spec/panel/preconditions/services/us.js",
-            "spec/panel/preconditions/services/we.js"
+            "spec/panel/preconditions/services/we.js",
+            "spec/panel/preconditions/employee.js"
         ],
 
         regression: [
@@ -161,11 +161,8 @@ exports.config = {
 
         check_user_access: [
             "spec/panel/preconditions/user_access/set_user_access_mid.js"
+
         ]
+
     }
 };
-
-// arr = []
-//     %w[operation demand service].each { |index| arr << index.classify }
-// arr.each { |i| i.constantize.all.each { |i| i.delete } }
-
