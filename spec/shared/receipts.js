@@ -10,6 +10,7 @@ module.exports = {
 
             go(page.receipts.get);
             expect(browser.getTitle()).toEqual(page.receipts.title);
+
         });
 
         scenarios[`${name_case}`].selector.map(function(id) {
@@ -52,7 +53,7 @@ module.exports = {
 
         receipts_shared.fill_data_nds(name_case);
         receipts_shared.buttons(name_case);
-        receipts_shared.check_data_popup(name_case)
+        helper.check_data_popup(name_case, scenarios);
     },
 
     fill_data_nds: function(name_case) {
@@ -120,70 +121,7 @@ module.exports = {
             browser.wait(EC.urlIs(expectedUrl), globalTimeout);
             expect(browser.getCurrentUrl()).toEqual(expectedUrl);
         });
-    },
 
-    check_data_popup: function(name_case) {
-        it('Find popup', () => {
-            for_css.wait_css(".btn-group .icon-info-sign", globalTimeout);
-            let current_popup = element.all(by.css(".btn-group i.icon-info-sign")).get(0)
-            current_popup.click();
-            current_popup.isDisplayed();
-            for_css.wait_css(".popover-title", globalTimeout, 0)
-            browser.sleep(3000)
 
-        });
-
-        if (scenarios[`${name_case}`].check_data_popup_service ===  true) {
-            it('check SERVICE document', () => {
-                let elem = element.all(by.css(".show_entities > a")).get(0);
-                for_css.wait_css(".show_entities > a", globalTimeout, 0);
-
-                elem.getAttribute('href').then(function (value) {
-                    let id = value.match(/\d+/g).slice(-1)[0];
-                    let query = "/services/highlight_service?service_id=";
-                    expect(value).toEqual(browser.baseUrl + query + id);
-                })
-            });
-        }
-
-        if (scenarios[`${name_case}`].check_data_popup_dds ===  true) {
-            it('check DDS document', () => {
-                let elem = element.all(by.css(".show_entities > a")).get(1);
-
-                for_css.wait_css(".show_entities > a", globalTimeout)
-
-                elem.getAttribute('href').then(function (value) {
-                    let id = value.match(/\d+/g).slice(-1)[0];
-                    let query = "/fin_indicators/operations/highlight_operation?operation_id=";
-                    expect(value).toEqual(browser.baseUrl + query + id);
-                })
-            });
-        }
-
-        if (scenarios[`${name_case}`].check_data_nds_we ===  true) {
-            it('check NDS document WE', () => {
-                let elem = element.all(by.css(".show_entities > a")).get(2);
-
-                elem.getAttribute('href').then(function (value) {
-                    let id = value.match(/\d+/g).slice(-1)[0];
-                    let query = "/services/highlight_service?service_id=";
-                    expect(value).toEqual(browser.baseUrl + query + id);
-                })
-            });
-        }
-
-        if (scenarios[`${name_case}`].check_data_nds_us ===  true) {
-            it('check NDS document US', () => {
-                browser.sleep(1500)
-                let elem = element.all(by.css(".show_entities > a")).get(3);
-
-                elem.getAttribute('href').then(function (value) {
-                    let id = value.match(/\d+/g).slice(-1)[0];
-                    let query = "/services/highlight_service?service_id=";
-                    expect(value).toEqual(browser.baseUrl + query + id);
-                })
-            });
-        }
-
-    },
+    }
 };

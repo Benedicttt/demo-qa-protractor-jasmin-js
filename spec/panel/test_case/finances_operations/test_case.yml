@@ -91,6 +91,9 @@ receipts:
 
     click_accept_NDS:         false
     check_data_popup_service: false
+    check_data_popup_demand:  false
     check_data_popup_dds:     true
     check_data_nds_we:        true
     check_data_nds_us:        true
+
+

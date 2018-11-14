@@ -1,12 +1,11 @@
 const yaml = require('js-yaml');
 const fs = require('fs');
 let file = fs.readFileSync('spec/panel/test_case/demands/test_case.yml', 'utf8')
-const scenarios = yaml.safeLoad(file).demand;
+const scenarios_return = yaml.safeLoad(file).demand.return;
+const scenarios_service = yaml.safeLoad(file).demand.service;
 
 let file_service = fs.readFileSync('spec/support/service.json')
 let services_ids = JSON.parse(file_service).service
-
-let yourGlobalVariable;
 
 module.exports = {
     run_test_case_service: function(name_case) {
@@ -20,7 +19,7 @@ module.exports = {
             expect(browser.getTitle()).toEqual(page.demands.new.title);
         });
 
-        scenarios.service[`${name_case}`].selector.map(function(id) {
+        scenarios_service[`${name_case}`].selector.map(function(id) {
             let value = `${Object.values(id)[0]}`;
             let key = `${Object.keys(id)[0]}`;
 
@@ -30,7 +29,7 @@ module.exports = {
             })
         });
 
-        scenarios.service[`${name_case}`].checkbox.map(function(id) {
+        scenarios_service[`${name_case}`].checkbox.map(function(id) {
             let value = `${Object.values(id)[0]}`;
             let key = `${Object.keys(id)[0]}`;
 
@@ -42,7 +41,7 @@ module.exports = {
             }
         });
 
-        scenarios.service[`${name_case}`].attributes.map(function(attribute) {
+        scenarios_service[`${name_case}`].attributes.map(function(attribute) {
             let value = `${Object.values(attribute)[0]}`;
             let key = `${Object.keys(attribute)[0]}`;
 
@@ -53,7 +52,7 @@ module.exports = {
             });
         });
 
-        scenarios.service[`${name_case}`].input.map(function(id) {
+        scenarios_service[`${name_case}`].input.map(function(id) {
             let value = `${Object.values(id)[0]}`;
             let key = `${Object.keys(id)[0]}`;
 
@@ -73,9 +72,8 @@ module.exports = {
             })
         });
 
-
-        scenarios.service[`${name_case}`].attributes.map(function(attribute){
-            demands_shared.runner_demand_attr(name_case, attribute)
+        scenarios_service[`${name_case}`].attributes.map(function(attribute){
+            demands_shared.runner_demand_attr(name_case, attribute, scenarios_service)
         });
     },
 
@@ -90,7 +88,7 @@ module.exports = {
             expect(browser.getTitle()).toEqual(page.demands.new.title);
         });
 
-        scenarios.return[`${name_case}`].selector.map(function(id) {
+        scenarios_return[`${name_case}`].selector.map(function(id) {
             let value = `${Object.values(id)[0]}`;
             let key = `${Object.keys(id)[0]}`;
 
@@ -100,7 +98,7 @@ module.exports = {
             })
         });
 
-        scenarios.return[`${name_case}`].checkbox.map(function(id) {
+        scenarios_return[`${name_case}`].checkbox.map(function(id) {
             let value = `${Object.values(id)[0]}`;
             let key = `${Object.keys(id)[0]}`;
 
@@ -112,7 +110,7 @@ module.exports = {
             }
         });
 
-        scenarios.return[`${name_case}`].attributes.map(function(attribute) {
+        scenarios_return[`${name_case}`].attributes.map(function(attribute) {
             let value = `${Object.values(attribute)[0]}`;
             let key = `${Object.keys(attribute)[0]}`;
 
@@ -123,7 +121,7 @@ module.exports = {
             });
         });
 
-        scenarios.return[`${name_case}`].input.map(function(id) {
+        scenarios_return[`${name_case}`].input.map(function(id) {
             let value = `${Object.values(id)[0]}`;
             let key = `${Object.keys(id)[0]}`;
 
@@ -148,12 +146,13 @@ module.exports = {
             })
         });
 
-        scenarios.return[`${name_case}`].attributes.map(function(attribute){
-            demands_shared.runner_demand_attr(name_case, attribute)
+        scenarios_return[`${name_case}`].attributes.map(function(attribute){
+            demands_shared.runner_demand_attr(name_case, attribute, scenarios_return)
         });
+
     },
 
-    runner_demand_attr(name_case, attribute) {
+    runner_demand_attr(name_case, attribute, type = null) {
         let value = `${Object.values(attribute)[0]}`;
         let key = `${Object.keys(attribute)[0]}`;
 
@@ -173,32 +172,23 @@ module.exports = {
                 demands_shared.check_notify_for_demand()
             }
 
-            if (key === "check_popup" && value === 'true') {
-                for_css.wait_css(".btn-group .icon-info-sign", globalTimeout);
-                current_popup = element.all(by.css(".btn-group i.icon-info-sign")).get(0)
-                current_popup.click();
-                current_popup.isDisplayed();
-                demands_shared.check_data_popup("SERVICE");
-                demands_shared.check_data_popup("DDS");
-                demands_shared.check_data_popup("DEMANDS");
-            }
         });
 
         if (key === "check_statuses_service" && value === 'true') {
             it('sign amortization', () => {
-                scenarios.service[`${name_case}`].attributes.map(function(attribute) {
+                scenarios_service[`${name_case}`].attributes.map(function(attribute) {
                     let value = `${Object.values(attribute)[0]}`;
                     let key = `${Object.keys(attribute)[0]}`;
 
                     //TODO: AMORTIZATION
                     if (key === "add_inventory" && value === 'true') {
                         browser.sleep(1000);
-                        for_css.wait_xpath("*//th[@class='span1'][8][contains(text(), \"Услуга\")]/following::*/td[11]/a[@title=\"Задать процент амортизации\"]/i", globalTimeout)
+                        for_css.wait_xpath("*//th[@class='span1'][8][contains(text(), \"Услуга\")]/following::*/td[11]/a[@title=\"Задать процент амортизации\"]/i", globalTimeout);
                         element.all(by.xpath("*//th[@class='span1'][8][contains(text(), \"Услуга\")]/following::*/td[11]/a[@title=\"Задать процент амортизации\"]/i")).get(0).click();
 
-                        for_css.wait_xpath("//h3[contains(text(), \"Число периодов амортизации имущества\")]", globalTimeout)
-                        element.all(by.css('.btn-primary')).get(0).click()
-                        browser.sleep(1000)
+                        for_css.wait_xpath("//h3[contains(text(), \"Число периодов амортизации имущества\")]", globalTimeout);
+                        element.all(by.css('.btn-primary')).get(0).click();
+                        browser.sleep(1000);
                         browser.navigate().refresh();
                     }
                 });
@@ -208,41 +198,46 @@ module.exports = {
             demands_shared.check_status_order(attribute)
         }
 
+        if (key === "check_popup" && value === 'true') {
+            helper.check_data_popup(name_case, type);
+        }
+
         if (key === "check_statuses_return" && value === 'true') {
             demands_shared.check_status_order(attribute)
+
         }
     },
 
     //TODO: Add inventory
     add_inventory: function() {
-        tag_selector.selectOption('demand_contractor_type_id', "--  На имущество")
-        tag_selector.selectOption('demand_contractor_id', " Webazilla")
+        tag_selector.selectOption('demand_contractor_type_id', "--  На имущество");
+        tag_selector.selectOption('demand_contractor_id', " Webazilla");
 
         for_css.wait_id('link_service_properties', globalTimeout);
         element(by.id('link_service_properties')).click();
-        browser.sleep(1000)
+        browser.sleep(1000);
 
         for_css.wait_id('service_properties_amount', globalTimeout);
         element(by.id('service_properties_amount')).sendKeys('1');
         element(by.id('service_properties_name')).sendKeys('--  На имущество');
         element.all(by.css('.btn-primary')).get(0).click();
-        browser.sleep(200)
+        browser.sleep(200);
 
         tag_selector.selectOption('demand_contractor_id', " Webazilla")
     },
 
     //TODO: Base template function for template `run test case`
     buttons: function() {
-        browser.executeScript("$('#new_demand > div.form-actions > button')[0].click()")
-        browser.sleep(3000);
-        browser.executeScript("$('#new_demand > div.form-actions > button')[0].click()")
+        browser.executeScript("$('#new_demand > div.form-actions > button')[0].click()");
+        browser.sleep(2500);
+        browser.executeScript("$('#new_demand > div.form-actions > button')[0].click()");
 
         let btn_last = element.all(by.css("button.btn-primary")).get(0);
         browser.wait(protractor.ExpectedConditions.visibilityOf(btn_last), globalTimeout);
         browser.wait(EC.elementToBeClickable(btn_last.isEnabled()), globalTimeout);
-        btn_last.click()
+        btn_last.click();
 
-        browser.sleep(1000)
+        browser.sleep(1000);
         let expectedUrl = browser.baseUrl + '/demands';
 
         browser.wait(EC.urlContains(expectedUrl), globalTimeout);
@@ -257,7 +252,7 @@ module.exports = {
         if (key === "check_statuses_service" && value === 'true') {
             //TODO: SERVICE
             it('sign service', () => {
-                let xpath_service = "*//th[@class='span1'][8][contains(text(), \"Услуга\")]/following::*/td[11]/a[@title=\"Подписать\"]/child::*";
+                let xpath_service = "*//th[@class='span1'][8][contains(text(), 'Услуга')]/following::*/td[11]/a[@title='Подписать']/child::*";
                 for_css.wait_xpath(xpath_service, globalTimeout);
                 element.all(by.xpath(xpath_service)).get(0).click();
                 browser.sleep(1000);
@@ -311,44 +306,6 @@ module.exports = {
             }
         });
 
-    },
-
-    check_data_popup: function(name) {
-
-        if ( name === "DEMANDS" ){
-            browser.sleep(1500)
-
-            let elem = element.all(by.css(".show_entities > a")).get(0);
-            for_css.wait_css(".show_entities > a", globalTimeout, 1);
-
-            elem.getAttribute('href').then(function (value) {
-                let id = value.match(/\d+/g).slice(-1)[0];
-                let query = "/demands/highlight_demand?demand_id=";
-                expect(value).toEqual(browser.baseUrl + query + id);
-            })
-        }
-
-        if ( name === "SERVICE" ){
-            let elem = element.all(by.css(".show_entities > a")).get(1);
-            for_css.wait_css(".show_entities > a", globalTimeout, 1);
-
-            elem.getAttribute('href').then(function (value) {
-                let id = value.match(/\d+/g).slice(-1)[0];
-                let query = "/services/highlight_service?service_id=";
-                expect(value).toEqual(browser.baseUrl + query + id);
-            })
-        }
-
-        if ( name === "DDS" ){
-            let elem = element.all(by.css(".show_entities > a")).get(2);
-            for_css.wait_css(".show_entities > a", globalTimeout, 2);
-
-            elem.getAttribute('href').then(function (value) {
-                let id = value.match(/\d+/g).slice(-1)[0];
-                let query = "/fin_indicators/operations/highlight_operation?operation_id=";
-                expect(value).toEqual(browser.baseUrl + query + id);
-            })
-        }
     },
 
     demand_is_distributed: function() {

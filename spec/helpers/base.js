@@ -69,6 +69,86 @@ module.exports = {
             if ( log === true) { console.log(result, index_elem) }
             expect(result).toEqual(expect_text)
         })
-    }
+    },
+
+    get_and_check_document: function(type, query) {
+        it(`${type} document check in popup`, () => {
+            for_css.wait_css(".show_entities > a", globalTimeout)
+
+            let text_in_popup = element.all(by.css(".show_entities"));
+            let current_document = [];
+
+            text_in_popup.getText().then(function (value) {
+                let arr = value[0].split('\n')
+
+                arr.map(function (current_obj) {
+
+                    if (current_obj.split(':')[0] === type) {
+
+                        let elem = element(by.xpath(`//span[@class=\"show_entities\"]/a[contains(text(), ${current_obj.split(':')[1]})]`));
+
+                        elem.getAttribute('href').then(function (value) {
+                            let id = value.match(/\d+/g).slice(-1)[0];
+                            console.log(`Find "${current_obj.split(':')[0]}" ${query}${id}`)
+
+                            expect(value).toEqual(browser.baseUrl + query + id);
+                        });
+                    }
+
+                });
+
+                arr.map(function (current_obj) {
+                    current_document.push(current_obj.split(':')[0])
+                });
+
+                expect(current_document).toContain(type);
+
+            });
+
+        });
+    },
+
+    check_data_popup: function(name_case, type = null) {
+        it('Find popup', () => {
+            for_css.wait_css(".btn-group .icon-info-sign", globalTimeout);
+            let current_popup = element.all(by.css(".btn-group i.icon-info-sign")).get(0)
+            current_popup.click();
+            current_popup.isDisplayed();
+            for_css.wait_css(".popover-title", globalTimeout, 0)
+            browser.sleep(3000)
+
+        });
+
+        if (type[`${name_case}`].check_data_popup_service ===  true) {
+            helper.get_and_check_document("Услуга", "/services/highlight_service?service_id=")
+        }
+
+        if (type[`${name_case}`].check_data_popup_dds ===  true) {
+            helper.get_and_check_document("ДДС", "/fin_indicators/operations/highlight_operation?operation_id=")
+
+        }
+
+        if (type[`${name_case}`].check_data_popup_demand ===  true) {
+            helper.get_and_check_document("Заявка", "/demands/highlight_demand?demand_id=")
+        }
+
+        if (type[`${name_case}`].check_data_nds_us ===  true) {
+            helper.get_and_check_document("Услуга ндс нам", "/services/highlight_service?service_id=")
+        }
+
+        if (type[`${name_case}`].check_data_nds_we ===  true) {
+            helper.get_and_check_document("Услуга ндс мы", "/services/highlight_service?service_id=")
+        }
+
+        if (type[`${name_case}`].check_data_popup_dds_comission ===  true) {
+            helper.get_and_check_document("ДДС комиссии", "/fin_indicators/operations/highlight_operation?operation_id=")
+        }
+
+        if (type[`${name_case}`].check_data_popup_service_comission ===  true) {
+            helper.get_and_check_document("Услуга комиссии", "/services/highlight_service?service_id=")
+        }
+
+    },
+
 
 };

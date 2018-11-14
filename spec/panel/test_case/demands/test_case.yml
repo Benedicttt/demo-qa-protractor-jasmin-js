@@ -35,6 +35,12 @@ demand:
         - check_popup:           true
         - check_notify:          true
 
+      check_data_popup_service: true
+      check_data_popup_dds:     true
+      check_data_popup_demand:  true
+      check_data_nds_we:        false
+      check_data_nds_us:        false
+
     case_2:
       selector: !!seq
         - demand_project_id:         "Админ"
@@ -67,8 +73,13 @@ demand:
         - demand_is_distributed: false
         - click_buttons:         true
         - check_statuses_return: true
-        - check_popup:           true
         - check_notify:          false
+
+      check_data_popup_service: true
+      check_data_popup_demand:  true
+      check_data_popup_dds:     true
+      check_data_nds_we:        false
+      check_data_nds_us:        false
 
     case_3:
       selector: !!seq
@@ -104,6 +115,13 @@ demand:
         - check_statuses_return: true
         - check_popup:           true
         - check_notify:          true
+
+      check_data_popup_service: true
+      check_data_popup_demand:  true
+      check_data_popup_dds:     true
+      check_data_nds_we:        false
+      check_data_nds_us:        false
+
 
 
   service:
@@ -142,6 +160,12 @@ demand:
         - check_popup:            true
         - check_notify:           false
 
+      check_data_popup_service: true
+      check_data_popup_demand:  true
+      check_data_popup_dds:     true
+      check_data_nds_we:        false
+      check_data_nds_us:        false
+
     case_2:
       selector: !!seq
         - demand_project_id:          "Админ"
@@ -176,6 +200,12 @@ demand:
         - check_statuses_service: true
         - check_popup:            true
         - check_notify:           false
+
+      check_data_popup_service: true
+      check_data_popup_demand:  true
+      check_data_popup_dds:     true
+      check_data_nds_we:        false
+      check_data_nds_us:        false
 
     case_3:
       selector: !!seq
@@ -212,6 +242,12 @@ demand:
         - check_popup:            true
         - check_notify:           false
 
+      check_data_popup_service: true
+      check_data_popup_demand:  true
+      check_data_popup_dds:     true
+      check_data_nds_we:        false
+      check_data_nds_us:        false
+
     case_4:
       selector: !!seq
         - demand_project_id:          "Админ"
@@ -246,6 +282,12 @@ demand:
         - check_statuses_service: true
         - check_popup:            true
         - check_notify:           false
+
+      check_data_popup_service: true
+      check_data_popup_demand:  true
+      check_data_popup_dds:     true
+      check_data_nds_we:        false
+      check_data_nds_us:        false
 
     case_5:
       selector: !!seq
@@ -282,6 +324,12 @@ demand:
         - check_popup:            true
         - check_notify:           false
 
+      check_data_popup_service: true
+      check_data_popup_demand:  true
+      check_data_popup_dds:     true
+      check_data_nds_we:        false
+      check_data_nds_us:        false
+
   case_6:
       selector: !!seq
         - demand_project_id:          "Админ"
@@ -309,3 +357,9 @@ demand:
         - check_statuses_service: true
         - check_popup:            true
         - check_notify:           false
+
+      check_data_popup_service: true
+      check_data_popup_demand:  true
+      check_data_popup_dds:     true
+      check_data_nds_we:        false
+      check_data_nds_us:        false
