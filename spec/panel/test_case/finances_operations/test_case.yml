@@ -98,29 +98,125 @@ receipts:
 
 conversion:
   case_1:
+    selector: !!seq
+      - money_transfer_sender_project_id:   "Админ"
+      - money_transfer_sender_account_id:   "epay"
+      - money_transfer_receiver_project_id: "Promotion"
+      - money_transfer_receiver_account_id: "Стандартный рублевый счет"
+      - money_transfer_cc_project_id:       "Проект отправитель"
 
-  ids:
-    selectors: !!seq
-      - money_transfer_sender_project_id
-      - money_transfer_sender_account_id
-      - money_transfer_receiver_project_id
-      - money_transfer_receiver_account_id
-      - money_transfer_cc_project_id
-    checkboxes: !!seq
-      - money_transfer_is_commission_exist
-      - money_transfer_is_commission_from_sender
-    inputs: !!seq
-      - money_transfer_sender_amount
-      - money_transfer_receiver_amount
-      - money_transfer_commission
-      - money_transfer_comment
-    selectors_nds: !!seq
-      - money_transfer_project_us_nds
-      - money_transfer_project_we_nds
-      - money_transfer_nds_percent
+    checkbox: !!seq
+      - money_transfer_is_commission_exist:       true
+      - money_transfer_is_commission_from_sender: true
 
-    click_accept_NDS:         true
-    check_data_popup_service: true
-    check_data_popup_dds:     true
-    check_data_nds_we:        false
-    check_data_nds_us:        false
+    input: !!seq
+      - money_transfer_sender_amount: 1000
+      - money_transfer_receiver_amount: 65000
+      - money_transfer_commission: 1000
+      - money_transfer_comment: "conversion case_1"
+
+    click_accept_NDS: true
+    fill_nds_form: true
+    nds_form:
+      checkbox: !!seq
+        - money_transfer_is_nds:                        true
+        - money_transfer_nds_is_rendered_during_period: true
+
+      selector: !!seq
+        - money_transfer_project_us_nds:            "Админ"
+        - money_transfer_project_we_nds:            "Promotion"
+        - money_transfer_nds_percent:               "20%"
+
+    check_data_popup_dds:                          true
+    check_data_popup_dds_comission:                true
+    check_data_popup_service_comission:            true
+    check_data_popup_dds_comission_conversion:     true
+    check_data_popup_service_comission_conversion: true
+    check_data_nds_we:                             true
+    check_data_nds_us:                             true
+
+  case_2:
+    selector: !!seq
+      - money_transfer_sender_project_id:   "Админ"
+      - money_transfer_sender_account_id:   "epay"
+      - money_transfer_receiver_project_id: "Promotion"
+      - money_transfer_receiver_account_id: "Стандартный рублевый счет"
+      - money_transfer_cc_project_id:       "Проект отправитель"
+
+    checkbox: !!seq
+      - money_transfer_is_commission_exist:       true
+      - money_transfer_is_commission_from_sender: true
+
+    input: !!seq
+      - money_transfer_sender_amount: 1000
+      - money_transfer_receiver_amount: 65000
+      - money_transfer_commission: 1000
+      - money_transfer_comment: "conversion case_2"
+
+    click_accept_NDS: true
+    fill_nds_form:    false
+
+    check_data_popup_dds:                          true
+    check_data_popup_dds_comission_conversion:     true
+    check_data_popup_service_comission_conversion: true
+    check_data_popup_dds_comission:                true
+    check_data_popup_service_comission:            true
+
+  case_3:
+    selector: !!seq
+      - money_transfer_sender_project_id:   "Админ"
+      - money_transfer_sender_account_id:   "epay"
+      - money_transfer_receiver_project_id: "Админ"
+      - money_transfer_receiver_account_id: "epay"
+      - money_transfer_cc_project_id:       "Проект отправитель"
+
+    checkbox: !!seq
+      - money_transfer_is_commission_exist:       true
+      - money_transfer_is_commission_from_sender: true
+
+    input: !!seq
+      - money_transfer_sender_amount: 1000
+      - money_transfer_receiver_amount: 1000
+      - money_transfer_commission: 1000
+      - money_transfer_comment: "conversion case_3"
+
+    click_accept_NDS: false
+    fill_nds_form:    false
+
+    check_data_popup_dds:                          true
+    check_data_popup_dds_comission:                true
+    check_data_popup_service_comission:            true
+
+  case_4:
+    selector: !!seq
+      - money_transfer_sender_project_id:   "Админ"
+      - money_transfer_sender_account_id:   "epay"
+      - money_transfer_receiver_project_id: "Админ"
+      - money_transfer_receiver_account_id: "epay"
+      - money_transfer_cc_project_id:       "Проект отправитель"
+
+    checkbox: !!seq
+      - money_transfer_is_commission_exist:       false
+      - money_transfer_is_commission_from_sender: false
+
+    input: !!seq
+      - money_transfer_sender_amount: 1000
+      - money_transfer_receiver_amount: 1000
+#      - money_transfer_commission: 1000
+      - money_transfer_comment: "conversion case_4"
+
+    click_accept_NDS: false
+    fill_nds_form: true
+    nds_form:
+      checkbox: !!seq
+        - money_transfer_is_nds:                        true
+        - money_transfer_nds_is_rendered_during_period: true
+
+      selector: !!seq
+        - money_transfer_project_us_nds:            "Админ"
+        - money_transfer_project_we_nds:            "Promotion"
+        - money_transfer_nds_percent:               "20%"
+
+    check_data_popup_dds:                          true
+    check_data_nds_we:                             true
+    check_data_nds_us:                             true

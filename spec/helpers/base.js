@@ -119,33 +119,44 @@ module.exports = {
 
         });
 
-        if (type[`${name_case}`].check_data_popup_service ===  true) {
-            helper.get_and_check_document("Услуга", "/services/highlight_service?service_id=")
-        }
-
+        //TODO: DDS
         if (type[`${name_case}`].check_data_popup_dds ===  true) {
             helper.get_and_check_document("ДДС", "/fin_indicators/operations/highlight_operation?operation_id=")
-
-        }
-
-        if (type[`${name_case}`].check_data_popup_demand ===  true) {
-            helper.get_and_check_document("Заявка", "/demands/highlight_demand?demand_id=")
-        }
-
-        if (type[`${name_case}`].check_data_nds_us ===  true) {
-            helper.get_and_check_document("Услуга ндс нам", "/services/highlight_service?service_id=")
-        }
-
-        if (type[`${name_case}`].check_data_nds_we ===  true) {
-            helper.get_and_check_document("Услуга ндс мы", "/services/highlight_service?service_id=")
         }
 
         if (type[`${name_case}`].check_data_popup_dds_comission ===  true) {
             helper.get_and_check_document("ДДС комиссии", "/fin_indicators/operations/highlight_operation?operation_id=")
         }
 
+        if (type[`${name_case}`].check_data_popup_dds_comission_conversion ===  true) {
+            helper.get_and_check_document("ДДС комиссии Конвертации", "/fin_indicators/operations/highlight_operation?operation_id=")
+        }
+
+        //TODO: SERVICES
+        if (type[`${name_case}`].check_data_popup_service_comission_conversion ===  true) {
+            helper.get_and_check_document("Услуга комиссии Конвертации", "/services/highlight_service?service_id=")
+        }
+
         if (type[`${name_case}`].check_data_popup_service_comission ===  true) {
             helper.get_and_check_document("Услуга комиссии", "/services/highlight_service?service_id=")
+        }
+
+        if (type[`${name_case}`].check_data_popup_service ===  true) {
+            helper.get_and_check_document("Услуга", "/services/highlight_service?service_id=")
+        }
+
+        //TODO: DEMANDS
+        if (type[`${name_case}`].check_data_popup_demand ===  true) {
+            helper.get_and_check_document("Заявка", "/demands/highlight_demand?demand_id=")
+        }
+
+        //TODO: NDS
+        if (type[`${name_case}`].check_data_nds_us ===  true) {
+            helper.get_and_check_document("Услуга ндс нам", "/services/highlight_service?service_id=")
+        }
+
+        if (type[`${name_case}`].check_data_nds_we ===  true) {
+            helper.get_and_check_document("Услуга ндс мы", "/services/highlight_service?service_id=")
         }
 
     },
