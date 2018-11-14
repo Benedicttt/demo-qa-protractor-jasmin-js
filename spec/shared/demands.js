@@ -45,11 +45,11 @@ module.exports = {
             let value = `${Object.values(attribute)[0]}`;
             let key = `${Object.keys(attribute)[0]}`;
 
-            it(`{ input ${key}: ${value} }`, () => {
-                if (key === "add_inventory" && value === 'true') {
+            if (key === "add_inventory" && value === 'true') {
+                it(`{ input ${key}: ${value} }`, () => {
                     demands_shared.add_inventory()
-                }
-            });
+                });
+            }
         });
 
         scenarios_service[`${name_case}`].input.map(function(id) {
@@ -114,11 +114,11 @@ module.exports = {
             let value = `${Object.values(attribute)[0]}`;
             let key = `${Object.keys(attribute)[0]}`;
 
-            it(`{ input ${key}: ${value} }`, () => {
                 if (key === "add_inventory" && value === 'true') {
-                    demands_shared.add_inventory()
-                }
-            });
+                    it(`{ input ${key}: ${value} }`, () => {
+                        demands_shared.add_inventory()
+                });
+            }
         });
 
         scenarios_return[`${name_case}`].input.map(function(id) {

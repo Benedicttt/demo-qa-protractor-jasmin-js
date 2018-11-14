@@ -73,6 +73,7 @@ demand:
         - demand_is_distributed: false
         - click_buttons:         true
         - check_statuses_return: true
+        - check_popup:           true
         - check_notify:          false
 
       check_data_popup_service: true
