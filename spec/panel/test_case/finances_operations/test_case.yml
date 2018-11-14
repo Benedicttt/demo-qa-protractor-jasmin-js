@@ -96,4 +96,31 @@ receipts:
     check_data_nds_we:        true
     check_data_nds_us:        true
 
+conversion:
+  case_1:
 
+  ids:
+    selectors: !!seq
+      - money_transfer_sender_project_id
+      - money_transfer_sender_account_id
+      - money_transfer_receiver_project_id
+      - money_transfer_receiver_account_id
+      - money_transfer_cc_project_id
+    checkboxes: !!seq
+      - money_transfer_is_commission_exist
+      - money_transfer_is_commission_from_sender
+    inputs: !!seq
+      - money_transfer_sender_amount
+      - money_transfer_receiver_amount
+      - money_transfer_commission
+      - money_transfer_comment
+    selectors_nds: !!seq
+      - money_transfer_project_us_nds
+      - money_transfer_project_we_nds
+      - money_transfer_nds_percent
+
+    click_accept_NDS:         true
+    check_data_popup_service: true
+    check_data_popup_dds:     true
+    check_data_nds_we:        false
+    check_data_nds_us:        false

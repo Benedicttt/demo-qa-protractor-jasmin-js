@@ -102,7 +102,7 @@ module.exports = {
         }
 
         it("click YES",  () => {
-            browser.sleep(500)
+            browser.sleep(1000)
             let btn = element.all(by.css(".btn-primary")).get(0);
             let EC = protractor.ExpectedConditions;
 

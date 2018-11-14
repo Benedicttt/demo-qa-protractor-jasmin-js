@@ -1,3 +1,8 @@
+const yaml = require('js-yaml');
+const fs = require('fs');
+let file = fs.readFileSync('spec/panel/test_case/finances_operations/test_case.yml', 'utf8');
+const scenarios = yaml.safeLoad(file).conversion;
+
 module.exports = {
     buttons: function() {
         it("click Save button",  () => {
