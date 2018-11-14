@@ -1,0 +1,96 @@
+receipts:
+  case_1:
+    selector: !!seq
+      - receipt_project_debtor_id:         "Админ"
+      - receipt_project_id:                "Promotion"
+      - receipt_account_id:                "Стандартный рублевый счет"
+      - receipt_contractor_type_id:        " Подотчетник"
+      - receipt_contractor_id:             "Kievskiy Sergey"
+      - receipt_nomenclature_id:           " Административные услуги"
+
+    checkbox: !!seq
+      - receipt_is_rendered_during_period: true
+      - receipt_is_amocrm:                 true
+      - receipt_is_nds:                    false
+
+    input: !!seq
+      - receipt_purpose:                   "receipt_purpose case 1"
+      - receipt_amount:                    1000
+      - receipt_amocrm_id:                 "receipt_amocrm_id case 1"
+
+    click_accept_NDS:         true
+    check_data_popup_service: true
+    check_data_popup_dds:     true
+    check_data_nds_we:        false
+    check_data_nds_us:        false
+
+  case_2:
+    selector: !!seq
+      - receipt_project_debtor_id:         "Админ"
+      - receipt_project_id:                "Админ"
+      - receipt_account_id:                "Стандартный рублевый счет"
+      - receipt_contractor_type_id:        " Подотчетник"
+      - receipt_contractor_id:             "Kievskiy Sergey"
+      - receipt_nomenclature_id:           " Административные услуги"
+
+    checkbox: !!seq
+      - receipt_is_rendered_during_period: true
+      - receipt_is_amocrm:                 true
+
+    input: !!seq
+      - receipt_purpose:                   "receipt_purpose case 1"
+      - receipt_amount:                    1000
+      - receipt_amocrm_id:                 "receipt_amocrm_id case 1"
+
+    fill_nds_form: true
+    nds_form:
+      checkbox: !!seq
+        - receipt_is_nds:                        true
+        - receipt_nds_is_rendered_during_period: true
+
+      selector: !!seq
+        - receipt_project_us_nds:            "Админ"
+        - receipt_project_we_nds:            "Promotion"
+        - receipt_nds_percent:               "20%"
+
+    click_accept_NDS:         false
+    check_data_popup_service: true
+    check_data_popup_dds:     true
+    check_data_nds_we:        true
+    check_data_nds_us:        true
+
+
+  case_3:
+    selector: !!seq
+      - receipt_project_debtor_id:         "Админ"
+      - receipt_project_id:                "Админ"
+      - receipt_account_id:                "Стандартный рублевый счет"
+      - receipt_contractor_type_id:        " Подотчетник"
+      - receipt_contractor_id:             "Kievskiy Sergey"
+      - receipt_nomenclature_id:           " Административные услуги"
+
+    checkbox: !!seq
+      - receipt_is_rendered_during_period: true
+      - receipt_is_amocrm:                 false
+      - receipt_is_refund:                 true
+
+    input: !!seq
+      - receipt_purpose:                   "receipt_purpose case 1"
+      - receipt_amount:                    1000
+
+    fill_nds_form: true
+    nds_form:
+      checkbox: !!seq
+        - receipt_is_nds:                        true
+        - receipt_nds_is_rendered_during_period: true
+
+      selector: !!seq
+        - receipt_project_us_nds:            "Админ"
+        - receipt_project_we_nds:            "Promotion"
+        - receipt_nds_percent:               "20%"
+
+    click_accept_NDS:         false
+    check_data_popup_service: false
+    check_data_popup_dds:     true
+    check_data_nds_we:        true
+    check_data_nds_us:        true

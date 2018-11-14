@@ -41,7 +41,7 @@ module.exports = {
 
             btn_mini.click();
 
-            for_css.wait_css(`${selector}  input[type=checkbox]`, 2000);
+            for_css.wait_css(`${selector}  input[type=checkbox]`, globalTimeout);
             browser.executeScript("$('.action').not(this).prop('checked', false)")
 
 
@@ -69,7 +69,7 @@ module.exports = {
             btn_mini.click();
             browser.executeScript("$('.action').not(this).prop('checked', false)")
 
-            for_css.wait_css(`${selector} input[type=checkbox]`, 2000);
+            for_css.wait_css(`${selector} input[type=checkbox]`, globalTimeout);
             browser.executeScript(`$('${selector} input[type=checkbox]').not(this).prop('checked', true);`);
 
             element(by.css(".btn-primary")).click();

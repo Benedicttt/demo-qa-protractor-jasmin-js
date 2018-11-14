@@ -51,8 +51,8 @@ module.exports = {
             let btn = element.all(by.css("button.btn-primary")).get(0);
             let EC = protractor.ExpectedConditions;
 
-            browser.wait(protractor.ExpectedConditions.visibilityOf(btn), 2000);
-            browser.wait(EC.elementToBeClickable(btn.isEnabled()), 2000);
+            browser.wait(protractor.ExpectedConditions.visibilityOf(btn), globalTimeout);
+            browser.wait(EC.elementToBeClickable(btn.isEnabled()), globalTimeout);
             btn.click()
         });
 
@@ -60,16 +60,16 @@ module.exports = {
             let btn = element.all(by.css("button.btn-primary")).get(0);
             let EC = protractor.ExpectedConditions;
 
-            browser.wait(protractor.ExpectedConditions.visibilityOf(btn), 2000);
-            browser.wait(EC.elementToBeClickable(btn.isEnabled()), 2000);
+            browser.wait(protractor.ExpectedConditions.visibilityOf(btn), globalTimeout);
+            browser.wait(EC.elementToBeClickable(btn.isEnabled()), globalTimeout);
             btn.click()
         });
 
         it('click `set project`', () => {
-            for_css.wait_css("a.btn.btn-small", 2000);
+            for_css.wait_css("a.btn.btn-small", globalTimeout);
 
             element.all(by.css("a.btn.btn-small")).get(1).click();
-            for_css.wait_css('.project', 2000, 0)
+            for_css.wait_css('.project', globalTimeout, 0)
             browser.sleep(1000);
         })
 
@@ -86,7 +86,7 @@ module.exports = {
         })
 
         it('check user create', () => {
-            for_css.wait_xpath("//table[3]/tbody/tr", 2000)
+            for_css.wait_xpath("//table[3]/tbody/tr", globalTimeout)
 
             let file = editJsonFile("./spec/support/user.json");
             let set_params = file.get()
@@ -99,7 +99,7 @@ module.exports = {
                 let key = `${Object.keys(id)[0]}`;
 
                 if ( key === "employee_last_name" ) {
-                    for_css.wait_xpath(`//table[3]/tbody/tr/td[contains(text(), ${value})]/following-sibling::td[1]`, 2000, 0)
+                    for_css.wait_xpath(`//table[3]/tbody/tr/td[contains(text(), ${value})]/following-sibling::td[1]`, globalTimeout, 0)
 
                     set_params[name_case]['employee']['last_name'] = value ;
                 }

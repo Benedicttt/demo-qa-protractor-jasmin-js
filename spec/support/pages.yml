@@ -49,32 +49,7 @@ DDS:
 receipts:
   title: 'Поступление | СПОК'
   purse_number: '4548 6584 4848 9987'
-  purpose: 'for testing'
-  amount: 101
-  comment: 'For Testing'
-  click_submit: 'browser.actions().mouseMove(element.all(by.css("button.btn-primary")).get(0), {x: 10, y: 10,}).click().perform();'
   get: browser.get('/fin_operations/receipts/new')
-  ids:
-    selectors: !!seq
-      - receipt_project_debtor_id
-      - receipt_project_id
-      - receipt_account_id
-      - receipt_contractor_type_id
-      - receipt_contractor_id
-      - receipt_nomenclature_id
-    checkboxes: !!seq
-#      - receipt_service_is_rendered
-#      - receipt_service_is_rendered
-      - receipt_is_rendered_during_period
-      - receipt_is_amocrm
-    inputs: !!seq
-      - receipt_purpose
-      - receipt_amount
-      - receipt_amocrm_id
-    selectors_nds: !!seq
-      - receipt_project_us_nds
-      - receipt_project_we_nds
-      - receipt_nds_percent
 
 conversion:
   title: 'Конвертация | СПОК'

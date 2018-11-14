@@ -40,9 +40,9 @@ module.exports = {
 
     from_text: function(type, data_selector, search_text, action) {
         const selectors = element.all(by[type ? 'css' : '' || type ? 'id' : '' || type ? 'xpath' : ''](data_selector))
-        type === 'css' ? for_css.wait_css(data_selector, 3000) : '';
-        type === 'id' ? for_css.wait_id(data_selector, 3000) : '';
-        type === 'xpath' ? for_css.wait_xpath(data_selector, 3000) : '';
+        type === 'css' ? for_css.wait_css(data_selector, globalTimeout) : '';
+        type === 'id' ? for_css.wait_id(data_selector, globalTimeout) : '';
+        type === 'xpath' ? for_css.wait_xpath(data_selector, globalTimeout) : '';
 
         selectors.map(function(item, index_elem) {
         }).then( (text) => {
@@ -65,7 +65,7 @@ module.exports = {
     },
 
     selectOption: function (selector, item) {
-        tag_selector.wait_id_select(selector, 2000);
+        tag_selector.wait_id_select(selector, globalTimeout);
         let selectList, desiredOption;
 
         selectList = element(by.id(selector));

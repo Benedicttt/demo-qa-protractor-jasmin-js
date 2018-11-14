@@ -11,10 +11,10 @@ const selectors = require('./spec/helpers/selectors.js');
 const for_css = require('./spec/helpers/css_selectors.js');
 const demands_shared = require('./spec/shared/demands.js');
 const services_shared = require('./spec/shared/services.js');
-const receipts_shared = require('./spec/shared/receipts.js');
 const conversion_shared = require('./spec/shared/conversion.js');
 const salary_shared = require('./spec/shared/salary.js');
 const employee_shared = require('./spec/shared/employee.js');
+const receipts_shared = require('./spec/shared/receipts.js');
 
 data = fs.readFileSync('./spec/support/user.json')
 let user = JSON.parse(data);
@@ -88,7 +88,7 @@ exports.config = {
         global.password        = '123456';
         global.user_email      = 'spok_' + getRandomString(10) + '@gmail.com';
         global.EC              = protractor.ExpectedConditions;
-
+        global.globalTimeout   = 3000;
         global.fs              = fs;
         global.editJsonFile    = editJsonFile
         global.user            = user;

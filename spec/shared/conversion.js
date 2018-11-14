@@ -4,14 +4,14 @@ module.exports = {
             let EC = protractor.ExpectedConditions;
             let btn = element(by.css(".form-actions > .btn-primary"));
             
-            browser.wait(protractor.ExpectedConditions.visibilityOf(btn), 3000);
-            browser.wait(EC.elementToBeClickable(btn.isEnabled()), 2000);
+            browser.wait(protractor.ExpectedConditions.visibilityOf(btn), globalTimeout);
+            browser.wait(EC.elementToBeClickable(btn.isEnabled()), globalTimeout);
             btn.click();
 
             let btn_nds = element(by.id("repeat-confirm"));
             
-            browser.wait(protractor.ExpectedConditions.visibilityOf(btn_nds), 3000);
-            browser.wait(EC.elementToBeClickable(btn_nds.isEnabled()), 2000);
+            browser.wait(protractor.ExpectedConditions.visibilityOf(btn_nds), globalTimeout);
+            browser.wait(EC.elementToBeClickable(btn_nds.isEnabled()), globalTimeout);
             btn_nds.click();
 
         });
@@ -20,8 +20,8 @@ module.exports = {
             let btn = element(by.css(".confirm-convertion"));
             let EC = protractor.ExpectedConditions;
 
-            browser.wait(protractor.ExpectedConditions.visibilityOf(btn), 3000);
-            browser.wait(EC.elementToBeClickable(btn.isEnabled()), 2000);
+            browser.wait(protractor.ExpectedConditions.visibilityOf(btn), globalTimeout);
+            browser.wait(EC.elementToBeClickable(btn.isEnabled()), globalTimeout);
             btn.click();
         });
 
@@ -29,8 +29,8 @@ module.exports = {
             let expectedUrl = browser.baseUrl + '/fin_indicators/operations';
             let EC = browser.ExpectedConditions;
 
-            browser.wait(EC.urlContains(expectedUrl), 2000);
-            browser.wait(EC.urlIs(expectedUrl), 2000);
+            browser.wait(EC.urlContains(expectedUrl), globalTimeout);
+            browser.wait(EC.urlIs(expectedUrl), globalTimeout);
             expect(browser.getCurrentUrl()).toEqual(expectedUrl);
         });
     },
@@ -39,9 +39,9 @@ module.exports = {
         page.conversion.ids.selectors.forEach(function (id) {
             it(`ID: ${id}`,  () => {
                 if (id == "money_transfer_receiver_account_id" || id == "money_transfer_sender_account_id") {
-                    tag_selector.click_id_on_option(id.toString(), 0, 2000);
+                    tag_selector.click_id_on_option(id.toString(), 0, globalTimeout);
                 } else {
-                    tag_selector.click_id_on_option(id.toString(), 2, 2000);
+                    tag_selector.click_id_on_option(id.toString(), 2, globalTimeout);
                 }
             });
         });
@@ -78,7 +78,7 @@ module.exports = {
         it(`fill conversion_is_nds`,  () => {
             page.conversion.ids.selectors_nds.forEach(function (id) {
                 it(`ID: ${id}`,  () => {
-                    tag_selector.click_id_on_option(id.toString(), 2, 2000);
+                    tag_selector.click_id_on_option(id.toString(), 2, globalTimeout);
                 });
             });
 
@@ -98,11 +98,11 @@ module.exports = {
 
     click_popup_info: function() {
         it('Find popup', () => {
-            for_css.wait_css(".btn-group .icon-info-sign", 2000);
+            for_css.wait_css(".btn-group .icon-info-sign", globalTimeout);
             let current_popup = element.all(by.css(".btn-group i.icon-info-sign")).get(0)
             current_popup.click();
             current_popup.isDisplayed();
-            for_css.wait_css(".popover-title", 3000, 0)
+            for_css.wait_css(".popover-title", globalTimeout, 0)
             browser.sleep(3000)
 
         });
@@ -114,7 +114,7 @@ module.exports = {
 
                 let elem = element.all(by.css(".show_entities > a"));
 
-                index_name == null ? for_css.wait_css(".show_entities > a", 2000, 0) : for_css.wait_css(".show_entities > a", 2000, index_name)
+                index_name == null ? for_css.wait_css(".show_entities > a", globalTimeout, 0) : for_css.wait_css(".show_entities > a", globalTimeout, index_name)
                 index_name == null ? find_elem = elem.get(0) : find_elem = elem.get(index_name)
 
                 find_elem.getAttribute('href').then(function (value) {
@@ -129,7 +129,7 @@ module.exports = {
             it('check DDS document', () => {
                 let elem = element.all(by.css(".show_entities > a"));
 
-                index_name == null ? for_css.wait_css(".show_entities > a", 2000, 0) : for_css.wait_css(".show_entities > a", 2000, index_name)
+                index_name == null ? for_css.wait_css(".show_entities > a", globalTimeout, 0) : for_css.wait_css(".show_entities > a", globalTimeout, index_name)
                 index_name == null ? find_elem = elem.get(0) : find_elem = elem.get(index_name) 
 
                 find_elem.getAttribute('href').then(function (value) {
@@ -144,7 +144,7 @@ module.exports = {
             it('check DDS document for commision', () => {
                 let elem = element.all(by.css(".show_entities > a"));
 
-                index_name == null ? for_css.wait_css(".show_entities > a", 2000, 2) : for_css.wait_css(".show_entities > a", 2000, index_name)
+                index_name == null ? for_css.wait_css(".show_entities > a", globalTimeout, 2) : for_css.wait_css(".show_entities > a", globalTimeout, index_name)
                 index_name == null ? find_elem = elem.get(2) : find_elem = elem.get(index_name) 
 
                 find_elem.getAttribute('href').then(function (value) {

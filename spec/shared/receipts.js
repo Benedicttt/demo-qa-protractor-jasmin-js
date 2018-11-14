@@ -1,33 +1,114 @@
+const yaml = require('js-yaml');
+const fs = require('fs');
+let file = fs.readFileSync('spec/panel/test_case/finances_operations/test_case.yml', 'utf8');
+const scenarios = yaml.safeLoad(file).receipts;
+
 module.exports = {
-    buttons: function() {
+    run_test_case: function(name_case) {
+        it(`Go to page and check title ${page.receipts.title}`, () => {
+            user_object.authorization(helper.user_email_last());
+
+            go(page.receipts.get);
+            expect(browser.getTitle()).toEqual(page.receipts.title);
+        });
+
+        scenarios[`${name_case}`].selector.map(function(id) {
+            let value = `${Object.values(id)[0]}`;
+            let key = `${Object.keys(id)[0]}`;
+
+            it(`{ ${key}: ${value} }`, () => {
+                browser.sleep(200)
+                tag_selector.selectOption(key, value);
+            })
+        });
+
+        scenarios[`${name_case}`].checkbox.map(function(id) {
+            let value = `${Object.values(id)[0]}`;
+            let key = `${Object.keys(id)[0]}`;
+
+            if (Object.values(id)[0] === true) {
+                it(`{ ${key}: ${value} }`, () => {
+                    element(by.id(`${key}`)).click();
+
+                    if (key === "receipt_is_refund" && value === 'true' ) {
+                        // element(by.id(`${key}`)).click();
+                        let service_we = helper.created_services("we")
+                        element(by.id('receipt_refundable_service_id')).sendKeys(service_we)
+                    }
+
+                })
+            }
+        });
+
+        scenarios[`${name_case}`].input.map(function(id) {
+            let value = `${Object.values(id)[0]}`;
+            let key = `${Object.keys(id)[0]}`;
+
+            it(`{ ${key}: ${value} }`, () => {
+                element(by.id(`${key}`)).clear();
+                element(by.id(`${key}`)).sendKeys(`${value}`)
+            })
+        });
+
+        receipts_shared.fill_data_nds(name_case);
+        receipts_shared.buttons(name_case);
+        receipts_shared.check_data_popup(name_case)
+    },
+
+    fill_data_nds: function(name_case) {
+        if (scenarios[`${name_case}`].fill_nds_form === true) {
+
+            scenarios[`${name_case}`].nds_form.checkbox.map(function(id) {
+                let value = `${Object.values(id)[0]}`;
+                let key = `${Object.keys(id)[0]}`;
+
+                it(`{ ${key}: ${value} }`, () => {
+                    element(by.id(`${key}`)).click()
+                });
+            })
+
+            scenarios[`${name_case}`].nds_form.selector.map(function(id) {
+                let value = `${Object.values(id)[0]}`;
+                let key = `${Object.keys(id)[0]}`;
+
+                it(`{ ${key}: ${value} }`, () => {
+                    browser.sleep(200)
+                    tag_selector.selectOption(key, value);
+                })
+            });
+        }
+    },
+
+    buttons: function(name_case) {
         it("click Save button",  () => {
-            browser.sleep(500)
             let EC = protractor.ExpectedConditions;
-            let btn = element.all(by.css("#new_receipt > div.form-actions > button")).get(0);
-            
-            browser.wait(protractor.ExpectedConditions.visibilityOf(btn), 3000);
-            browser.wait(EC.elementToBeClickable(btn.isEnabled()), 2000);
+            let btn = element(by.css("#new_receipt > div.form-actions > button"));
+
+            browser.wait(protractor.ExpectedConditions.visibilityOf(btn), globalTimeout);
+            browser.wait(EC.elementToBeClickable(btn.isEnabled()), globalTimeout);
             btn.click();
         });
 
-        it("click accept NDS",  () => {
-            browser.sleep(500)
-            let btn = element(by.css("#repeat-confirm"));
-            let EC = protractor.ExpectedConditions;
+        if (scenarios[`${name_case}`].click_accept_NDS ===  true) {
+            it("click accept NDS", () => {
+                let btn = element(by.css("#repeat-confirm"));
+                let EC = protractor.ExpectedConditions;
 
-            browser.wait(protractor.ExpectedConditions.visibilityOf(btn), 3000);
-            browser.wait(EC.elementToBeClickable(btn.isEnabled()), 2000);
-            btn.click();
-        });
+                browser.wait(protractor.ExpectedConditions.visibilityOf(btn), globalTimeout);
+                browser.wait(EC.elementToBeClickable(btn.isEnabled()), globalTimeout);
+                btn.click();
+            });
+        }
 
         it("click YES",  () => {
             browser.sleep(500)
             let btn = element.all(by.css(".btn-primary")).get(0);
             let EC = protractor.ExpectedConditions;
 
-            browser.wait(protractor.ExpectedConditions.visibilityOf(btn), 3000);
-            browser.wait(EC.elementToBeClickable(btn.isEnabled()), 2000);
+            browser.wait(protractor.ExpectedConditions.visibilityOf(btn), globalTimeout);
+            browser.wait(EC.elementToBeClickable(btn.isEnabled()), globalTimeout);
             btn.click();
+
         });
 
         it("assert create current DDS",  () => {
@@ -35,108 +116,27 @@ module.exports = {
             let expectedUrl = browser.baseUrl + '/fin_indicators/operations';
             let EC = browser.ExpectedConditions;
 
-            browser.wait(EC.urlContains(expectedUrl), 2000);
-            browser.wait(EC.urlIs(expectedUrl), 2000);
+            browser.wait(EC.urlContains(expectedUrl), globalTimeout);
+            browser.wait(EC.urlIs(expectedUrl), globalTimeout);
             expect(browser.getCurrentUrl()).toEqual(expectedUrl);
         });
     },
 
-    fill_data: function() {
-        page.receipts.ids.selectors.forEach(function (id) {
-            it(`ID: ${id}`,  () => {
-                if (id == "receipt_account_id"){
-                    tag_selector.click_id_on_option(id.toString(), 0, 2000);
-                } else {
-                    tag_selector.click_id_on_option(id.toString(), 3, 2000);
-                }
-                browser.sleep(200)
-            });
-        });
-
-        page.receipts.ids.checkboxes.forEach(function (id) {
-            it(`ID: ${id}`,  () => {
-                let elem = element(by.id(id.toString()));
-
-                elem.click();
-                expect(elem.getAttribute('checked')).toBeTruthy();
-            });
-        });
-
-        page.receipts.ids.inputs.forEach(function (id) {
-            it(`ID: ${id}`,  () => {
-                let elem = element(by.id(id.toString()));
-
-                elem.clear();
-                elem.sendKeys("101");
-                expect(elem.getAttribute('value')).toEqual("101");
-            });
-        });
-    },
-
-     //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! - точка входы в дермище
-    fill_data_return: function() {
-        it(`click receipt_is_refund`,  () => {
-            element(by.id('receipt_is_refund')).click();
-            expect(elem.getAttribute('checked')).toBeTruthy();
-        });
- 
-        it(`fill receipt_is_refund`,  () => {
-            elem = element(by.id('receipt_refundable_service_id'))
-            elem.clear();
-            elem.sendKeys(helper.first_number_service())
-
-            let elm = element(by.id('refund_service_contractor_type_id'));
-            let EC = protractor.ExpectedConditions;
-            browser.wait(EC.invisibilityOf(elm), 2000);
-
-            element(by.css('.btn-primary')).click();
-        });
-     },
-
-     fill_data_nds: function() {
-        it(`click receipt_is_nds`,  () => {
-            element(by.id('receipt_is_nds')).click();
-            expect(elem.getAttribute('checked')).toBeTruthy();
-        });
- 
-        it(`fill receipt_is_nds`,  () => {
-            page.receipts.ids.selectors_nds.forEach(function (id) {
-                it(`ID: ${id}`,  () => {
-                    tag_selector.click_id_on_option(id.toString(), 2, 2000);
-                });
-            });
-
-            let input_amount = element(by.id('receipt_nds_amount'));
-
-            input_amount.clear();
-            input_amount.sendKeys("15.25555");
-            expect(input_amount.getAttribute('value')).toEqual("15.25555");
-        });
-
-        it(`ID: receipt_nds_is_rendered_during_period`,  () => {
-            let elem = element(by.id('receipt_nds_is_rendered_during_period'));
-            elem.click();
-            expect(elem.getAttribute('checked')).toBeTruthy();
-        });
-    },
-
-    click_popup_info: function() {
+    check_data_popup: function(name_case) {
         it('Find popup', () => {
-            for_css.wait_css(".btn-group .icon-info-sign", 2000);
+            for_css.wait_css(".btn-group .icon-info-sign", globalTimeout);
             let current_popup = element.all(by.css(".btn-group i.icon-info-sign")).get(0)
             current_popup.click();
             current_popup.isDisplayed();
-            for_css.wait_css(".popover-title", 3000, 0)
+            for_css.wait_css(".popover-title", globalTimeout, 0)
             browser.sleep(3000)
 
         });
-    },
 
-    check_data_popup: function(name, index_name = null) {
-        if ( name === "SERVICE" ){
+        if (scenarios[`${name_case}`].check_data_popup_service ===  true) {
             it('check SERVICE document', () => {
                 let elem = element.all(by.css(".show_entities > a")).get(0);
-                for_css.wait_css(".show_entities > a", 2000, 0);
+                for_css.wait_css(".show_entities > a", globalTimeout, 0);
 
                 elem.getAttribute('href').then(function (value) {
                     let id = value.match(/\d+/g).slice(-1)[0];
@@ -146,14 +146,13 @@ module.exports = {
             });
         }
 
-        if ( name === "DDS" ){
+        if (scenarios[`${name_case}`].check_data_popup_dds ===  true) {
             it('check DDS document', () => {
-                let elem = element.all(by.css(".show_entities > a"));
+                let elem = element.all(by.css(".show_entities > a")).get(1);
 
-                index_name == null ? for_css.wait_css(".show_entities > a", 2000, 1) : for_css.wait_css(".show_entities > a", 2000, index_name)
-                index_name == null ? find_elem = elem.get(1) : find_elem = elem.get(index_name) 
+                for_css.wait_css(".show_entities > a", globalTimeout)
 
-                find_elem.getAttribute('href').then(function (value) {
+                elem.getAttribute('href').then(function (value) {
                     let id = value.match(/\d+/g).slice(-1)[0];
                     let query = "/fin_indicators/operations/highlight_operation?operation_id=";
                     expect(value).toEqual(browser.baseUrl + query + id);
@@ -161,7 +160,7 @@ module.exports = {
             });
         }
 
-        if ( name === "NDS" && index_name === "we" ){
+        if (scenarios[`${name_case}`].check_data_nds_we ===  true) {
             it('check NDS document WE', () => {
                 let elem = element.all(by.css(".show_entities > a")).get(2);
 
@@ -173,7 +172,7 @@ module.exports = {
             });
         }
 
-        if ( name === "NDS" && index_name === "us" ){
+        if (scenarios[`${name_case}`].check_data_nds_us ===  true) {
             it('check NDS document US', () => {
                 browser.sleep(1500)
                 let elem = element.all(by.css(".show_entities > a")).get(3);

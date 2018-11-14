@@ -13,7 +13,7 @@ service:
     input: !!seq
       - service_purpose: "for test test case base_us service"
       - service_task: 123
-      - service_amount: 100001
+      - service_amount: 1000001
 
   base_we:
     selector: !!seq
@@ -31,4 +31,4 @@ service:
     input: !!seq
       - service_purpose: "for test test case base_we service"
       - service_task: 321
-      - service_amount: 100002
+      - service_amount: 1000002

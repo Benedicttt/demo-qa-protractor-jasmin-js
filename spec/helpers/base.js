@@ -40,19 +40,11 @@ module.exports = {
         browser.get("/");
     },
 
-    first_number_service: function () {
-        return JSON.parse(fs.readFileSync('./spec/support/service.json'))['service']['we']['number'];
-    },
-
-    last_number_service: function () {
-        return JSON.parse(fs.readFileSync('./spec/support/service.json'))['service']['us']['number'];
-    },
-
     sign_order_xpath: function (xpath_elem, index_elem, count_click) {
-        for_css.wait_xpath(xpath_elem, 2000);
+        for_css.wait_xpath(xpath_elem, globalTimeout);
         element.all(by.css('.btn.btn-mini')).get(index_elem).click().then(function () {
             browser.sleep(1500);
-            for_css.wait_css('#modal form', 2000);
+            for_css.wait_css('#modal form', globalTimeout);
             if (count_click > 0) {
                 element(by.css('#modal form')).submit();
                 browser.sleep(1000);
@@ -71,7 +63,7 @@ module.exports = {
             }
         });
 
-        for_css.wait_css("td.no-wrap > a, td.no-wrap > span", 2000);
+        for_css.wait_css("td.no-wrap > a, td.no-wrap > span", globalTimeout);
         browser.sleep(1000);
         element.all(by.css(css)).get(index_elem).getText().then(function (result) {
             if ( log === true) { console.log(result, index_elem) }

@@ -21,7 +21,7 @@ employee:
       - employee_comment:            "comment employee"
       - employee_rate:               100000
       - employee_premium:            10000
-      - employee_salary_by_contract: 20000
+      - employee_salary_by_contract: globalTimeout0
       - employee_epay_purse:         123-123456
 
     attributes: !!seq
