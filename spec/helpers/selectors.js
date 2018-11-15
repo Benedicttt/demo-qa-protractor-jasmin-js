@@ -58,10 +58,8 @@ module.exports = {
                     }
 
                 })
-            };
+            }
         });
-
-
     },
 
     selectOption: function (selector, item) {
@@ -73,18 +71,16 @@ module.exports = {
             .then(function (options) {
                 options.some(function (option) {
                     option.getText().then(function (text) {
-                        // if (item.toLowerCase() === text.toLowerCase()) {
+
+                        var reg = new RegExp(item)
+                        if (reg.test(text)) {
                             desiredOption = option;
-                            return true;
-                        // }
-                        return true;
+                        }
                     });
                 });
             })
             .then(function () {
-                if (desiredOption) {
                     desiredOption.click();
-            }
         });
     }
 };
