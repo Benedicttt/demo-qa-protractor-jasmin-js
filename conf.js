@@ -58,7 +58,7 @@ exports.config = {
     seleniumAddress: 'http://selenium:4444/wd/hub',
     baseUrl: process.env.APP_HOST,
 
-    directConnect: true,
+    directConnect: false,
     capabilities: {
         // shardTestFiles: true,     // allows specs to be executed in parallel.
         // maxInstances: 1,
