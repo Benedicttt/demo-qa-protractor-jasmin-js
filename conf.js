@@ -142,6 +142,7 @@ exports.config = {
             "spec/panel/preconditions/user_access/set_user_access_full.js",
             "spec/panel/preconditions/services/us.js",
             "spec/panel/preconditions/services/we.js",
+            "spec/panel/preconditions/cashier.js",
             "spec/panel/preconditions/employee.js"
         ],
 
