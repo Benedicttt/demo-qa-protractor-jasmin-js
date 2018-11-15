@@ -55,6 +55,9 @@ exports.config = {
 
     directConnect: true,
     capabilities: {
+        shardTestFiles: true,     // allows specs to be executed in parallel.
+        maxInstances: 2,
+
         browserName: 'chrome',
             chromeOptions: {
                 args: [ "--disable-gpu", "--window-size=1920x1080" ]
@@ -89,7 +92,7 @@ exports.config = {
         global.password        = '123456';
         global.user_email      = 'spok_' + getRandomString(10) + '@gmail.com';
         global.EC              = protractor.ExpectedConditions;
-        global.globalTimeout   = 3000;
+        global.globalTimeout   = 5000;
         global.fs              = fs;
         global.editJsonFile    = editJsonFile
         global.user            = user;
@@ -129,7 +132,13 @@ exports.config = {
         authentication: [
             "spec/panel/home_page.js",
             "spec/panel/sign_up.js",
-            "spec/panel/sign_in.js"],
+            "spec/panel/sign_in.js"
+        ],
+
+        cashier: [
+            "spec/panel/preconditions/cashier_real.js",
+            "spec/panel/preconditions/cashier_virtual.js"
+        ],
 
         preconditions: [
             "spec/panel/preconditions/home_page.js",
@@ -138,7 +147,6 @@ exports.config = {
             "spec/panel/preconditions/user_access/set_user_access_full.js",
             "spec/panel/preconditions/services/us.js",
             "spec/panel/preconditions/services/we.js",
-            "spec/panel/preconditions/cashier.js",
             "spec/panel/preconditions/employee.js"
         ],
 
@@ -158,7 +166,6 @@ exports.config = {
 
         check_user_access: [
             "spec/panel/preconditions/user_access/set_user_access_mid.js"
-
         ]
 
     }
