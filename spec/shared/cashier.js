@@ -9,6 +9,7 @@ module.exports = {
         const set_params = file.get();
 
         it(`Go to page and check title ${page.references.title}`,  () => {
+            browser.addMockModule('dataUtil', helper.dataUtilMockModule);
             user_object.authorization(helper.user_email_last());
 
             go(page.references.get);
