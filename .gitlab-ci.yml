@@ -37,7 +37,6 @@ smoke:
 
   script:
     - npm cache clear --force
-    - /node_modules/protractor/bin/webdriver-manager update
     - /node_modules/protractor/bin/protractor conf.js --browser chrome --continue-on-error --disableChecks --capabilities.chromeOptions.args window-size=1920,1080 --suite --suite create_user,add_accesses,create_services,cashier,regression --capabilities.chromeOptions.args headless
 
   after_script:
