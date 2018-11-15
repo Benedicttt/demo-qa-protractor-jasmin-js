@@ -1,17 +1,63 @@
 {
   "user": {
-    "email": "spok_YjJaYYmAyF@gmail.com",
+    "email": "spok_VKmPrHjoVo@gmail.com",
     "password": "123456"
   },
   "cookie": {
     "name": "_session_id",
-    "value": "7deeec0a12fdeaf27091fabe56ced996"
+    "value": "38ebe30a0fbb0f523a2c8f7627116030"
   },
   "case_1": {
     "employee": {
       "last_name": "Kievskiy",
       "name": "Sergey",
       "middle_name": "Borisovich"
+    }
+  },
+  "project": {
+    "cashier": {
+      "Админ": {
+        "real": {
+          "kind_id": "Реальный",
+          "currency_id": "Доллар [USD]",
+          "name": "Cashier real",
+          "number": "4857 5494 9849 8494"
+        },
+        "virtual": {
+          "kind_id": "Виртуальный",
+          "currency_id": "Евро [EUR]",
+          "name": "Cashier virtual",
+          "number": "4857 5494 9849 8494"
+        }
+      },
+      "Promotion": {
+        "real": {
+          "kind_id": "Реальный",
+          "currency_id": "Доллар [USD]",
+          "name": "Cashier real",
+          "number": "4857 5494 9849 8494"
+        },
+        "virtual": {
+          "kind_id": "Виртуальный",
+          "currency_id": "Евро [EUR]",
+          "name": "Cashier virtual",
+          "number": "4857 5494 9849 8494"
+        }
+      },
+      "Development": {
+        "real": {
+          "kind_id": "Реальный",
+          "currency_id": "Доллар [USD]",
+          "name": "Cashier real",
+          "number": "4857 5494 9849 8494"
+        },
+        "virtual": {
+          "kind_id": "Виртуальный",
+          "currency_id": "Евро [EUR]",
+          "name": "Cashier virtual",
+          "number": "4857 5494 9849 8494"
+        }
+      }
     }
   }
 }

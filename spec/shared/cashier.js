@@ -21,7 +21,7 @@ module.exports = {
 
             scenarios[`${name_case}`].selector.map(function(id) {
                 let value = `${Object.values(id)[0]}`;
-                let key = `${Object.keys(id)[0]}`.split("account_");
+                let key = `${Object.keys(id)[0].split("account_")}`.replace(/,/, '');
 
                 file.set(`project.cashier.${name}.${name_case}.${key}`, value);
                 file.save();
@@ -29,7 +29,7 @@ module.exports = {
             });
             scenarios[`${name_case}`].input.map(function(id) {
                 let value = `${Object.values(id)[0]}`;
-                let key = `${Object.keys(id)[0]}`.split("account_");
+                let key = `${Object.keys(id)[0].split("account_")}`.replace(/,/, '');
 
                 file.set(`project.cashier.${name}.${name_case}.${key}`, value);
                 file.save();
