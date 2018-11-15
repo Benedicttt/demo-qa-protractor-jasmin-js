@@ -79,6 +79,54 @@ exports.config = {
     framework: 'jasmine',
 
     onPrepare() {
+        var disableNgAnimate = function() {
+            angular
+                .module('disableNgAnimate', [])
+                .run(['$animate', function($animate) {
+                    $animate.enabled(false);
+                }]);
+        };
+
+        var disableCssAnimate = function() {
+            angular
+                .module('disableCssAnimate', [])
+                .run(function() {
+                    var style = document.createElement('style');
+                    style.type = 'text/css';
+                    style.innerHTML = '* {' +
+                        '-webkit-transition: none !important;' +
+                        '-moz-transition: none !important' +
+                        '-o-transition: none !important' +
+                        '-ms-transition: none !important' +
+                        'transition: none !important' +
+                        '}';
+                    document.getElementsByTagName('head')[0].appendChild(style);
+                });
+        };
+
+        var dataUtilMockModule = function () {
+            // Create a new module which depends on your data creation utilities
+            var utilModule = angular.module('dataUtil', ['platform']);
+            // Create a new service in the module that creates a new entity
+            utilModule.service('EntityCreation', ['EntityDataService', '$q', function (EntityDataService, $q) {
+
+                /**
+                 * Returns a promise which is resolved/rejected according to entity creation success
+                 * @returns {*}
+                 */
+                this.createEntity = function (details,type) {
+                    // This is your business logic for creating entities
+                    var entity = EntityDataService.Entity(details).ofType(type);
+                    var promise = entity.save();
+                    return promise;
+                };
+            }]);
+        };
+
+        browser.addMockModule('dataUtil', dataUtilMockModule);
+        browser.addMockModule('disableNgAnimate', disableNgAnimate);
+        browser.addMockModule('disableCssAnimate', disableCssAnimate);
+
         let width = 1620;
         let height = 1080;
         browser.driver.manage().window().setSize(width, height);
@@ -86,33 +134,33 @@ exports.config = {
 
         global.getRandomString = getRandomString;
 
-        global.admin = 'admin@404-group.info';
-        global.id_email = 'user_email';
-        global.id_pass = 'user_password';
-        global.id_pass_conf = 'user_password_confirmation';
-        global.password = '123456';
-        global.user_email = 'spok_' + getRandomString(10) + '@gmail.com';
-        global.EC = protractor.ExpectedConditions;
-        global.globalTimeout = 8000;
-        global.fs = fs;
-        global.editJsonFile = editJsonFile;
-        global.user = user;
-        global.user_object = user_object;
-        global.setting = setting;
-        global.form = form;
-        global.page = page;
+        global.admin           = 'admin@404-group.info';
+        global.id_email        = 'user_email';
+        global.id_pass         = 'user_password';
+        global.id_pass_conf    = 'user_password_confirmation';
+        global.password        = '123456';
+        global.user_email      = 'spok_' + getRandomString(10) + '@gmail.com';
+        global.EC              = protractor.ExpectedConditions;
+        global.globalTimeout   = 10000;
+        global.fs              = fs;
+        global.editJsonFile    = editJsonFile
+        global.user            = user;
+        global.user_object     = user_object;
+        global.setting         = setting;
+        global.form            = form;
+        global.page            = page;
 
-        global.go = helper.runner;
-        global.set = helper.runner;
-        global.action = helper.runner;
+        global.go              = helper.runner;
+        global.set             = helper.runner;
+        global.action          = helper.runner;
 
-        global.helper = helper;
-        global.tag_selector = selectors;
-        global.for_css = for_css;
+        global.helper          = helper;
+        global.tag_selector    = selectors;
+        global.for_css         = for_css;
 
-        global.outputFilename = outputFilename;
+        global.outputFilename  = outputFilename;
 
-        global.demands_shared = demands_shared;
+        global.demands_shared  = demands_shared;
         global.services_shared = services_shared;
         global.receipts_shared = receipts_shared;
         global.conversion_shared = conversion_shared;
@@ -121,13 +169,12 @@ exports.config = {
         global.employee_shared = employee_shared;
         global.cashier_shared = cashier_shared;
 
-
         jasmine.getEnv().addReporter(addScreenShots);
         jasmine.getEnv().addReporter(new AllureReporter({
             resultsDir: './allure-results/'
         }));
 
-        jasmine.getEnv().addReporter(new SpecReporter({displayStacktrace: 'all'}));
+        jasmine.getEnv().addReporter(new SpecReporter( { displayStacktrace: 'all' } ));
     },
 
     suites: {

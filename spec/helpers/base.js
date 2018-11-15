@@ -159,24 +159,5 @@ module.exports = {
             helper.get_and_check_document("Услуга ндс мы", "/services/highlight_service?service_id=")
         }
 
-    },
-
-    dataUtilMockModule: function () {
-        // Create a new module which depends on your data creation utilities
-        var utilModule = angular.module('dataUtil', ['platform']);
-        // Create a new service in the module that creates a new entity
-        utilModule.service('EntityCreation', ['EntityDataService', '$q', function (EntityDataService, $q) {
-
-            /**
-             * Returns a promise which is resolved/rejected according to entity creation success
-             * @returns {*}
-             */
-            this.createEntity = function (details,type) {
-                // This is your business logic for creating entities
-                var entity = EntityDataService.Entity(details).ofType(type);
-                var promise = entity.save();
-                return promise;
-            };
-        }]);
     }
 };

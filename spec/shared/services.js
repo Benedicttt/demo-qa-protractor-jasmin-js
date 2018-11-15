@@ -10,7 +10,6 @@ module.exports = {
             let key = `${Object.keys(id)[0]}`;
 
             it(`{ ${key}: ${value} }`, () => {
-                browser.addMockModule('dataUtil', helper.dataUtilMockModule);
                 browser.sleep(500)
                 tag_selector.selectOption(key, value);
             })

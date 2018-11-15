@@ -78,6 +78,54 @@ exports.config = {
     framework: 'jasmine',
 
     onPrepare() {
+        var disableNgAnimate = function() {
+            angular
+                .module('disableNgAnimate', [])
+                .run(['$animate', function($animate) {
+                    $animate.enabled(false);
+                }]);
+        };
+
+        var disableCssAnimate = function() {
+            angular
+                .module('disableCssAnimate', [])
+                .run(function() {
+                    var style = document.createElement('style');
+                    style.type = 'text/css';
+                    style.innerHTML = '* {' +
+                        '-webkit-transition: none !important;' +
+                        '-moz-transition: none !important' +
+                        '-o-transition: none !important' +
+                        '-ms-transition: none !important' +
+                        'transition: none !important' +
+                        '}';
+                    document.getElementsByTagName('head')[0].appendChild(style);
+                });
+        };
+
+        var dataUtilMockModule = function () {
+            // Create a new module which depends on your data creation utilities
+            var utilModule = angular.module('dataUtil', ['platform']);
+            // Create a new service in the module that creates a new entity
+            utilModule.service('EntityCreation', ['EntityDataService', '$q', function (EntityDataService, $q) {
+
+                /**
+                 * Returns a promise which is resolved/rejected according to entity creation success
+                 * @returns {*}
+                 */
+                this.createEntity = function (details,type) {
+                    // This is your business logic for creating entities
+                    var entity = EntityDataService.Entity(details).ofType(type);
+                    var promise = entity.save();
+                    return promise;
+                };
+            }]);
+        };
+
+        browser.addMockModule('dataUtil', dataUtilMockModule);
+        browser.addMockModule('disableNgAnimate', disableNgAnimate);
+        browser.addMockModule('disableCssAnimate', disableCssAnimate);
+
         let width = 1620;
         let height = 1080;
         browser.driver.manage().window().setSize(width, height);           
@@ -92,7 +140,7 @@ exports.config = {
         global.password        = '123456';
         global.user_email      = 'spok_' + getRandomString(10) + '@gmail.com';
         global.EC              = protractor.ExpectedConditions;
-        global.globalTimeout   = 5000;
+        global.globalTimeout   = 10000;
         global.fs              = fs;
         global.editJsonFile    = editJsonFile
         global.user            = user;

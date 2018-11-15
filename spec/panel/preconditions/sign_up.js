@@ -7,7 +7,6 @@ describe('Sign up', function() {
     let exit_success ='×\nВыход из системы выполнен.';
 
     afterAll(function () {
-        browser.addMockModule('dataUtil', helper.dataUtilMockModule);
         browser.manage().getCookies().then(function (cookie) {
 
             let file = editJsonFile("./spec/support/user.json");

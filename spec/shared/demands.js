@@ -10,7 +10,6 @@ let services_ids = JSON.parse(file_service).service
 module.exports = {
     run_test_case_service: function(name_case) {
         it(`Go to page and check title ${page.demands.title}`,  () => {
-            browser.addMockModule('dataUtil', helper.dataUtilMockModule);
             user_object.authorization(helper.user_email_last());
 
             go(page.demands.get);
@@ -80,7 +79,6 @@ module.exports = {
 
     run_test_case_return: function(name_case) {
         it(`Go to page and check title ${page.demands.title}`,  () => {
-            browser.addMockModule('dataUtil', helper.dataUtilMockModule);
             user_object.authorization(helper.user_email_last());
 
             go(page.demands.get);
