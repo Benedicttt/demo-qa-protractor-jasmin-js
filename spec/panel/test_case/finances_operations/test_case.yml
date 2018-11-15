@@ -102,6 +102,7 @@ conversion:
       - money_transfer_sender_project_id:   "Админ"
       - money_transfer_sender_account_id:   "epay"
       - money_transfer_receiver_project_id: "Promotion"
+
       - money_transfer_receiver_account_id: "Стандартный рублевый счет"
       - money_transfer_cc_project_id:       "Проект отправитель"
 

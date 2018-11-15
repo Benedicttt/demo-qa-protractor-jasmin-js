@@ -6,7 +6,6 @@ const scenarios = yaml.safeLoad(file).receipts;
 module.exports = {
     run_test_case: function(name_case) {
         it(`Go to page and check title ${page.receipts.title}`, () => {
-            ('dataUtil', helper.dataUtilMockModule);
             user_object.authorization(helper.user_email_last());
 
             go(page.receipts.get);

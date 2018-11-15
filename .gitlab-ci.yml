@@ -37,7 +37,7 @@ smoke:
 
   script:
     - npm cache clear --force
-    - /node_modules/protractor/bin/protractor conf.js --browser chrome --continue-on-error --disableChecks --capabilities.chromeOptions.args window-size=1920,1080 --suite --suite create_user,add_accesses,create_services,cashier --capabilities.chromeOptions.args headless
+    - /node_modules/protractor/bin/protractor conf_thread.js --browser chrome --continue-on-error --disableChecks --capabilities.chromeOptions.args window-size=1920,1080 --suite --suite create_user,add_accesses,create_services,cashier --capabilities.chromeOptions.args headless
     - /node_modules/protractor/bin/protractor conf.js --browser chrome --continue-on-error --disableChecks --capabilities.chromeOptions.args window-size=1920,1080 --suite regression --capabilities.chromeOptions.args headless
 
   after_script:

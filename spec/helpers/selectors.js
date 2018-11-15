@@ -73,10 +73,10 @@ module.exports = {
             .then(function (options) {
                 options.some(function (option) {
                     option.getText().then(function (text) {
-                        if (item.toLowerCase() === text.toLowerCase()) {
+                        // if (item.toLowerCase() === text.toLowerCase()) {
                             desiredOption = option;
                             return true;
-                        }
+                        // }
                         return true;
                     });
                 });
