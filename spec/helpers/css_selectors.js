@@ -9,10 +9,11 @@ module.exports = {
         let until = protractor.ExpectedConditions;
 
         if ( index !== null ){
-            let elem = element.all(by.css(css)).get(index);
+            elem = element.all(by.css(css)).get(index);
         } else {
             elem = element(by.css(css));
         }
+
         browser.wait(until.presenceOf(elem), ms, 'Element taking too long to appear in the DOM');
     },
 

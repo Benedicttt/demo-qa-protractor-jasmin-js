@@ -48,3 +48,7 @@ receipts:
 conversion:
   title: 'Конвертация | СПОК'
   get: browser.get('/fin_operations/money_transfers/new')
+
+references:
+  get: browser.get('references/projects')
+  title: "Проекты | СПОК"

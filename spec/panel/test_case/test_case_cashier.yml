@@ -1,0 +1,18 @@
+project:
+  real:
+    selector: !!seq
+      - account_kind_id: "Реальный"
+      - account_currency_id: "Доллар [USD]"
+
+    input: !!seq
+      - account_name:   "Cashier real"
+      - account_number: "4857 5494 9849 8494"
+
+  virtual:
+      selector: !!seq
+        - account_kind_id: "Виртуальный"
+        - account_currency_id: "Евро [EUR]"
+
+      input: !!seq
+        - account_name:   "Cashier virtual"
+        - account_number: "4857 5494 9849 8494"
