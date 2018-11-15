@@ -15,6 +15,7 @@ const conversion_shared = require('./spec/shared/conversion.js');
 const salary_shared = require('./spec/shared/salary.js');
 const employee_shared = require('./spec/shared/employee.js');
 const receipts_shared = require('./spec/shared/receipts.js');
+const cashier_shared = require('./spec/shared/cashier.js');
 
 data = fs.readFileSync('./spec/support/user.json')
 let user = JSON.parse(data);
@@ -119,6 +120,7 @@ exports.config = {
         global.user_shared = user_shared;
         global.salary_shared = salary_shared;
         global.employee_shared = employee_shared;
+        global.cashier_shared = cashier_shared;
 
 
         jasmine.getEnv().addReporter(addScreenShots);
