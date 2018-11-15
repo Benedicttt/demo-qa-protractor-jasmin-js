@@ -66,15 +66,10 @@ exports.config = {
         browserName: 'chrome',
             chromeOptions: {
                 args: [ "--disable-gpu", "--window-size=1920x1080" ]
-            }
-
-        // shardTestFiles: true,
-        // maxInstances: 5,
-
     },
 
-    allScriptsTimeout: 10000,
-    getPageTimeout: 12000,
+    allScriptsTimeout: 30000,
+    getPageTimeout: 32000,
 
     files: [
         'node_modules/jquery/dist/jquery.js',
@@ -97,7 +92,7 @@ exports.config = {
         global.password        = '123456';
         global.user_email      = 'spok_' + getRandomString(10) + '@gmail.com';
         global.EC              = protractor.ExpectedConditions;
-        global.globalTimeout   = 3000;
+        global.globalTimeout   = 8000;
         global.fs              = fs;
         global.editJsonFile    = editJsonFile
         global.user            = user;
