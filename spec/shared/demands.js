@@ -93,7 +93,7 @@ module.exports = {
             let key = `${Object.keys(id)[0]}`;
 
             it(`{ select ${key}: ${value} }`, () => {
-                browser.sleep(200);
+                browser.sleep(300);
                 tag_selector.selectOption(key, value)
             })
         });
@@ -105,7 +105,7 @@ module.exports = {
             if (Object.values(id)[0] === true) {
                 it(`{ checkbox ${key}: ${value} }`, () => {
                     element(by.id(`${key}`)).click();
-                    browser.sleep(100)
+                    browser.sleep(300)
                 })
             }
         });
@@ -210,6 +210,8 @@ module.exports = {
 
     //TODO: Add inventory
     add_inventory: function() {
+        for_css.wait_id("demand_contractor_type_id", globalTimeout);
+
         tag_selector.selectOption('demand_contractor_type_id', "--  На имущество");
         tag_selector.selectOption('demand_contractor_id', " Webazilla");
 
