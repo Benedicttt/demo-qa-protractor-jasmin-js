@@ -55,14 +55,13 @@ exports.config = {
 
     directConnect: true,
     capabilities: {
-        shardTestFiles: true,     // allows specs to be executed in parallel.
-        maxInstances: 2,
+        // shardTestFiles: false,     // allows specs to be executed in parallel.
+        // maxInstances: 1,
 
         browserName: 'chrome',
             chromeOptions: {
                 args: [ "--disable-gpu", "--window-size=1920x1080" ]
             },
-        count: 1
 
     },
     splitTestsBetweenCapabilities: true,
@@ -132,7 +131,7 @@ exports.config = {
         global.password        = '123456';
         global.user_email      = 'spok_' + getRandomString(10) + '@gmail.com';
         global.EC              = protractor.ExpectedConditions;
-        global.globalTimeout   = 10000;
+        global.globalTimeout   = 3000;
         global.fs              = fs;
         global.editJsonFile    = editJsonFile
         global.user            = user;
