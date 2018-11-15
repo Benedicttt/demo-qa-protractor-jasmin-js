@@ -129,25 +129,24 @@ exports.config = {
     },
 
     suites: {
-        authentication: [
-            "spec/panel/home_page.js",
-            "spec/panel/sign_up.js",
-            "spec/panel/sign_in.js"
+        create_user: [
+            "spec/panel/preconditions/home_page.js",
+            "spec/panel/preconditions/sign_up.js"
         ],
 
         cashier: [
-            "spec/panel/preconditions/cashier_real.js",
-            "spec/panel/preconditions/cashier_virtual.js"
+            "spec/panel/preconditions/cashier/cashier_real.js",
+            "spec/panel/preconditions/cashier/cashier_virtual.js"
         ],
 
-        preconditions: [
-            "spec/panel/preconditions/home_page.js",
-            "spec/panel/preconditions/sign_up.js",
+        add_accesses: [
             "spec/panel/preconditions/sign_in.js",
-            "spec/panel/preconditions/user_access/set_user_access_full.js",
+            "spec/panel/preconditions/user_access/set_user_access_full.js"
+        ],
+        create_services: [
+            "spec/panel/preconditions/employee.js",
             "spec/panel/preconditions/services/us.js",
-            "spec/panel/preconditions/services/we.js",
-            "spec/panel/preconditions/employee.js"
+            "spec/panel/preconditions/services/we.js"
         ],
 
         regression: [
@@ -157,11 +156,6 @@ exports.config = {
         demands: [
             "spec/panel/regression/demands/return.js",
             "spec/panel/regression/demands/service.js"
-        ],
-
-        services: [
-            "spec/panel/preconditions/services/us.js",
-            "spec/panel/preconditions/services/we.js"
         ],
 
         check_user_access: [
