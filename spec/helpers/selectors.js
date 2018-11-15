@@ -58,8 +58,10 @@ module.exports = {
                     }
 
                 })
-            }
+            };
         });
+
+
     },
 
     selectOption: function (selector, item) {
@@ -71,8 +73,8 @@ module.exports = {
             .then(function (options) {
                 options.some(function (option) {
                     option.getText().then(function (text) {
+                        let reg = new RegExp(item)
 
-                        var reg = new RegExp(item)
                         if (reg.test(text)) {
                             desiredOption = option;
                         }
@@ -80,8 +82,10 @@ module.exports = {
                 });
             })
             .then(function () {
+                if(desiredOption) {
                     desiredOption.click();
-        });
+                }
+            });
     }
 };
 

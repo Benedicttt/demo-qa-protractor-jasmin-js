@@ -51,20 +51,19 @@ module.exports = {
             it(`fill form`, () => {
                 for_css.wait_id("account_kind_id", globalTimeout);
 
+                scenarios[`${name_case}`].input.map(function(id){
+                    let value = `${Object.values(id)[0]}`;
+                    let key = `${Object.keys(id)[0]}`;
+
+                    element(by.id(key)).sendKeys(value)
+                });
+
                 scenarios[`${name_case}`].selector.map(function(id) {
                     let value = `${Object.values(id)[0]}`;
                     let key = `${Object.keys(id)[0]}`;
 
                     tag_selector.selectOption(key, value);
                 });
-
-                scenarios[`${name_case}`].input.map(function(id){
-                    let value = `${Object.values(id)[0]}`;
-                    let key = `${Object.keys(id)[0]}`;
-
-                    element(by.id(key)).sendKeys(value)
-                })
-
             });
 
             it(`click btn "Save"`, () => {
