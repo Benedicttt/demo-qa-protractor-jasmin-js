@@ -61,13 +61,11 @@ exports.config = {
         browserName: 'chrome',
             chromeOptions: {
                 args: [ "--disable-gpu", "--window-size=1920x1080" ]
-            }
-
-        // shardTestFiles: true,
-        // maxInstances: 5,
+            },
+        count: 1
 
     },
-
+    splitTestsBetweenCapabilities: true,
     allScriptsTimeout: 10000,
     getPageTimeout: 12000,
 
@@ -104,17 +102,10 @@ exports.config = {
         };
 
         var dataUtilMockModule = function () {
-            // Create a new module which depends on your data creation utilities
             var utilModule = angular.module('dataUtil', ['platform']);
-            // Create a new service in the module that creates a new entity
-            utilModule.service('EntityCreation', ['EntityDataService', '$q', function (EntityDataService, $q) {
+            utilModule.service('EntityCreation', ['EntityDataService', '$q', function (EntityDataService) {
 
-                /**
-                 * Returns a promise which is resolved/rejected according to entity creation success
-                 * @returns {*}
-                 */
-                this.createEntity = function (details,type) {
-                    // This is your business logic for creating entities
+                createEntity = function (details,type) {
                     var entity = EntityDataService.Entity(details).ofType(type);
                     var promise = entity.save();
                     return promise;
@@ -125,6 +116,7 @@ exports.config = {
         browser.addMockModule('dataUtil', dataUtilMockModule);
         browser.addMockModule('disableNgAnimate', disableNgAnimate);
         browser.addMockModule('disableCssAnimate', disableCssAnimate);
+
 
         let width = 1620;
         let height = 1080;
@@ -178,8 +170,13 @@ exports.config = {
 
     suites: {
         create_user: [
+            "spec/panel/preconditions/sign_up.js",
             "spec/panel/preconditions/home_page.js",
-            "spec/panel/preconditions/sign_up.js"
+            "spec/panel/preconditions/sign_in.js",
+        ],
+
+        add_accesses: [
+            "spec/panel/preconditions/user_access/set_user_access_full.js"
         ],
 
         cashier: [
@@ -187,10 +184,6 @@ exports.config = {
             "spec/panel/preconditions/cashier/cashier_virtual.js"
         ],
 
-        add_accesses: [
-            "spec/panel/preconditions/sign_in.js",
-            "spec/panel/preconditions/user_access/set_user_access_full.js"
-        ],
         create_services: [
             "spec/panel/preconditions/employee.js",
             "spec/panel/preconditions/services/us.js",

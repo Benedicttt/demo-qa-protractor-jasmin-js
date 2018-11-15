@@ -61,7 +61,7 @@ exports.config = {
     directConnect: false,
     capabilities: {
         shardTestFiles: true,     // allows specs to be executed in parallel.
-        maxInstances: 2,
+        maxInstances: 1,
 
         browserName: 'chrome',
         chromeOptions: {
