@@ -24,7 +24,7 @@ application image:
     - docker build --tag application:latest --file .docker/application.Dockerfile .
   when: manual
 
-smoke:
+.smoke:
   stage: tests
   image: application:latest
   services:
@@ -52,6 +52,14 @@ smoke:
     when: always
 
   allow_failure: yes
+
+smoke_test:
+  extends: .smoke
+
+smake_test:
+  extends: .smoke
+  only:
+    - triggers
 
 pages:
   stage: report
