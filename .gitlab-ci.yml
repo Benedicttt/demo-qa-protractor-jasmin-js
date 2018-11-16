@@ -43,7 +43,8 @@ application image:
     - allure generate allure-results -o public --clean
 
   only:
-    - master
+    refs:
+      - triggers
 
   artifacts:
     paths:
@@ -55,11 +56,11 @@ application image:
 
 smoke_test:
   extends: .smoke
+  only:
+    - master
 
 smoke_test_triggers:
   extends: .smoke
-  only:
-    - triggers
 
 pages:
   stage: report
