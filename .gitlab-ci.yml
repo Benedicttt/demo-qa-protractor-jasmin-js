@@ -56,7 +56,7 @@ application image:
 smoke_test:
   extends: .smoke
 
-smake_test:
+smoke_test_triggers:
   extends: .smoke
   only:
     - triggers
