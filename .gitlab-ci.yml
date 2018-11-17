@@ -24,7 +24,7 @@ application image:
     - docker build --tag application:latest --file .docker/application.Dockerfile .
   when: manual
 
-smoke:
+.smoke:
   stage: tests
   image: application:latest
   services:
@@ -43,7 +43,8 @@ smoke:
     - allure generate allure-results -o public --clean
 
   only:
-    - master
+    refs:
+      - triggers
 
   artifacts:
     paths:
@@ -53,6 +54,14 @@ smoke:
 
   allow_failure: yes
 
+smoke_test:
+  extends: .smoke
+  only:
+    - master
+
+smoke_test_triggers:
+  extends: .smoke
+
 pages:
   stage: report
   tags:
@@ -60,6 +69,7 @@ pages:
 
   only:
     - master
+    - triggers
 
   script:
     - ""
