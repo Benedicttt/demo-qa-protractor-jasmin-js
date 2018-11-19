@@ -334,16 +334,16 @@ demand:
     case_6:
       selector: !!seq
         - demand_project_id:          "Админ"
-        - demand_account_id:          "epay "
+        - demand_account_id:          "virtual"
         - demand_contractor_type_id:  " Подотчетник"
-        - demand_contractor_id:       " Контекст"
+        - demand_contractor_id:       "Kievskiy Sergey"
+        - demand_expenditure_type_id: " Арендные платежи"
+        - demand_expenditure_id:      " Аренда"
 
       checkbox: !!seq
-        - demand_is_service_rendered:      true
         - demand_is_salary:                true
 
       input: !!seq
-        - demand_payment_site_info: "for test case  1 in demand return"
         - demand_purse_number:      "1234 1234 1234 1234"
         - demand_purpose:           "for test case  1 in demand return"
         - demand_amount:            1001
@@ -368,7 +368,7 @@ demand:
     case_7:
       selector: !!seq
         - demand_project_id:          "Админ"
-        - demand_account_id:          "Стандартный рублевый счет "
+        - demand_account_id:          "virtual"
         - demand_contractor_type_id:  " Покупатель"
         - demand_contractor_id:       " Контекст"
         - demand_expenditure_type_id: " Арендные платежи"
