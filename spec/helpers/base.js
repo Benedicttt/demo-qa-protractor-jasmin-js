@@ -73,7 +73,7 @@ module.exports = {
 
     get_and_check_document: function(type, query) {
         it(`${type} document check in popup`, () => {
-            for_css.wait_css(".show_entities > a", globalTimeout)
+            for_css.wait_css(".show_entities > a", globalTimeout + 3000)
 
             let text_in_popup = element.all(by.css(".show_entities"));
             let current_document = [];
@@ -116,7 +116,6 @@ module.exports = {
             expect(current_popup.isDisplayed()).toBeTruthy();
 
             for_css.wait_css(".popover-title", globalTimeout, 0)
-            browser.sleep(3000)
 
         });
 

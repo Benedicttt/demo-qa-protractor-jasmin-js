@@ -65,13 +65,16 @@ module.exports = {
     },
 
     selectOption: function (selector, item) {
-        tag_selector.wait_id_select(selector, globalTimeout);
+        tag_selector.wait_id_select(selector, globalTimeout + 1000);
         let selectList, desiredOption;
 
         selectList = element(by.id(selector));
+        browser.sleep(100);
+
         selectList.all(protractor.By.tagName('option'))
             .then(function (options) {
                 options.some(function (option) {
+
                     option.getText().then(function (text) {
                         let reg = new RegExp(item)
 
