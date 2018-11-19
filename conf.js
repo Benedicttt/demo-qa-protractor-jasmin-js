@@ -17,7 +17,7 @@ const employee_shared = require('./spec/shared/employee.js');
 const receipts_shared = require('./spec/shared/receipts.js');
 const cashier_shared = require('./spec/shared/cashier.js');
 
-data = fs.readFileSync('./spec/support/user.json')
+data = fs.readFileSync('./spec/support/user.json');
 let user = JSON.parse(data);
 const setting = yaml.safeLoad(fs.readFileSync('spec/support/settings.yml', 'utf8'));
 const page = yaml.safeLoad(fs.readFileSync('spec/support/pages.yml', 'utf8'));
