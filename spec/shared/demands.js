@@ -160,8 +160,8 @@ module.exports = {
             if (key === "advances" && value === 'true') {
                 demands_shared.advance_payment()
             }
-            if (key === "demand_is_distributed" && value === 'true') {
-                demands_shared.demand_is_distributed()
+            if (key === "demand_is_distributed" && value !== 'false') {
+                demands_shared.demand_is_distributed(value.split(","))
             }
 
             if (key === "click_buttons" && value === 'true') {
@@ -310,17 +310,25 @@ module.exports = {
 
     },
 
-    demand_is_distributed: function() {
+    demand_is_distributed: function(arr) {
+
         for_css.wait_id('demand_is_distributed', globalTimeout);
         element(by.id('demand_is_distributed')).click();
 
         expect(element(by.id('demand_is_distributed')).getAttribute('checked')).toBeTruthy();
 
-        for_css.wait_id('create_distribution', globalTimeout);
-        element(by.id('create_distribution')).click();
-        for_css.wait_id('distribution_share', globalTimeout);
-        element(by.id('distribution_share')).sendKeys(1);
-        element.all(by.css(".btn-primary")).get(0).click()
+        arr.map(function(e){
+            let elem = element(by.id('distribution_share'));
+
+            for_css.wait_id('create_distribution', globalTimeout);
+            element(by.id('create_distribution')).click();
+            for_css.wait_id('distribution_share', globalTimeout);
+
+            browser.sleep(2000);
+
+            elem.sendKeys(parseFloat(e));
+            element.all(by.css(".btn-primary")).get(0).click()
+        });
 
     },
     advance_payment: function() {
