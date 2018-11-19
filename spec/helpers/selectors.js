@@ -74,7 +74,6 @@ module.exports = {
         selectList.all(protractor.By.tagName('option'))
             .then(function (options) {
                 options.some(function (option) {
-
                     option.getText().then(function (text) {
                         let reg = new RegExp(item)
 
