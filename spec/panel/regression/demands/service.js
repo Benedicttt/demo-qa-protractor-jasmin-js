@@ -24,7 +24,7 @@ describe('Demands, create new, type `service`', () => {
         demands_shared.run_test_case_service("case_6")
     });
 
-    describe('case_7', () => {
+    fdescribe('case_7', () => {
         demands_shared.run_test_case_service("case_7")
     });
 

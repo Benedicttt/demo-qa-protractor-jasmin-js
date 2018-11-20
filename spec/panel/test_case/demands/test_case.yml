@@ -154,8 +154,8 @@ demand:
 
       attributes: !!seq
         - advances:               false
-        - add_inventory:          true
-        - demand_is_distributed:  1
+        - add_inventory:          false
+        - demand_is_distributed:  1,Админ
         - click_buttons:          true
         - check_statuses_service: true
         - check_popup:            true
@@ -196,7 +196,7 @@ demand:
       attributes: !!seq
         - advances:               false
         - add_inventory:          false
-        - demand_is_distributed:  1
+        - demand_is_distributed:  1,Админ
         - click_buttons:          true
         - check_statuses_service: true
         - check_popup:            true
@@ -278,7 +278,7 @@ demand:
       attributes: !!seq
         - advances:               true
         - add_inventory:          false
-        - demand_is_distributed:  1
+        - demand_is_distributed:  1,Админ
         - click_buttons:          true
         - check_statuses_service: true
         - check_popup:            true
@@ -353,7 +353,7 @@ demand:
       attributes: !!seq
         - advances:               fasle
         - add_inventory:          false
-        - demand_is_distributed:  false
+        - demand_is_distributed:  1,Админ
         - click_buttons:          true
         - check_statuses_service: true
         - check_popup:            true
