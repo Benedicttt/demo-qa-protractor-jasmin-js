@@ -396,6 +396,9 @@ demand:
         - add_inventory:          false
         - demand_is_distributed:  0.4,Promotion; 0.6,Development
         - click_buttons:          true
+
+        - sign_is_distributed:    true
+
         - check_statuses_service: true
         - check_popup:            true
         - check_notify:           false
