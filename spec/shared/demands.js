@@ -9,8 +9,8 @@ let services_ids = JSON.parse(file_service).service;
 let data = [];
 
 module.exports = {
-    run_test_case_service: function(name_case) {
-        it(`Go to page and check title ${page.demands.title}`,  () => {
+    run_test_case_service: function (name_case) {
+        it(`Go to page and check title ${page.demands.title}`, () => {
             user_object.authorization(helper.user_email_last());
 
             go(page.demands.get);
@@ -20,7 +20,7 @@ module.exports = {
             expect(browser.getTitle()).toEqual(page.demands.new.title);
         });
 
-        scenarios_service[`${name_case}`].selector.map(function(id) {
+        scenarios_service[`${name_case}`].selector.map(function (id) {
             let value = `${Object.values(id)[0]}`;
             let key = `${Object.keys(id)[0]}`;
 
@@ -30,7 +30,7 @@ module.exports = {
             })
         });
 
-        scenarios_service[`${name_case}`].checkbox.map(function(id) {
+        scenarios_service[`${name_case}`].checkbox.map(function (id) {
             let value = `${Object.values(id)[0]}`;
             let key = `${Object.keys(id)[0]}`;
 
@@ -42,7 +42,7 @@ module.exports = {
             }
         });
 
-        scenarios_service[`${name_case}`].attributes.map(function(attribute) {
+        scenarios_service[`${name_case}`].attributes.map(function (attribute) {
             let value = `${Object.values(attribute)[0]}`;
             let key = `${Object.keys(attribute)[0]}`;
 
@@ -53,17 +53,17 @@ module.exports = {
             }
         });
 
-        scenarios_service[`${name_case}`].input.map(function(id) {
+        scenarios_service[`${name_case}`].input.map(function (id) {
             let value = `${Object.values(id)[0]}`;
             let key = `${Object.keys(id)[0]}`;
 
             it(`{ ${key}: ${value} }`, () => {
                 element(by.id(`${key}`)).clear();
 
-                if ( value === 'us') {
+                if (value === 'us') {
                     element(by.id(`${key}`)).sendKeys(helper.created_services("us"))
 
-                } else if ( value === 'we') {
+                } else if (value === 'we') {
                     element(by.id(`${key}`)).sendKeys(services_ids.we.number)
 
                 } else {
@@ -73,13 +73,13 @@ module.exports = {
             })
         });
 
-        scenarios_service[`${name_case}`].attributes.map(function(attribute){
+        scenarios_service[`${name_case}`].attributes.map(function (attribute) {
             demands_shared.runner_demand_attr(name_case, attribute, scenarios_service)
         });
     },
 
-    run_test_case_return: function(name_case) {
-        it(`Go to page and check title ${page.demands.title}`,  () => {
+    run_test_case_return: function (name_case) {
+        it(`Go to page and check title ${page.demands.title}`, () => {
             user_object.authorization(helper.user_email_last());
 
             go(page.demands.get);
@@ -89,7 +89,7 @@ module.exports = {
             expect(browser.getTitle()).toEqual(page.demands.new.title);
         });
 
-        scenarios_return[`${name_case}`].selector.map(function(id) {
+        scenarios_return[`${name_case}`].selector.map(function (id) {
             let value = `${Object.values(id)[0]}`;
             let key = `${Object.keys(id)[0]}`;
 
@@ -99,7 +99,7 @@ module.exports = {
             })
         });
 
-        scenarios_return[`${name_case}`].checkbox.map(function(id) {
+        scenarios_return[`${name_case}`].checkbox.map(function (id) {
             let value = `${Object.values(id)[0]}`;
             let key = `${Object.keys(id)[0]}`;
 
@@ -111,7 +111,7 @@ module.exports = {
             }
         });
 
-        scenarios_return[`${name_case}`].attributes.map(function(attribute) {
+        scenarios_return[`${name_case}`].attributes.map(function (attribute) {
             let value = `${Object.values(attribute)[0]}`;
             let key = `${Object.keys(attribute)[0]}`;
 
@@ -122,7 +122,7 @@ module.exports = {
             }
         });
 
-        scenarios_return[`${name_case}`].input.map(function(id) {
+        scenarios_return[`${name_case}`].input.map(function (id) {
             let value = `${Object.values(id)[0]}`;
             let key = `${Object.keys(id)[0]}`;
 
@@ -130,12 +130,12 @@ module.exports = {
             it(`{ input ${key}: ${value} }`, () => {
                 element(by.id(`${key}`)).clear();
 
-                if ( value === 'us') {
+                if (value === 'us') {
                     console.log(`number service: ${helper.created_services("us")}`)
 
                     element(by.id(`${key}`)).sendKeys(helper.created_services("us"))
 
-                } else if ( value === 'we') {
+                } else if (value === 'we') {
                     console.log(`number service: ${helper.created_services("us")}`)
 
                     element(by.id(`${key}`)).sendKeys(services_ids.we.number)
@@ -147,7 +147,7 @@ module.exports = {
             })
         });
 
-        scenarios_return[`${name_case}`].attributes.map(function(attribute){
+        scenarios_return[`${name_case}`].attributes.map(function (attribute) {
             demands_shared.runner_demand_attr(name_case, attribute, scenarios_return)
         });
 
@@ -177,7 +177,7 @@ module.exports = {
 
         if (key === "check_statuses_service" && value === 'true') {
             it('sign amortization', () => {
-                scenarios_service[`${name_case}`].attributes.map(function(attribute) {
+                scenarios_service[`${name_case}`].attributes.map(function (attribute) {
                     let value = `${Object.values(attribute)[0]}`;
                     let key = `${Object.keys(attribute)[0]}`;
 
@@ -199,18 +199,22 @@ module.exports = {
             demands_shared.check_status_order(attribute, name_case)
         }
 
+        if(key === "sign_is_distributed" && value === "true") {
+            demands_shared.sign_is_distributed(attribute)
+        }
+
         if (key === "check_popup" && value === 'true') {
             helper.check_data_popup(name_case, type);
         }
-
+        console.log(key, value)
         if (key === "check_statuses_return" && value === 'true') {
+            console.log(key, value)
             demands_shared.check_status_order(attribute, name_case)
-
         }
     },
 
     //TODO: Add inventory
-    add_inventory: function() {
+    add_inventory: function () {
         for_css.wait_id("demand_contractor_type_id", globalTimeout);
 
         tag_selector.selectOption('demand_contractor_type_id', "--  На имущество");
@@ -230,7 +234,7 @@ module.exports = {
     },
 
     //TODO: Base template function for template `run test case`
-    buttons: function() {
+    buttons: function () {
         browser.executeScript("$('#new_demand > div.form-actions > button')[0].click()");
         browser.sleep(2500);
         browser.executeScript("$('#new_demand > div.form-actions > button')[0].click()");
@@ -248,67 +252,43 @@ module.exports = {
         expect(browser.getCurrentUrl()).toEqual(expectedUrl);
     },
 
-    check_status_order: function(attribute, name_case) {
+    sign_is_distributed: function(attribute) {
         let value = `${Object.values(attribute)[0]}`;
         let key = `${Object.keys(attribute)[0]}`;
 
+        if(key === "sign_is_distributed" && value === "true") {
+            it('sign service(distributed)', () => {
+                let xpath_service = "*//th[@class='span1'][8][contains(text(), 'Услуга')]/following::*/td[11]/a[contains(text(), 'Распределена')]";
+                let xpath_btn_in_model = "*//a[@class='btn btn-mini btn-success' and @title='Подписать']/child::*";
+                let btn_last = element.all(by.css("button.btn-primary")).get(0);
+                let check_xpath = "*//th[@class='span1'][8][contains(text(), 'Услуга')]/../../..//tr[1]//td[11]/a[@class='label label-success' and contains(text(), 'Распределена')]";
 
-        if (key === "check_statuses_service" && value === 'true') {
-            //TODO: SERVICE
-            scenarios_service[`${name_case}`].attributes.map(function(attribute) {
-                let value = `${Object.values(attribute)[0]}`;
-                let key = `${Object.keys(attribute)[0]}`;
+                for_css.wait_xpath(xpath_service, globalTimeout);
+                element.all(by.xpath(xpath_service)).get(0).click();
+                browser.sleep(1500);
 
-                if (key === "sign_is_distributed" && value === "false") {
-                    it('sign service', () => {
-                        let xpath_service = "*//th[@class='span1'][8][contains(text(), 'Услуга')]/following::*/td[11]/a[@title='Подписать']/child::*";
-                        for_css.wait_xpath(xpath_service, globalTimeout);
-                        element.all(by.xpath(xpath_service)).get(0).click();
-                        browser.sleep(1000);
+                let length_btn_sign = browser.executeScript("return $('a[title=\"Подписать\"].btn-success').length");
+                element(by.css("button[data-dismiss=\"modal\"].close")).click();
 
-                        for_css.wait_xpath("//h3[contains(text(), \"Подпись услуги\")]", globalTimeout);
-                        element.all(by.css('.btn-primary')).get(0).click();
-                        browser.sleep(1000);
-                        helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 1, "Подписана");
-                    });
-                }
-
-                if (key === "sign_is_distributed" && value === "true") {
-                    it('sign service(distributed)', () => {
-                        let xpath_service = "*//th[@class='span1'][8][contains(text(), 'Услуга')]/following::*/td[11]/a[contains(text(), 'Распределена')]";
-                        let xpath_btn_in_model = "*//a[@class='btn btn-mini btn-success' and @title='Подписать']/child::*";
-                        let btn_last = element.all(by.css("button.btn-primary")).get(0);
-                        let check_xpath = "*//th[@class='span1'][8][contains(text(), 'Услуга')]/../../..//tr[1]//td[11]/a[@class='label label-success' and contains(text(), 'Распределена')]";
-
+                length_btn_sign.then((e) => {
+                    for (let i = 0; i < e; i++) {
                         for_css.wait_xpath(xpath_service, globalTimeout);
                         element.all(by.xpath(xpath_service)).get(0).click();
                         browser.sleep(1500);
 
-                        let length_btn_sign = browser.executeScript("return $('a[title=\"Подписать\"].btn-success').length");
-                        element(by.css("button[data-dismiss=\"modal\"].close")).click();
+                        for_css.wait_xpath(xpath_btn_in_model, globalTimeout);
+                        element.all(by.xpath(xpath_btn_in_model)).get(0).click();
 
-                        length_btn_sign.then( (e) => {
-                            for(let i = 0; i < e; i++) {
-                                for_css.wait_xpath(xpath_service, globalTimeout);
-                                element.all(by.xpath(xpath_service)).get(0).click();
-                                browser.sleep(1500);
+                        browser.wait(protractor.ExpectedConditions.visibilityOf(btn_last), globalTimeout);
+                        browser.wait(EC.elementToBeClickable(btn_last.isEnabled()), globalTimeout);
+                        btn_last.click();
+                        browser.sleep(2000);
 
-                                for_css.wait_xpath(xpath_btn_in_model, globalTimeout);
-                                element.all(by.xpath(xpath_btn_in_model)).get(0).click();
+                    }
+                });
 
-                                browser.wait(protractor.ExpectedConditions.visibilityOf(btn_last), globalTimeout);
-                                browser.wait(EC.elementToBeClickable(btn_last.isEnabled()), globalTimeout);
-                                btn_last.click();
-                                browser.sleep(2000);
-
-                            }
-                        });
-
-                        for_css.wait_xpath(check_xpath, globalTimeout);
-                        expect(element(by.xpath(check_xpath)).isPresent()).toBeTruthy()
-
-                    });
-                }
+                for_css.wait_xpath(check_xpath, globalTimeout);
+                expect(element(by.xpath(check_xpath)).isPresent()).toBeTruthy()
 
             });
 
@@ -353,8 +333,70 @@ module.exports = {
                     helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 1, "Оплачена");
                 }
             });
-
         }
+    },
+
+    check_status_order: function(attribute) {
+        let value = `${Object.values(attribute)[0]}`;
+        let key = `${Object.keys(attribute)[0]}`;
+
+        if (key === "check_statuses_service" && value === 'true') {
+            //TODO: SERVICE
+            it('sign service', () => {
+                let xpath_service = "*//th[@class='span1'][8][contains(text(), 'Услуга')]/following::*/td[11]/a[@title='Подписать']/child::*";
+                for_css.wait_xpath(xpath_service, globalTimeout);
+                element.all(by.xpath(xpath_service)).get(0).click();
+                browser.sleep(1000);
+
+                for_css.wait_xpath("//h3[contains(text(), \"Подпись услуги\")]", globalTimeout);
+                element.all(by.css('.btn-primary')).get(0).click();
+                browser.sleep(1000);
+                helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 1, "Подписана");
+            });
+        }
+
+        it('sign demand', () => {
+            //TODO: SIGN
+            browser.sleep(1000)
+            for_css.wait_xpath("*//th[@class='span1'][9]/a[contains(text(), \"Подпись\")]/following::*/td[12]/a[@title=\"Подписать\"]/child::*", globalTimeout)
+            let sign_service = element.all(by.xpath("*//th[@class='span1'][9]/a[contains(text(), \"Подпись\")]/following::*/td[12]/a[@title=\"Подписать\"]/child::*")).get(0);
+            sign_service.click();
+
+            for_css.wait_xpath("//h3[contains(text(), \"Подпись заявки\")]", globalTimeout);
+            element.all(by.css('.btn-primary')).get(0).click();
+            browser.sleep(1000)
+
+            if (key === "check_statuses_service" && value === 'true') {
+                helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 4, "Подписана");
+            }
+            if (key === "check_statuses_return" && value === 'true') {
+                helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 1, "Подписана");
+            }
+        });
+
+        it('paid', () => {
+            //TODO: PAID
+            browser.sleep(1200);
+
+            for_css.wait_xpath('//*[@id="demands"]/tbody/tr[1]/td[13]/a', globalTimeout);
+            let icon_paid = element.all(by.xpath("*//th[@class='span1'][10]/a[contains(text(), \"Оплата\")]/following::*/td[13]/a[@title=\"Выставить на оплату\"]/parent::*/a")).get(0);
+            icon_paid.click();
+
+            for_css.wait_xpath("//h3[contains(text(), \"Выставление заявки на оплату\")]", globalTimeout);
+            element.all(by.css('.btn-primary')).get(0).click();
+
+            for_css.wait_xpath("//td[contains(text(), \"Комиссия:\")]", globalTimeout);
+            element.all(by.css('.btn-primary')).get(0).click();
+            browser.sleep(1200);
+
+            if (key === "check_statuses_service" && value === 'true') {
+                helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 4, "Оплачена");
+            }
+            if (key === "check_statuses_return" && value === 'true') {
+                helper.check_success_sign("td.no-wrap > a, td.no-wrap > span", 1, "Оплачена");
+            }
+        });
+
     },
 
     demand_is_distributed: function(arr) {
