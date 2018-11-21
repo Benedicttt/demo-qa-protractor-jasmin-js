@@ -1,11 +1,12 @@
 const yaml = require('js-yaml');
 const fs = require('fs');
-let file = fs.readFileSync('spec/panel/test_case/demands/test_case.yml', 'utf8')
+let file = fs.readFileSync('spec/panel/test_case/demands/test_case.yml', 'utf8');
 const scenarios_return = yaml.safeLoad(file).demand.return;
 const scenarios_service = yaml.safeLoad(file).demand.service;
 
-let file_service = fs.readFileSync('spec/support/service.json')
-let services_ids = JSON.parse(file_service).service
+let file_service = fs.readFileSync('spec/support/service.json');
+let services_ids = JSON.parse(file_service).service;
+let data = [];
 
 module.exports = {
     run_test_case_service: function(name_case) {
@@ -114,9 +115,9 @@ module.exports = {
             let value = `${Object.values(attribute)[0]}`;
             let key = `${Object.keys(attribute)[0]}`;
 
-                if (key === "add_inventory" && value === 'true') {
-                    it(`{ input ${key}: ${value} }`, () => {
-                        demands_shared.add_inventory()
+            if (key === "add_inventory" && value === 'true') {
+                it(`{ input ${key}: ${value} }`, () => {
+                    demands_shared.add_inventory()
                 });
             }
         });
@@ -275,55 +276,49 @@ module.exports = {
                 if (key === "sign_is_distributed" && value === "true") {
                     it('sign service(distributed)', () => {
                         let xpath_service = "*//th[@class='span1'][8][contains(text(), 'Услуга')]/following::*/td[11]/a[contains(text(), 'Распределена')]";
+                        let xpath_btn_in_model = "*//a[@class='btn btn-mini btn-success' and @title='Подписать']/child::*";
+                        let btn_last = element.all(by.css("button.btn-primary")).get(0);
+                        let check_xpath = "*//th[@class='span1'][8][contains(text(), 'Услуга')]/../../..//tr[1]//td[11]/a[@class='label label-success' and contains(text(), 'Распределена')]";
+
                         for_css.wait_xpath(xpath_service, globalTimeout);
                         element.all(by.xpath(xpath_service)).get(0).click();
+                        browser.sleep(3000);
 
-                        for_css.wait_css("a[title='Подписать'].btn-success", globalTimeout);
-                        browser.executeScript("return $('a[title=\"Подписать\"].btn-success').length").then(function(e){
-                            let arr_btn = [];
-                            arr_btn.push(e);
+                        let length_btn_sign = browser.executeScript("return $('a[title=\"Подписать\"].btn-success').length");
 
-                            return arr_btn
+                        length_btn_sign.then( (e) => {
+                            for(let i = 0; i < e; i++) {
+                                if (i === 0) {
+                                    for_css.wait_xpath(xpath_btn_in_model, globalTimeout);
+                                    element.all(by.xpath(xpath_btn_in_model)).get(0).click();
 
-                        }).then(function(e){
-                            for (let i = 0; i < e[0]; i++){
+                                    browser.wait(protractor.ExpectedConditions.visibilityOf(btn_last), globalTimeout);
+                                    browser.wait(EC.elementToBeClickable(btn_last.isEnabled()), globalTimeout);
+                                    btn_last.click();
+                                    browser.sleep(2000);
 
-                                if (i === 1) {
-                                    let xpath_service = "*//th[@class='span1'][8][contains(text(), 'Услуга')]/following::*/td[11]/a[contains(text(), 'Распределена')]";
-                                    for_css.wait_xpath(xpath_service, globalTimeout);
-                                    element.all(by.xpath(xpath_service)).get(0).click();
                                 }
 
-                                let xpath_btn_in_model = "*//a[@class='btn btn-mini btn-success' and @title='Подписать']/child::*";
-                                for_css.wait_xpath(xpath_btn_in_model, globalTimeout);
-                                element.all(by.xpath(xpath_btn_in_model)).get(0).click();
-                                browser.sleep(1000);
+                                if (i === 1) {
+                                    element.all(by.xpath(xpath_service)).get(0).click();
+                                    browser.sleep(2000);
 
-                                let btn_last = element.all(by.css("button.btn-primary")).get(0);
-                                browser.wait(protractor.ExpectedConditions.visibilityOf(btn_last), globalTimeout);
-                                browser.wait(EC.elementToBeClickable(btn_last.isEnabled()), globalTimeout);
-                                btn_last.click();
+                                    for_css.wait_xpath(xpath_btn_in_model, globalTimeout);
+                                    element.all(by.xpath(xpath_btn_in_model)).get(0).click();
+
+                                    browser.wait(protractor.ExpectedConditions.visibilityOf(btn_last), globalTimeout);
+                                    browser.wait(EC.elementToBeClickable(btn_last.isEnabled()), globalTimeout);
+                                    btn_last.click();
+
+                                }
                             }
 
                         });
-
-                        //     let xpath_btn_in_model = "*//a[@class='btn btn-mini btn-success' and @title='Подписать']/child::*"
-                        //     for_css.wait_xpath(xpath_btn_in_model, globalTimeout);
-                        //     element.all(by.xpath(xpath_btn_in_model)).get(0).click();
-                        //     browser.sleep(1000);
-                        //
-                        //     let btn_last = element.all(by.css("button.btn-primary")).get(0);
-                        //     browser.wait(protractor.ExpectedConditions.visibilityOf(btn_last), globalTimeout);
-                        //     browser.wait(EC.elementToBeClickable(btn_last.isEnabled()), globalTimeout);
-                        //     btn_last.click();
-
-                        // let check_xpath = "*//th[@class='span1'][8][contains(text(), 'Услуга')]/../../..//tr[1]//td[11]/a[@class='label label-success' and contains(text(), 'Распределена')]";
-
-
+                        
+                        for_css.wait_xpath(check_xpath, globalTimeout);
+                        expect(element(by.xpath(check_xpath)).isPresent()).toBeTruthy()
 
                     });
-
-
                 }
 
             });
