@@ -206,9 +206,8 @@ module.exports = {
         if (key === "check_popup" && value === 'true') {
             helper.check_data_popup(name_case, type);
         }
-        console.log(key, value)
+
         if (key === "check_statuses_return" && value === 'true') {
-            console.log(key, value)
             demands_shared.check_status_order(attribute, name_case)
         }
     },
