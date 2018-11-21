@@ -9,7 +9,8 @@ const user_shared = require('./spec/shared/user.js');
 const helper = require('./spec/helpers/base.js');
 const selectors = require('./spec/helpers/selectors.js');
 const for_css = require('./spec/helpers/css_selectors.js');
-const demands_shared = require('./spec/shared/demands.js');
+const demands_return_shared = require('./spec/shared/demands/return.js');
+const demands_services_shared = require('./spec/shared/demands/services.js');
 const services_shared = require('./spec/shared/services.js');
 const conversion_shared = require('./spec/shared/conversion.js');
 const salary_shared = require('./spec/shared/salary.js');
@@ -150,7 +151,8 @@ exports.config = {
 
         global.outputFilename  = outputFilename;
 
-        global.demands_shared  = demands_shared;
+        global.demands_services_shared  = demands_services_shared;
+        global.demands_return_shared  = demands_return_shared;
         global.services_shared = services_shared;
         global.receipts_shared = receipts_shared;
         global.conversion_shared = conversion_shared;
