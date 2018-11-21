@@ -282,39 +282,28 @@ module.exports = {
 
                         for_css.wait_xpath(xpath_service, globalTimeout);
                         element.all(by.xpath(xpath_service)).get(0).click();
-                        browser.sleep(3000);
+                        browser.sleep(1500);
 
                         let length_btn_sign = browser.executeScript("return $('a[title=\"Подписать\"].btn-success').length");
+                        element(by.css("button[data-dismiss=\"modal\"].close")).click();
 
                         length_btn_sign.then( (e) => {
                             for(let i = 0; i < e; i++) {
-                                if (i === 0) {
-                                    for_css.wait_xpath(xpath_btn_in_model, globalTimeout);
-                                    element.all(by.xpath(xpath_btn_in_model)).get(0).click();
+                                for_css.wait_xpath(xpath_service, globalTimeout);
+                                element.all(by.xpath(xpath_service)).get(0).click();
+                                browser.sleep(1500);
 
-                                    browser.wait(protractor.ExpectedConditions.visibilityOf(btn_last), globalTimeout);
-                                    browser.wait(EC.elementToBeClickable(btn_last.isEnabled()), globalTimeout);
-                                    btn_last.click();
-                                    browser.sleep(2000);
+                                for_css.wait_xpath(xpath_btn_in_model, globalTimeout);
+                                element.all(by.xpath(xpath_btn_in_model)).get(0).click();
 
-                                }
+                                browser.wait(protractor.ExpectedConditions.visibilityOf(btn_last), globalTimeout);
+                                browser.wait(EC.elementToBeClickable(btn_last.isEnabled()), globalTimeout);
+                                btn_last.click();
+                                browser.sleep(2000);
 
-                                if (i === 1) {
-                                    element.all(by.xpath(xpath_service)).get(0).click();
-                                    browser.sleep(2000);
-
-                                    for_css.wait_xpath(xpath_btn_in_model, globalTimeout);
-                                    element.all(by.xpath(xpath_btn_in_model)).get(0).click();
-
-                                    browser.wait(protractor.ExpectedConditions.visibilityOf(btn_last), globalTimeout);
-                                    browser.wait(EC.elementToBeClickable(btn_last.isEnabled()), globalTimeout);
-                                    btn_last.click();
-
-                                }
                             }
-
                         });
-                        
+
                         for_css.wait_xpath(check_xpath, globalTimeout);
                         expect(element(by.xpath(check_xpath)).isPresent()).toBeTruthy()
 

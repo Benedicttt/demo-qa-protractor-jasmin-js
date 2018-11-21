@@ -394,7 +394,7 @@ demand:
       attributes: !!seq
         - advances:               false
         - add_inventory:          false
-        - demand_is_distributed:  0.4,Promotion; 0.6,Development
+        - demand_is_distributed:  0.5,Promotion; 0.3,Development; 0.2,Админ
         - click_buttons:          true
 
         - sign_is_distributed:    true
