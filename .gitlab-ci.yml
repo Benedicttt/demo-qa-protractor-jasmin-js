@@ -34,7 +34,7 @@ application image:
 
   variables:
     APP_HOST: https://test-finances.404-group.info
-    direct: false
+    DIRECT_CONNECT: false
 
   script:
     - npm cache clear --force

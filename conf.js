@@ -58,7 +58,7 @@ exports.config = {
     },
 
     seleniumAddress: 'http://selenium:4444/wd/hub',
-    directConnect: JSON.parse(process.env.direct),
+    directConnect: JSON.parse(process.env.DIRECT_CONNECT),
 
     baseUrl: process.env.APP_HOST,
 
