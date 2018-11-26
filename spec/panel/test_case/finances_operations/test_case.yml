@@ -64,7 +64,7 @@ receipts:
     selector: !!seq
       - receipt_project_debtor_id:         "Админ"
       - receipt_project_id:                "Админ"
-      - receipt_account_id:                "Стандартный рублевый счет"
+      - receipt_account_id:                "USD"
       - receipt_contractor_type_id:        " Подотчетник"
       - receipt_contractor_id:             "Kievskiy Sergey"
       - receipt_nomenclature_id:           " Административные услуги"
@@ -78,7 +78,7 @@ receipts:
       - receipt_purpose:                   "receipt_purpose case 1"
       - receipt_amount:                    100000
 
-    click_accept_NDS: true
+    click_accept_NDS: false
     fill_nds_form: true
     nds_form:
       checkbox: !!seq
@@ -139,7 +139,7 @@ conversion:
   case_2:
     selector: !!seq
       - money_transfer_sender_project_id:   "Админ"
-      - money_transfer_sender_account_id:   "epay"
+      - money_transfer_sender_account_id:   "Стандартный рублевый счет"
       - money_transfer_receiver_project_id: "Promotion"
       - money_transfer_receiver_account_id: "Стандартный рублевый счет"
       - money_transfer_cc_project_id:       "Проект отправитель"
@@ -166,9 +166,9 @@ conversion:
   case_3:
     selector: !!seq
       - money_transfer_sender_project_id:   "Админ"
-      - money_transfer_sender_account_id:   "epay"
+      - money_transfer_sender_account_id:   "USD"
       - money_transfer_receiver_project_id: "Админ"
-      - money_transfer_receiver_account_id: "epay"
+      - money_transfer_receiver_account_id: "USD"
       - money_transfer_cc_project_id:       "Проект отправитель"
 
     checkbox: !!seq
@@ -181,7 +181,7 @@ conversion:
       - money_transfer_commission: 1000
       - money_transfer_comment: "conversion case_3"
 
-    click_accept_NDS: true
+    click_accept_NDS: false
     fill_nds_form:    false
 
     check_data_popup_dds:                          true
@@ -191,9 +191,9 @@ conversion:
   case_4:
     selector: !!seq
       - money_transfer_sender_project_id:   "Админ"
-      - money_transfer_sender_account_id:   "epay"
+      - money_transfer_sender_account_id:   "EUR"
       - money_transfer_receiver_project_id: "Админ"
-      - money_transfer_receiver_account_id: "epay"
+      - money_transfer_receiver_account_id: "EUR"
       - money_transfer_cc_project_id:       "Проект отправитель"
 
     checkbox: !!seq
@@ -206,7 +206,7 @@ conversion:
 #      - money_transfer_commission: 1000
       - money_transfer_comment: "conversion case_4"
 
-    click_accept_NDS: true
+    click_accept_NDS: false
     fill_nds_form: true
     nds_form:
       checkbox: !!seq
