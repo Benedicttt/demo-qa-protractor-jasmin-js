@@ -15,7 +15,7 @@ receipts:
 
     input: !!seq
       - receipt_purpose:                   "receipt_purpose case 1"
-      - receipt_amount:                    100000
+      - receipt_amount:                    10000
       - receipt_amocrm_id:                 "receipt_amocrm_id case 1"
 
     click_accept_NDS:         true
@@ -39,7 +39,7 @@ receipts:
 
     input: !!seq
       - receipt_purpose:                   "receipt_purpose case 1"
-      - receipt_amount:                    100000
+      - receipt_amount:                    10000
       - receipt_amocrm_id:                 "receipt_amocrm_id case 1"
 
     click_accept_NDS: true
@@ -76,7 +76,7 @@ receipts:
 
     input: !!seq
       - receipt_purpose:                   "receipt_purpose case 1"
-      - receipt_amount:                    100000
+      - receipt_amount:                    100
 
     click_accept_NDS: false
     fill_nds_form: true
