@@ -1,11 +1,11 @@
 {
   "user": {
-    "email": "spok_ZoqKVUWpuT@gmail.com",
+    "email": "spok_SDhwORtnao@gmail.com",
     "password": "123456"
   },
   "cookie": {
     "name": "_session_id",
-    "value": "156df9cee4ca0cb93e52904fbcb11d94"
+    "value": "e1a618fcda5d93c1e8f27e600e1a6af1"
   },
   "case_1": {
     "employee": {
@@ -19,43 +19,151 @@
       "Админ": {
         "real": {
           "kind_id": "Реальный",
-          "currency_id": "Доллар [USD]",
+          "currency_id": "USD",
           "name": "Cashier real",
-          "number": "4857 5494 9849 8494"
+          "number": "4857 5494 9849 8493"
         },
         "virtual": {
           "kind_id": "Виртуальный",
           "currency_id": "Евро [EUR]",
           "name": "Cashier virtual",
-          "number": "4857 5494 9849 8494"
+          "number": "4857 5494 9849 8491"
+        },
+        "real_usd": {
+          "kind_id": "Реальный",
+          "currency_id": "USD",
+          "name": "Cashier real",
+          "number": "4857 5494 9849 5323"
+        },
+        "real_rub": {
+          "kind_id": "Реальный",
+          "currency_id": "RUB",
+          "name": "Cashier real",
+          "number": "4857 5494 9849 8499"
+        },
+        "real_eur": {
+          "kind_id": "Реальный",
+          "currency_id": "EUR",
+          "name": "Cashier real",
+          "number": "4857 5494 9849 8412"
+        },
+        "virtual_usd": {
+          "kind_id": "Виртуальный",
+          "currency_id": "USD",
+          "name": "Cashier virtual",
+          "number": "4857 5494 9849 8411"
+        },
+        "virtual_rub": {
+          "kind_id": "Виртуальный",
+          "currency_id": "RUB",
+          "name": "Cashier virtual",
+          "number": "4857 5494 9849 8411"
+        },
+        "virtual_eur": {
+          "kind_id": "Виртуальный",
+          "currency_id": "EUR",
+          "name": "Cashier virtual",
+          "number": "4857 5494 9849 8423"
         }
       },
       "Promotion": {
         "real": {
           "kind_id": "Реальный",
-          "currency_id": "Доллар [USD]",
+          "currency_id": "USD",
           "name": "Cashier real",
-          "number": "4857 5494 9849 8494"
+          "number": "4857 5494 9849 8493"
         },
         "virtual": {
           "kind_id": "Виртуальный",
           "currency_id": "Евро [EUR]",
           "name": "Cashier virtual",
-          "number": "4857 5494 9849 8494"
+          "number": "4857 5494 9849 8491"
+        },
+        "real_usd": {
+          "kind_id": "Реальный",
+          "currency_id": "USD",
+          "name": "Cashier real",
+          "number": "4857 5494 9849 5323"
+        },
+        "real_rub": {
+          "kind_id": "Реальный",
+          "currency_id": "RUB",
+          "name": "Cashier real",
+          "number": "4857 5494 9849 8499"
+        },
+        "real_eur": {
+          "kind_id": "Реальный",
+          "currency_id": "EUR",
+          "name": "Cashier real",
+          "number": "4857 5494 9849 8412"
+        },
+        "virtual_usd": {
+          "kind_id": "Виртуальный",
+          "currency_id": "USD",
+          "name": "Cashier virtual",
+          "number": "4857 5494 9849 8411"
+        },
+        "virtual_rub": {
+          "kind_id": "Виртуальный",
+          "currency_id": "RUB",
+          "name": "Cashier virtual",
+          "number": "4857 5494 9849 8411"
+        },
+        "virtual_eur": {
+          "kind_id": "Виртуальный",
+          "currency_id": "EUR",
+          "name": "Cashier virtual",
+          "number": "4857 5494 9849 8423"
         }
       },
       "Development": {
         "real": {
           "kind_id": "Реальный",
-          "currency_id": "Доллар [USD]",
+          "currency_id": "USD",
           "name": "Cashier real",
-          "number": "4857 5494 9849 8494"
+          "number": "4857 5494 9849 8493"
         },
         "virtual": {
           "kind_id": "Виртуальный",
           "currency_id": "Евро [EUR]",
           "name": "Cashier virtual",
-          "number": "4857 5494 9849 8494"
+          "number": "4857 5494 9849 8491"
+        },
+        "real_usd": {
+          "kind_id": "Реальный",
+          "currency_id": "USD",
+          "name": "Cashier real",
+          "number": "4857 5494 9849 5323"
+        },
+        "real_rub": {
+          "kind_id": "Реальный",
+          "currency_id": "RUB",
+          "name": "Cashier real",
+          "number": "4857 5494 9849 8499"
+        },
+        "real_eur": {
+          "kind_id": "Реальный",
+          "currency_id": "EUR",
+          "name": "Cashier real",
+          "number": "4857 5494 9849 8412"
+        },
+        "virtual_usd": {
+          "kind_id": "Виртуальный",
+          "currency_id": "USD",
+          "name": "Cashier virtual",
+          "number": "4857 5494 9849 8411"
+        },
+        "virtual_rub": {
+          "kind_id": "Виртуальный",
+          "currency_id": "RUB",
+          "name": "Cashier virtual",
+          "number": "4857 5494 9849 8411"
+        },
+        "virtual_eur": {
+          "kind_id": "Виртуальный",
+          "currency_id": "EUR",
+          "name": "Cashier virtual",
+          "number": "4857 5494 9849 8423"
         }
       }
     }

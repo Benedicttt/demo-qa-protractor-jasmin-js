@@ -353,7 +353,7 @@ demand:
       attributes: !!seq
         - advances:               fasle
         - add_inventory:          false
-        - demand_is_distributed:  1,Админ
+        - demand_is_distributed:  1,Админ;1,Админ
         - click_buttons:          true
         - check_statuses_service: true
         - check_popup:            true
@@ -395,6 +395,42 @@ demand:
         - advances:               false
         - add_inventory:          false
         - demand_is_distributed:  0.5,Promotion; 0.3,Development; 0.2,Админ
+        - click_buttons:          true
+        - sign_is_distributed:    true
+#        - check_statuses_service: true
+        - check_popup:            true
+        - check_notify:           false
+
+    case_8:
+      selector: !!seq
+        - demand_project_id:          "Админ"
+        - demand_account_id:          "virtual"
+        - demand_contractor_type_id:  " Покупатель"
+        - demand_contractor_id:       " Контекст"
+        - demand_expenditure_type_id: " Арендные платежи"
+        - demand_expenditure_id:      " Аренда"
+
+      checkbox: !!seq
+        - demand_is_payment_on_site:       true
+        - demand_is_plan_paid_date:        true
+        - demand_is_regular_payment:       true
+        - demand_is_monthly_payment:       true
+        - demand_is_salary:                true
+        - demand_is_profits_distribution:  false
+        - demand_is_plan_paid_date_period: true
+
+      input: !!seq
+        - demand_payment_site_info: "for test case  1 in demand return"
+        - demand_purse_number:      "1234 1234 1234 1234"
+        - demand_purpose:           "for test case  1 in demand return"
+        - demand_amount:            1001
+        - demand_comment:           "for test case  1 in demand return"
+        - demand_task:              123
+
+      attributes: !!seq
+        - advances:               false
+        - add_inventory:          false
+        - demand_is_distributed:  0.425,Promotion; 0.375,Promotion; 0.2,Админ
         - click_buttons:          true
         - sign_is_distributed:    true
 #        - check_statuses_service: true

@@ -1,18 +1,54 @@
 project:
-  real:
+  real_usd:
     selector: !!seq
       - account_kind_id: "Реальный"
-      - account_currency_id: "Доллар [USD]"
+      - account_currency_id: "USD"
 
     input: !!seq
       - account_name:   "Cashier real"
-      - account_number: "4857 5494 9849 8494"
+      - account_number: "4857 5494 9849 5323"
 
-  virtual:
-      selector: !!seq
-        - account_kind_id: "Виртуальный"
-        - account_currency_id: "Евро [EUR]"
+  real_eur:
+    selector: !!seq
+      - account_kind_id: "Реальный"
+      - account_currency_id: "EUR"
 
-      input: !!seq
-        - account_name:   "Cashier virtual"
-        - account_number: "4857 5494 9849 8494"
+    input: !!seq
+      - account_name:   "Cashier real"
+      - account_number: "4857 5494 9849 8412"
+
+  real_rub:
+    selector: !!seq
+      - account_kind_id: "Реальный"
+      - account_currency_id: "RUB"
+
+    input: !!seq
+      - account_name:   "Cashier real"
+      - account_number: "4857 5494 9849 8499"
+
+  virtual_eur:
+    selector: !!seq
+      - account_kind_id: "Виртуальный"
+      - account_currency_id: "EUR"
+
+    input: !!seq
+      - account_name:   "Cashier virtual"
+      - account_number: "4857 5494 9849 8423"
+
+  virtual_rub:
+    selector: !!seq
+      - account_kind_id: "Виртуальный"
+      - account_currency_id: "RUB"
+
+    input: !!seq
+      - account_name:   "Cashier virtual"
+      - account_number: "4857 5494 9849 8411"
+
+  virtual_usd:
+    selector: !!seq
+      - account_kind_id: "Виртуальный"
+      - account_currency_id: "USD"
+
+    input: !!seq
+      - account_name:   "Cashier virtual"
+      - account_number: "4857 5494 9849 8411"

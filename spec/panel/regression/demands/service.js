@@ -28,5 +28,9 @@ describe('Demands, create new, type `service`', () => {
         demands_services_shared.run_test_case_service("case_7")
     });
 
+    describe('case_8', () => {
+        demands_services_shared.run_test_case_service("case_8")
+    });
+
 });
 

@@ -48,7 +48,7 @@ module.exports = {
                 element.all(by.css(".btn.btn-small")).get(1).click()
             });
 
-            it(`fill form`, () => {
+            it(`fill form ${name}`, () => {
                 for_css.wait_id("account_kind_id", globalTimeout);
 
                 scenarios[`${name_case}`].input.map(function(id){
