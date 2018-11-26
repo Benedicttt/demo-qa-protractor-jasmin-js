@@ -18,7 +18,7 @@ const employee_shared = require('./spec/shared/employee.js');
 const receipts_shared = require('./spec/shared/receipts.js');
 const cashier_shared = require('./spec/shared/cashier.js');
 
-data = fs.readFileSync('./spec/support/user.json');
+data = fs.readFileSync('./spec/support/user.json')
 let user = JSON.parse(data);
 const setting = yaml.safeLoad(fs.readFileSync('spec/support/settings.yml', 'utf8'));
 const page = yaml.safeLoad(fs.readFileSync('spec/support/pages.yml', 'utf8'));
@@ -28,7 +28,6 @@ const AllureReporter = require('jasmine-allure-reporter');
 const { SpecReporter } = require('jasmine-spec-reporter');
 
 let outputFilename = './spec/support/';
-
 
 const addScreenShots = {
     specDone: function (result) {
@@ -51,25 +50,29 @@ let getRandomString = function(length) {
     return string;
 };
 
+
 exports.config = {
+
     selenium: {
         start_process: false
     },
 
     seleniumAddress: 'http://selenium:4444/wd/hub',
+    directConnect: JSON.parse(process.env.direct),
+
     baseUrl: process.env.APP_HOST,
 
-    directConnect: false,
     capabilities: {
-        // shardTestFiles: true,     // allows specs to be executed in parallel.
+        // shardTestFiles: false,     // allows specs to be executed in parallel.
         // maxInstances: 1,
 
         browserName: 'chrome',
         chromeOptions: {
-            args: ["--disable-gpu", "--window-size=1920x1080"]
+            args: [ "--disable-gpu", "--window-size=1920x1080" ]
         },
-    },
 
+    },
+    splitTestsBetweenCapabilities: true,
     allScriptsTimeout: 10000,
     getPageTimeout: 12000,
 
@@ -106,17 +109,10 @@ exports.config = {
         };
 
         var dataUtilMockModule = function () {
-            // Create a new module which depends on your data creation utilities
             var utilModule = angular.module('dataUtil', ['platform']);
-            // Create a new service in the module that creates a new entity
-            utilModule.service('EntityCreation', ['EntityDataService', '$q', function (EntityDataService, $q) {
+            utilModule.service('EntityCreation', ['EntityDataService', '$q', function (EntityDataService) {
 
-                /**
-                 * Returns a promise which is resolved/rejected according to entity creation success
-                 * @returns {*}
-                 */
-                this.createEntity = function (details,type) {
-                    // This is your business logic for creating entities
+                createEntity = function (details,type) {
                     var entity = EntityDataService.Entity(details).ofType(type);
                     var promise = entity.save();
                     return promise;
@@ -127,6 +123,7 @@ exports.config = {
         browser.addMockModule('dataUtil', dataUtilMockModule);
         browser.addMockModule('disableNgAnimate', disableNgAnimate);
         browser.addMockModule('disableCssAnimate', disableCssAnimate);
+
 
         let width = 1620;
         let height = 1080;
@@ -144,7 +141,7 @@ exports.config = {
         global.EC              = protractor.ExpectedConditions;
         global.globalTimeout   = 3000;
         global.fs              = fs;
-        global.editJsonFile    = editJsonFile
+        global.editJsonFile    = editJsonFile;
         global.user            = user;
         global.user_object     = user_object;
         global.setting         = setting;
@@ -181,8 +178,13 @@ exports.config = {
 
     suites: {
         create_user: [
+            "spec/panel/preconditions/sign_up.js",
             "spec/panel/preconditions/home_page.js",
-            "spec/panel/preconditions/sign_up.js"
+            "spec/panel/preconditions/sign_in.js",
+        ],
+
+        add_accesses: [
+            "spec/panel/preconditions/user_access/set_user_access_full.js"
         ],
 
         cashier: [
@@ -190,11 +192,19 @@ exports.config = {
             "spec/panel/preconditions/cashier/cashier_virtual.js"
         ],
 
-        add_accesses: [
-            "spec/panel/preconditions/sign_in.js",
-            "spec/panel/preconditions/user_access/set_user_access_full.js"
-        ],
         create_services: [
+            "spec/panel/preconditions/employee.js",
+            "spec/panel/preconditions/services/us.js",
+            "spec/panel/preconditions/services/we.js"
+        ],
+
+        preconditions: [
+            "spec/panel/preconditions/sign_up.js",
+            "spec/panel/preconditions/home_page.js",
+            "spec/panel/preconditions/sign_in.js",
+            "spec/panel/preconditions/user_access/set_user_access_full.js",
+            "spec/panel/preconditions/cashier/cashier_real.js",
+            "spec/panel/preconditions/cashier/cashier_virtual.js",
             "spec/panel/preconditions/employee.js",
             "spec/panel/preconditions/services/us.js",
             "spec/panel/preconditions/services/we.js"
@@ -215,3 +225,8 @@ exports.config = {
 
     }
 };
+
+// arr = []
+//     %w[operation demand service].each { |index| arr << index.classify }
+// arr.each { |i| i.constantize.all.each { |i| i.delete } }
+
