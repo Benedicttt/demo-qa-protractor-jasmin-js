@@ -48,14 +48,14 @@ module.exports = {
                 element.all(by.css(".btn.btn-small")).get(1).click()
             });
 
-            it(`fill form ${name}`, () => {
+            it(`fill form ${name} ${name_case}`, () => {
                 for_css.wait_id("account_kind_id", globalTimeout);
 
                 scenarios[`${name_case}`].input.map(function(id){
                     let value = `${Object.values(id)[0]}`;
                     let key = `${Object.keys(id)[0]}`;
 
-                    element(by.id(key)).sendKeys(value)
+                    element(by.id(key)).sendKeys(value + " " + name_case)
                 });
 
                 scenarios[`${name_case}`].selector.map(function(id) {
