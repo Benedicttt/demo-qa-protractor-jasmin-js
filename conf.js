@@ -50,15 +50,53 @@ let getRandomString = function(length) {
     return string;
 };
 
+var disableNgAnimate = function() {
+    angular
+        .module('disableNgAnimate', [])
+        .run(['$animate', function($animate) {
+            $animate.enabled(false);
+        }]);
+};
+
+let disableCssAnimate = function() {
+    angular
+        .module('disableCssAnimate', [])
+        .run(function() {
+            let style = document.createElement('style');
+            style.type = 'text/css';
+            style.innerHTML = '* {' +
+                '-webkit-transition: none !important;' +
+                '-moz-transition: none !important' +
+                '-o-transition: none !important' +
+                '-ms-transition: none !important' +
+                'transition: none !important' +
+                '}';
+            document.getElementsByTagName('head')[0].appendChild(style);
+        });
+};
+
+let dataUtilMockModule = function () {
+    let utilModule = angular.module('dataUtil', ['platform']);
+    utilModule.service('EntityCreation', ['EntityDataService', '$q', function (EntityDataService) {
+
+        createEntity = function (details,type) {
+            let entity = EntityDataService.Entity(details).ofType(type);
+            let promise = entity.save();
+            return promise;
+        };
+    }]);
+};
+
 
 exports.config = {
+
+    directConnect: JSON.parse(process.env.DIRECT_CONNECT),
 
     selenium: {
         start_process: false
     },
 
     seleniumAddress: 'http://selenium:4444/wd/hub',
-    directConnect: JSON.parse(process.env.DIRECT_CONNECT),
 
     baseUrl: process.env.APP_HOST,
 
@@ -67,7 +105,9 @@ exports.config = {
         // maxInstances: 1,
 
         browserName: 'chrome',
+
         chromeOptions: {
+            prefs: { 'credentials_enable_service': false },
             args: [ "--disable-gpu", "--window-size=1920x1080" ]
         },
 
@@ -82,43 +122,7 @@ exports.config = {
     ],
     framework: 'jasmine',
 
-    onPrepare() {
-        var disableNgAnimate = function() {
-            angular
-                .module('disableNgAnimate', [])
-                .run(['$animate', function($animate) {
-                    $animate.enabled(false);
-                }]);
-        };
-
-        var disableCssAnimate = function() {
-            angular
-                .module('disableCssAnimate', [])
-                .run(function() {
-                    var style = document.createElement('style');
-                    style.type = 'text/css';
-                    style.innerHTML = '* {' +
-                        '-webkit-transition: none !important;' +
-                        '-moz-transition: none !important' +
-                        '-o-transition: none !important' +
-                        '-ms-transition: none !important' +
-                        'transition: none !important' +
-                        '}';
-                    document.getElementsByTagName('head')[0].appendChild(style);
-                });
-        };
-
-        var dataUtilMockModule = function () {
-            var utilModule = angular.module('dataUtil', ['platform']);
-            utilModule.service('EntityCreation', ['EntityDataService', '$q', function (EntityDataService) {
-
-                createEntity = function (details,type) {
-                    var entity = EntityDataService.Entity(details).ofType(type);
-                    var promise = entity.save();
-                    return promise;
-                };
-            }]);
-        };
+    onPrepare: function () {
 
         browser.addMockModule('dataUtil', dataUtilMockModule);
         browser.addMockModule('disableNgAnimate', disableNgAnimate);
@@ -168,7 +172,7 @@ exports.config = {
         global.employee_shared = employee_shared;
         global.cashier_shared = cashier_shared;
 
-        jasmine.getEnv().addReporter(addScreenShots);
+        // jasmine.getEnv().addReporter(addScreenShots);
         jasmine.getEnv().addReporter(new AllureReporter({
             resultsDir: './allure-results/'
         }));
@@ -225,6 +229,7 @@ exports.config = {
 
     }
 };
+
 
 // arr = []
 //     %w[operation demand service].each { |index| arr << index.classify }

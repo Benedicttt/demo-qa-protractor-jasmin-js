@@ -1,5 +1,3 @@
-
-
 describe('Sign up', function() {
     set(setting.angular_wait_false);
     let alert_success = element.all(by.css('.alert-success'));

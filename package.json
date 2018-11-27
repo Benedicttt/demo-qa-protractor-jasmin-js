@@ -37,21 +37,17 @@
     "protractor": "^5.4.1",
     "protractor-beautiful-reporter": "^1.2.5"
   },
+
   "scripts": {
-    "chrome": "APP_HOST=http://localhost:3000 protractor conf.js  --browser chrome --continue-on-error --disableChecks",
-    "chrome headless": "APP_HOST=http://localhost:3000 protractor conf_local.js --browser chrome --continue-on-error --disableChecks  --capabilities.chromeOptions.args headless --capabilities.chromeOptions.args window-size=1920,1080 --suite regression",
-    "chrome video": "APP_HOST=http://localhost:3000 protractor video.conf.js --browser chrome --continue-on-error --disableChecks",
-    "chrome(headless) and report": "APP_HOST=http://localhost:3000 rm -rf allure-report allure-results && protractor conf.js  --browser chrome --continue-on-error --disableChecks --capabilities.chromeOptions.args headless --capabilities.chromeOptions.args window-size=1920,1080 && allure generate allure-results --clean -o allure-report && allure serve ./allure-results",
-    "firefox": "APP_HOST=http://localhost:3000 protractor conf.js  --browser firefox",
-    "firefox_headless": "APP_HOST=http://localhost:3000 MOZ_HEADLESS=1 protractor conf.js  --browser firefox",
+    "chrome": "DIRECT_CONNECT=true APP_HOST=http://localhost:3000 protractor conf.js --browser chrome --continue-on-error --disableChecks   --capabilities.chromeOptions.args window-size=1920,1080   --suite create_user,add_accesses,create_services,cashier,regression",
+    "chrome headless": "DIRECT_CONNECT=true APP_HOST=http://localhost:3000 protractor conf.js --browser chrome --continue-on-error --disableChecks   --capabilities.chromeOptions.args window-size=1920,1080   --suite create_user,add_accesses,create_services,cashier,regression --capabilities.chromeOptions.args headless",
     "webdriver-update": "./node_modules/protractor/bin/webdriver-manager update",
-    "trouble": "APP_HOST=http://localhost:3000 protractor --troubleshoot true conf.js --browser 'chrome'",
+    "trouble": "DIRECT_CONNECT=true APP_HOST=http://localhost:3000 protractor conf.js  --troubleshoot true --browser chrome --continue-on-error --disableChecks   --capabilities.chromeOptions.args window-size=1920,1080   --suite create_user,add_accesses,create_services,cashier,regression --capabilities.chromeOptions.args headless",
     "allure server ./allure-result": "allure generate allure-results --clean -o allure-report && allure serve ./allure-results",
     "clear cache": "npm cache clean --force",
     "exit": "exit 0",
     "delete folder ./allure-report": "rm -rf allure-report allure-results && ntl"
   },
-
   "repository": {
     "type": "git",
     "url": "https://gitlab.binomo.com/finances/smoke.git"
