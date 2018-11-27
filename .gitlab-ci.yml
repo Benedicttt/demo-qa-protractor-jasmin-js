@@ -24,6 +24,7 @@ application image:
     - docker build --tag application:latest --file .docker/application.Dockerfile .
   when: manual
 
+
 .smoke:
   stage: tests
   image: application:latest
@@ -31,7 +32,6 @@ application image:
     - selenium:nodechrome
   tags:
     - test-finances-docker
-
 
   variables:
     APP_HOST: 'https://test-finances.404-group.info'
@@ -41,6 +41,29 @@ application image:
   script:
     - npm cache clear --force
     - /node_modules/protractor/bin/protractor conf.js --browser chrome --continue-on-error --disableChecks   --capabilities.chromeOptions.args window-size=1920,1080 --suite create_user,add_accesses,create_services,cashier --capabilities.chromeOptions.args headless
+
+  after_script:
+    - allure generate allure-results -o public --clean
+
+  only:
+    refs:
+      - triggers
+
+  artifacts:
+    paths:
+      - public
+    expire_in: 1 day
+    when: always
+
+  allow_failure: yes
+
+.smoke:
+  stage: tests
+  image: application:latest
+  services:
+    - selenium:nodechrome
+  tags:
+    - test-finances-docker
 
   variables:
     APP_HOST: 'https://test-finances.404-group.info'
