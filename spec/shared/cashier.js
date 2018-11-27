@@ -4,12 +4,12 @@ let file = fs.readFileSync('spec/panel/test_case/test_case_cashier.yml', 'utf8')
 const scenarios = yaml.safeLoad(file).project;
 
 module.exports = {
-    run_test_case: function(name_case, project) {
+    run_test_case: function(name_case, project, user_name) {
         let file = editJsonFile("./spec/support/user.json");
         const set_params = file.get();
 
         it(`Go to page and check title ${page.references.title}`,  () => {
-            user_object.authorization(helper.user_email_last());
+            user_object.authorization(user_name);
 
             go(page.references.get);
             expect(browser.getTitle()).toEqual(page.references.title);

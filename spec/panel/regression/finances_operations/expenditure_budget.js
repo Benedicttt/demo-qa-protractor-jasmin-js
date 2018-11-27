@@ -1,6 +1,6 @@
 describe('Expenditure budget', () => {
     beforeAll( () => {
-        user_object.authorization(helper.user_email_last());
+        user_object.authorization("user_test_5@gmail.com");
         browser.get("/fin_operations/routine/expenditure_budget")
         expect(browser.getTitle()).toEqual("Бюджетирование | СПОК");
     });
