@@ -172,7 +172,7 @@ exports.config = {
         global.employee_shared = employee_shared;
         global.cashier_shared = cashier_shared;
 
-        // jasmine.getEnv().addReporter(addScreenShots);
+        jasmine.getEnv().addReporter(addScreenShots);
         jasmine.getEnv().addReporter(new AllureReporter({
             resultsDir: './allure-results/'
         }));
