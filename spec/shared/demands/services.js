@@ -11,9 +11,9 @@ let file_service = fs.readFileSync('spec/support/service.json');
 let services_ids = JSON.parse(file_service).service;
 
 module.exports = {
-    run_test_case_service: function (name_case) {
+    run_test_case_service: function (name_case, user_name) {
         it(`Go to page and check title ${page.demands.title}`, () => {
-            user_object.authorization(helper.user_email_last());
+            user_object.authorization(user_name);
 
             go(page.demands.get);
             expect(browser.getTitle()).toEqual(page.demands.title);
@@ -28,6 +28,7 @@ module.exports = {
 
             it(`{ ${key}: ${value} }`, () => {
                 browser.sleep(200);
+
                 tag_selector.selectOption(key, value);
             })
         });

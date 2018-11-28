@@ -35,10 +35,12 @@ application image:
   variables:
     APP_HOST: 'https://test-finances.404-group.info'
     DIRECT_CONNECT: 'false'
+    maxInstances: '3'
 
   script:
     - npm cache clear --force
-    - /node_modules/protractor/bin/protractor conf.js --browser chrome --continue-on-error --disableChecks --capabilities.chromeOptions.args window-size=1920,1080 --suite --suite create_user,add_accesses,create_services,cashier,regression --capabilities.chromeOptions.args headless
+    - maxInstances=1 /node_modules/protractor/bin/protractor conf.js --browser chrome --continue-on-error --disableChecks   --capabilities.chromeOptions.args window-size=1920,1080 --suite create_user,add_accesses,create_services,cashier --capabilities.chromeOptions.args headless
+    - /node_modules/protractor/bin/protractor conf.js --browser chrome --continue-on-error --disableChecks   --capabilities.chromeOptions.args window-size=1920,1080 --suite regression --capabilities.chromeOptions.args headless
 
   after_script:
     - allure generate allure-results -o public --clean

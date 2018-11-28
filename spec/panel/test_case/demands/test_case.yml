@@ -130,10 +130,10 @@ demand:
       selector: !!seq
         - demand_project_id:          "Админ"
         - demand_account_id:          "Стандартный рублевый счет "
-        - demand_contractor_type_id:  " Покупатель"
-        - demand_contractor_id:       " Контекст"
-        - demand_expenditure_type_id: " Арендные платежи"
-        - demand_expenditure_id:      " Аренда"
+        - demand_contractor_type_id:  "Покупатель"
+        - demand_contractor_id:       "Контекст"
+        - demand_expenditure_type_id: "Арендные платежи"
+        - demand_expenditure_id:      "Аренда"
 
       checkbox: !!seq
         - demand_is_payment_on_site:       true

@@ -64,7 +64,9 @@ module.exports = {
         });
 
         for_css.wait_css("td.no-wrap > a, td.no-wrap > span", globalTimeout);
-        browser.sleep(1000);
+
+        browser.sleep(2000);
+
         element.all(by.css(css)).get(index_elem).getText().then(function (result) {
             if ( log === true) { console.log(result, index_elem) }
             expect(result).toEqual(expect_text)

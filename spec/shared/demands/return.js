@@ -10,9 +10,9 @@ const add_inventory = require("./helpers/add_inventory.js");
 const func          = require("./helpers/runner_demand_attr.js");
 
 module.exports = {
-    run_test_case_return: function (name_case) {
+    run_test_case_return: function (name_case, user_name) {
         it(`Go to page and check title ${page.demands.title}`, () => {
-            user_object.authorization(helper.user_email_last());
+            user_object.authorization(user_name);
 
             go(page.demands.get);
             expect(browser.getTitle()).toEqual(page.demands.title);
@@ -26,7 +26,8 @@ module.exports = {
             let key = `${Object.keys(id)[0]}`;
 
             it(`{ select ${key}: ${value} }`, () => {
-                browser.sleep(300);
+                browser.sleep(200);
+
                 tag_selector.selectOption(key, value)
             })
         });

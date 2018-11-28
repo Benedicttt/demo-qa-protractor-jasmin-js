@@ -65,11 +65,11 @@ module.exports = {
     },
 
     selectOption: function (selector, item) {
-        tag_selector.wait_id_select(selector, globalTimeout + 1000);
+        tag_selector.wait_id_select(selector, globalTimeout);
         let selectList, desiredOption;
 
         selectList = element(by.id(selector));
-        browser.sleep(100);
+        browser.sleep(200);
 
         selectList.all(protractor.By.tagName('option'))
             .then(function (options) {

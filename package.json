@@ -48,6 +48,7 @@
     "exit": "exit 0",
     "delete folder ./allure-report": "rm -rf allure-report allure-results && ntl"
   },
+
   "repository": {
     "type": "git",
     "url": "https://gitlab.binomo.com/finances/smoke.git"

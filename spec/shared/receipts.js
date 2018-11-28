@@ -4,9 +4,9 @@ let file = fs.readFileSync('spec/panel/test_case/finances_operations/test_case.y
 const scenarios = yaml.safeLoad(file).receipts;
 
 module.exports = {
-    run_test_case: function(name_case) {
+    run_test_case: function(name_case, user_name) {
         it(`Go to page and check title ${page.receipts.title}`, () => {
-            user_object.authorization(helper.user_email_last());
+            user_object.authorization(user_name);
 
             go(page.receipts.get);
             expect(browser.getTitle()).toEqual(page.receipts.title);

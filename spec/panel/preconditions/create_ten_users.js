@@ -69,16 +69,20 @@ for(let i = 1; i < num; i++) {
             let icon_list_alt = element.all(by.xpath(xpath)).get(0);
 
             icon_list_alt.click()
+            browser.sleep(500);
+
         });
 
         it("add all projects", function() {
-            let until = protractor.ExpectedConditions;
-            let checkbox = element.all(by.css("label > input.project"));
-
+            var until = protractor.ExpectedConditions;
+            checkbox = element.all(by.css("label > input.project"));
             browser.wait(until.presenceOf(checkbox), globalTimeout, 'Element taking too long to appear in the DOM');
-            browser.executeScript("$(\"label > input.project\").not(this).prop('checked', true)");
+            checkbox.each(function (box) {
+                browser.actions().mouseMove(box, {x: 10, y: 10,}).click().perform();
+                expect(box.getAttribute('checked')).toBeTruthy();
 
-            element.all(by.css("button.btn")).get(0).click();
+            });
+            browser.actions().mouseMove(element.all(by.css("button.btn")).get(1), {x: 10, y: 10,}).click().perform();
         });
 
         it("Add access signature for demands", function () {
@@ -91,7 +95,7 @@ for(let i = 1; i < num; i++) {
             for_css.wait_css('a.text-success', globalTimeout);
             element.all(by.css('a.text-success')).get(0).click();
 
-            let arr = ['demands_visibility_mine', 'services_visibility_mine', 'fin_indicators_operations_visibility_mine'];
+            let arr = ['demands_visibility_mine', 'fin_indicators_operations_visibility_mine', 'demands_sign'];
 
             arr.map((id) => {
                 browser.executeScript(`$(${id}).not(this).prop('checked', true)`);

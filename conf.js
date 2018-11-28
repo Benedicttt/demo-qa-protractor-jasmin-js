@@ -89,7 +89,6 @@ let dataUtilMockModule = function () {
 
 
 exports.config = {
-
     directConnect: JSON.parse(process.env.DIRECT_CONNECT),
 
     selenium: {
@@ -101,9 +100,8 @@ exports.config = {
     baseUrl: process.env.APP_HOST,
 
     capabilities: {
-        // shardTestFiles: false,     // allows specs to be executed in parallel.
-        // maxInstances: 1,
-
+        shardTestFiles: true,     // allows specs to be executed in parallel.
+        maxInstances: process.env.maxInstances,
         browserName: 'chrome',
 
         chromeOptions: {
@@ -112,9 +110,9 @@ exports.config = {
         },
 
     },
-    splitTestsBetweenCapabilities: true,
-    allScriptsTimeout: 10000,
-    getPageTimeout: 12000,
+    splitTestsBetweenCapabilities: false,
+    allScriptsTimeout: 30000,
+    getPageTimeout: 30000,
 
     files: [
         'node_modules/jquery/dist/jquery.js',
@@ -129,7 +127,7 @@ exports.config = {
         browser.addMockModule('disableCssAnimate', disableCssAnimate);
 
 
-        let width = 1620;
+        let width = 1920;
         let height = 1080;
         browser.driver.manage().window().setSize(width, height);
 
@@ -143,7 +141,7 @@ exports.config = {
         global.password        = '123456';
         global.user_email      = 'spok_' + getRandomString(10) + '@gmail.com';
         global.EC              = protractor.ExpectedConditions;
-        global.globalTimeout   = 3000;
+        global.globalTimeout   = 20000;
         global.fs              = fs;
         global.editJsonFile    = editJsonFile;
         global.user            = user;
@@ -185,6 +183,7 @@ exports.config = {
             "spec/panel/preconditions/sign_up.js",
             "spec/panel/preconditions/home_page.js",
             "spec/panel/preconditions/sign_in.js",
+            "spec/panel/preconditions/create_ten_users.js",
         ],
 
         add_accesses: [
@@ -220,7 +219,8 @@ exports.config = {
 
         demands: [
             "spec/panel/regression/demands/return.js",
-            "spec/panel/regression/demands/service.js"
+            "spec/panel/regression/demands/service_1_4.js",
+            "spec/panel/regression/demands/service_5_8.js"
         ],
 
         check_user_access: [
