@@ -2,7 +2,7 @@ describe('Expenditure budget', () => {
     beforeAll( () => {
         user_object.authorization(helper.user_email_last());
         browser.get("/fin_operations/routine/expenditure_budget")
-        expect(browser.getTitle()).toEqual("Бюджетирование | СПОК");
+        expect(browser.getTitle()).toEqual("Бюджетирование | Б.СПОК");
     });
 
     describe('Set filter.', () => {

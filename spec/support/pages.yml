@@ -1,54 +1,54 @@
 base:
   get: browser.get('/')
-  title: 'СПОК'
+  title: 'Б.СПОК'
 
 sign_in:
   get: browser.get('/users/sign_in')
-  title: 'Вход в систему | СПОК'
+  title: 'Вход в систему | Б.СПОК'
   click_submit: 'browser.actions().mouseMove(element.all(by.css("button.btn-primary")).get(0), {x: 10, y: 10,}).click().perform();'
 
 sign_up:
   get: browser.get('/users/sign_up')
-  title: 'Регистрация | СПОК'
+  title: 'Регистрация | Б.СПОК'
   click_submit: 'browser.actions().mouseMove(element.all(by.css("button.btn-primary")).get(0), {x: 10, y: 10,}).click().perform();'
 
 users:
   get: browser.get('/system/users')
-  title: 'Пользователи | СПОК'
+  title: 'Пользователи | Б.СПОК'
 
 employee:
   get: browser.get('/employees')
-  title: 'Кадры | СПОК'
+  title: 'Кадры | Б.СПОК'
   new:
     get: browser.get('/employees/new')
-    title: 'Добавление сотрудника | СПОК'
+    title: 'Добавление сотрудника | Б.СПОК'
 
 demands:
   get: browser.get('/demands')
-  title: 'Заявки | СПОК'
+  title: 'Заявки | Б.СПОК'
   new:
     get: browser.get('/demands/new')
-    title: 'Добавление заявки | СПОК'
+    title: 'Добавление заявки | Б.СПОК'
 
 services:
   get: browser.get('/services')
-  title: 'Услуги | СПОК'
+  title: 'Услуги | Б.СПОК'
   new:
     get: browser.get('/services/new')
-    title: 'Добавление услуги | СПОК'
+    title: 'Добавление услуги | Б.СПОК'
 
 DDS:
   get: browser.get('/fin_indicators/operations')
-  title: 'ДДС | СПОК'
+  title: 'ДДС | Б.СПОК'
 
 receipts:
-  title: 'Поступление | СПОК'
+  title: 'Поступление | Б.СПОК'
   get: browser.get('/fin_operations/receipts/new')
 
 conversion:
-  title: 'Конвертация | СПОК'
+  title: 'Конвертация | Б.СПОК'
   get: browser.get('/fin_operations/money_transfers/new')
 
 references:
   get: browser.get('references/projects')
-  title: "Проекты | СПОК"
+  title: "Проекты | Б.СПОК"
