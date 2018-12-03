@@ -143,7 +143,7 @@ exports.config = {
         global.password        = '123456';
         global.user_email      = 'spok_' + getRandomString(10) + '@gmail.com';
         global.EC              = protractor.ExpectedConditions;
-        global.globalTimeout   = 4500;
+        global.globalTimeout   = 3000;
         global.fs              = fs;
         global.editJsonFile    = editJsonFile;
         global.user            = user;
@@ -185,6 +185,10 @@ exports.config = {
             "spec/panel/preconditions/sign_up.js",
             "spec/panel/preconditions/home_page.js",
             "spec/panel/preconditions/sign_in.js",
+        ],
+
+        create_users: [
+            "spec/panel/preconditions/create_ten_users.js"
         ],
 
         add_accesses: [

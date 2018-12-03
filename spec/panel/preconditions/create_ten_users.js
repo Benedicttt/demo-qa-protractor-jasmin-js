@@ -5,7 +5,7 @@ let registration_success = '×\nДобро пожаловать! Вы успеш
 for(let i = 1; i < num; i++) {
     let name_user = `user_test_${i}@gmail.com`;
 
-    fdescribe(`Create ${name_user} users`, () => {
+    describe(`Create ${name_user} users`, () => {
         set(setting.angular_wait_false);
 
         it(`with ${ id_email }`, function() {
