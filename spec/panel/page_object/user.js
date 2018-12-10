@@ -8,9 +8,20 @@ module.exports = {
 
     authorization: function(who) {
         set(setting.angular_wait_false);
-        set(setting.delete_all_cookies);
-        go(page.sign_in.get);
 
-        this.fillFormAuth(who);
+        element(by.css(".pull-right .dropdown")).isPresent().then(function(result) {
+            element(by.css(".pull-right .dropdown")).getText().then(function(current_user) {
+                if (current_user !== who) {
+                    set(setting.delete_all_cookies);
+                }
+            });
+
+            if (result == false ){
+                go(page.sign_in.get);
+                user_object.fillFormAuth(who);
+            } else {
+                console.log("You are authorize");
+            }
+        });
     }
 };

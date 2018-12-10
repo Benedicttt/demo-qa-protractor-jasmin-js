@@ -68,13 +68,14 @@ module.exports = {
 
         it('click `filter_all`', () => {
             for_css.wait_css("#filter_all", globalTimeout);
-            for_css.wait_css(".btn.btn-primary", globalTimeout);
+            for_css.wait_css(".btn.btn-primary", globalTimeout).then(function() {});
 
             element(by.id("filter_all")).click();
 
             element(by.css(".btn.btn-primary")).click();
             element(by.css(".btn.btn-primary")).click()
             browser.sleep(500);
+            browser.driver.manage().timeouts().implicitlyWait(15000);
         })
 
         it('sign', () => {

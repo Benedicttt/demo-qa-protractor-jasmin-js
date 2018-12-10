@@ -110,7 +110,7 @@ module.exports = {
 
     check_data_popup: function(name_case, type = null) {
         it('Find popup', () => {
-            for_css.wait_css(".btn-group .icon-info-sign", globalTimeout + 3000);
+            for_css.wait_css(".btn-group .icon-info-sign", globalTimeout);
             let current_popup = element.all(by.css(".btn-group i.icon-info-sign")).get(0)
             current_popup.click();
             expect(current_popup.isDisplayed()).toBeTruthy();

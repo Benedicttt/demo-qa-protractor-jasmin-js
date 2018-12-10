@@ -90,6 +90,12 @@ let dataUtilMockModule = function () {
 
 exports.config = {
 
+    jasmineNodeOpts: {
+        showColors: true,
+        includeStackTrace: true,
+        defaultTimeoutInterval: 1440000
+    },
+
     directConnect: JSON.parse(process.env.DIRECT_CONNECT),
 
     selenium: {
@@ -167,6 +173,7 @@ exports.config = {
         global.services_shared = services_shared;
         global.receipts_shared = receipts_shared;
         global.conversion_shared = conversion_shared;
+        global.user_shared = user_shared;
         global.user_shared = user_shared;
         global.salary_shared = salary_shared;
         global.employee_shared = employee_shared;
