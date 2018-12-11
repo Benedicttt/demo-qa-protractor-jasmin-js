@@ -8,6 +8,7 @@ module.exports = {
 
     authorization: function(who) {
         set(setting.angular_wait_false);
+        go(page.sign_in.get);
 
         element(by.css(".pull-right .dropdown")).isPresent().then(function(result) {
             if (result == true ) {
@@ -23,7 +24,6 @@ module.exports = {
                 });
 
             } else {
-                go(page.sign_in.get);
                 user_object.fillFormAuth(who);
             }
         });
