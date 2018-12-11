@@ -10,17 +10,21 @@ module.exports = {
         set(setting.angular_wait_false);
 
         element(by.css(".pull-right .dropdown")).isPresent().then(function(result) {
-            element(by.css(".pull-right .dropdown")).getText().then(function(current_user) {
-                if (current_user !== who) {
-                    set(setting.delete_all_cookies);
-                }
-            });
+            if (result == true ) {
 
-            if (result == false ){
+                element(by.css(".pull-right .dropdown")).getText().then(function (current_user) {
+
+                    if (current_user.toLowerCase() !== who.toLowerCase()) {
+                        set(setting.delete_all_cookies);
+
+                        go(page.sign_in.get);
+                        user_object.fillFormAuth(who);
+                    }
+                });
+
+            } else {
                 go(page.sign_in.get);
                 user_object.fillFormAuth(who);
-            } else {
-                console.log("You are authorize");
             }
         });
     }

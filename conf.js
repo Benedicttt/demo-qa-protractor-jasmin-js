@@ -190,7 +190,7 @@ exports.config = {
     suites: {
         create_user: [
             "spec/panel/preconditions/sign_up.js",
-            "spec/panel/preconditions/home_page.js",
+            // "spec/panel/preconditions/home_page.js",
             "spec/panel/preconditions/sign_in.js",
         ],
 
