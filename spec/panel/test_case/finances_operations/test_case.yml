@@ -3,7 +3,7 @@ receipts:
     selector: !!seq
       - receipt_project_debtor_id:         "Админ"
       - receipt_project_id:                "Promotion"
-      - receipt_account_id:                "Стандартный рублевый счет"
+      - receipt_account_id:                "Cashier real real_rub"
       - receipt_contractor_type_id:        " Подотчетник"
       - receipt_contractor_id:             "Kievskiy Sergey"
       - receipt_nomenclature_id:           " Административные услуги"
@@ -28,7 +28,7 @@ receipts:
     selector: !!seq
       - receipt_project_debtor_id:         "Админ"
       - receipt_project_id:                "Админ"
-      - receipt_account_id:                "Стандартный рублевый счет"
+      - receipt_account_id:                "Cashier real real_rub"
       - receipt_contractor_type_id:        " Подотчетник"
       - receipt_contractor_id:             "Kievskiy Sergey"
       - receipt_nomenclature_id:           " Административные услуги"
