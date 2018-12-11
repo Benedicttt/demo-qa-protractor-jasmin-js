@@ -68,7 +68,7 @@ module.exports = {
 
         it('click `filter_all`', () => {
             for_css.wait_css("#filter_all", globalTimeout);
-            for_css.wait_css(".btn.btn-primary", globalTimeout).then(function() {});
+            for_css.wait_css(".btn.btn-primary", globalTimeout);
 
             element(by.id("filter_all")).click();
 

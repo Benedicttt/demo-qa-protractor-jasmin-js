@@ -15,6 +15,8 @@ module.exports = {
             user_object.authorization(helper.user_email_last());
 
             go(page.demands.get);
+
+
             expect(browser.getTitle()).toEqual(page.demands.title);
 
             go(page.demands.new.get);

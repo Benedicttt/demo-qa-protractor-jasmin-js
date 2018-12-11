@@ -59,7 +59,7 @@ module.exports = {
     check_success_sign: function (css, index_elem = 0, expect_text = null, log = false){
         element.all(by.css('td.no-wrap > a, td.no-wrap > span')).get(0).getText().then((text) => {
             if ( text === '. . . . . .' ) {
-                browser.sleep(3000)
+                for_css.wait_xpath('//*[@id="demands"]/tbody/tr[2]/td[11]/a[1][contains(text(), "Не подписана")]', 10000)
             }
         });
 
