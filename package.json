@@ -39,7 +39,7 @@
   },
 
   "scripts": {
-    "chrome": "DIRECT_CONNECT=true APP_HOST=http://localhost:3000 protractor conf.js --browser chrome --continue-on-error --disableChecks   --capabilities.chromeOptions.args window-size=1920,1080   --suite create_user,add_accesses,create_services,cashier,regression",
+    "chrome": "DIRECT_CONNECT=true APP_HOST=http://localhost:3000 protractor conf.js --browser chrome --continue-on-error --disableChecks   --capabilities.chromeOptions.args window-size=1920,1080   --suite create_user,cashier,add_accesses,create_services,cashier,regression",
     "chrome headless": "DIRECT_CONNECT=true APP_HOST=http://localhost:3000 protractor conf.js --browser chrome --continue-on-error --disableChecks   --capabilities.chromeOptions.args window-size=1920,1080   --suite create_user,add_accesses,create_services,cashier,regression --capabilities.chromeOptions.args headless",
     "webdriver-update": "./node_modules/protractor/bin/webdriver-manager update",
     "trouble": "DIRECT_CONNECT=true APP_HOST=http://localhost:3000 protractor conf.js  --troubleshoot true --browser chrome --continue-on-error --disableChecks   --capabilities.chromeOptions.args window-size=1920,1080   --suite create_user,add_accesses,create_services,cashier,regression --capabilities.chromeOptions.args headless",
