@@ -50,7 +50,7 @@ let getRandomString = function(length) {
     return string;
 };
 
-var disableNgAnimate = function() {
+let disableNgAnimate = function() {
     angular
         .module('disableNgAnimate', [])
         .run(['$animate', function($animate) {

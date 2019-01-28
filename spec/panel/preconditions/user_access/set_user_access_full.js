@@ -36,8 +36,9 @@ describe('User add full access on admin', function() {
     });
 
     it("add all projects", function() {
-        var until = protractor.ExpectedConditions;
-        checkbox = element.all(by.css("label > input.project"));
+        let until = protractor.ExpectedConditions;
+        let checkbox = element.all(by.css("label > input.project"));
+
         browser.wait(until.presenceOf(checkbox), globalTimeout, 'Element taking too long to appear in the DOM');
         checkbox.each(function (box) {
             browser.actions().mouseMove(box, {x: 10, y: 10,}).click().perform();
