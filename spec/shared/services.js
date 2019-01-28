@@ -75,7 +75,7 @@ module.exports = {
             element(by.css(".btn.btn-primary")).click();
             element(by.css(".btn.btn-primary")).click()
             browser.sleep(500);
-            browser.driver.manage().timeouts().implicitlyWait(15000);
+            browser.driver.manage().timeouts().implicitlyWait(10000);
         })
 
         it('sign', () => {
@@ -98,9 +98,9 @@ module.exports = {
                     let file = editJsonFile("./spec/support/service.json");
                     let set_params  = file.get();
 
-                    set_params["service"] = {}
-                    set_params["service"]['us'] = {}
-                    set_params["service"]['we'] = {}
+                    set_params["service"] = {};
+                    set_params["service"]['us'] = {};
+                    set_params["service"]['we'] = {};
                     set_params["service"]["us"]['number'] =  text;
                     set_params["service"]["we"]['number'] =  `${parseInt(text) + 1}`;
                     file.save()
