@@ -7,7 +7,7 @@ module.exports = {
     },
 
     authorization: function(who) {
-        browser.driver.manage().timeouts().implicitlyWait(10000);
+        browser.driver.manage().timeouts().implicitlyWait(20000);
         set(setting.angular_wait_false);
         go(page.sign_in.get);
 

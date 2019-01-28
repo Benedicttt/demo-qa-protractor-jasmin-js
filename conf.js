@@ -118,7 +118,7 @@ exports.config = {
 
     },
     splitTestsBetweenCapabilities: true,
-    allScriptsTimeout: 10000,
+    allScriptsTimeout: 100000,
     getPageTimeout: 12000,
 
     files: [
