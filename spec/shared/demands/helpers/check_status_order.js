@@ -21,8 +21,8 @@ module.exports = {
         it('sign demand', () => {
             //TODO: SIGN
             browser.sleep(1000)
-            for_css.wait_xpath("*//th[@class='span1'][9]/a[contains(text(), \"Подпись\")]/following::*/td[12]/a[@title=\"Подписать\"]/child::*", globalTimeout)
-            let sign_service = element.all(by.xpath("*//th[@class='span1'][9]/a[contains(text(), \"Подпись\")]/following::*/td[12]/a[@title=\"Подписать\"]/child::*")).get(0);
+            for_css.wait_xpath("*//th[@class='span1'][9]/a[contains(text(), \"Подпись\")]/following::*//tr[1]/td[12]/a[@title=\"Подписать\"]/child::*", globalTimeout)
+            let sign_service = element.all(by.xpath("*//th[@class='span1'][9]/a[contains(text(), \"Подпись\")]/following::*//tr[1]/td[12]/a[@title=\"Подписать\"]/child::*")).get(0);
             sign_service.click();
 
             for_css.wait_xpath("//h3[contains(text(), \"Подпись заявки\")]", globalTimeout);
@@ -42,7 +42,7 @@ module.exports = {
             browser.sleep(1200);
 
             for_css.wait_xpath('//*[@id="demands"]/tbody/tr[1]/td[13]/a', globalTimeout);
-            let icon_paid = element.all(by.xpath("*//th[@class='span1'][10]/a[contains(text(), \"Оплата\")]/following::*/td[13]/a[@title=\"Выставить на оплату\"]/parent::*/a")).get(0);
+            let icon_paid = element.all(by.xpath("*//th[@class='span1'][10]/a[contains(text(), \"Оплата\")]/following::*//tr[1]/td[13]/a[@title=\"Выставить на оплату\"]/parent::*/a")).get(0);
             icon_paid.click();
 
             for_css.wait_xpath("//h3[contains(text(), \"Выставление заявки на оплату\")]", globalTimeout);
