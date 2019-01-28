@@ -31,14 +31,14 @@ let outputFilename = './spec/support/';
 
 const addScreenShots = {
     specDone: function (result) {
-        // if (result.status === 'failed') {
+        if (result.status === 'failed') {
             browser.takeScreenshot().then(function (png) {
                 allure.createAttachment('Screen', function () {
                     return new Buffer(png, 'base64')
                 }, 'image/png')();
             });
         }
-    // }
+    }
 };
 
 let getRandomString = function(length) {
