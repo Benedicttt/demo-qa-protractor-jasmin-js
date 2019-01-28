@@ -1,19 +1,4 @@
 {
-  "user": {
-    "email": "spok_ouCzKQpnQy@gmail.com",
-    "password": "123456"
-  },
-  "cookie": {
-    "name": "_session_id",
-    "value": "78a2b862c31b450ad266cde6c049126c"
-  },
-  "case_1": {
-    "employee": {
-      "last_name": "Kievskiy",
-      "name": "Sergey",
-      "middle_name": "Borisovich"
-    }
-  },
   "project": {
     "cashier": {
       "Админ": {
@@ -130,6 +115,21 @@
           "number": "4857 5494 9849 8423"
         }
       }
+    }
+  },
+  "user": {
+    "email": "spok_PWsZhKQVte@gmail.com",
+    "password": "123456"
+  },
+  "cookie": {
+    "name": "_session_id",
+    "value": "2884ee58ccfbe91cac0735952a902052"
+  },
+  "case_1": {
+    "employee": {
+      "last_name": "Kievskiy",
+      "name": "Sergey",
+      "middle_name": "Borisovich"
     }
   }
 }

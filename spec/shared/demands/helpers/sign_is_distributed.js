@@ -5,7 +5,7 @@ module.exports = {
 
         if(key === "sign_is_distributed" && value === "true") {
             it('sign service(distributed)', () => {
-                let xpath_service = "*//th[@class='span1'][8][contains(text(), 'Услуга')]/following::*/td[11]/a[contains(text(), 'Распределена')]";
+                let xpath_service = "*//th[@class='span1'][8][contains(text(), 'Услуга')]/following::*/tr[1]/td[11]/a[contains(text(), 'Распределена')]";
                 let xpath_btn_in_model = "*//a[@class='btn btn-mini btn-success' and @title='Подписать']/child::*";
                 let btn_last = element.all(by.css("button.btn-primary")).get(0);
                 let check_xpath = "*//th[@class='span1'][8][contains(text(), 'Услуга')]/../../..//tr[1]//td[11]/a[@class='label label-success' and contains(text(), 'Распределена')]";
@@ -42,7 +42,7 @@ module.exports = {
             it('sign demand', () => {
                 //TODO: SIGN
                 browser.sleep(1000)
-                for_css.wait_xpath("*//th[@class='span1'][9]/a[contains(text(), \"Подпись\")]/following::*/td[12]/a[@title=\"Подписать\"]/child::*", globalTimeout)
+                for_css.wait_xpath("*//th[@class='span1'][9]/a[contains(text(), \"Подпись\")]/td[12]/a[@title=\"Подписать\"]/child::*", globalTimeout)
                 let sign_service = element.all(by.xpath("*//th[@class='span1'][9]/a[contains(text(), \"Подпись\")]/following::*/td[12]/a[@title=\"Подписать\"]/child::*")).get(0);
                 sign_service.click();
 

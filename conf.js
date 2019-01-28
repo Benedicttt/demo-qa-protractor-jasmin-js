@@ -31,14 +31,14 @@ let outputFilename = './spec/support/';
 
 const addScreenShots = {
     specDone: function (result) {
-        if (result.status === 'failed') {
+        // if (result.status === 'failed') {
             browser.takeScreenshot().then(function (png) {
                 allure.createAttachment('Screen', function () {
                     return new Buffer(png, 'base64')
                 }, 'image/png')();
             });
         }
-    }
+    // }
 };
 
 let getRandomString = function(length) {
@@ -149,7 +149,7 @@ exports.config = {
         global.password        = '123456';
         global.user_email      = 'spok_' + getRandomString(10) + '@gmail.com';
         global.EC              = protractor.ExpectedConditions;
-        global.globalTimeout   = 4000;
+        global.globalTimeout   = 5000;
         global.fs              = fs;
         global.editJsonFile    = editJsonFile;
         global.user            = user;
@@ -231,6 +231,14 @@ exports.config = {
 
         demands: [
             "spec/panel/regression/demands/return.js",
+            "spec/panel/regression/demands/service.js"
+        ],
+
+        demands_returns: [
+            "spec/panel/regression/demands/return.js"
+        ],
+
+        demands_services: [
             "spec/panel/regression/demands/service.js"
         ],
 
