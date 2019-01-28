@@ -7,8 +7,8 @@ module.exports = {
     },
 
     authorization: function(who) {
-        browser.driver.manage().timeouts().implicitlyWait(20000);
         set(setting.angular_wait_false);
+        browser.driver.manage().timeouts().implicitlyWait(7000);
         go(page.sign_in.get);
 
         element(by.css(".pull-right .dropdown")).isPresent().then(function(result) {

@@ -24,14 +24,14 @@ employee:
     title: 'Добавление сотрудника | Б.СПОК'
 
 demands:
-  get: browser.get('/demands')
+  get: browser.get('/demands?per_page=3&all=1')
   title: 'Заявки | Б.СПОК'
   new:
     get: browser.get('/demands/new')
     title: 'Добавление заявки | Б.СПОК'
 
 services:
-  get: browser.get('/services')
+  get: browser.get('/services?per_page=3&all=1')
   title: 'Услуги | Б.СПОК'
   new:
     get: browser.get('/services/new')

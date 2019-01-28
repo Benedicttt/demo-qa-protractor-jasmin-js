@@ -1,5 +1,6 @@
 module.exports = {
     call: function(attribute) {
+
         let value = `${Object.values(attribute)[0]}`;
         let key = `${Object.keys(attribute)[0]}`;
 

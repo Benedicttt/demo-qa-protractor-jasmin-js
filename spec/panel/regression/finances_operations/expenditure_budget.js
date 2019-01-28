@@ -7,17 +7,19 @@ describe('Expenditure budget', () => {
 
     describe('Set filter.', () => {
         it('set project', () => {
-            let checkbox = element.all(by.css("label > input.project"));
 
-            for_css.wait_css('.btn-small', globalTimeout)
-            element(by.css(".btn-small")).click()
-            for_css.wait_css("label > input.project", globalTimeout)
-
-            checkbox.each(function (box) {
-                browser.actions().mouseMove(box, {x: 10, y: 10,}).click().perform();
-                expect(box.getAttribute('checked')).toBeTruthy();
-            });
-            element.all(by.css("button.btn")).get(1).click()
+            browser.get(browser.getCurrentUrl() + "&per_page=5")
+            // let checkbox = element.all(by.css("label > input.project"));
+            //
+            // for_css.wait_css('.btn-small', globalTimeout)
+            // element(by.css(".btn-small")).click()
+            // for_css.wait_css("label > input.project", globalTimeout)
+            //
+            // checkbox.each(function (box) {
+            //     browser.actions().mouseMove(box, {x: 10, y: 10,}).click().perform();
+            //     expect(box.getAttribute('checked')).toBeTruthy();
+            // });
+            // element.all(by.css("button.btn")).get(1).click()
 
         })
 
