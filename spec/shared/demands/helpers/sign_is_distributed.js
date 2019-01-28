@@ -83,3 +83,9 @@ module.exports = {
         }
     }
 };
+
+
+// while (jQuery.active === 0 ) {
+//     text += "The number is " + i;
+//     console.log(text)
+// }

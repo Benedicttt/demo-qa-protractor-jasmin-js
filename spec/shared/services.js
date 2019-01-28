@@ -75,7 +75,6 @@ module.exports = {
             element(by.css(".btn.btn-primary")).click();
             element(by.css(".btn.btn-primary")).click()
             browser.sleep(500);
-            browser.driver.manage().timeouts().implicitlyWait(10000);
         })
 
         it('sign', () => {
