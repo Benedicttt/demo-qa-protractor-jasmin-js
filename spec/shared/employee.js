@@ -39,10 +39,16 @@ module.exports = {
         scenarios[`${name_case}`].input.map(function(id) {
             let value = `${Object.values(id)[0]}`;
             let key = `${Object.keys(id)[0]}`;
+            let random_number = Math.floor(Math.random() * 1000);
 
             it(`{ ${key}: ${value} }`, () => {
                 element(by.id(`${key}`)).clear();
                 element(by.id(`${key}`)).sendKeys(`${value}`)
+
+                if (key === "employee_last_name" || key === "employee_name" || key === "employee_middle_name" ) {
+                    element(by.id(`${key}`)).clear();
+                    element(by.id(`${key}`)).sendKeys(`${value}_${random_number}`)
+                }
             })
         });
 

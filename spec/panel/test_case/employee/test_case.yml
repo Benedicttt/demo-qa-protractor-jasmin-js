@@ -12,9 +12,9 @@ employee:
       - employee_is_in_staff:                true
 
     input: !!seq
-      - employee_last_name:          "Kievskiy"
-      - employee_name:               "Sergey"
-      - employee_middle_name:        "Borisovich"
+      - employee_last_name:          "Фамилия"
+      - employee_name:               "Имя"
+      - employee_middle_name:        "Отчество"
       - employee_position:           "Программист"
       - employee_email:              "test197@yopmial.com"
       - employee_phone:              "+79816878787"

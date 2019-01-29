@@ -118,18 +118,18 @@
     }
   },
   "user": {
-    "email": "spok_pHrmGynzSK@gmail.com",
+    "email": "spok_MkuwJgACJb@gmail.com",
     "password": "123456"
   },
   "cookie": {
     "name": "_session_id",
-    "value": "d9a06bd8a26c76308a6dbd73f8d27786"
+    "value": "66fc0e71ee8be9981e846ae1f61a355c"
   },
   "case_1": {
     "employee": {
-      "last_name": "Kievskiy",
-      "name": "Sergey",
-      "middle_name": "Borisovich"
+      "last_name": "Фамилия",
+      "name": "Имя",
+      "middle_name": "Отчество"
     }
   }
 }
