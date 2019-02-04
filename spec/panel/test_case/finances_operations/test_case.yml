@@ -181,12 +181,24 @@ conversion:
       - money_transfer_commission: 1000
       - money_transfer_comment: "conversion case_3"
 
-    click_accept_NDS: false
-    fill_nds_form:    false
+    click_accept_NDS: true
+    fill_nds_form: true
+    nds_form:
+      checkbox: !!seq
+        - money_transfer_is_nds:                        true
+        - money_transfer_nds_is_rendered_during_period: true
+
+      selector: !!seq
+        - money_transfer_project_us_nds:            "Админ"
+        - money_transfer_project_we_nds:            "Promotion"
+        - money_transfer_nds_percent:               "20%"
 
     check_data_popup_dds:                          true
+    check_data_popup_dds_comission_conversion:     true
+    check_data_popup_service_comission_conversion: true
     check_data_popup_dds_comission:                true
     check_data_popup_service_comission:            true
+
 
   case_4:
     selector: !!seq
