@@ -47,6 +47,7 @@ module.exports = {
             icon_paid.click();
 
             for_css.wait_xpath("//h3[contains(text(), \"Выставление заявки на оплату\")]", globalTimeout);
+            tag_selector.selectOption("demand_payer_account_id", "Cashier")
             element.all(by.css('.btn-primary')).get(0).click();
 
             for_css.wait_xpath("//td[contains(text(), \"Комиссия:\")]", globalTimeout);

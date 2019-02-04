@@ -3,9 +3,9 @@ receipts:
     selector: !!seq
       - receipt_project_debtor_id:         "Админ"
       - receipt_project_id:                "Promotion"
-      - receipt_account_id:                "Cashier real real_rub"
+      - receipt_account_id:                "RUR"
       - receipt_contractor_type_id:        " Подотчетник"
-      - receipt_contractor_id:             "Kievskiy Sergey"
+      - receipt_contractor_id:             "Фамилия"
       - receipt_nomenclature_id:           " Административные услуги"
 
     checkbox: !!seq
@@ -28,9 +28,9 @@ receipts:
     selector: !!seq
       - receipt_project_debtor_id:         "Админ"
       - receipt_project_id:                "Админ"
-      - receipt_account_id:                "Cashier real real_rub"
+      - receipt_account_id:                "RUR"
       - receipt_contractor_type_id:        " Подотчетник"
-      - receipt_contractor_id:             "Kievskiy Sergey"
+      - receipt_contractor_id:             "Фамилия"
       - receipt_nomenclature_id:           " Административные услуги"
 
     checkbox: !!seq
@@ -66,7 +66,7 @@ receipts:
       - receipt_project_id:                "Админ"
       - receipt_account_id:                "USD"
       - receipt_contractor_type_id:        " Подотчетник"
-      - receipt_contractor_id:             "Kievskiy Sergey"
+      - receipt_contractor_id:             "Фамилия"
       - receipt_nomenclature_id:           " Административные услуги"
 
     checkbox: !!seq
@@ -100,10 +100,10 @@ conversion:
   case_1:
     selector: !!seq
       - money_transfer_sender_project_id:   "Админ"
-      - money_transfer_sender_account_id:   "Cashier real real_rub"
+      - money_transfer_sender_account_id:   "RUR"
       - money_transfer_receiver_project_id: "Promotion"
 
-      - money_transfer_receiver_account_id: "Cashier real real_rub"
+      - money_transfer_receiver_account_id: "RUR"
       - money_transfer_cc_project_id:       "Проект отправитель"
 
     checkbox: !!seq
@@ -139,9 +139,9 @@ conversion:
   case_2:
     selector: !!seq
       - money_transfer_sender_project_id:   "Админ"
-      - money_transfer_sender_account_id:   "Cashier real real_rub"
+      - money_transfer_sender_account_id:   "RUR"
       - money_transfer_receiver_project_id: "Promotion"
-      - money_transfer_receiver_account_id: "Cashier real real_rub"
+      - money_transfer_receiver_account_id: "RUR"
       - money_transfer_cc_project_id:       "Проект отправитель"
 
     checkbox: !!seq
@@ -168,7 +168,7 @@ conversion:
       - money_transfer_sender_project_id:   "Админ"
       - money_transfer_sender_account_id:   "USD"
       - money_transfer_receiver_project_id: "Админ"
-      - money_transfer_receiver_account_id: "USD"
+      - money_transfer_receiver_account_id: "RUR"
       - money_transfer_cc_project_id:       "Проект отправитель"
 
     checkbox: !!seq

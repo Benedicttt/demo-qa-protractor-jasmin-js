@@ -3,7 +3,7 @@ demand:
     case_1:
       selector: !!seq
         - demand_project_id:         "Админ"
-        - demand_account_id:         "Стандартный рублевый счет "
+        - demand_account_id:         "Безналичный рубль"
         - demand_contractor_type_id: " Покупатель"
         - demand_contractor_id:      " Контекст"
 
@@ -44,7 +44,7 @@ demand:
     case_2:
       selector: !!seq
         - demand_project_id:         "Админ"
-        - demand_account_id:         "Стандартный рублевый счет "
+        - demand_account_id:         "Безналичный рубль"
         - demand_contractor_type_id: " Покупатель"
         - demand_contractor_id:      " Контекст"
 
@@ -85,7 +85,7 @@ demand:
     case_3:
       selector: !!seq
         - demand_project_id:         "Админ"
-        - demand_account_id:         "Стандартный рублевый счет "
+        - demand_account_id:         "Безналичный рубль"
         - demand_contractor_type_id: " Покупатель"
         - demand_contractor_id:      " Контекст"
 
@@ -129,7 +129,7 @@ demand:
     case_1:
       selector: !!seq
         - demand_project_id:          "Админ"
-        - demand_account_id:          "Стандартный рублевый счет "
+        - demand_account_id:          "Безналичный рубль"
         - demand_contractor_type_id:  " Покупатель"
         - demand_contractor_id:       " Контекст"
         - demand_expenditure_type_id: " Арендные платежи"
@@ -170,7 +170,7 @@ demand:
     case_2:
       selector: !!seq
         - demand_project_id:          "Админ"
-        - demand_account_id:          "Стандартный рублевый счет "
+        - demand_account_id:          "Безналичный рубль"
         - demand_contractor_type_id:  " Покупатель"
         - demand_contractor_id:       " Контекст"
         - demand_expenditure_type_id: " Арендные платежи"
@@ -211,7 +211,7 @@ demand:
     case_3:
       selector: !!seq
         - demand_project_id:          "Админ"
-        - demand_account_id:          "Стандартный рублевый счет "
+        - demand_account_id:          "Безналичный рубль"
         - demand_contractor_type_id:  " Покупатель"
         - demand_contractor_id:       " Контекст"
         - demand_expenditure_type_id: " Арендные платежи"
@@ -252,7 +252,7 @@ demand:
     case_4:
       selector: !!seq
         - demand_project_id:          "Админ"
-        - demand_account_id:          "Стандартный рублевый счет "
+        - demand_account_id:          "Безналичный рубль"
         - demand_contractor_type_id:  " Покупатель"
         - demand_contractor_id:       " Контекст"
         - demand_expenditure_type_id: " Арендные платежи"
@@ -293,7 +293,7 @@ demand:
     case_5:
       selector: !!seq
         - demand_project_id:          "Админ"
-        - demand_account_id:          "Стандартный рублевый счет "
+        - demand_account_id:          "Безналичный рубль"
         - demand_contractor_type_id:  " Покупатель"
         - demand_contractor_id:       " Контекст"
         - demand_expenditure_type_id: " Арендные платежи"
@@ -336,7 +336,7 @@ demand:
         - demand_project_id:          "Админ"
         - demand_account_id:          "virtual"
         - demand_contractor_type_id:  " Подотчетник"
-        - demand_contractor_id:       "Kievskiy Sergey"
+        - demand_contractor_id:       "Фамилия"
         - demand_expenditure_type_id: " Арендные платежи"
         - demand_expenditure_id:      " Аренда"
 
