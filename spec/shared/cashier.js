@@ -55,7 +55,7 @@ module.exports = {
                     let value = `${Object.values(id)[0]}`;
                     let key = `${Object.keys(id)[0]}`;
 
-                    element(by.id(key)).sendKeys(value + " " + name_case)
+                    element(by.id(key)).sendKeys(name + " " + value + " " + name_case)
                 });
 
                 scenarios[`${name_case}`].selector.map(function(id) {
