@@ -45,6 +45,7 @@ module.exports = {
     selectOption: function (selector, item) {
         tag_selector.wait_id_select(selector, globalTimeout + 1000);
         let selectList, desiredOption;
+        let reg = new RegExp(item);
 
         selectList = element(by.id(selector));
         browser.sleep(200);
@@ -53,7 +54,6 @@ module.exports = {
             .then(function (options) {
                 options.some(function (option) {
                     option.getText().then(function (text) {
-                        let reg = new RegExp(item)
 
                         if (reg.test(text) === true) {
                             desiredOption = option;

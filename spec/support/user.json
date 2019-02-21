@@ -37,7 +37,13 @@
           "currency_id": "EUR",
           "name": "Cashier virtual",
           "number": "4857 5494 9849 8423"
-        }
+        },
+        "real_USD": {},
+        "real_RUB": {},
+        "real_EUR": {},
+        "virtual_USD": {},
+        "virtual_RUB": {},
+        "virtual_EUR": {}
       },
       "Promotion": {
         "real_usd": {
@@ -118,12 +124,12 @@
     }
   },
   "user": {
-    "email": "spok_eiaiGSiegl@gmail.com",
+    "email": "spok_fPmlTZodJK@gmail.com",
     "password": "123456"
   },
   "cookie": {
     "name": "_session_id",
-    "value": "9fa5f7c1b96b4a1673bd79d7e04a8966"
+    "value": "18ddc53845a80b13a7decc161f4d774f"
   },
   "case_1": {
     "employee": {
