@@ -2,6 +2,7 @@ const yaml = require('js-yaml');
 const fs = require('fs');
 const path = require('path');
 const editJsonFile = require("edit-json-file");
+const Url = require('url-parse');
 
 const user_object = require('./spec/panel/page_object/user.js');
 const user_shared = require('./spec/shared/user.js');
@@ -156,6 +157,7 @@ exports.config = {
         global.setting         = setting;
         global.form            = form;
         global.page            = page;
+        global.Url             = Url;
 
         global.go              = helper.runner;
         global.set             = helper.runner;

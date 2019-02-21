@@ -9,12 +9,8 @@ module.exports = {
         browser.wait(protractor.ExpectedConditions.visibilityOf(btn_last), globalTimeout);
         browser.wait(EC.elementToBeClickable(btn_last.isEnabled()), globalTimeout);
         btn_last.click();
-
         browser.sleep(1000);
-        let expectedUrl = browser.baseUrl + '/demands';
 
-        browser.wait(EC.urlContains(expectedUrl), globalTimeout);
-        browser.wait(EC.urlIs(expectedUrl), globalTimeout);
-        expect(browser.getCurrentUrl()).toEqual(expectedUrl);
+        helper.check_current_url('/demands');
     }
 };

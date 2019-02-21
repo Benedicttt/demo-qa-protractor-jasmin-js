@@ -25,6 +25,22 @@ module.exports = {
         return element(by.id(id)).getAttribute(value);
     },
 
+    sign_and_paid_xpath: function(index, tag_name, name_column, name_title) {
+        let current_xpath = `*//*[@id='demands']//thead/tr/th[${index}]${tag_name}[contains(text(), \"${name_column}\")]/following::*//td[${index}]/a[@title=\"${name_title}\"]/child::*`
+
+        for_css.wait_xpath(current_xpath, globalTimeout);
+        return element.all(by.xpath(current_xpath)).get(0);
+    },
+
+    check_current_url: function(pathname) {
+        browser.getCurrentUrl().then(function(a){
+            let expectedUrl = browser.baseUrl + pathname;
+            let url = new Url(a);
+            expect(url['origin'] + url['pathname']).toEqual(expectedUrl);
+
+        });
+    },
+
     addCookie: function() {
         browser.get("/");
         browser.manage().deleteAllCookies();

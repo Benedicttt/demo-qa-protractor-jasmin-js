@@ -65,12 +65,12 @@ module.exports = {
                 element(by.id(`${key}`)).clear();
 
                 if (value === 'us') {
-                    console.log(`number service: ${helper.created_services("us")}`)
+                    console.log(`number service: ${helper.created_services("us")}`);
 
                     element(by.id(`${key}`)).sendKeys(helper.created_services("us"))
 
                 } else if (value === 'we') {
-                    console.log(`number service: ${helper.created_services("us")}`)
+                    console.log(`number service: ${helper.created_services("us")}`);
 
                     element(by.id(`${key}`)).sendKeys(services_ids.we.number)
 

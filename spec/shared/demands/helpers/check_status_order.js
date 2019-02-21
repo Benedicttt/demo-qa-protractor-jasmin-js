@@ -7,9 +7,7 @@ module.exports = {
         if (key === "check_statuses_service" && value === 'true') {
             //TODO: SERVICE
             it('sign service', () => {
-                let xpath_service = "*//th[@class='span1'][8][contains(text(), 'Услуга')]/following::*/td[11]/a[@title='Подписать']/child::*";
-                for_css.wait_xpath(xpath_service, globalTimeout);
-                element.all(by.xpath(xpath_service)).get(0).click();
+                helper.sign_and_paid_xpath(11, '', 'Услуга', 'Подписать').click();
                 browser.sleep(1000);
 
                 for_css.wait_xpath("//h3[contains(text(), \"Подпись услуги\")]", globalTimeout);
@@ -21,10 +19,8 @@ module.exports = {
 
         it('sign demand', () => {
             //TODO: SIGN
-            browser.sleep(1000)
-            for_css.wait_xpath("*//th[@class='span1'][9]/a[contains(text(), \"Подпись\")]/following::*//td[12]/a[@title=\"Подписать\"]/child::*", globalTimeout)
-            let sign_service = element.all(by.xpath("*//th[@class='span1'][9]/a[contains(text(), \"Подпись\")]/following::*//td[12]/a[@title=\"Подписать\"]/child::*")).get(0);
-            sign_service.click();
+            browser.sleep(1000);
+            helper.sign_and_paid_xpath(12, '/a', 'Подпись', 'Подписать').click();
 
             for_css.wait_xpath("//h3[contains(text(), \"Подпись заявки\")]", globalTimeout);
             element.all(by.css('.btn-primary')).get(0).click();
@@ -41,10 +37,7 @@ module.exports = {
         it('paid', () => {
             //TODO: PAID
             browser.sleep(1200);
-
-            for_css.wait_xpath('//*[@id="demands"]/tbody/tr[1]/td[13]/a', globalTimeout);
-            let icon_paid = element.all(by.xpath("*//th[@class='span1'][10]/a[contains(text(), \"Оплата\")]/following::*//td[13]/a[@title=\"Выставить на оплату\"]/parent::*/a")).get(0);
-            icon_paid.click();
+            helper.sign_and_paid_xpath(13, '/a', 'Оплата', 'Выставить на оплату').click();
 
             for_css.wait_xpath("//h3[contains(text(), \"Выставление заявки на оплату\")]", globalTimeout);
             tag_selector.selectOption("demand_payer_account_id", "Cashier")
