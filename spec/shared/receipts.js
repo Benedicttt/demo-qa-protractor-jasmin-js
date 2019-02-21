@@ -102,7 +102,8 @@ module.exports = {
         }
 
         it("click YES",  () => {
-            browser.sleep(1000)
+            browser.sleep(1000);
+
             let btn = element.all(by.css(".btn-primary")).get(0);
             let EC = protractor.ExpectedConditions;
 
@@ -113,9 +114,8 @@ module.exports = {
         });
 
         it("assert create current DDS",  () => {
+            browser.sleep(1000);
             helper.check_current_url('/fin_indicators/operations')
         });
-
-
     }
 };
