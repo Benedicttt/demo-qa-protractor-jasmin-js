@@ -104,6 +104,8 @@ module.exports = {
         });
 
         it("assert create current DDS",  () => {
+            browser.sleep(1000);
+            
             helper.check_current_url('/fin_indicators/operations')
         });
     },

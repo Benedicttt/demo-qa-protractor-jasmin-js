@@ -1,4 +1,4 @@
-describe('Finances conversions', () => {
+fdescribe('Finances conversions', () => {
     describe('case_1', () => {
         conversion_shared.run_test_case("case_1")
     });

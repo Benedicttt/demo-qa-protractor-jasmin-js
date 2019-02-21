@@ -108,7 +108,7 @@ module.exports = {
 
                                 elem.getAttribute('href').then(function (value) {
                                     let id = value.match(/\d+/g).slice(-1)[0];
-                                    console.log(`Find "${e.split(':').pop()}" ${query}${id}`)
+                                    console.log(`Check TRUE: ${current_obj.split(':')[0]} - "${e.split(':').pop()}" ${browser.baseUrl}${query}${id}`);
 
                                     expect(value).toEqual(browser.baseUrl + query + id);
                                 });
