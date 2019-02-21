@@ -103,7 +103,7 @@ conversion:
       - money_transfer_sender_account_id:   "RUR"
       - money_transfer_receiver_project_id: "Promotion"
 
-      - money_transfer_receiver_account_id: "RUR"
+      - money_transfer_receiver_account_id: "USD"
       - money_transfer_cc_project_id:       "Проект отправитель"
 
     checkbox: !!seq
