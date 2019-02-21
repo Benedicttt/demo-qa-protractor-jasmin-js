@@ -57,13 +57,8 @@ module.exports = {
 
         it("assert create current service",  () => {
             browser.sleep(1000)
-            let expectedUrl = browser.baseUrl + '/services';
-            let EC = browser.ExpectedConditions;
 
-            browser.wait(EC.urlContains(expectedUrl), globalTimeout);
-            browser.wait(EC.urlIs(expectedUrl), globalTimeout);
-
-            expect(browser.getCurrentUrl()).toEqual(expectedUrl);
+            helper.check_current_url('/services');
         });
 
         it('click `filter_all`', () => {

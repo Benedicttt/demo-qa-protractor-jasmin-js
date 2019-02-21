@@ -104,12 +104,7 @@ module.exports = {
         });
 
         it("assert create current DDS",  () => {
-            let expectedUrl = browser.baseUrl + '/fin_indicators/operations';
-            let EC = browser.ExpectedConditions;
-
-            browser.wait(EC.urlContains(expectedUrl), globalTimeout);
-            browser.wait(EC.urlIs(expectedUrl), globalTimeout);
-            expect(browser.getCurrentUrl()).toEqual(expectedUrl);
+            helper.check_current_url('/fin_indicators/operations')
         });
     },
 };
