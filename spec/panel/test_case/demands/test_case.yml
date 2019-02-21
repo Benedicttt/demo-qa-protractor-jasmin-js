@@ -397,9 +397,13 @@ demand:
         - demand_is_distributed:  0.5,Promotion; 0.3,Development; 0.2,Админ
         - click_buttons:          true
         - sign_is_distributed:    true
-#        - check_statuses_service: true
+        - check_statuses_service: false
         - check_popup:            true
         - check_notify:           false
+
+      check_data_popup_services: true
+      check_data_popup_demand:  true
+      check_data_popup_dds:     true
 
     case_8:
       selector: !!seq
@@ -433,6 +437,10 @@ demand:
         - demand_is_distributed:  0.425,Promotion; 0.375,Development; 0.2,Админ
         - click_buttons:          true
         - sign_is_distributed:    true
-#        - check_statuses_service: true
+        - check_statuses_service: false
         - check_popup:            true
         - check_notify:           false
+
+      check_data_popup_services: true
+      check_data_popup_demand:  true
+      check_data_popup_dds:     true

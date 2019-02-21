@@ -96,19 +96,25 @@ module.exports = {
 
             text_in_popup.getText().then(function (value) {
                 let arr = value[0].split('\n')
-
                 arr.map(function (current_obj) {
 
                     if (current_obj.split(':')[0] === type) {
+                        var list = current_obj.split(/,\s*/);
 
-                        let elem = element(by.xpath(`//span[@class=\"show_entities\"]/a[contains(text(), ${current_obj.split(':')[1]})]`));
+                        list.forEach(function(e) {
+                            if (current_obj.split(':')[0] === type) {
 
-                        elem.getAttribute('href').then(function (value) {
-                            let id = value.match(/\d+/g).slice(-1)[0];
-                            console.log(`Find "${current_obj.split(':')[0]}" ${query}${id}`)
+                                let elem = element(by.xpath(`//span[@class=\"show_entities\"]/a[contains(text(), ${e.split(':').pop()})]`));
 
-                            expect(value).toEqual(browser.baseUrl + query + id);
+                                elem.getAttribute('href').then(function (value) {
+                                    let id = value.match(/\d+/g).slice(-1)[0];
+                                    console.log(`Find "${e.split(':').pop()}" ${query}${id}`)
+
+                                    expect(value).toEqual(browser.baseUrl + query + id);
+                                });
+                            }
                         });
+
                     }
 
                 });
@@ -129,10 +135,9 @@ module.exports = {
             for_css.wait_css(".btn-group .icon-info-sign", globalTimeout);
             let current_popup = element.all(by.css(".btn-group i.icon-info-sign")).get(0)
             current_popup.click();
+
             expect(current_popup.isDisplayed()).toBeTruthy();
-
             for_css.wait_css(".popover-title", globalTimeout, 0)
-
         });
 
         //TODO: DDS
@@ -159,6 +164,10 @@ module.exports = {
 
         if (type[`${name_case}`].check_data_popup_service ===  true) {
             helper.get_and_check_document("Услуга", "/services/highlight_service?service_id=")
+        }
+
+        if (type[`${name_case}`].check_data_popup_services ===  true) {
+            helper.get_and_check_document("Услуги", "/services/highlight_service?service_id=")
         }
 
         //TODO: DEMANDS
