@@ -35,7 +35,6 @@ module.exports = {
                     if( text === search_text ) {
                        action === 'click' ? selectors.get(index_elem).click() : '';
                     }
-
                 })
             };
         });
@@ -58,7 +57,10 @@ module.exports = {
 
                         if (reg.test(text)) {
                             desiredOption = option;
+                        } else {
+                            console.log('fuck!')
                         }
+
                     });
                 });
             })
