@@ -1,5 +1,5 @@
 module.exports = {
-   wait_id_select: function(id, ms){
+    wait_id_select: function(id, ms){
         let until = protractor.ExpectedConditions;
         elem = element(by.id(id)).all(by.tagName('option'));
         browser.wait(until.presenceOf(elem), ms, 'Element taking too long to appear in the DOM');
@@ -66,7 +66,18 @@ module.exports = {
                 if(desiredOption) {
                     desiredOption.click();
                 }
-            });
+
+                desiredOption.getText().then(function (text) {
+                    console.log("\tSelected: [ " + text + " ]")
+                });
+            }
+
+
+        );
+
+
+
     }
+
 };
 

@@ -234,6 +234,10 @@ exports.config = {
             "spec/panel/regression/demands/return.js",
             "spec/panel/regression/demands/service.js"
         ],
+        finances: [
+            "spec/panel/regression/finances_operations/conversion.js",
+            // "spec/panel/regression/finances_operations/receipts.js"
+        ],
 
         demands_returns: [
             "spec/panel/regression/demands/return.js"
