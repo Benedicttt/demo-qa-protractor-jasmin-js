@@ -47,7 +47,7 @@ module.exports = {
         let selectList, desiredOption;
 
         selectList = element(by.id(selector));
-        browser.sleep(100);
+        browser.sleep(200);
 
         selectList.all(protractor.By.tagName('option'))
             .then(function (options) {
@@ -55,10 +55,8 @@ module.exports = {
                     option.getText().then(function (text) {
                         let reg = new RegExp(item)
 
-                        if (reg.test(text)) {
+                        if (reg.test(text) === true) {
                             desiredOption = option;
-                        } else {
-                            console.log('fuck!')
                         }
 
                     });

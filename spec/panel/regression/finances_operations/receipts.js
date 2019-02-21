@@ -1,5 +1,5 @@
 describe('Finances receipties', () => {
-    fdescribe('case_1', () => {
+    describe('case_1', () => {
         receipts_shared.run_test_case("case_1")
     });
 
