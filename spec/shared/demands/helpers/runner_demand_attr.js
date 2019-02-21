@@ -43,6 +43,7 @@ module.exports = {
 
                     //TODO: AMORTIZATION
                     if (key === "add_inventory" && value === 'true') {
+                        browser.sleep(500);
                         helper.sign_and_paid_xpath(11, '', 'Услуга', 'Задать процент амортизации').click();
 
                         for_css.wait_xpath("//h3[contains(text(), \"Число периодов амортизации имущества\")]", globalTimeout);
