@@ -14,5 +14,9 @@ describe('Finances conversions', () => {
     describe('case_4', () => {
         conversion_shared.run_test_case("case_4")
     });
+
+    describe('case_5', () => {
+        conversion_shared.run_test_case("case_5")
+    });
 });
 
