@@ -10,7 +10,7 @@
         },
         "real_rub": {
           "kind_id": "Реальный",
-          "currency_id": "RUB",
+          "currency_id": "RUR",
           "name": "Cashier real",
           "number": "4857 5494 9849 8499"
         },
@@ -28,7 +28,7 @@
         },
         "virtual_rub": {
           "kind_id": "Виртуальный",
-          "currency_id": "RUB",
+          "currency_id": "RUR",
           "name": "Cashier virtual",
           "number": "4857 5494 9849 8411"
         },
@@ -54,7 +54,7 @@
         },
         "real_rub": {
           "kind_id": "Реальный",
-          "currency_id": "RUB",
+          "currency_id": "RUR",
           "name": "Cashier real",
           "number": "4857 5494 9849 8499"
         },
@@ -72,7 +72,7 @@
         },
         "virtual_rub": {
           "kind_id": "Виртуальный",
-          "currency_id": "RUB",
+          "currency_id": "RUR",
           "name": "Cashier virtual",
           "number": "4857 5494 9849 8411"
         },
@@ -92,7 +92,7 @@
         },
         "real_rub": {
           "kind_id": "Реальный",
-          "currency_id": "RUB",
+          "currency_id": "RUR",
           "name": "Cashier real",
           "number": "4857 5494 9849 8499"
         },
@@ -110,7 +110,7 @@
         },
         "virtual_rub": {
           "kind_id": "Виртуальный",
-          "currency_id": "RUB",
+          "currency_id": "RUR",
           "name": "Cashier virtual",
           "number": "4857 5494 9849 8411"
         },
@@ -124,12 +124,12 @@
     }
   },
   "user": {
-    "email": "spok_JIuyhmBBGB@gmail.com",
+    "email": "spok_DzTHlQFrjJ@gmail.com",
     "password": "123456"
   },
   "cookie": {
     "name": "_session_id",
-    "value": "4818e279c40c84522798f02912468a87"
+    "value": "75916c1c9c4f825f5f7587dd196b0112"
   },
   "case_1": {
     "employee": {

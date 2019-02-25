@@ -203,7 +203,7 @@ conversion:
   case_4:
     selector: !!seq
       - money_transfer_sender_project_id:   "Админ"
-      - money_transfer_sender_account_id:   "GFGGGF"
+      - money_transfer_sender_account_id:   "EUR"
       - money_transfer_receiver_project_id: "Админ"
       - money_transfer_receiver_account_id: "USD"
       - money_transfer_cc_project_id:       "Проект отправитель"

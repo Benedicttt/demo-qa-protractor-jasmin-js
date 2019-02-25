@@ -334,7 +334,7 @@ demand:
     case_6:
       selector: !!seq
         - demand_project_id:          "Админ"
-        - demand_account_id:          "virtual"
+        - demand_account_id:          "Евро"
         - demand_contractor_type_id:  " Подотчетник"
         - demand_contractor_id:       "Фамилия"
         - demand_expenditure_type_id: " Арендные платежи"
@@ -368,7 +368,7 @@ demand:
     case_7:
       selector: !!seq
         - demand_project_id:          "Админ"
-        - demand_account_id:          "virtual"
+        - demand_account_id:          "Евро"
         - demand_contractor_type_id:  " Покупатель"
         - demand_contractor_id:       " Контекст"
         - demand_expenditure_type_id: " Арендные платежи"
@@ -408,7 +408,7 @@ demand:
     case_8:
       selector: !!seq
         - demand_project_id:          "Админ"
-        - demand_account_id:          "virtual"
+        - demand_account_id:          "Евро"
         - demand_contractor_type_id:  " Покупатель"
         - demand_contractor_id:       " Контекст"
         - demand_expenditure_type_id: " Арендные платежи"

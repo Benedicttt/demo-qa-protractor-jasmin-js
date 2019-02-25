@@ -38,28 +38,24 @@ module.exports = {
                 })
             };
         });
-
-
     },
 
     selectOption: function (selector, item) {
-        tag_selector.wait_id_select(selector, globalTimeout + 1000);
+        tag_selector.wait_id_select(selector, globalTimeout);
         let selectList, desiredOption;
         let reg = new RegExp(item);
 
         selectList = element(by.id(selector));
-        browser.sleep(200);
 
-        selectList.all(protractor.By.tagName('option'))
-            .then(function (options) {
-                options.some(function (option) {
-                    option.getText().then(function (text) {
+        selectList.all(protractor.By.tagName('option')).then(function (options) {
+            options.some(function (option) {
+                option.getText().then(function (text) {
 
                         if (reg.test(text) === true) {
                             desiredOption = option;
                         }
-
                     });
+
                 });
             })
             .then(function () {
@@ -70,14 +66,8 @@ module.exports = {
                 desiredOption.getText().then(function (text) {
                     console.log("\tSelected: [ " + text + " ]")
                 });
-            }
-
-
-        );
-
-
+            })
 
     }
-
 };
 
