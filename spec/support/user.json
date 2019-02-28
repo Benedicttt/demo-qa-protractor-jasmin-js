@@ -43,7 +43,19 @@
         "real_EUR": {},
         "virtual_USD": {},
         "virtual_RUB": {},
-        "virtual_EUR": {}
+        "virtual_EUR": {},
+        "real_rub2": {
+          "kind_id": "Реальный",
+          "currency_id": "Безналичный рубль",
+          "name": "Cashier real",
+          "number": "4857 5494 9849 8499"
+        },
+        "virtual_rub2": {
+          "kind_id": "Виртуальный",
+          "currency_id": "Безналичный рубль",
+          "name": "Cashier virtual",
+          "number": "4857 5494 9849 8411"
+        }
       },
       "Promotion": {
         "real_usd": {
@@ -81,6 +93,18 @@
           "currency_id": "EUR",
           "name": "Cashier virtual",
           "number": "4857 5494 9849 8423"
+        },
+        "real_rub2": {
+          "kind_id": "Реальный",
+          "currency_id": "Безналичный рубль",
+          "name": "Cashier real",
+          "number": "4857 5494 9849 8499"
+        },
+        "virtual_rub2": {
+          "kind_id": "Виртуальный",
+          "currency_id": "Безналичный рубль",
+          "name": "Cashier virtual",
+          "number": "4857 5494 9849 8411"
         }
       },
       "Development": {
@@ -119,17 +143,29 @@
           "currency_id": "EUR",
           "name": "Cashier virtual",
           "number": "4857 5494 9849 8423"
+        },
+        "real_rub2": {
+          "kind_id": "Реальный",
+          "currency_id": "Безналичный рубль",
+          "name": "Cashier real",
+          "number": "4857 5494 9849 8499"
+        },
+        "virtual_rub2": {
+          "kind_id": "Виртуальный",
+          "currency_id": "Безналичный рубль",
+          "name": "Cashier virtual",
+          "number": "4857 5494 9849 8411"
         }
       }
     }
   },
   "user": {
-    "email": "spok_DzTHlQFrjJ@gmail.com",
+    "email": "spok_wHGILRVszo@gmail.com",
     "password": "123456"
   },
   "cookie": {
     "name": "_session_id",
-    "value": "75916c1c9c4f825f5f7587dd196b0112"
+    "value": "2d0ec7c4c2e4e41d3aee9741392d7c69"
   },
   "case_1": {
     "employee": {
