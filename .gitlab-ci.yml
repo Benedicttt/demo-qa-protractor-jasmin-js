@@ -45,7 +45,7 @@ application image:
 
   only:
     refs:
-      - triggers
+      - master
 
   artifacts:
     paths:
@@ -58,7 +58,7 @@ application image:
 smoke_test:
   extends: .smoke
   only:
-    - triggers
+    - tags
 
 smoke_test_triggers:
   extends: .smoke
