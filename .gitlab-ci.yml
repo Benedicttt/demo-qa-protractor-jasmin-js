@@ -58,7 +58,7 @@ application image:
 smoke_test:
   extends: .smoke
   only:
-    - master
+    - triggers
 
 smoke_test_triggers:
   extends: .smoke
@@ -66,10 +66,10 @@ smoke_test_triggers:
 pages:
   stage: report
   tags:
+    - master
     - test-finances-docker
 
   only:
-#    - master
     - triggers
 
   script:
