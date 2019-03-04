@@ -1,8 +1,8 @@
 employee:
   case_1:
     selector: !!seq
-      - employee_project_id:            "Админ"
-      - employee_payer_project_id:      "Админ"
+      - employee_project_id:            "Promotion"
+      - employee_payer_project_id:      "Promotion"
       - employee_expenditure_id:        "Зарплата"
       - employee_payer_pointer:         "со счета ePayment USD"
       - employee_payer_cash_project_id: "Админ"

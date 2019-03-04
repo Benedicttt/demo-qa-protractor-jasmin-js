@@ -226,6 +226,10 @@ exports.config = {
             "spec/panel/preconditions/services/we.js"
         ],
 
+        employee: [
+            "spec/panel/preconditions/employee.js"
+        ],
+
         regression: [
             "spec/panel/regression/**/*.js"
         ],

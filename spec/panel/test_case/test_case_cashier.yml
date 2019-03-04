@@ -29,7 +29,7 @@ project:
   real_rub2:
     selector: !!seq
       - account_kind_id: "Реальный"
-      - account_currency_id: "Безналичный рубль"
+      - account_currency_id: "Безналичн"
 
     input: !!seq
       - account_name:   "Cashier real"
@@ -56,7 +56,7 @@ project:
   virtual_rub2:
     selector: !!seq
       - account_kind_id: "Виртуальный"
-      - account_currency_id: "Безналичный рубль"
+      - account_currency_id: "Безналичн"
 
     input: !!seq
       - account_name:   "Cashier virtual"

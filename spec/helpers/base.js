@@ -26,9 +26,10 @@ module.exports = {
     },
 
     sign_and_paid_xpath: function(index, tag_name, name_column, name_title) {
-        let current_xpath = `*//*[@id='demands']//thead/tr/th[${index}]${tag_name}[contains(text(), \"${name_column}\")]/following::*//td[${index}]/a[@title=\"${name_title}\"]/child::*`
+        let current_xpath = `*//*[@id='demands']//thead/tr/th[${index}]${tag_name}[contains(text(), \"${name_column}\")]/following::*//td[${index}]/a[@title=\"${name_title}\"]/child::*`;
 
         for_css.wait_xpath(current_xpath, globalTimeout);
+        browser.sleep(500);
         return element.all(by.xpath(current_xpath)).get(0);
     },
 

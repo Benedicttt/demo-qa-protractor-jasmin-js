@@ -46,13 +46,13 @@
         "virtual_EUR": {},
         "real_rub2": {
           "kind_id": "Реальный",
-          "currency_id": "Безналичный рубль",
+          "currency_id": "Безналичн",
           "name": "Cashier real",
           "number": "4857 5494 9849 8499"
         },
         "virtual_rub2": {
           "kind_id": "Виртуальный",
-          "currency_id": "Безналичный рубль",
+          "currency_id": "Безналичн",
           "name": "Cashier virtual",
           "number": "4857 5494 9849 8411"
         }
@@ -96,13 +96,13 @@
         },
         "real_rub2": {
           "kind_id": "Реальный",
-          "currency_id": "Безналичный рубль",
+          "currency_id": "Безналичн",
           "name": "Cashier real",
           "number": "4857 5494 9849 8499"
         },
         "virtual_rub2": {
           "kind_id": "Виртуальный",
-          "currency_id": "Безналичный рубль",
+          "currency_id": "Безналичн",
           "name": "Cashier virtual",
           "number": "4857 5494 9849 8411"
         }
@@ -146,13 +146,13 @@
         },
         "real_rub2": {
           "kind_id": "Реальный",
-          "currency_id": "Безналичный рубль",
+          "currency_id": "Безналичн",
           "name": "Cashier real",
           "number": "4857 5494 9849 8499"
         },
         "virtual_rub2": {
           "kind_id": "Виртуальный",
-          "currency_id": "Безналичный рубль",
+          "currency_id": "Безналичн",
           "name": "Cashier virtual",
           "number": "4857 5494 9849 8411"
         }
@@ -160,12 +160,12 @@
     }
   },
   "user": {
-    "email": "spok_wHGILRVszo@gmail.com",
+    "email": "spok_PMomVwrzcV@gmail.com",
     "password": "123456"
   },
   "cookie": {
     "name": "_session_id",
-    "value": "2d0ec7c4c2e4e41d3aee9741392d7c69"
+    "value": "7b4405f1583d5dea78aa91fab9bd10a4"
   },
   "case_1": {
     "employee": {
