@@ -34,6 +34,8 @@ module.exports = {
     },
 
     check_current_url: function(pathname) {
+        browser.sleep(500);
+
         browser.getCurrentUrl().then(function(a){
             let expectedUrl = browser.baseUrl + pathname;
             let url = new Url(a);
