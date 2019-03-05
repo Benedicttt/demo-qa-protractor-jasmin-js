@@ -44,7 +44,7 @@ application image:
     - allure generate allure-results -o public --clean
 
   only:
-    - triggers
+    - tags
 
   artifacts:
     paths:
@@ -57,7 +57,7 @@ application image:
 smoke_test:
   extends: .smoke
   only:
-    - tags
+    - triggers
 
 smoke_test_triggers:
   extends: .smoke
@@ -69,7 +69,7 @@ pages:
     - test-finances-docker
 
   only:
-    - tags
+    - triggers
 
   script:
     - ""
