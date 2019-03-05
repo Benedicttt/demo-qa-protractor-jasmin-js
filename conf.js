@@ -120,7 +120,7 @@ exports.config = {
     },
     splitTestsBetweenCapabilities: true,
     allScriptsTimeout: 100000,
-    getPageTimeout: 12000,
+    getPageTimeout: 1000,
 
     files: [
         'node_modules/jquery/dist/jquery.js',
