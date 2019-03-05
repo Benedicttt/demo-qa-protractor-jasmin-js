@@ -43,6 +43,10 @@ application image:
   after_script:
     - allure generate allure-results -o public --clean
 
+  only:
+    refs:
+      - master
+
   artifacts:
     paths:
       - public
