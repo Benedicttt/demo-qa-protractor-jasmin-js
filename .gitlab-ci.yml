@@ -60,9 +60,6 @@ smoke_test:
   only:
     - master
 
-smoke_test_triggers:
-  extends: .smoke
-
 pages:
   stage: report
   tags:
