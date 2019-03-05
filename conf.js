@@ -192,7 +192,7 @@ exports.config = {
         create_user: [
             "spec/panel/preconditions/sign_up.js",
             "spec/panel/preconditions/home_page.js",
-            "spec/panel/preconditions/sign_in.js",
+            "spec/panel/preconditions/sign_in.js"
         ],
 
         create_users: [
@@ -209,7 +209,6 @@ exports.config = {
         ],
 
         create_services: [
-            "spec/panel/preconditions/employee.js",
             "spec/panel/preconditions/services/us.js",
             "spec/panel/preconditions/services/we.js"
         ],
