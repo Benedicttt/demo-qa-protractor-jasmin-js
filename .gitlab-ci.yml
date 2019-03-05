@@ -45,7 +45,7 @@ application image:
 
   only:
     refs:
-      - master
+#      - master
       - triggers
 
   artifacts:
@@ -70,7 +70,7 @@ pages:
     - test-finances-docker
 
   only:
-    - master
+#    - master
     - triggers
 
   script:
