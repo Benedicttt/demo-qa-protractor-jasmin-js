@@ -62,9 +62,6 @@ smoke_test:
     - master
     - triggers
 
-  except:
-    - branches
-
 smoke_test_triggers:
   extends: .smoke
 
@@ -76,9 +73,6 @@ pages:
   only:
     - master
     - triggers
-
-  except:
-    - branches
 
   script:
     - ""
