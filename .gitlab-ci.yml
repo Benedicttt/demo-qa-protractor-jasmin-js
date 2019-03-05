@@ -44,6 +44,7 @@ application image:
     - allure generate allure-results -o public --clean
 
   only:
+    - master
     - triggers
 
   artifacts:
