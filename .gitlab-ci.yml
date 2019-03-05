@@ -38,15 +38,14 @@ application image:
 
   script:
     - npm cache clear --force
-    - /node_modules/protractor/bin/protractor conf.js --browser chrome --continue-on-error --disableChecks --capabilities.chromeOptions.args window-size=1920,1080 --suite create_user --capabilities.chromeOptions.args headless
-#    - /node_modules/protractor/bin/protractor conf.js --browser chrome --continue-on-error --disableChecks --capabilities.chromeOptions.args window-size=1920,1080 --suite create_user,add_accesses,create_services,regression --capabilities.chromeOptions.args headless
+    - /node_modules/protractor/bin/protractor conf.js --browser chrome --continue-on-error --disableChecks --capabilities.chromeOptions.args window-size=1920,1080 --suite create_user,add_accesses,create_services,cashier,regression --capabilities.chromeOptions.args headless
 
   after_script:
     - allure generate allure-results -o public --clean
 
   only:
     refs:
-      - triggers
+      - master
 
   artifacts:
     paths:
@@ -59,7 +58,7 @@ application image:
 smoke_test:
   extends: .smoke
   only:
-    - triggers
+    - tags
 
 smoke_test_triggers:
   extends: .smoke
@@ -67,10 +66,11 @@ smoke_test_triggers:
 pages:
   stage: report
   tags:
+    - master
     - test-finances-docker
 
   only:
-    - triggers
+    - tags
 
   script:
     - ""
