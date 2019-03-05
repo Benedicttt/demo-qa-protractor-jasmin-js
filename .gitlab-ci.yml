@@ -45,8 +45,8 @@ application image:
 
   only:
     refs:
-#      - master
-      - triggers
+      - master
+#      - triggers
 
   artifacts:
     paths:
@@ -59,8 +59,8 @@ application image:
 smoke_test:
   extends: .smoke
   only:
-#    - master
-    - triggers
+    - master
+#    - triggers
 
 smoke_test_triggers:
   extends: .smoke
@@ -71,8 +71,8 @@ pages:
     - test-finances-docker
 
   only:
-#    - master
-    - triggers
+    - master
+#    - triggers
 
   script:
     - ""
