@@ -44,7 +44,7 @@ application image:
     - allure generate allure-results -o public --clean
 
   only:
-    - tags
+    - trigger
 
   artifacts:
     paths:
