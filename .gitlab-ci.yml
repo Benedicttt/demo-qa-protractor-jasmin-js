@@ -58,7 +58,6 @@ application image:
 smoke_test:
   extends: .smoke
   only:
-    - master
     - triggers
 
 smoke_test_triggers:
