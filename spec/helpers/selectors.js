@@ -41,13 +41,15 @@ module.exports = {
     },
 
     selectOption: function (selector, item) {
-        tag_selector.wait_id_select(selector, globalTimeout);
         let selectList, desiredOption;
         let reg = new RegExp(item);
 
+        tag_selector.wait_id_select(selector, globalTimeout);
         selectList = element(by.id(selector));
 
         selectList.all(protractor.By.tagName('option')).then(function (options) {
+            browser.sleep(200);
+
             options.some(function (option) {
                 option.getText().then(function (text) {
 

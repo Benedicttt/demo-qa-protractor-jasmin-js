@@ -45,6 +45,7 @@ application image:
 
   only:
     refs:
+      - master
       - triggers
 
   artifacts:

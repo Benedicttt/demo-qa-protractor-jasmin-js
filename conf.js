@@ -240,7 +240,7 @@ exports.config = {
         ],
         finances: [
             "spec/panel/regression/finances_operations/conversion.js",
-            // "spec/panel/regression/finances_operations/receipts.js"
+            "spec/panel/regression/finances_operations/receipts.js"
         ],
 
         demands_returns: [
