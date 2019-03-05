@@ -70,6 +70,7 @@ pages:
     - test-finances-docker
 
   only:
+    - master
     - triggers
 
   script:
