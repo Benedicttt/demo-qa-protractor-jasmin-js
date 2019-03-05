@@ -44,7 +44,6 @@ application image:
     - allure generate allure-results -o public --clean
 
   only:
-    - master
     - triggers
 
   artifacts:
@@ -61,6 +60,9 @@ smoke_test:
     - master
     - triggers
 
+  except:
+    - branches
+
 smoke_test_triggers:
   extends: .smoke
 
@@ -72,6 +74,9 @@ pages:
   only:
     - master
     - triggers
+
+  except:
+    - branches
 
   script:
     - ""
