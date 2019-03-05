@@ -59,7 +59,8 @@ application image:
 smoke_test:
   extends: .smoke
   only:
-    - master
+#    - master
+    - triggers
 
 smoke_test_triggers:
   extends: .smoke
@@ -79,5 +80,5 @@ pages:
   artifacts:
     paths:
       - public
-    expire_in: 1 day 
-  
+    expire_in: 1 day
+
