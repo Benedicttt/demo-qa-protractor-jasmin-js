@@ -43,9 +43,9 @@ application image:
   after_script:
     - allure generate allure-results -o public --clean
 
-  expect:
-    refs:
-      - triggers
+  only:
+    - master
+    - triggers
 
   artifacts:
     paths:
@@ -57,7 +57,7 @@ application image:
 
 smoke_test:
   extends: .smoke
-  expect:
+  only:
     - master
     - triggers
 
@@ -69,7 +69,7 @@ pages:
   tags:
     - test-finances-docker
 
-  expect:
+  only:
     - master
     - triggers
 
