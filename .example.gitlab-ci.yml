@@ -1,83 +1,23 @@
-stages:
-  - pre-build
-  - build
-  - tests
-  - report
-
-base image:
-  stage: pre-build
+test:
+  image: "node:8"
   tags:
-    - test-finances-shell
-
-  script:
-    - docker build --tag selenium:base .docker/Base
-    - docker build --tag selenium:nodebase .docker/NodeBase
-    - docker build --tag selenium:nodechrome .docker/NodeChrome
-  when: manual
-
-application image:
-  stage: build
-  tags:
-    - test-finances-shell
-
-  script:
-    - docker build --tag application:latest --file .docker/application.Dockerfile .
-  when: manual
-
-.smoke:
-  stage: tests
-  image: application:latest
+    - docker
   services:
-    - selenium:nodechrome
-  tags:
-    - test-finances-docker
+    - vexorio/postgres:10-ip4r
+
 
   variables:
-    APP_HOST: 'https://test-finances.404-group.info'
-    DIRECT_CONNECT: 'false'
+    POSTGRES_DB: finances_main
+    POSTGRES_USER: finances_user_main
+    POSTGRES_PASSWORD: "password"
+    CI_SCHEMA_REPOSITORY: /tmp/ci_schema_repository
+
+
+  before_script:
+    - apk add --no-cache postgresql-dev postgresql-client openssh build-base git make nodejs sqlite sqlite-dev imagemagick tzdata \
+      curl -sL https://deb.nodesource.com/setup_8.x | sudo bash - \
+      sudo apt-get install -y nodejs
 
   script:
-    - npm cache clear --force
-    - /node_modules/protractor/bin/protractor conf.js --browser chrome --continue-on-error --disableChecks --capabilities.chromeOptions.args window-size=1920,1080 --suite create_user,add_accesses,create_services,regression --capabilities.chromeOptions.args headless
-
-  after_script:
-    - allure generate allure-results -o public --clean
-
-  only:
-    refs:
-#      - master
-      - triggers
-
-  artifacts:
-    paths:
-      - public
-    expire_in: 1 day
-    when: always
-
-  allow_failure: yes
-
-smoke_test:
-  extends: .smoke
-  only:
-    - master
-
-smoke_test_triggers:
-  extends: .smoke
-
-pages:
-  stage: report
-  tags:
-    - test-finances-docker
-
-  only:
-#    - master
-    - triggers
-
-  script:
-    - ""
-
-  artifacts:
-    paths:
-      - public
-    expire_in: 1 day 
-  
+    - bash
+a
