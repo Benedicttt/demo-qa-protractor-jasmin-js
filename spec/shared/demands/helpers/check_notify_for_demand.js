@@ -3,6 +3,7 @@ module.exports = {
         browser.sleep(1000);
 
         let notify = element.all(by.css('#queue_regular_payment_notification > span > a'));
+
         expect(notify.get(0).isPresent()).toBe(true);
 
         notify.count().then(function (n) {
