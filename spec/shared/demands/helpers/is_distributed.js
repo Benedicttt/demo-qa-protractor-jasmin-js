@@ -1,5 +1,7 @@
 module.exports = {
     call: function(arr) {
+        browser.sleep(300);
+
         for_css.wait_id('demand_is_distributed', globalTimeout);
         element(by.id('demand_is_distributed')).click();
 

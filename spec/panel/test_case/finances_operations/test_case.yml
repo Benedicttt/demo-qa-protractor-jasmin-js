@@ -116,7 +116,7 @@ conversion:
       - money_transfer_commission: 1000
       - money_transfer_comment: "conversion case_1"
 
-    click_accept_NDS: true
+    click_accept_NDS: false
     fill_nds_form: true
     nds_form:
       checkbox: !!seq
@@ -154,7 +154,7 @@ conversion:
       - money_transfer_commission: 1000
       - money_transfer_comment: "conversion case_2"
 
-    click_accept_NDS: true
+    click_accept_NDS: false
     fill_nds_form:    false
 
     check_data_popup_dds:                          true
@@ -181,7 +181,7 @@ conversion:
       - money_transfer_commission: 1000
       - money_transfer_comment: "conversion case_3"
 
-    click_accept_NDS: true
+    click_accept_NDS: false
     fill_nds_form: true
     nds_form:
       checkbox: !!seq
