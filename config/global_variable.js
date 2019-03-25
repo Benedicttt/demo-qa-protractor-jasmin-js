@@ -10,8 +10,8 @@ module.exports = {
     call: function() {
 
         global.getRandomString = getRandomString;
-        global.admin           = 'admin@local.host';
-        // global.admin           = 'admin@404-group.info';
+        // global.admin           = 'admin@local.host';
+        global.admin           = 'admin@404-group.info';
         global.id_email        = 'user_email';
         global.id_pass         = 'user_password';
         global.id_pass_conf    = 'user_password_confirmation';
@@ -23,7 +23,7 @@ module.exports = {
         global.setting         = setting;
         global.form            = form;
         global.page            = page;
-        global.fs              = fs
+        global.fs              = fs;
 
         global.editJsonFile  = require("edit-json-file");
         global.Url           = require('url-parse');
