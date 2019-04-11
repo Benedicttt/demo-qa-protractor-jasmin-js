@@ -68,5 +68,6 @@ describe('Sign up', function() {
             element(by.cssContainingText("#exit", 'Выход')).click();
             expect(alert_success.get(0).getText()).toEqual(exit_success);
         });
+
     });
 });
