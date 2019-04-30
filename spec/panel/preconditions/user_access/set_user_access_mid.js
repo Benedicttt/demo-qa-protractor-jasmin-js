@@ -6,7 +6,7 @@ describe('Set mid access in user  on `Заявки`', () => {
     });
 
     it('check menu in header', () =>{
-        let equal = [ 'Б.СПОК', 'Заявки', helper.user_email_last().toLowerCase(), '', '', 'a.petrov@404-group.com' ]
+        let equal = [ 'СПОК', 'Заявки', helper.user_email_last().toLowerCase(), '', '', 'a.petrov@404-group.com' ]
 
         for_css.wait_css("a", globalTimeout);
 

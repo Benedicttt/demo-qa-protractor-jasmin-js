@@ -10,7 +10,7 @@ describe('Home page', function() {
     it("should have a logo", function () {
         let logo = element(by.css('.brand > b')).getText();
 
-        expect(logo).toEqual('Б.СПОК');
+        expect(logo).toEqual('СПОК');
     });
 
     it('should have a link sign_in', function () {
