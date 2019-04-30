@@ -16,10 +16,22 @@ module.exports = {
             let key = `${Object.keys(id)[0]}`;
 
             Object.values(id)[0].map(function (val) {
-                it(`{ ${key}: ${val} }`, () => {
-                    browser.sleep(500);
-                    tag_selector.selectOption(key, val);
-                })
+                if (Object.keys(val)[0] === "0" ) {
+
+                    it(`{ ${key}: ${val} }`, () => {
+                        browser.sleep(500);
+                        tag_selector.selectOption(key, val);
+                    })
+
+                } else {
+
+                    it(`{ ${key}: ${Object.keys(val)[0]} }`, () => {
+                        console.log(Object.keys(val)[0])
+                        browser.sleep(500);
+                        tag_selector.selectOption(key, Object.keys(val)[0]);
+                    })
+                }
+
             })
         });
     }

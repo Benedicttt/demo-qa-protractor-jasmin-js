@@ -4,7 +4,11 @@ services:
       - service_service_source_id: !!seq
          - "Нам"
          - "Мы"
-#      - service_project_id:         [ Админ Ломе ]
-#      - service_contractor_type_id: [ Покупатель ]
-#      - service_contractor_id:      [ L1 ]
-#      - service_nomenclature_id:    [ Административные услуги ]
+      - service_project_id: !!seq
+         - "Админ"
+         - "Ломе"
+      - service_contractor_type_id: !!seq
+         - "Покупатель":
+            - service_contractor_id: "E1.RU"
+         - "--  На имущество":
+            - service_contractor_id: "P1"
