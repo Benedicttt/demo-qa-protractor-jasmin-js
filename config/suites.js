@@ -75,5 +75,9 @@ module.exports = {
         check_user_access:
     [
         "../spec/panel/preconditions/user_access/set_user_access_mid.js"
+    ],
+        testing_selectors:
+    [
+        "../spec/panel/regression/testing_selector_ajax.js"
     ]
 }

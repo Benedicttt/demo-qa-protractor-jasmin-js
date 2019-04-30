@@ -33,19 +33,20 @@ module.exports = {
         global.set    = helper.runner;
         global.action = helper.runner;
 
-        global.outputFilename          = '../spec/support/';
-        global.tag_selector            = require('../spec/helpers/selectors.js');;
-        global.for_css                 = require('../spec/helpers/css_selectors.js');
-        global.user_object             = require('../spec/panel/page_object/user.js');
-        global.demands_services_shared = require('../spec/shared/demands/services.js');
-        global.demands_return_shared   = require('../spec/shared/demands/return.js');
-        global.services_shared         = require('../spec/shared/services.js');
-        global.receipts_shared         = require('../spec/shared/receipts.js');
-        global.conversion_shared       = require('../spec/shared/conversion.js');
-        global.user_shared             = require('../spec/shared/user.js');
-        global.salary_shared           = require('../spec/shared/salary.js');
-        global.employee_shared         = require('../spec/shared/employee.js');
-        global.cashier_shared          = require('../spec/shared/cashier.js')
+        global.outputFilename           = '../spec/support/';
+        global.tag_selector             = require('../spec/helpers/selectors.js');;
+        global.for_css                  = require('../spec/helpers/css_selectors.js');
+        global.user_object              = require('../spec/panel/page_object/user.js');
+        global.demands_services_shared  = require('../spec/shared/demands/services.js');
+        global.demands_return_shared    = require('../spec/shared/demands/return.js');
+        global.services_shared          = require('../spec/shared/services.js');
+        global.receipts_shared          = require('../spec/shared/receipts.js');
+        global.conversion_shared        = require('../spec/shared/conversion.js');
+        global.user_shared              = require('../spec/shared/user.js');
+        global.salary_shared            = require('../spec/shared/salary.js');
+        global.employee_shared          = require('../spec/shared/employee.js');
+        global.cashier_shared           = require('../spec/shared/cashier.js');
+        global.testing_selectors_shared = require('../spec/shared/testing_selectors.js');
     }
 };
 

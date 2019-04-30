@@ -1,0 +1,8 @@
+services:
+  new:
+    selector: !!seq
+      - service_service_source_id: "Мы"
+      - service_project_id: "Админ"
+      - service_contractor_type_id: " Покупатель"
+      - service_contractor_id:  " L1"
+      - service_nomenclature_id: " Административные услуги"
