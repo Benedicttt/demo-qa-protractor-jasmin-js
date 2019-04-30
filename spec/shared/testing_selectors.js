@@ -7,11 +7,10 @@ module.exports = {
     run_test_case: function(name_case, subject, type) {
         it(`Go to page and check title ${page[subject].title}`,  () => {
             user_object.authorization(helper.user_email_last());
-
             go(page[subject].new.get);
         });
+
         scenarios[subject][type][name_case].selector.map(function (id) {
-            let value = `${Object.values(id)[0]}`;
             let key = `${Object.keys(id)[0]}`;
 
             Object.values(id)[0].map(function (val) {
@@ -24,18 +23,19 @@ module.exports = {
 
                 } else {
 
+                    let obj = Object.values(val)[0];
+                    let id = Object.keys(obj)[0];
+                    let value = Object.values(obj)[0];
+
                     it(`{ ${type + "_" + key}: ${Object.keys(val)[0]} }`, () => {
                         browser.sleep(500);
                         tag_selector.selectOption(type + "_" + key, Object.keys(val)[0]);
+                    });
 
-                        // Object.values(val)[0].selector.map(function (id) {
-                        //     let value = `${Object.values(id)[0]}`;
-                        //     let key = `${Object.keys(id)[0]}`;
-                        //
-                        //     browser.sleep(300);
-                        //     tag_selector.selectOption(key, value)
-                        // })
-
+                    it(`{ ${type + "_" + id}: ${value} }`, () => {
+                        value.map(function (index) {
+                            tag_selector.selectOption(type + "_" + id, index)
+                        });
                     })
                 }
             })

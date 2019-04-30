@@ -6,10 +6,12 @@ services:
            - "Нам"
            - "Мы"
         - project_id: !!seq
-           - "Админ"
            - "Ломе"
+           - "Админ"
         - contractor_type_id: !!seq
            - "Покупатель":
-              - contractor_id: "E1.RU"
-           - "--  На имущество":
-              - contractor_id: "P1"
+                contractor_id:  !!seq
+                  - " L1"
+                  - " L2"
+
+#           - "--  На имущество": { contractor_id: " P1" }
