@@ -1,4 +1,4 @@
-describe('Services new', () => {
+fdescribe('Services new', () => {
     beforeAll( () => {
         user_object.authorization(helper.user_email_last());
     });

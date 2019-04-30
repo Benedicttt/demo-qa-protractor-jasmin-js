@@ -22,9 +22,7 @@ exports.config = {
     baseUrl:          process.env.APP_HOST,
     directConnect:    JSON.parse(process.env.DIRECT_CONNECT),
     seleniumAddress: 'http://selenium:4444/wd/hub',
-    selenium: {
-        start_process: false
-    },
+    selenium: { start_process: false },
 
     onPrepare: function () {
         global_variables.call();

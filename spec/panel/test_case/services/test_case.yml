@@ -4,7 +4,7 @@ service:
       - service_service_source_id: "Мы"
       - service_project_id: "Админ"
       - service_contractor_type_id: " Покупатель"
-      - service_contractor_id:  " Контекст"
+      - service_contractor_id:  " L1"
       - service_nomenclature_id: " Административные услуги"
 
     checkbox: !!seq
@@ -20,9 +20,9 @@ service:
       - service_service_source_id: "Нам"
       - service_project_id: "Админ"
       - service_contractor_type_id: " Покупатель"
-      - service_contractor_id: " Контекст"
-      - service_expenditure_type_id: " Мотивационные затраты"
-      - service_expenditure_id: " 13-я зарплата"
+      - service_contractor_id: " L1"
+      - service_expenditure_type_id: " Оплата труда"
+      - service_expenditure_id: " Премии"
 
 
     checkbox: !!seq

@@ -79,5 +79,8 @@ describe('Sign_in:', function(){
             expect(alert_success.getText()).toEqual(authorization_success);
         });
 
+        it("remove cookies", () => {
+            set(setting.delete_all_cookies);
+        })
     });
 });
