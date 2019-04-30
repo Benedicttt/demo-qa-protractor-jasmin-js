@@ -39,8 +39,8 @@
     "url-parse": "^1.4.4"
   },
   "scripts": {
-    "chrome 3000": "DIRECT_CONNECT=true APP_HOST=https://test-finances.404-group.info protractor config/conf.js --browser chrome --continue-on-error --disableChecks   --capabilities.chromeOptions.args window-size=1920,1080   --suite create_user,cashier,add_accesses,create_services,cashier,regression",
-    "chrome headless 3000": "DIRECT_CONNECT=true APP_HOST=https://test-finances.404-group.info protractor config/conf.js --browser chrome --continue-on-error --disableChecks   --capabilities.chromeOptions.args window-size=1920,1080   --suite create_user,add_accesses,create_services,cashier,regression --capabilities.chromeOptions.args headless",
+    "chrome 3000": "DIRECT_CONNECT=true APP_HOST=http://localhost:3000 protractor config/conf.js --browser chrome --continue-on-error --disableChecks   --capabilities.chromeOptions.args window-size=1920,1080   --suite create_user,cashier,add_accesses,create_services,cashier,regression",
+    "chrome headless 3000": "DIRECT_CONNECT=true APP_HOST=http://localhost:3000 protractor config/conf.js --browser chrome --continue-on-error --disableChecks   --capabilities.chromeOptions.args window-size=1920,1080   --suite create_user,add_accesses,create_services,cashier,regression --capabilities.chromeOptions.args headless",
     "chrome 3001": "DIRECT_CONNECT=true APP_HOST=http://localhost:3001 protractor config/conf.js --browser chrome --continue-on-error --disableChecks   --capabilities.chromeOptions.args window-size=1920,1080   --suite create_user,cashier,add_accesses,create_services,cashier,regression",
     "chrome headless 3001": "DIRECT_CONNECT=true APP_HOST=http://localhost:3001 protractor config/conf.js --browser chrome --continue-on-error --disableChecks   --capabilities.chromeOptions.args window-size=1920,1080   --suite create_user,add_accesses,create_services,cashier,regression --capabilities.chromeOptions.args headless",
     "webdriver-update": "./node_modules/protractor/bin/webdriver-manager update",

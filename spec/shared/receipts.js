@@ -58,7 +58,6 @@ module.exports = {
 
     fill_data_nds: function(name_case) {
         if (scenarios[`${name_case}`].fill_nds_form === true) {
-
             scenarios[`${name_case}`].nds_form.checkbox.map(function(id) {
                 let value = `${Object.values(id)[0]}`;
                 let key = `${Object.keys(id)[0]}`;
@@ -68,12 +67,29 @@ module.exports = {
                 });
             })
 
+
             scenarios[`${name_case}`].nds_form.selector.map(function(id) {
                 let value = `${Object.values(id)[0]}`;
                 let key = `${Object.keys(id)[0]}`;
 
+                if (key == "receipt_nds_percent") {
+                    it(`Check nds defaulf {${key}}`, () => {
+                       element(by.id(key)).getAttribute('value').then(function(text) {
+                           let value_int = value.replace('%', '');
+
+                           if (text === value_int) {
+                               console.log(`\tSUCCESS: Actual: { ${text} %}, Expect: { ${value_int} %}`)
+                           } else {
+                               console.log(`\tFAILED: Actual: { ${text} %}, Expect: { ${value_int} %}`)
+                           }
+
+                           expect(text).toEqual(value_int);
+                       });
+                    });
+                }
+
                 it(`{ ${key}: ${value} }`, () => {
-                    browser.sleep(200)
+                    browser.sleep(200);
                     tag_selector.selectOption(key, value);
                 })
             });
