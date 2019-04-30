@@ -32,8 +32,10 @@ module.exports = {
                         tag_selector.selectOption(type + "_" + key, Object.keys(val)[0]);
                     });
 
-                    it(`{ ${type + "_" + id}: ${value} }`, () => {
-                        value.map(function (index) {
+                    value.map(function (index, index_item) {
+                        it(`{ ${type + "_" + id}: ${index} }`, () => {
+                            if (index_item === 0) { browser.sleep(1200); }
+
                             tag_selector.selectOption(type + "_" + id, index)
                         });
                     })

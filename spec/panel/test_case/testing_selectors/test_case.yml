@@ -3,15 +3,37 @@ services:
     new:
       selector: !!seq
         - service_source_id: !!seq
-           - "Нам"
            - "Мы"
         - project_id: !!seq
            - "Ломе"
            - "Админ"
         - contractor_type_id: !!seq
            - "Покупатель":
-                contractor_id:  !!seq
-                  - " L1"
-                  - " L2"
+              contractor_id:  !!seq
+                - " L1"
+                - " L2"
+           - "--  На имущество":
+              contractor_id:  !!seq
+                - " P1"
+           - "--  На расходы":
+              contractor_id:  !!seq
+                - " R1"
+                - " R2"
 
-#           - "--  На имущество": { contractor_id: " P1" }
+        - service_source_id: !!seq
+           - "Нам"
+        - project_id: !!seq
+           - "Ломе"
+           - "Админ"
+        - contractor_type_id: !!seq
+           - "Покупатель":
+              contractor_id:  !!seq
+                - " L1"
+                - " L2"
+           - "--  На имущество":
+              contractor_id:  !!seq
+                - " P1"
+           - "--  На расходы":
+              contractor_id:  !!seq
+                - " R1"
+                - " R2"
