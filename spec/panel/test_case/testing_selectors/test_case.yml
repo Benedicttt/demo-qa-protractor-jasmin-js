@@ -1,14 +1,15 @@
 services:
-  new:
-    selector: !!seq
-      - service_service_source_id: !!seq
-         - "Нам"
-         - "Мы"
-      - service_project_id: !!seq
-         - "Админ"
-         - "Ломе"
-      - service_contractor_type_id: !!seq
-         - "Покупатель":
-            - service_contractor_id: "E1.RU"
-         - "--  На имущество":
-            - service_contractor_id: "P1"
+  service:
+    new:
+      selector: !!seq
+        - service_source_id: !!seq
+           - "Нам"
+           - "Мы"
+        - project_id: !!seq
+           - "Админ"
+           - "Ломе"
+        - contractor_type_id: !!seq
+           - "Покупатель":
+              - contractor_id: "E1.RU"
+           - "--  На имущество":
+              - contractor_id: "P1"
