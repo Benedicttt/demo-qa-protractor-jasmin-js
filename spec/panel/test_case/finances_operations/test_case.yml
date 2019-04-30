@@ -2,7 +2,7 @@ receipts:
   case_1:
     selector: !!seq
       - receipt_project_debtor_id:         "Админ"
-      - receipt_project_id:                "Promotion"
+      - receipt_project_id:                "Ломе"
       - receipt_account_id:                "RUR"
       - receipt_contractor_type_id:        " Подотчетник"
       - receipt_contractor_id:             "Фамилия"
@@ -51,7 +51,7 @@ receipts:
 
       selector: !!seq
         - receipt_project_us_nds:            "Админ"
-        - receipt_project_we_nds:            "Promotion"
+        - receipt_project_we_nds:            "Ломе"
         - receipt_nds_percent:               "20%"
 
     check_data_popup_service: true
@@ -87,7 +87,7 @@ receipts:
 
       selector: !!seq
         - receipt_project_us_nds:            "Админ"
-        - receipt_project_we_nds:            "Promotion"
+        - receipt_project_we_nds:            "Ломе"
         - receipt_nds_percent:               "20%"
 
     check_data_popup_service: false
@@ -101,7 +101,7 @@ conversion:
     selector: !!seq
       - money_transfer_sender_project_id:   "Админ"
       - money_transfer_sender_account_id:   "RUR"
-      - money_transfer_receiver_project_id: "Promotion"
+      - money_transfer_receiver_project_id: "Ломе"
 
       - money_transfer_receiver_account_id: "USD"
       - money_transfer_cc_project_id:       "Проект отправитель"
@@ -125,7 +125,7 @@ conversion:
 
       selector: !!seq
         - money_transfer_project_us_nds:            "Админ"
-        - money_transfer_project_we_nds:            "Promotion"
+        - money_transfer_project_we_nds:            "Ломе"
         - money_transfer_nds_percent:               "20%"
 
     check_data_popup_dds:                          true
@@ -140,7 +140,7 @@ conversion:
     selector: !!seq
       - money_transfer_sender_project_id:   "Админ"
       - money_transfer_sender_account_id:   "RUR"
-      - money_transfer_receiver_project_id: "Promotion"
+      - money_transfer_receiver_project_id: "Ломе"
       - money_transfer_receiver_account_id: "RUR"
       - money_transfer_cc_project_id:       "Проект отправитель"
 
@@ -190,7 +190,7 @@ conversion:
 
       selector: !!seq
         - money_transfer_project_us_nds:            "Админ"
-        - money_transfer_project_we_nds:            "Promotion"
+        - money_transfer_project_we_nds:            "Ломе"
         - money_transfer_nds_percent:               "20%"
 
     check_data_popup_dds:                          true
@@ -227,7 +227,7 @@ conversion:
 #
 #      selector: !!seq
 #        - money_transfer_project_us_nds:            "Админ"
-#        - money_transfer_project_we_nds:            "Promotion"
+#        - money_transfer_project_we_nds:            "Ломе"
 #        - money_transfer_nds_percent:               "20%"
 #
 #    check_data_popup_dds:                          true
@@ -261,7 +261,7 @@ conversion:
 #
 #      selector: !!seq
 #        - money_transfer_project_us_nds:            "Админ"
-#        - money_transfer_project_we_nds:            "Promotion"
+#        - money_transfer_project_we_nds:            "Ломе"
 #        - money_transfer_nds_percent:               "20%"
 #
 #    check_data_popup_dds:                          true

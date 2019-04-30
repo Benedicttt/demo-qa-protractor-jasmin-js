@@ -10,13 +10,13 @@ exports.config = {
     framework:    'jasmine',
 
     splitTestsBetweenCapabilities: true,
-    allScriptsTimeout:             10000,
-    getPageTimeout:                10000,
+    allScriptsTimeout:             15000,
+    getPageTimeout:                15000,
 
     jasmineNodeOpts: {
         showColors:             true,
         includeStackTrace:      true,
-        defaultTimeoutInterval: 60000
+        defaultTimeoutInterval: 600000
     },
 
     baseUrl:          process.env.APP_HOST,
@@ -30,6 +30,6 @@ exports.config = {
         disable.animations();
 
         browser.driver.manage().window().setSize(1620, 1080);
-
+        browser.manage().timeouts().implicitlyWait(5000);
     }
 };

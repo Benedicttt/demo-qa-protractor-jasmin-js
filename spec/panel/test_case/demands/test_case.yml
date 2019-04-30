@@ -336,7 +336,7 @@ demand:
         - demand_project_id:          "Админ"
         - demand_account_id:          "Евро"
         - demand_contractor_type_id:  " Подотчетник"
-        - demand_contractor_id:       "Фамилия"
+        - demand_contractor_id:       "Александр"
         - demand_expenditure_type_id: " Арендные платежи"
         - demand_expenditure_id:      " Аренда"
 
@@ -372,7 +372,7 @@ demand:
         - demand_contractor_type_id:  " Покупатель"
         - demand_contractor_id:       " L1"
         - demand_expenditure_type_id: " Арендные платежи"
-        - demand_expenditure_id:      " Аренда"
+        - demand_expenditure_id:      " X1"
 
       checkbox: !!seq
         - demand_is_payment_on_site:       true
@@ -394,7 +394,7 @@ demand:
       attributes: !!seq
         - advances:               false
         - add_inventory:          false
-        - demand_is_distributed:  0.5,Promotion; 0.3,Development; 0.2,Админ
+        - demand_is_distributed:  0.5,Ломе; 0.3,Development; 0.2,Админ
         - click_buttons:          true
         - sign_is_distributed:    true
         - check_statuses_service: false
@@ -434,7 +434,7 @@ demand:
       attributes: !!seq
         - advances:               false
         - add_inventory:          false
-        - demand_is_distributed:  0.425,Promotion; 0.375,Development; 0.2,Админ
+        - demand_is_distributed:  0.425,Ломе; 0.375,Development; 0.2,Админ
         - click_buttons:          true
         - sign_is_distributed:    true
         - check_statuses_service: false

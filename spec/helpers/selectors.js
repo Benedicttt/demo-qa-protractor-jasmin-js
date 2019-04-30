@@ -48,6 +48,7 @@ module.exports = {
         selectList = element(by.id(selector));
 
         selectList.all(protractor.By.tagName('option')).then(function (options) {
+            console.log("\tExpected: [ " + item + " ]");
             browser.sleep(200);
 
             options.some(function (option) {
@@ -66,7 +67,7 @@ module.exports = {
                 }
 
                 desiredOption.getText().then(function (text) {
-                    console.log("\tSelected: [ " + text + " ]")
+                    console.log("\tActual: [ " + text + " ]");
                 });
             })
 

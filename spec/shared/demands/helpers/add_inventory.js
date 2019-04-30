@@ -6,7 +6,7 @@ module.exports = {
         for_css.wait_id("demand_contractor_id", globalTimeout);
 
         browser.sleep(1000);
-        tag_selector.selectOption('demand_contractor_id', "Webazilla");
+        tag_selector.selectOption('demand_contractor_id', " P1");
 
         for_css.wait_id('link_service_properties', globalTimeout);
         element(by.id('link_service_properties')).click();
@@ -18,6 +18,6 @@ module.exports = {
         element.all(by.css('.btn-primary')).get(0).click();
         browser.sleep(200);
 
-        tag_selector.selectOption('demand_contractor_id', " Webazilla");
+        tag_selector.selectOption('demand_contractor_id', " P1");
     }
 };
