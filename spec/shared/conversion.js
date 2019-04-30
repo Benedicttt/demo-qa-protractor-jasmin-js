@@ -6,7 +6,7 @@ const scenarios = yaml.safeLoad(file).conversion;
 module.exports = {
     run_test_case: function(name_case) {
         it(`Go to page and check title ${page.conversion.title}`,  () => {
-            user_object.authorization(admin);
+            user_object.authorization(helper.user_email_last());
 
             go(page.conversion.get);
             expect(browser.getTitle()).toEqual(page.conversion.title);

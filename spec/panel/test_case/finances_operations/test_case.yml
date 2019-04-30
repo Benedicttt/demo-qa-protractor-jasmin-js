@@ -3,9 +3,9 @@ receipts:
     selector: !!seq
       - receipt_project_debtor_id:         "Админ"
       - receipt_project_id:                "Ломе"
-      - receipt_account_id:                "RUR"
+      - receipt_account_id:                " RUR"
       - receipt_contractor_type_id:        " Подотчетник"
-      - receipt_contractor_id:             "Фамилия"
+      - receipt_contractor_id:             "Александр"
       - receipt_nomenclature_id:           " Административные услуги"
 
     checkbox: !!seq
@@ -28,9 +28,9 @@ receipts:
     selector: !!seq
       - receipt_project_debtor_id:         "Админ"
       - receipt_project_id:                "Админ"
-      - receipt_account_id:                "RUR"
+      - receipt_account_id:                " RUR"
       - receipt_contractor_type_id:        " Подотчетник"
-      - receipt_contractor_id:             "Фамилия"
+      - receipt_contractor_id:             "Александр"
       - receipt_nomenclature_id:           " Административные услуги"
 
     checkbox: !!seq
@@ -66,7 +66,7 @@ receipts:
       - receipt_project_id:                "Админ"
       - receipt_account_id:                "USD"
       - receipt_contractor_type_id:        " Подотчетник"
-      - receipt_contractor_id:             "Фамилия"
+      - receipt_contractor_id:             "Александр"
       - receipt_nomenclature_id:           " Административные услуги"
 
     checkbox: !!seq
