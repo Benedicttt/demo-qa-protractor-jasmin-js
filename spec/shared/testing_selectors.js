@@ -27,7 +27,14 @@ module.exports = {
                     it(`{ ${type + "_" + key}: ${Object.keys(val)[0]} }`, () => {
                         browser.sleep(500);
                         tag_selector.selectOption(type + "_" + key, Object.keys(val)[0]);
-                        console.log(Object.values(val)[0])
+
+                        // Object.values(val)[0].selector.map(function (id) {
+                        //     let value = `${Object.values(id)[0]}`;
+                        //     let key = `${Object.keys(id)[0]}`;
+                        //
+                        //     browser.sleep(300);
+                        //     tag_selector.selectOption(key, value)
+                        // })
 
                     })
                 }
