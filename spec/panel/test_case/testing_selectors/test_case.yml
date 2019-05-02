@@ -2,20 +2,21 @@ filter:
   demands:
     selector_filter: !!seq
       - filter_currency_id: Валюта
-#      - filter_amount_range: Сумма
-#      - filter_account_kind_id: Вид счета
-#      - filter_contractor: Контрагент
-#      - filter_author_id: Куратор
-#      - filter_is_paid: Оплата
-#      - filter_related_services: Услуги
-#      - filter_plan_date_paid: Плановая дата оплаты
-#      - filter_paid_at: Дата оплаты
-#      - filter_paid_at_interval: Период оплаты
-#      - filter_is_signed: Подпись
-#      - filter_is_deleted: Удалённые
-#      - filter_project_id: Проект
-#      - filter_expenditure: Статья затрат
-#      - filter_purpose: Назначение
+      - filter_amount_range: Сумма
+      - filter_account_kind_id: Вид счета
+      - filter_contractor: Контрагент
+      - filter_author_id: Куратор
+      - filter_is_paid: Оплата
+      - filter_related_services: Услуги
+      - filter_plan_date_paid: Плановая дата оплаты
+      - filter_paid_at: Дата оплаты
+      - filter_paid_at_interval: Период оплаты
+      - filter_is_signed: Подпись
+      - filter_is_deleted: Удалённые
+      - filter_project_id: Проект
+      - filter_expenditure: Статья затрат
+      - filter_purpose: Назначение
+
     selector_filter_select: !!seq
       - filter_currency_id: !!seq
           - "Безналичный рубль [RUR]"
@@ -25,16 +26,121 @@ filter:
           - "WMZ [WMZ]"
           - "WMR [WMR]"
           - "Яндекс.Деньги [YAD]"
-
-#      - filter_account_kind_id: Вид счета
-#      - filter_contractor: Контрагент
-#      - filter_author_id: Куратор
-#      - filter_is_paid: Оплата
-#      - filter_related_services: Услуги
-#      - filter_is_signed: Подпись
-#      - filter_is_deleted: Удалённые
-#      - filter_project_id: Проект
-#      - filter_expenditure: Статья затрат
+      - filter_account_kind_id: !!seq
+          - "Виртуальный"
+          - "Реальный"
+      - filter_author_id: !!seq
+          - "dev_16@local.host"
+          - "dev_41@local.host"
+          - "dev_1@local.host"
+      - filter_is_paid: !!seq
+          - "Оплачена"
+          - "Не оплачена"
+      - filter_related_services: !!seq
+          - "Присутствует подписанная"
+          - "Присутствует, но не подписана"
+          - "Отсутствует"
+          - "Присутствует подписанная"
+      - filter_is_signed: !!seq
+          - "Не подписана"
+          - "Подписана"
+      - filter_is_deleted: !!seq
+          - "Только удалённые"
+          - "Только нормальные"
+      - filter_project_id: !!seq
+          - "Development"
+          - "Антананариву"
+          - "Виктория"
+          - "Виндхук"
+          - "Дакар"
+          - "Джуба"
+          - "Каир"
+          - "Кампала"
+          - "Конакри"
+          - "Либревиль"
+          - "Админ"
+      - filter_contractor_type_id: !!seq
+          - "Покупатель":
+              filter_contractor_id:  !!seq
+                - " L1"
+                - " L2"
+          - "--  На имущество":
+              filter_contractor_id:  !!seq
+                - " P1"
+          - "--  На расходы":
+              filter_contractor_id:  !!seq
+                - " R1"
+                - " R2"
+          - " Проект":
+              filter_contractor_id:  !!seq
+                - "Малабо"
+                - "Development"
+          - "Финагент":
+              filter_contractor_id:  !!seq
+                - "finances2"
+                - "finances1"
+          - "Финагент-проект":
+              filter_contractor_id:  !!seq
+                - "finances2"
+                - "finances1"
+      - expenditure_type_id: !!seq
+          - "Арендные платежи":
+              filter_expenditure_id: !!seq
+                - "Аренда"
+                - "Связь"
+                - "танки онлайн X1"
+                - "ТБО"
+                - "Уборка"
+                - "Электроэнергия"
+          - "Газета.Ru: Главные новости и подробности текущих событий":
+              filter_expenditure_id: !!seq
+                - "--  б у X1"
+                - "--  входные двери X1"
+                - "--  сдам квартиру X1"
+                - " экспресс спорт X2"
+                - "--  купить квартиру X1"
+                - "--  оптимизация сайта X1"
+                - " электронный дневник X2"
+                - "--  калькулятор онлайн X2"
+                - "--  отслеживание почта россии X2"
+                - "--  продажа автомобилей X1"
+          - "Комсомольская правда-Digital":
+              filter_expenditure_id: !!seq
+                - "скачать игры X2"
+                - "скорость интернета X2"
+                - "смотреть онлайн X2"
+                - "фотошоп онлайн X2"
+                - "футбол онлайн X2"
+          - "Налог":
+              filter_expenditure_id: !!seq
+                - "скачать книгу X1"
+                - "смотреть бесплатно X1"
+                - "телефонный справочник X1"
+                - "УСН"
+          - "Оплата труда":
+              filter_expenditure_id: !!seq
+                - "свинка пеппа X1"
+                - "смотреть фильмы X1"
+                - "фиксики все серии подряд X1"
+                - "экспресс спорт X1"
+          - "Офисные нужды":
+              filter_expenditure_id: !!seq
+                - "Офисные радости"
+                - "сбербанк онлайн личный кабинет X1"
+                - "фильмы онлайн X1"
+          - "Прочие затраты":
+              filter_expenditure_id: !!seq
+                - "карта москвы X1"
+                - "отслеживание посылок X1"
+                - "Поиск помещения"
+                - "сайт знакомств X1"
+                - "санкт петербург X1"
+          - "--  Банковские расходы":
+              filter_expenditure_id: !!seq
+                - "Выберите из списка"
+                - "Банк"
+                - "Комиссия перевода"
+                - "скачать бесплатно X1"
 
 #  service:
 #    index:

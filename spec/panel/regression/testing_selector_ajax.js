@@ -7,5 +7,5 @@ describe('Testing all value in selector deamnd new', () => {
 });
 
 fdescribe('Testing all value in selector filters', () => {
-    testing_selectors_shared.run_test_case_for("filter", "demands")
+    testing_selectors_shared.run_test_case_for("filter", "demands");
 });

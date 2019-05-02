@@ -28,18 +28,29 @@ module.exports = {
                 it(`{ ${key} : ${index} }`, () => {
                     if (index_item === 0) { browser.sleep(1000); }
 
-                    let path = `//*[@id="${key}"]/select/option[contains(text(), "${index}")]`;
+                    if (key !== "filter_author_id") {
+                        let path = `//*[@id="${key}"]/select/option[contains(text(), "${index}")]`;
+                        let until = protractor.ExpectedConditions;
+                        let elem = element(by.xpath(path));
 
-                    let until = protractor.ExpectedConditions;
-                    let elem = element(by.xpath(path));
+                        browser.wait(until.presenceOf(elem), 3000, 'Element taking too long to appear in the DOM').then(function(){
+                            element(by.xpath(path)).click();
+                        });
 
-                    browser.wait(until.presenceOf(elem), 3000, 'Element taking too long to appear in the DOM').then(function(){
-                        element(by.xpath(path)).click();
-                    });
+                    } else {
+                        let path = `//*[@id="${key}"]/select/optgroup/option[contains(text(), "${index}")]`;
+                        let until = protractor.ExpectedConditions;
+                        let elem = element(by.xpath(path));
 
-                });
-            })
-        });
+                        browser.wait(until.presenceOf(elem), 3000, 'Element taking too long to appear in the DOM').then(function(){
+                            element(by.xpath(path)).click();
+                        });
+                    }
+
+                })
+
+            });
+        })
 
     },
 
