@@ -36,8 +36,41 @@ module.exports = {
                        action === 'click' ? selectors.get(index_elem).click() : '';
                     }
                 })
-            };
+            }
         });
+    },
+
+    selectOptionCSS: function (selector, item) {
+        let selectList, desiredOption;
+        let reg = new RegExp(item);
+
+        tag_selector.wait_css_select(selector, globalTimeout);
+        selectList = element(by.css(selector));
+
+        selectList.all(protractor.By.tagName('option')).then(function (options) {
+            console.log("\tExpected: [ " + item + " ]");
+            browser.sleep(200);
+
+            options.some(function (option) {
+                option.getText().then(function (text) {
+
+                    if (reg.test(text) === true) {
+                        desiredOption = option;
+                    }
+                });
+
+            });
+        })
+            .then(function () {
+                if(desiredOption) {
+                    desiredOption.click();
+                }
+
+                desiredOption.getText().then(function (text) {
+                    console.log("\tActual: [ " + text + " ]");
+                });
+            })
+
     },
 
     selectOption: function (selector, item) {

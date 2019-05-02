@@ -1,7 +1,47 @@
-filters:
+filter:
   demands:
-  services:
-  operations:
+    selector_filter: !!seq
+      - filter_currency_id: Валюта
+#      - filter_amount_range: Сумма
+#      - filter_account_kind_id: Вид счета
+#      - filter_contractor: Контрагент
+#      - filter_author_id: Куратор
+#      - filter_is_paid: Оплата
+#      - filter_related_services: Услуги
+#      - filter_plan_date_paid: Плановая дата оплаты
+#      - filter_paid_at: Дата оплаты
+#      - filter_paid_at_interval: Период оплаты
+#      - filter_is_signed: Подпись
+#      - filter_is_deleted: Удалённые
+#      - filter_project_id: Проект
+#      - filter_expenditure: Статья затрат
+#      - filter_purpose: Назначение
+    selector_filter_select: !!seq
+      - filter_currency_id: !!seq
+          - "Безналичный рубль [RUR]"
+          - "Наличный рубль [nRUR]"
+          - "Доллар [USD]"
+          - "Евро [EUR]"
+          - "WMZ [WMZ]"
+          - "WMR [WMR]"
+          - "Яндекс.Деньги [YAD]"
+
+#      - filter_account_kind_id: Вид счета
+#      - filter_contractor: Контрагент
+#      - filter_author_id: Куратор
+#      - filter_is_paid: Оплата
+#      - filter_related_services: Услуги
+#      - filter_is_signed: Подпись
+#      - filter_is_deleted: Удалённые
+#      - filter_project_id: Проект
+#      - filter_expenditure: Статья затрат
+
+#  service:
+#    index:
+#      selector: !!seq
+#  operation:
+#    index:
+#      selector: !!seq
 demands:
   demand:
     new:

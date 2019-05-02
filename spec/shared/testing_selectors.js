@@ -4,6 +4,45 @@ let file = fs.readFileSync('spec/panel/test_case/testing_selectors/test_case.yml
 const scenarios = yaml.safeLoad(file);
 
 module.exports = {
+    run_test_case_for: function(name_case, type) {
+        it(`Go to page`,  () => {
+            user_object.authorization(admin);
+            go(page[type].get);
+        });
+
+        scenarios[name_case][type].selector_filter.map(function (id) {
+            let value = `${Object.values(id)[0]}`;
+            let key = `${Object.keys(id)[0]}`;
+
+            it(`{ ${key}: ${value} }`, () => {
+                browser.sleep(200);
+                tag_selector.selectOption("filter_add", value);
+            })
+        });
+
+        scenarios[name_case][type].selector_filter_select.map(function (id) {
+            let value = `${Object.values(id)[0]}`;
+            let key = `${Object.keys(id)[0]}`;
+
+            value.split(",").map(function (index, index_item) {
+                it(`{ ${key} : ${index} }`, () => {
+                    if (index_item === 0) { browser.sleep(1000); }
+
+                    let path = `//*[@id="${key}"]/select/option[contains(text(), "${index}")]`;
+
+                    let until = protractor.ExpectedConditions;
+                    let elem = element(by.xpath(path));
+
+                    browser.wait(until.presenceOf(elem), 3000, 'Element taking too long to appear in the DOM').then(function(){
+                        element(by.xpath(path)).click();
+                    });
+
+                });
+            })
+        });
+
+    },
+
     run_test_case: function(name_case, subject, type) {
         it(`Go to page and check title ${page[subject].title}`,  () => {
             user_object.authorization(admin);
