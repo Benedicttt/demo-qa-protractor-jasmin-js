@@ -1,64 +1,66 @@
 filter:
   demands:
     selector_filter: !!seq
-      - filter_currency_id: Валюта
-      - filter_amount_range: Сумма
-      - filter_account_kind_id: Вид счета
+#      - filter_currency_id: Валюта
+#      - filter_amount_range: Сумма
+#      - filter_account_kind_id: Вид счета
       - filter_contractor: Контрагент
-      - filter_author_id: Куратор
-      - filter_is_paid: Оплата
-      - filter_related_services: Услуги
-      - filter_plan_date_paid: Плановая дата оплаты
-      - filter_paid_at: Дата оплаты
-      - filter_paid_at_interval: Период оплаты
-      - filter_is_signed: Подпись
-      - filter_is_deleted: Удалённые
-      - filter_project_id: Проект
+#      - filter_author_id: Куратор
+#      - filter_is_paid: Оплата
+#      - filter_related_services: Услуги
+#      - filter_plan_date_paid: Плановая дата оплаты
+#      - filter_paid_at: Дата оплаты
+#      - filter_paid_at_interval: Период оплаты
+#      - filter_is_signed: Подпись
+#      - filter_is_deleted: Удалённые
+#      - filter_project_id: Проект
       - filter_expenditure: Статья затрат
-      - filter_purpose: Назначение
+#      - filter_purpose: Назначение
 
-    selector_filter_select: !!seq
-      - filter_currency_id: !!seq
-          - "Безналичный рубль [RUR]"
-          - "Наличный рубль [nRUR]"
-          - "Доллар [USD]"
-          - "Евро [EUR]"
-          - "WMZ [WMZ]"
-          - "WMR [WMR]"
-          - "Яндекс.Деньги [YAD]"
-      - filter_account_kind_id: !!seq
-          - "Виртуальный"
-          - "Реальный"
-      - filter_author_id: !!seq
-          - "dev_16@local.host"
-          - "dev_41@local.host"
-          - "dev_1@local.host"
-      - filter_is_paid: !!seq
-          - "Оплачена"
-          - "Не оплачена"
-      - filter_related_services: !!seq
-          - "Присутствует подписанная"
-          - "Присутствует, но не подписана"
-          - "Отсутствует"
-          - "Присутствует подписанная"
-      - filter_is_signed: !!seq
-          - "Не подписана"
-          - "Подписана"
-      - filter_is_deleted: !!seq
-          - "Только удалённые"
-          - "Только нормальные"
-      - filter_project_id: !!seq
-          - "Development"
-          - "Антананариву"
-          - "Виктория"
-          - "Виндхук"
-          - "Дакар"
-          - "Джуба"
-          - "Каир"
-          - "Кампала"
-          - "Конакри"
-          - "Либревиль"
-          - "Админ"
+    selector_filter_first_level: !!seq
+#      - filter_currency_id: !!seq
+#          - "Безналичный рубль [RUR]"
+#          - "Наличный рубль [nRUR]"
+#          - "Доллар [USD]"
+#          - "Евро [EUR]"
+#          - "WMZ [WMZ]"
+#          - "WMR [WMR]"
+#          - "Яндекс.Деньги [YAD]"
+#      - filter_account_kind_id: !!seq
+#          - "Виртуальный"
+#          - "Реальный"
+#      - filter_author_id: !!seq
+#          - "dev_16@local.host"
+#          - "dev_41@local.host"
+#          - "dev_1@local.host"
+#      - filter_is_paid: !!seq
+#          - "Оплачена"
+#          - "Не оплачена"
+#      - filter_related_services: !!seq
+#          - "Присутствует подписанная"
+#          - "Присутствует, но не подписана"
+#          - "Отсутствует"
+#          - "Присутствует подписанная"
+#      - filter_is_signed: !!seq
+#          - "Не подписана"
+#          - "Подписана"
+#      - filter_is_deleted: !!seq
+#          - "Только удалённые"
+#          - "Только нормальные"
+#      - filter_project_id: !!seq
+#          - "Development"
+#          - "Антананариву"
+#          - "Виктория"
+#          - "Виндхук"
+#          - "Дакар"
+#          - "Джуба"
+#          - "Каир"
+#          - "Кампала"
+#          - "Конакри"
+#          - "Либревиль"
+#          - "Админ"
+
+    selector_filter_two_level: !!seq
       - filter_contractor_type_id: !!seq
           - "Покупатель":
               filter_contractor_id:  !!seq
@@ -83,7 +85,7 @@ filter:
               filter_contractor_id:  !!seq
                 - "finances2"
                 - "finances1"
-      - expenditure_type_id: !!seq
+      - filter_expenditure_type_id: !!seq
           - "Арендные платежи":
               filter_expenditure_id: !!seq
                 - "Аренда"

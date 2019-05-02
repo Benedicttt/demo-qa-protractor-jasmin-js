@@ -20,7 +20,7 @@ module.exports = {
             })
         });
 
-        scenarios[name_case][type].selector_filter_select.map(function (id) {
+        scenarios[name_case][type].selector_filter_first_level.map(function (id) {
             let value = `${Object.values(id)[0]}`;
             let key = `${Object.keys(id)[0]}`;
 
@@ -50,8 +50,38 @@ module.exports = {
                 })
 
             });
-        })
+        });
 
+        scenarios[name_case][type].selector_filter_two_level.map(function (id) {
+
+            let key = `${Object.keys(id)[0]}`;
+
+            Object.values(id)[0].map(function (val) {
+                let obj = Object.values(val)[0];
+                let id = Object.keys(obj)[0];
+                let value = Object.values(obj)[0];
+
+                if (id === "0") {
+                    it(`{ ${key}: ${val} }`, () => {
+                        browser.sleep(500);
+                        tag_selector.selectOption(key, val);
+                    })
+                } else {
+                    it(`{ ${key}: ${Object.keys(val)[0]} }`, () => {
+                        browser.sleep(500);
+                        tag_selector.selectOption(key, Object.keys(val)[0]);
+                    });
+
+                    value.map(function (index, index_item) {
+                        it(`{ ${id}: ${index} }`, () => {
+                            if (index_item === 0) { browser.sleep(1000); }
+                            tag_selector.selectOption(id, index)
+                        });
+                    })
+                }
+            })
+
+        })
     },
 
     run_test_case: function(name_case, subject, type) {
