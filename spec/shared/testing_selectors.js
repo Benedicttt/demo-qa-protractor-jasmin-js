@@ -1,10 +1,5 @@
-const yaml = require('js-yaml');
-const fs = require('fs');
-let file = fs.readFileSync('spec/panel/test_case/testing_selectors/test_case.yml', 'utf8');
-const scenarios = yaml.safeLoad(file);
-
 module.exports = {
-    run_test_case_for: function(name_case, type) {
+    run_test_case_for: function(name_case, type, scenarios) {
         it(`Go to page`,  () => {
             user_object.authorization(admin);
             go(page[type].get);
@@ -20,7 +15,7 @@ module.exports = {
             })
         });
 
-        scenarios[name_case].selector_filter_first_level.map(function (id) {
+        scenarios[name_case][type].selector_filter_first_level.map(function (id) {
             let value = `${Object.values(id)[0]}`;
             let key = `filter_${Object.keys(id)[0]}`;
 
@@ -52,7 +47,7 @@ module.exports = {
             });
         });
 
-        scenarios[name_case].selector_filter_two_level.map(function (id) {
+        scenarios[name_case][type].selector_filter_two_level.map(function (id) {
             let key = `${Object.keys(id)[0]}`;
 
             Object.values(id)[0].map(function (val) {
@@ -83,7 +78,7 @@ module.exports = {
         })
     },
 
-    run_test_case: function(name_case, subject, type) {
+    run_test_case: function(name_case, subject, type, scenarios) {
         it(`Go to page and check title ${page[subject].title}`,  () => {
             user_object.authorization(admin);
             // user_object.authorization(helper.user_email_last());
