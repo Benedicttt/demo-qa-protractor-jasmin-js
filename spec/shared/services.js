@@ -56,7 +56,7 @@ module.exports = {
         });
 
         it("assert create current service",  () => {
-            browser.sleep(1000)
+            browser.sleep(1000);
 
             helper.check_current_url('/services');
         });
@@ -75,6 +75,8 @@ module.exports = {
         })
 
         it('sign', () => {
+            go(page.services.get);
+
             for_css.wait_xpath("//*[@id=\"services\"]/tbody/tr[1]/td[11]/a[2]", globalTimeout);
             helper.sign_order_xpath('//*[@id=\"services\"]/tbody/tr[1]/td[11]/a[2]', 0, 1);
         });
