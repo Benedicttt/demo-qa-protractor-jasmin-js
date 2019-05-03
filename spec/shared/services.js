@@ -32,7 +32,11 @@ module.exports = {
 
             it(`{ ${key}: ${value} }`, () => {
                 element(by.id(`${key}`)).clear();
+                element(by.id(`${key}`)).sendKeys(`${value}`);
+                
+                element(by.id(`${key}`)).clear();
                 element(by.id(`${key}`)).sendKeys(`${value}`)
+
             })
         });
 
@@ -76,8 +80,8 @@ module.exports = {
         })
 
         it('sign', () => {
-            go(page.services.get);
-            browser.sleep(1500);
+            // go(page.services.get);
+            // browser.sleep(1500);
 
             for_css.wait_xpath("//*[@id=\"services\"]/tbody/tr[1]/td[11]/a[2]", globalTimeout);
             helper.sign_order_xpath('//*[@id=\"services\"]/tbody/tr[1]/td[11]/a[2]', 0, 1);
