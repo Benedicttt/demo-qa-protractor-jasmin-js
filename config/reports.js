@@ -15,7 +15,7 @@ const addScreenShots = {
 
 module.exports = {
     call_settings: function() {
-        // jasmine.getEnv().addReporter(addScreenShots);
+        jasmine.getEnv().addReporter(addScreenShots);
         jasmine.getEnv().addReporter(new AllureReporter({
             resultsDir: './allure-results/'
         }));
