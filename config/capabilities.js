@@ -4,6 +4,14 @@ module.exports =
             [
                 {
                     browserName: "chrome",
+                    chromeOptions: {
+                        prefs: {'credentials_enable_service': false},
+                        args: [
+                            "--disable-gpu",
+                            "--window-size=1920x1080"
+                        ]
+                    },
+
                     specs:
                         [
                             "../spec/panel/preconditions/sign_up.js",
@@ -21,6 +29,14 @@ module.exports =
                 },
                 {
                     browserName: "chrome",
+                    chromeOptions: {
+                        prefs: {'credentials_enable_service': false},
+                        args: [
+                            "--disable-gpu",
+                            "--window-size=1920x1080"
+                        ]
+                    },
+
                     specs: [
                         "../spec/panel/regression/tests_selector/demand_new.js"
                     ]
@@ -29,6 +45,14 @@ module.exports =
 
                 {
                     browserName: "chrome",
+                    chromeOptions: {
+                        prefs: {'credentials_enable_service': false},
+                        args: [
+                            "--disable-gpu",
+                            "--window-size=1920x1080"
+                        ]
+                    },
+
                     specs: [
                         "../spec/panel/regression/tests_selector/service_new.js"
                     ]
@@ -37,6 +61,14 @@ module.exports =
 
                 {
                     browserName: "chrome",
+                    chromeOptions: {
+                        prefs: {'credentials_enable_service': false},
+                        args: [
+                            "--disable-gpu",
+                            "--window-size=1920x1080"
+                        ]
+                    },
+
                     specs: [
                         "../spec/panel/regression/tests_selector/filter_demand.js"
                     ]
@@ -45,6 +77,14 @@ module.exports =
 
                 {
                     browserName: "chrome",
+                    chromeOptions: {
+                        prefs: {'credentials_enable_service': false},
+                        args: [
+                            "--disable-gpu",
+                            "--window-size=1920x1080"
+                        ]
+                    },
+
                     specs: [
                         "../spec/panel/regression/tests_selector/filter_operations.js"
                     ]
@@ -53,6 +93,14 @@ module.exports =
 
                 {
                     browserName: "chrome",
+                    chromeOptions: {
+                        prefs: {'credentials_enable_service': false},
+                        args: [
+                            "--disable-gpu",
+                            "--window-size=1920x1080"
+                        ]
+                    },
+
                     specs: [
                         "../spec/panel/regression/tests_selector/filter_service.js"
                     ]
@@ -61,6 +109,14 @@ module.exports =
 
                 {
                     browserName: "chrome",
+                    chromeOptions: {
+                        prefs: {'credentials_enable_service': false},
+                        args: [
+                            "--disable-gpu",
+                            "--window-size=1920x1080"
+                        ]
+                    },
+
                     specs: [
                         "../spec/panel/regression/demands/return.js"
                     ]
@@ -69,6 +125,14 @@ module.exports =
 
                 {
                     browserName: "chrome",
+                    chromeOptions: {
+                        prefs: {'credentials_enable_service': false},
+                        args: [
+                            "--disable-gpu",
+                            "--window-size=1920x1080"
+                        ]
+                    },
+
                     specs: [
                         "../spec/panel/regression/demands/service.js"
                     ]
@@ -77,14 +141,20 @@ module.exports =
 
                 {
                     browserName: "chrome",
+                    chromeOptions: {
+                        prefs: {'credentials_enable_service': false},
+                        args: [
+                            "--disable-gpu",
+                            "--window-size=1920x1080"
+                        ]
+                    },
+
                     specs: [
                         "../spec/panel/regression/finances_operations/*.js"
                     ]
 
                 },
 
-                // {
-                //     browserName: "chrome",
                 //     specs: [
                 //         "../spec/panel/preconditions/cashier/cashier_real.js",
                 //         "../spec/panel/preconditions/cashier/cashier_virtual.js"
