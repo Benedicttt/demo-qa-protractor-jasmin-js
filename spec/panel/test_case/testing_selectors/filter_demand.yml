@@ -64,7 +64,7 @@ filter:
       - contractor_type_id: !!seq
           - "Контрагенты для операций по счетам":
               contractor_id:  !!seq
-                - "Списания со счетов"
+                - " Списания со счетов"
           - "Налог":
               contractor_id:  !!seq
                 - "Налоги"

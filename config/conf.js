@@ -7,7 +7,7 @@ let capabilities     =  require('./capabilities.js');
 exports.config = {
     // suites:       suites,
     multiCapabilities: capabilities.set,
-    maxSessions: 2,
+    maxSessions: 1,
 
     framework:    'jasmine',
 
