@@ -3,7 +3,7 @@ const fs = require('fs');
 let path = "spec/panel/test_case/testing_selectors/";
 let scenarios;
 
-fdescribe('Testing all value in selector', () => {
+describe('Testing all value in selector', () => {
     describe('service new', () => {
         scenarios = yaml.safeLoad(fs.readFileSync(path + 'service_new.yml', 'utf8'));
 
