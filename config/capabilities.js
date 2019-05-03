@@ -129,14 +129,10 @@ module.exports =
                         "../spec/panel/regression/finances_operations/*.js"
                     ]
 
-                },
-
-                    specs: [
-                        "../spec/panel/preconditions/cashier/cashier_real.js",
-                        "../spec/panel/preconditions/cashier/cashier_virtual.js"
-                    ]
-
-                },
+                }
             ]
+
+                        // "../spec/panel/preconditions/cashier/cashier_real.js",
+                        // "../spec/panel/preconditions/cashier/cashier_virtual.js"
     };
 
