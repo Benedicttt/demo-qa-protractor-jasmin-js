@@ -64,7 +64,7 @@ receipts:
     selector: !!seq
       - receipt_project_debtor_id:         "Админ"
       - receipt_project_id:                "Админ"
-      - receipt_account_id:                "USD"
+      - receipt_account_id:                " USD"
       - receipt_contractor_type_id:        " Подотчетник"
       - receipt_contractor_id:             "Александр"
       - receipt_nomenclature_id:           " Административные услуги"
@@ -139,9 +139,9 @@ conversion:
   case_2:
     selector: !!seq
       - money_transfer_sender_project_id:   "Админ"
-      - money_transfer_sender_account_id:   "RUR"
+      - money_transfer_sender_account_id:   " RUR"
       - money_transfer_receiver_project_id: "Ломе"
-      - money_transfer_receiver_account_id: "RUR"
+      - money_transfer_receiver_account_id: " RUR"
       - money_transfer_cc_project_id:       "Проект отправитель"
 
     checkbox: !!seq
@@ -166,9 +166,9 @@ conversion:
   case_3:
     selector: !!seq
       - money_transfer_sender_project_id:   "Админ"
-      - money_transfer_sender_account_id:   "USD"
+      - money_transfer_sender_account_id:   " USD"
       - money_transfer_receiver_project_id: "Админ"
-      - money_transfer_receiver_account_id: "RUR"
+      - money_transfer_receiver_account_id: " RUR"
       - money_transfer_cc_project_id:       "Проект отправитель"
 
     checkbox: !!seq
