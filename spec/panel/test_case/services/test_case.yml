@@ -4,9 +4,8 @@ service:
       - service_service_source_id: "Мы"
       - service_project_id: "Админ"
       - service_contractor_type_id: " Покупатель"
-      - service_contractor_id:  " L1"
+      - service_contractor_id:  " tehcovet L1"
       - service_nomenclature_id: " Административные услуги"
-
     checkbox: !!seq
       - service_is_rendered_during_period: true
 
@@ -20,14 +19,11 @@ service:
       - service_service_source_id: "Нам"
       - service_project_id: "Админ"
       - service_contractor_type_id: " Покупатель"
-      - service_contractor_id: " L1"
+      - service_contractor_id: " tehcovet L1"
       - service_expenditure_type_id: " Оплата труда"
       - service_expenditure_id: " Премии"
-
-
     checkbox: !!seq
       - service_is_rendered_during_period: true
-
     input: !!seq
       - service_purpose: "for test test case base_we service"
       - service_task: 321

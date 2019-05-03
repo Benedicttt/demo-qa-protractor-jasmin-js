@@ -15,6 +15,20 @@ module.exports = {
             })
         });
 
+        scenarios[`${name_case}`].input.map(function(id) {
+            let value = `${Object.values(id)[0]}`;
+            let key = `${Object.keys(id)[0]}`;
+
+            it(`{ ${key}: ${value} }`, () => {
+                element(by.id(`${key}`)).clear();
+                element(by.id(`${key}`)).sendKeys(`${value}`);
+
+                element(by.id(`${key}`)).clear();
+                element(by.id(`${key}`)).sendKeys(`${value}`)
+
+            })
+        });
+
         scenarios[`${name_case}`].checkbox.map(function(id) {
             let value = `${Object.values(id)[0]}`;
             let key = `${Object.keys(id)[0]}`;
@@ -26,19 +40,6 @@ module.exports = {
             }
         });
 
-        scenarios[`${name_case}`].input.map(function(id) {
-            let value = `${Object.values(id)[0]}`;
-            let key = `${Object.keys(id)[0]}`;
-
-            it(`{ ${key}: ${value} }`, () => {
-                element(by.id(`${key}`)).clear();
-                element(by.id(`${key}`)).sendKeys(`${value}`);
-                
-                element(by.id(`${key}`)).clear();
-                element(by.id(`${key}`)).sendKeys(`${value}`)
-
-            })
-        });
 
 
         it("click Save button",  () => {
