@@ -5,6 +5,15 @@ const scenarios = yaml.safeLoad(file).service;
 
 module.exports = {
     run_test_case: function(name_case) {
+        it(`Go to page and check title ${page.services.title}`,  () => {
+            user_object.authorization(admin);
+            go(page.services.get);
+            expect(browser.getTitle()).toEqual(page.services.title);
+
+            go(page.services.new.get);
+            expect(browser.getTitle()).toEqual(page.services.new.title);
+        });
+
         scenarios[`${name_case}`].selector.map(function(id) {
             let value = `${Object.values(id)[0]}`;
             let key = `${Object.keys(id)[0]}`;
