@@ -17,14 +17,6 @@ module.exports =
                         ]
                 },
 
-                {
-                    browserName: "chrome",
-                    specs: [
-                        "../spec/panel/preconditions/services/we.js",
-                        "../spec/panel/preconditions/services/us.js"
-                    ]
-
-                },
 
                 {
                     browserName: "chrome",
@@ -38,6 +30,15 @@ module.exports =
                     browserName: "chrome",
                     specs: [
                         "../spec/panel/regression/tests_selector/service_new.js"
+                    ]
+
+                },
+
+                {
+                    browserName: "chrome",
+                    specs: [
+                        "../spec/panel/preconditions/services/we.js",
+                        "../spec/panel/preconditions/services/us.js"
                     ]
 
                 },
