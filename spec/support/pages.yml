@@ -30,6 +30,10 @@ demands:
     get: browser.get('/demands/new')
     title: 'Добавление заявки | Б.СПОК'
 
+operations:
+  get: browser.get('/fin_indicators/operations?per_page=3&all=1')
+  title: 'ДДС | Б.СПОК'
+
 services:
   get: browser.get('/services?per_page=3&all=1')
   title: 'Услуги | Б.СПОК'

@@ -54,7 +54,6 @@ filter:
           - "Либревиль"
           - "Админ"
 
-
     selector_filter_two_level: !!seq
       - contractor_type_id: !!seq
           - "Контрагенты для операций по счетам":

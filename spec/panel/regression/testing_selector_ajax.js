@@ -21,8 +21,14 @@ describe('Testing all value in selector filters demand', () => {
     testing_selectors_shared.run_test_case_for("filter", "demands", scenarios);
 });
 
-fdescribe('Testing all value in selector filters service', () => {
+describe('Testing all value in selector filters service', () => {
     scenarios = yaml.safeLoad(fs.readFileSync(path + 'filter_service.yml', 'utf8'));
 
     testing_selectors_shared.run_test_case_for("filter", "services", scenarios);
+});
+
+fdescribe('Testing all value in selector filters operation', () => {
+    scenarios = yaml.safeLoad(fs.readFileSync(path + 'filter_operation.yml', 'utf8'));
+
+    testing_selectors_shared.run_test_case_for("filter", "operations", scenarios);
 });
