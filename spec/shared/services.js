@@ -10,7 +10,7 @@ module.exports = {
             let key = `${Object.keys(id)[0]}`;
 
             it(`{ ${key}: ${value} }`, () => {
-                browser.sleep(500)
+                browser.sleep(500);
                 tag_selector.selectOption(key, value);
             })
         });
@@ -32,7 +32,9 @@ module.exports = {
 
             it(`{ ${key}: ${value} }`, () => {
                 element(by.id(`${key}`)).clear();
+                browser.sleep(100);
                 element(by.id(`${key}`)).sendKeys(`${value}`)
+                browser.sleep(100);
             })
         });
 

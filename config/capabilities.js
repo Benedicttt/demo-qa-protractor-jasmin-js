@@ -37,8 +37,8 @@ module.exports =
                 {
                     browserName: "chrome",
                     specs: [
-                        "../spec/panel/preconditions/services/we.js",
-                        "../spec/panel/preconditions/services/us.js"
+                        "../spec/panel/preconditions/services/us.js",
+                        "../spec/panel/preconditions/services/we.js"
                     ]
 
                 },
