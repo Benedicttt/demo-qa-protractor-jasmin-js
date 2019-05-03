@@ -6,7 +6,7 @@ const scenarios = yaml.safeLoad(file).service;
 module.exports = {
     run_test_case: function(name_case) {
         it(`Go to page and check title ${page.services.title}`,  () => {
-            user_object.authorization(helper.user_email_last());
+            user_object.authorization(admin);
             go(page.services.get);
             expect(browser.getTitle()).toEqual(page.services.title);
 
