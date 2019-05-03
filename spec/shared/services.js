@@ -32,14 +32,13 @@ module.exports = {
 
             it(`{ ${key}: ${value} }`, () => {
                 element(by.id(`${key}`)).clear();
-                browser.sleep(100);
                 element(by.id(`${key}`)).sendKeys(`${value}`)
-                browser.sleep(100);
             })
         });
 
 
         it("click Save button",  () => {
+            browser.sleep(1000);
             let btn = element.all(by.css("button.btn-primary")).get(0);
             let EC = protractor.ExpectedConditions;
 
