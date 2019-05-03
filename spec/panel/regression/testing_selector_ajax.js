@@ -3,32 +3,34 @@ const fs = require('fs');
 let path = "spec/panel/test_case/testing_selectors/";
 let scenarios;
 
-describe('Testing all value in selector in service new', () => {
-    scenarios = yaml.safeLoad(fs.readFileSync(path + 'service_new.yml', 'utf8'));
+describe('Testing all value in selector', () => {
+    describe('service new', () => {
+        scenarios = yaml.safeLoad(fs.readFileSync(path + 'service_new.yml', 'utf8'));
 
-    testing_selectors_shared.run_test_case("new", "services", "service", scenarios)
-});
+        testing_selectors_shared.run_test_case("new", "services", "service", scenarios)
+    });
 
-describe('Testing all value in selector demand new', () => {
-    scenarios = yaml.safeLoad(fs.readFileSync(path + 'demand_new.yml', 'utf8'));
+    describe('demand new', () => {
+        scenarios = yaml.safeLoad(fs.readFileSync(path + 'demand_new.yml', 'utf8'));
 
-    testing_selectors_shared.run_test_case("new", "demands", "demand", scenarios)
-});
+        testing_selectors_shared.run_test_case("new", "demands", "demand", scenarios)
+    });
 
-describe('Testing all value in selector filters demand', () => {
-    scenarios = yaml.safeLoad(fs.readFileSync(path + 'filter_demand.yml', 'utf8'));
+    describe('filters demand', () => {
+        scenarios = yaml.safeLoad(fs.readFileSync(path + 'filter_demand.yml', 'utf8'));
 
-    testing_selectors_shared.run_test_case_for("filter", "demands", scenarios);
-});
+        testing_selectors_shared.run_test_case_for("filter", "demands", scenarios);
+    });
 
-describe('Testing all value in selector filters service', () => {
-    scenarios = yaml.safeLoad(fs.readFileSync(path + 'filter_service.yml', 'utf8'));
+    describe('filters service', () => {
+        scenarios = yaml.safeLoad(fs.readFileSync(path + 'filter_service.yml', 'utf8'));
 
-    testing_selectors_shared.run_test_case_for("filter", "services", scenarios);
-});
+        testing_selectors_shared.run_test_case_for("filter", "services", scenarios);
+    });
 
-fdescribe('Testing all value in selector filters operation', () => {
-    scenarios = yaml.safeLoad(fs.readFileSync(path + 'filter_operation.yml', 'utf8'));
+    describe('filters operation', () => {
+        scenarios = yaml.safeLoad(fs.readFileSync(path + 'filter_operation.yml', 'utf8'));
 
-    testing_selectors_shared.run_test_case_for("filter", "operations", scenarios);
-});
+        testing_selectors_shared.run_test_case_for("filter", "operations", scenarios);
+    });
+}

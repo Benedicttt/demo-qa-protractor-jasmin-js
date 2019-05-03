@@ -47,6 +47,8 @@ module.exports = {
             });
         });
 
+        if (scenarios[name_case][type].selector_filter_two_level == undefined) { return true }
+
         scenarios[name_case][type].selector_filter_two_level.map(function (id) {
             let key = `${Object.keys(id)[0]}`;
 
