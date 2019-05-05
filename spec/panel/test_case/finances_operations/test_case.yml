@@ -3,7 +3,7 @@ receipts:
     selector: !!seq
       - receipt_project_debtor_id:         "Админ"
       - receipt_project_id:                "Ломе"
-      - receipt_account_id:                "nRUR"
+      - receipt_account_id:                "RUR"
       - receipt_contractor_type_id:        " Подотчетник"
       - receipt_contractor_id:             "Александр"
       - receipt_nomenclature_id:           " Административные услуги"
@@ -28,7 +28,7 @@ receipts:
     selector: !!seq
       - receipt_project_debtor_id:         "Админ"
       - receipt_project_id:                "Админ"
-      - receipt_account_id:                "nRUR"
+      - receipt_account_id:                "RUR"
       - receipt_contractor_type_id:        " Подотчетник"
       - receipt_contractor_id:             "Александр"
       - receipt_nomenclature_id:           " Административные услуги"
