@@ -5,7 +5,7 @@ stages:
   - report
 
 variables:
-    APP_HOST: $HOST
+    APP_HOST: $STAGE_HOST
     DIRECT_CONNECT: 'false'
     headless: --headless
 
