@@ -36,6 +36,7 @@ application image:
     APP_HOST: $STAGE_HOST
     DIRECT_CONNECT: 'false'
     headless: --headless
+
   script:
     - npm cache clear --force
     - /node_modules/protractor/bin/protractor config/conf.js --browser chrome
