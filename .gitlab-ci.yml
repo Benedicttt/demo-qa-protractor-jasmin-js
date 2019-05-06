@@ -33,7 +33,7 @@ application image:
     - test-finances-docker
 
   variables:
-    APP_HOST: $STAGE_HOST
+    APP_HOST: "https"$STAGE_HOST
     DIRECT_CONNECT: 'false'
     headless: --headless
 
