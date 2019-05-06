@@ -33,7 +33,7 @@ application image:
     - test-finances-docker
 
   variables:
-    APP_HOST: 'https://test-finances.404-group.info'
+    APP_HOST: $STAGE_HOST
     DIRECT_CONNECT: 'false'
     headless: --headless
   script:
