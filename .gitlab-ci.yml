@@ -4,6 +4,11 @@ stages:
   - tests
   - report
 
+variables:
+    APP_HOST: $HOST
+    DIRECT_CONNECT: 'false'
+    headless: --headless
+
 base image:
   stage: pre-build
   tags:
@@ -32,10 +37,7 @@ application image:
   tags:
     - test-finances-docker
 
-  variables:
-    APP_HOST: 'https://test-finances.404-group.info'
-    DIRECT_CONNECT: 'false'
-    headless: --headless
+
   script:
     - npm cache clear --force
     - /node_modules/protractor/bin/protractor config/conf.js --browser chrome
