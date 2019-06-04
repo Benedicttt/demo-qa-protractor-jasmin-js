@@ -36,6 +36,7 @@ application image:
     APP_HOST: 'https://test-finances.404-group.info'
     DIRECT_CONNECT: 'false'
     headless: --headless
+    FailFast: 5
   script:
     - npm cache clear --force
     - /node_modules/protractor/bin/protractor config/conf.js --browser chrome
