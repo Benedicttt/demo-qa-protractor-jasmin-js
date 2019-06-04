@@ -39,8 +39,8 @@
     "url-parse": "^1.4.4"
   },
   "scripts": {
-    "chrome 3000": "DIRECT_CONNECT=true APP_HOST=https://test-finances.404-group.info headless=--headle protractor config/conf.js --browser chrome",
-    "chrome headless 3000": "DIRECT_CONNECT=true APP_HOST=https://test-finances.404-group.info headless=--headless  protractor config/conf.js --browser chrome",
+    "chrome 3000": "DIRECT_CONNECT=true APP_HOST=https://test-finances.404-group.info FailFast=2 headless=--headle protractor config/conf.js --browser chrome",
+    "chrome headless 3000": "DIRECT_CONNECT=true APP_HOST=https://test-finances.404-group.info FailFast=5 headless=--headless  protractor config/conf.js --browser chrome",
     "chrome 3001": "DIRECT_CONNECT=true APP_HOST=http://localhost:3001  headless=--headles protractor config/conf.js  --browser chrome",
     "chrome headless 3001": "DIRECT_CONNECT=true APP_HOST=http://localhost:3001  headless=--headless protractor config/conf.js --browser chrome",
     "webdriver-update": "./node_modules/protractor/bin/webdriver-manager update",
