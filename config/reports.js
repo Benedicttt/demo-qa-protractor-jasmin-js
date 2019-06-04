@@ -16,7 +16,7 @@ const addScreenShots = {
             errors_count.push(1);
         }
 
-        if (errors_count.length > proccess.env.FailFast) {
+        if (errors_count.length > parseInt(process.env.FailFast)) {
             console.log(`\nKill proccess ${process.pid}, because ${errors_count.length} tests is failed`);
             process.kill(process.pid)
         }
