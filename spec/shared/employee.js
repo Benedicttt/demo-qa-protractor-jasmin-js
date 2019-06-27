@@ -43,7 +43,7 @@ module.exports = {
 
             it(`{ ${key}: ${value} }`, () => {
                 element(by.id(`${key}`)).clear();
-                element(by.id(`${key}`)).sendKeys(`${value}`)
+                element(by.id(`${key}`)).sendKeys(`${value}`);
 
                 if (key === "employee_last_name" || key === "employee_name" || key === "employee_middle_name" ) {
                     element(by.id(`${key}`)).clear();
@@ -52,6 +52,9 @@ module.exports = {
             })
         });
 
+        it("click translate", () => {
+            element(by.id("translate")).click()
+        });
 
         it("click Save button",  () => {
             let btn = element.all(by.css("button.btn-primary")).get(0);
